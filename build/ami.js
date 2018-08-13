@@ -63630,8 +63630,6 @@ var LoadersVolumes = function (_LoadersBase) {
             reject(e);
           }
 
-          window.vp = volumeParser;
-
           // create a series
           var series = new __WEBPACK_IMPORTED_MODULE_2__models_models_series__["a" /* default */]();
           // global information
