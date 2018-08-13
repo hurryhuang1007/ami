@@ -108,7 +108,9 @@ void main(void) {
     ${shadersInterpolation(this, 'currentVoxel', 'dataValue', 'gradient')}
   }
 
-  if(uNumberOfChannels == 1){
+  if (uNumberOfChannels == 1 && dataValue.r == 0.0 && uLutZeroAsBlack == 1){
+    dataValue = vec4(0., 0., 0., 1.);
+  }else if(uNumberOfChannels == 1){
     // rescale/slope
     float realIntensity = dataValue.r * uRescaleSlopeIntercept[0] + uRescaleSlopeIntercept[1];
   

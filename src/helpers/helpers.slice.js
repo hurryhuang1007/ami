@@ -456,6 +456,8 @@ const helpersSlice = (three = window.THREE) => {
       // interpolation
       this._uniforms.uInterpolation.value = this._interpolation;
 
+      this._uniforms.uLutZeroAsBlack.value = this._lut == 'seasons';
+
       // lut
       if (this._lut === 'none') {
         this._uniforms.uLut.value = 0;

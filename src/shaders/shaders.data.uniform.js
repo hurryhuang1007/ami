@@ -69,6 +69,11 @@ export default class ShadersUniform {
         value: 0,
         typeGLSL: 'int',
       },
+      'uLutZeroAsBlack': {
+        type: 'i',
+        value: 0,
+        typeGLSL: 'int',
+      },
       'uTextureLUT': {
         type: 't',
         value: [],
