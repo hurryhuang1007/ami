@@ -61064,7 +61064,7 @@ var trackballOrtho = function trackballOrtho() {
         if (_this.enabled === false) return;
 
         event.preventDefault();
-        event.stopPropagation();
+        // event.stopPropagation();
 
         switch (event.touches.length) {
           case 1:
