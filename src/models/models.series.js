@@ -132,7 +132,7 @@ export default class ModelsSeries extends ModelsBase {
   }
 
   sortStack() {
-    if (this._stackSorted) return;
+    if (this._stackSorted || this._stack.length === 0) return;
     let stackArray = this._stack;
     for (let i = 1; i < stackArray.length; i++) stackArray[0]._frame = stackArray[0]._frame.concat(stackArray[i]._frame);
     stackArray.length = 1;
@@ -151,7 +151,7 @@ export default class ModelsSeries extends ModelsBase {
       if (stackArray[0]._frame[i]._echoNumber !== firstEchoNumber) echoNumberIsDiff = true;
       if (stackArray[0]._frame[i]._acquisitionNumber !== firstAcquisitionNumber
         && stackArray[0]._frame[i]._sliceLocation === firstSliceLocation) acquisitionNumberIsDiff = true;
-      if (stackArray[0]._frame[i]._inStackPositionNumber != firstInStackPositionNumber) hasStack = true;
+      if (stackArray[0]._frame[i]._inStackPositionNumber !== firstInStackPositionNumber) hasStack = true;
       maxInStackPositionNumber = Math.max(maxInStackPositionNumber, stackArray[0]._frame[i]._inStackPositionNumber);
       // maxInstanceNumber = Math.max(maxInstanceNumber, stackArray[0]._frame[i]._instanceNumber)
       if (echoNumberIsDiff || acquisitionNumberIsDiff) break;
@@ -179,6 +179,7 @@ export default class ModelsSeries extends ModelsBase {
             stack.segmentationSegments = stackArray[0].segmentationSegments;
           }
           stack._stackID = stackID;
+          if(stackArray.length > 2) stack._rawDataFromOtherStack = stackArray[1];
         }
         stack._frame.push(k);
       })
