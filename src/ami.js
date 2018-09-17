@@ -10,5 +10,5 @@ export * from './presets/presets';
 export * from './shaders/shaders';
 export * from './widgets/widgets';
 
-const pckg = require('../package.json');
-window.console.log(`ami v${pckg.version} (three v${pckg.config.threeVersion})`);
+// const pckg = require('../package.json');
+// window.console.log(`ami v${pckg.version} (three v${pckg.config.threeVersion})`);
