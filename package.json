@@ -1,7 +1,7 @@
 {
     "name": "ami.js",
     "version": "0.0.23-dev",
-    "main": "src/ami.js",
+    "main": "src/ami.ts",
     "keywords": [
         "ami",
         "ami.js",
