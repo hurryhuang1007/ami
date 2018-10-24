@@ -86,6 +86,10 @@ export default class ParsersVolume {
     return 0;
   }
 
+  ultrasoundRegions(frameIndex = 0) {
+    return [];
+  }
+
   frameTime(frameIndex = 0) {
     return null;
   }
