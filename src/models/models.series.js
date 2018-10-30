@@ -184,6 +184,7 @@ export default class ModelsSeries extends ModelsBase {
         stack._frame.push(k);
       })
       stackArray.shift();
+      stackArray.sort((a,b) => a._stackID > b._stackID);
     }
     this._stackSorted = true;
   }
