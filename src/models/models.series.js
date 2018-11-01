@@ -179,7 +179,6 @@ export default class ModelsSeries extends ModelsBase {
             stack.segmentationSegments = stackArray[0].segmentationSegments;
           }
           stack._stackID = stackID;
-          if(stackArray.length > 2) stack._rawDataFromOtherStack = stackArray[1];
         }
         stack._frame.push(k);
       })
