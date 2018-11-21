@@ -5,42 +5,39 @@ import ParsersDicom from '../../src/parsers/parsers.dicom';
 let datasets = [];
 
 function testObjectTemplate(
-    name,
-    from,
-    url,
-
-    modality,
-    seriesInstanceUID,
-    studyInstanceUID,
-    transferSyntaxUID,
-    numberOfFrames,
-    numberOfChannels,
-
-    photometricInterpretation,
-    planarConfiguration,
-    samplesPerPixel,
-    imageOrientation,
-    imagePosition,
-    pixelSpacing,
-    sopInstanceUID,
-    sliceThickness,
-    rows,
-    columns,
-    pixelRepresentation,
-    bitsAllocated,
-    highBit,
-    rescaleIntercept,
-    rescaleSlope,
-    windowCenter,
-    windowWidth,
-    dimensionIndexValues,
-    instanceNumber,
-    pixelAspectRatio,
-    inStackPositionNumber,
-    stackID,
-
-    minMax
-    ) {
+  name,
+  from,
+  url,
+  modality,
+  seriesInstanceUID,
+  studyInstanceUID,
+  transferSyntaxUID,
+  numberOfFrames,
+  numberOfChannels,
+  photometricInterpretation,
+  planarConfiguration,
+  samplesPerPixel,
+  imageOrientation,
+  imagePosition,
+  pixelSpacing,
+  sopInstanceUID,
+  sliceThickness,
+  rows,
+  columns,
+  pixelRepresentation,
+  bitsAllocated,
+  highBit,
+  rescaleIntercept,
+  rescaleSlope,
+  windowCenter,
+  windowWidth,
+  dimensionIndexValues,
+  instanceNumber,
+  pixelAspectRatio,
+  inStackPositionNumber,
+  stackID,
+  minMax
+) {
   return {
     // general info
     name,
@@ -96,7 +93,9 @@ let data1 = testObjectTemplate(
   'MR',
   '1.3.46.670589.11.5730.5.0.10204.2010041914320789246',
   '1.3.46.670589.11.5730.5.0.7888.2010041913494343000',
-  '1.2.840.10008.1.2.1', 60, 1,
+  '1.2.840.10008.1.2.1',
+  60,
+  1,
 
   // Stack specific
 
@@ -447,7 +446,7 @@ function dicomTestSequence(referenceDataset) {
     // before each, load the data...
     let parser;
 
-    beforeEach((done) => {
+    beforeEach(done => {
       // originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
       // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
@@ -459,10 +458,13 @@ function dicomTestSequence(referenceDataset) {
       oReq.onload = () => {
         let buffer = oReq.response;
         if (buffer) {
-          parser = new ParsersDicom({
-            url: referenceDataset.url,
-            buffer}
-          , 0);
+          parser = new ParsersDicom(
+            {
+              url: referenceDataset.url,
+              buffer,
+            },
+            0
+          );
           done();
         }
       };
@@ -593,7 +595,9 @@ function dicomTestSequence(referenceDataset) {
 
       it('Dimension index values: ' + referenceDataset.dimensionIndexValues, () => {
         let frameIndex = 0;
-        expect(parser.dimensionIndexValues(frameIndex)).toEqual(referenceDataset.dimensionIndexValues);
+        expect(parser.dimensionIndexValues(frameIndex)).toEqual(
+          referenceDataset.dimensionIndexValues
+        );
       });
 
       it('Instance number: ' + referenceDataset.instanceNumber, () => {
@@ -608,7 +612,9 @@ function dicomTestSequence(referenceDataset) {
 
       it('In stack position number: ' + referenceDataset.inStackPositionNumber, () => {
         let frameIndex = 0;
-        expect(parser.inStackPositionNumber(frameIndex)).toEqual(referenceDataset.inStackPositionNumber);
+        expect(parser.inStackPositionNumber(frameIndex)).toEqual(
+          referenceDataset.inStackPositionNumber
+        );
       });
 
       it('Stack id: ' + referenceDataset.stackID, () => {
@@ -627,7 +633,7 @@ function pixelDataTestSequence(referenceDataset) {
     // before each, load the data...
     let parser;
 
-    beforeEach((done) => {
+    beforeEach(done => {
       // originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
       // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
@@ -639,10 +645,13 @@ function pixelDataTestSequence(referenceDataset) {
       oReq.onload = () => {
         let buffer = oReq.response;
         if (buffer) {
-          parser = new ParsersDicom({
-            url: referenceDataset.url,
-            buffer}
-          , 0);
+          parser = new ParsersDicom(
+            {
+              url: referenceDataset.url,
+              buffer,
+            },
+            0
+          );
           done();
         }
       };

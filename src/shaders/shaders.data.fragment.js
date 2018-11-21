@@ -184,5 +184,5 @@ ${this.functions()}
 // main loop
 ${this._main}
       `;
-    }
+  }
 }
