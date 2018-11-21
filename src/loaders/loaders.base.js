@@ -78,7 +78,7 @@ export default class LoadersBase extends EventEmitter {
       request.crossOrigin = true;
       request.responseType = 'arraybuffer';
 
-      request.onloadstart = (event) => {
+      request.onloadstart = event => {
         // emit 'fetch-start' event
         this.emit('fetch-start', {
           file: url,
@@ -86,7 +86,7 @@ export default class LoadersBase extends EventEmitter {
         });
       };
 
-      request.onload = (event) => {
+      request.onload = event => {
         if (request.status === 200 || request.status === 0) {
           this._loaded = event.loaded;
           this._totalLoaded = event.total;
@@ -125,7 +125,7 @@ export default class LoadersBase extends EventEmitter {
         reject(request.statusText);
       };
 
-      request.onabort = (event) => {
+      request.onabort = event => {
         // emit 'fetch-abort' event
         this.emit('fetch-abort', {
           file: url,
@@ -145,7 +145,7 @@ export default class LoadersBase extends EventEmitter {
         reject(request.statusText);
       };
 
-      request.onprogress = (event) => {
+      request.onprogress = event => {
         this._loaded = event.loaded;
         this._totalLoaded = event.total;
         // emit 'fetch-progress' event
@@ -161,7 +161,7 @@ export default class LoadersBase extends EventEmitter {
         }
       };
 
-      request.onloadend = (event) => {
+      request.onloadend = event => {
         // emit 'fetch-end' event
         this.emit('fetch-end', {
           file: url,
@@ -200,23 +200,21 @@ export default class LoadersBase extends EventEmitter {
   loadSequenceGroup(url, requests) {
     const fetchSequence = [];
 
-    url.forEach((file) => {
-      fetchSequence.push(
-        this.fetch(file, requests)
-      );
+    url.forEach(file => {
+      fetchSequence.push(this.fetch(file, requests));
     });
 
     return Promise.all(fetchSequence)
-      .then((rawdata) => {
+      .then(rawdata => {
         return this.parse(rawdata);
       })
-      .then((data) => {
+      .then(data => {
         this._data.push(data);
         return data;
       })
       .catch(function(error) {
         if (error === 'Aborted') {
-            return;
+          return;
         }
         window.console.log('oops... something went wrong...');
         window.console.log(error);
@@ -231,10 +229,10 @@ export default class LoadersBase extends EventEmitter {
    */
   loadSequence(url, requests) {
     return this.fetch(url, requests)
-      .then((rawdata) => {
+      .then(rawdata => {
         return this.parse(rawdata);
       })
-      .then((data) => {
+      .then(data => {
         this._data.push(data);
         return data;
       })
@@ -271,15 +269,11 @@ export default class LoadersBase extends EventEmitter {
     });
 
     const loadSequences = [];
-    url.forEach((file) => {
+    url.forEach(file => {
       if (!Array.isArray(file)) {
-        loadSequences.push(
-          this.loadSequence(file, requests)
-        );
+        loadSequences.push(this.loadSequence(file, requests));
       } else {
-        loadSequences.push(
-          this.loadSequenceGroup(file, requests)
-        );
+        loadSequences.push(this.loadSequenceGroup(file, requests));
       }
     });
     return Promise.all(loadSequences);

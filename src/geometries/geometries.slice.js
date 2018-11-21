@@ -42,12 +42,12 @@ import coreUtils from '../core/core.utils';
  *  scene.add(slice);
  */
 
- const geometriesSlice = (three = window.THREE) => {
-  if (three === undefined || three.ShapeGeometry === undefined) {
+const geometriesSlice = (three = window.THREE) => {
+  if (three === undefined || three.ShapeBufferGeometry === undefined) {
     return null;
   }
 
-  const Constructor = three.ShapeGeometry;
+  const Constructor = three.ShapeBufferGeometry;
   return class extends Constructor {
     constructor(halfDimensions, center, position, direction, toAABB = new three.Matrix4()) {
       //
@@ -75,7 +75,9 @@ import coreUtils from '../core/core.utils';
         window.console.log('Plane');
         window.console.log(plane);
         window.console.log('exiting...');
-        const err = new Error('geometries.slice has less than 3 intersections, can not create a valid geometry.');
+        const err = new Error(
+          'geometries.slice has less than 3 intersections, can not create a valid geometry.'
+        );
         throw err;
       }
 
@@ -87,30 +89,33 @@ import coreUtils from '../core/core.utils';
       shape.moveTo(points[0].xy.x, points[0].xy.y);
 
       // loop through all points!
-      for (let l = 1; l < points.length; l++) {
+      const positions = new Float32Array(points.length * 3);
+      positions.set(points[0].toArray(), 0);
+
+      for (let i = 1; i < points.length; i++) {
         // project each on plane!
-        shape.lineTo(points[l].xy.x, points[l].xy.y);
+        positions.set(points[i].toArray(), i * 3);
+
+        shape.lineTo(points[i].xy.x, points[i].xy.y);
       }
 
       // close the shape!
       shape.lineTo(points[0].xy.x, points[0].xy.y);
 
       //
-      // Generate Geometry from shape
-      // It does triangulation for us!
-      //
+      // Generate Slice Buffer Geometry from Shape Buffer Geomtry
+      // bewcause it does triangulation for us!
       super(shape);
-      this.type = 'SliceGeometry';
+      this.type = 'SliceBufferGeometry';
 
       // update real position of each vertex! (not in 2d)
-      this.vertices = points;
-      this.verticesNeedUpdate = true;
-      this.computeVertexNormals();
+      this.addAttribute( 'position', new three.Float32BufferAttribute( positions, 3 ) );
+      this.vertices = points; // legacy code to compute normals int he SliceHelper
     }
   };
 };
 
 // export factory
-export {geometriesSlice};
+export { geometriesSlice };
 // default export to
 export default geometriesSlice();

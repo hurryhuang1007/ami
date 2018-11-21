@@ -5918,7 +5918,7 @@ function fromByteArray (uint8) {
 
 var base64 = __webpack_require__(/*! base64-js */ "./node_modules/base64-js/index.js")
 var ieee754 = __webpack_require__(/*! ieee754 */ "./node_modules/ieee754/index.js")
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/buffer/node_modules/isarray/index.js")
+var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -7700,22 +7700,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/buffer/node_modules/isarray/index.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/buffer/node_modules/isarray/index.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/const-ninf-float32/lib/index.js":
 /*!******************************************************!*\
   !*** ./node_modules/const-ninf-float32/lib/index.js ***!
@@ -8239,6 +8223,22 @@ if (typeof Object.create === 'function') {
     ctor.prototype.constructor = ctor
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/isarray/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
@@ -20505,11 +20505,22 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/three/package.json":
+/*!*****************************************!*\
+  !*** ./node_modules/three/package.json ***!
+  \*****************************************/
+/*! exports provided: name, version, description, main, repository, jsnext:main, module, files, directories, eslintConfig, scripts, keywords, author, license, bugs, homepage, devDependencies, jspm, default */
+/***/ (function(module) {
+
+module.exports = {"name":"three","version":"0.98.0","description":"JavaScript 3D library","main":"build/three.js","repository":"mrdoob/three.js","jsnext:main":"build/three.module.js","module":"build/three.module.js","files":["package.json","LICENSE","README.md","build/three.js","build/three.min.js","build/three.module.js","src","examples/js","examples/fonts"],"directories":{"doc":"docs","example":"examples","test":"test"},"eslintConfig":{"extends":"mdcs","plugins":["html"]},"scripts":{"build":"rollup -c","build-test":"rollup -c test/rollup.unit.config.js","build-closure":"rollup -c && java -jar node_modules/google-closure-compiler/compiler.jar --warning_level=VERBOSE --jscomp_off=globalThis --jscomp_off=checkTypes --externs utils/build/externs.js --language_in=ECMASCRIPT5_STRICT --js build/three.js --js_output_file build/three.min.js","dev":"concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"http-server -c-1 -p 8080\"","dev-test":"concurrently --names \"ROLLUP,ROLLUPTEST,HTTP\" -c \"bgBlue.bold,bgRed.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"rollup -c test/rollup.unit.config.js -w -m inline\" \"http-server -p 8080\"","start":"npm run dev","lint":"eslint src","test":"npm run build-test && qunit test/unit/three.source.unit.js","travis":"npm run lint && npm test","editor":"electron ./editor/main.js"},"keywords":["three","three.js","3d","webgl"],"author":"mrdoob","license":"MIT","bugs":{"url":"https://github.com/mrdoob/three.js/issues"},"homepage":"https://threejs.org/","devDependencies":{"concurrently":"^4.0.1","electron":"^2.0.8","eslint":"^5.5.0","eslint-config-mdcs":"^4.2.3","eslint-plugin-html":"^4.0.6","google-closure-compiler":"20180805.0.0","http-server":"^0.11.1","qunit":"^2.6.2","rollup":"^0.65.2"},"jspm":{"files":["package.json","LICENSE","README.md","build/three.js","build/three.min.js","build/three.module.js"],"directories":{}}};
+
+/***/ }),
+
 /***/ "./node_modules/three/src/constants.js":
 /*!*********************************************!*\
   !*** ./node_modules/three/src/constants.js ***!
   \*********************************************/
-/*! exports provided: REVISION, MOUSE, CullFaceNone, CullFaceBack, CullFaceFront, CullFaceFrontBack, FrontFaceDirectionCW, FrontFaceDirectionCCW, BasicShadowMap, PCFShadowMap, PCFSoftShadowMap, FrontSide, BackSide, DoubleSide, FlatShading, SmoothShading, NoColors, FaceColors, VertexColors, NoBlending, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, CustomBlending, AddEquation, SubtractEquation, ReverseSubtractEquation, MinEquation, MaxEquation, ZeroFactor, OneFactor, SrcColorFactor, OneMinusSrcColorFactor, SrcAlphaFactor, OneMinusSrcAlphaFactor, DstAlphaFactor, OneMinusDstAlphaFactor, DstColorFactor, OneMinusDstColorFactor, SrcAlphaSaturateFactor, NeverDepth, AlwaysDepth, LessDepth, LessEqualDepth, EqualDepth, GreaterEqualDepth, GreaterDepth, NotEqualDepth, MultiplyOperation, MixOperation, AddOperation, NoToneMapping, LinearToneMapping, ReinhardToneMapping, Uncharted2ToneMapping, CineonToneMapping, UVMapping, CubeReflectionMapping, CubeRefractionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping, SphericalReflectionMapping, CubeUVReflectionMapping, CubeUVRefractionMapping, RepeatWrapping, ClampToEdgeWrapping, MirroredRepeatWrapping, NearestFilter, NearestMipMapNearestFilter, NearestMipMapLinearFilter, LinearFilter, LinearMipMapNearestFilter, LinearMipMapLinearFilter, UnsignedByteType, ByteType, ShortType, UnsignedShortType, IntType, UnsignedIntType, FloatType, HalfFloatType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedInt248Type, AlphaFormat, RGBFormat, RGBAFormat, LuminanceFormat, LuminanceAlphaFormat, RGBEFormat, DepthFormat, DepthStencilFormat, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGB_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGB_ETC1_Format, RGBA_ASTC_4x4_Format, RGBA_ASTC_5x4_Format, RGBA_ASTC_5x5_Format, RGBA_ASTC_6x5_Format, RGBA_ASTC_6x6_Format, RGBA_ASTC_8x5_Format, RGBA_ASTC_8x6_Format, RGBA_ASTC_8x8_Format, RGBA_ASTC_10x5_Format, RGBA_ASTC_10x6_Format, RGBA_ASTC_10x8_Format, RGBA_ASTC_10x10_Format, RGBA_ASTC_12x10_Format, RGBA_ASTC_12x12_Format, LoopOnce, LoopRepeat, LoopPingPong, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, ZeroCurvatureEnding, ZeroSlopeEnding, WrapAroundEnding, TrianglesDrawMode, TriangleStripDrawMode, TriangleFanDrawMode, LinearEncoding, sRGBEncoding, GammaEncoding, RGBEEncoding, LogLuvEncoding, RGBM7Encoding, RGBM16Encoding, RGBDEncoding, BasicDepthPacking, RGBADepthPacking */
+/*! exports provided: REVISION, MOUSE, CullFaceNone, CullFaceBack, CullFaceFront, CullFaceFrontBack, FrontFaceDirectionCW, FrontFaceDirectionCCW, BasicShadowMap, PCFShadowMap, PCFSoftShadowMap, FrontSide, BackSide, DoubleSide, FlatShading, SmoothShading, NoColors, FaceColors, VertexColors, NoBlending, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, CustomBlending, AddEquation, SubtractEquation, ReverseSubtractEquation, MinEquation, MaxEquation, ZeroFactor, OneFactor, SrcColorFactor, OneMinusSrcColorFactor, SrcAlphaFactor, OneMinusSrcAlphaFactor, DstAlphaFactor, OneMinusDstAlphaFactor, DstColorFactor, OneMinusDstColorFactor, SrcAlphaSaturateFactor, NeverDepth, AlwaysDepth, LessDepth, LessEqualDepth, EqualDepth, GreaterEqualDepth, GreaterDepth, NotEqualDepth, MultiplyOperation, MixOperation, AddOperation, NoToneMapping, LinearToneMapping, ReinhardToneMapping, Uncharted2ToneMapping, CineonToneMapping, UVMapping, CubeReflectionMapping, CubeRefractionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping, SphericalReflectionMapping, CubeUVReflectionMapping, CubeUVRefractionMapping, RepeatWrapping, ClampToEdgeWrapping, MirroredRepeatWrapping, NearestFilter, NearestMipMapNearestFilter, NearestMipMapLinearFilter, LinearFilter, LinearMipMapNearestFilter, LinearMipMapLinearFilter, UnsignedByteType, ByteType, ShortType, UnsignedShortType, IntType, UnsignedIntType, FloatType, HalfFloatType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedInt248Type, AlphaFormat, RGBFormat, RGBAFormat, LuminanceFormat, LuminanceAlphaFormat, RGBEFormat, DepthFormat, DepthStencilFormat, RedFormat, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGB_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGB_ETC1_Format, RGBA_ASTC_4x4_Format, RGBA_ASTC_5x4_Format, RGBA_ASTC_5x5_Format, RGBA_ASTC_6x5_Format, RGBA_ASTC_6x6_Format, RGBA_ASTC_8x5_Format, RGBA_ASTC_8x6_Format, RGBA_ASTC_8x8_Format, RGBA_ASTC_10x5_Format, RGBA_ASTC_10x6_Format, RGBA_ASTC_10x8_Format, RGBA_ASTC_10x10_Format, RGBA_ASTC_12x10_Format, RGBA_ASTC_12x12_Format, LoopOnce, LoopRepeat, LoopPingPong, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, ZeroCurvatureEnding, ZeroSlopeEnding, WrapAroundEnding, TrianglesDrawMode, TriangleStripDrawMode, TriangleFanDrawMode, LinearEncoding, sRGBEncoding, GammaEncoding, RGBEEncoding, LogLuvEncoding, RGBM7Encoding, RGBM16Encoding, RGBDEncoding, BasicDepthPacking, RGBADepthPacking, TangentSpaceNormalMap, ObjectSpaceNormalMap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20608,6 +20619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGBEFormat", function() { return RGBEFormat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DepthFormat", function() { return DepthFormat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DepthStencilFormat", function() { return DepthStencilFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RedFormat", function() { return RedFormat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGB_S3TC_DXT1_Format", function() { return RGB_S3TC_DXT1_Format; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGBA_S3TC_DXT1_Format", function() { return RGBA_S3TC_DXT1_Format; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGBA_S3TC_DXT3_Format", function() { return RGBA_S3TC_DXT3_Format; });
@@ -20653,7 +20665,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGBDEncoding", function() { return RGBDEncoding; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasicDepthPacking", function() { return BasicDepthPacking; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RGBADepthPacking", function() { return RGBADepthPacking; });
-var REVISION = '92';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TangentSpaceNormalMap", function() { return TangentSpaceNormalMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObjectSpaceNormalMap", function() { return ObjectSpaceNormalMap; });
+var REVISION = '98';
 var MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2 };
 var CullFaceNone = 0;
 var CullFaceBack = 1;
@@ -20747,6 +20761,7 @@ var LuminanceAlphaFormat = 1025;
 var RGBEFormat = RGBAFormat;
 var DepthFormat = 1026;
 var DepthStencilFormat = 1027;
+var RedFormat = 1028;
 var RGB_S3TC_DXT1_Format = 33776;
 var RGBA_S3TC_DXT1_Format = 33777;
 var RGBA_S3TC_DXT3_Format = 33778;
@@ -20792,6 +20807,8 @@ var RGBM16Encoding = 3005;
 var RGBDEncoding = 3006;
 var BasicDepthPacking = 3200;
 var RGBADepthPacking = 3201;
+var TangentSpaceNormalMap = 0;
+var ObjectSpaceNormalMap = 1;
 
 
 /***/ }),
@@ -21343,7 +21360,7 @@ Object.assign( Box3.prototype, {
 
 		}
 
-		return ( min <= plane.constant && max >= plane.constant );
+		return ( min <= - plane.constant && max >= - plane.constant );
 
 	},
 
@@ -21544,7 +21561,7 @@ Object.assign( Box3.prototype, {
 			points[ 4 ].set( this.max.x, this.min.y, this.min.z ).applyMatrix4( matrix ); // 100
 			points[ 5 ].set( this.max.x, this.min.y, this.max.z ).applyMatrix4( matrix ); // 101
 			points[ 6 ].set( this.max.x, this.max.y, this.min.z ).applyMatrix4( matrix ); // 110
-			points[ 7 ].set( this.max.x, this.max.y, this.max.z ).applyMatrix4( matrix );	// 111
+			points[ 7 ].set( this.max.x, this.max.y, this.max.z ).applyMatrix4( matrix ); // 111
 
 			this.setFromPoints( points );
 
@@ -21566,174 +21583,6 @@ Object.assign( Box3.prototype, {
 	equals: function ( box ) {
 
 		return box.min.equals( this.min ) && box.max.equals( this.max );
-
-	}
-
-} );
-
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/three/src/math/Line3.js":
-/*!**********************************************!*\
-  !*** ./node_modules/three/src/math/Line3.js ***!
-  \**********************************************/
-/*! exports provided: Line3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Line3", function() { return Line3; });
-/* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
-/* harmony import */ var _Math_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Math.js */ "./node_modules/three/src/math/Math.js");
-
-
-
-/**
- * @author bhouston / http://clara.io
- */
-
-function Line3( start, end ) {
-
-	this.start = ( start !== undefined ) ? start : new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-	this.end = ( end !== undefined ) ? end : new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-}
-
-Object.assign( Line3.prototype, {
-
-	set: function ( start, end ) {
-
-		this.start.copy( start );
-		this.end.copy( end );
-
-		return this;
-
-	},
-
-	clone: function () {
-
-		return new this.constructor().copy( this );
-
-	},
-
-	copy: function ( line ) {
-
-		this.start.copy( line.start );
-		this.end.copy( line.end );
-
-		return this;
-
-	},
-
-	getCenter: function ( target ) {
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Line3: .getCenter() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		}
-
-		return target.addVectors( this.start, this.end ).multiplyScalar( 0.5 );
-
-	},
-
-	delta: function ( target ) {
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Line3: .delta() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		}
-
-		return target.subVectors( this.end, this.start );
-
-	},
-
-	distanceSq: function () {
-
-		return this.start.distanceToSquared( this.end );
-
-	},
-
-	distance: function () {
-
-		return this.start.distanceTo( this.end );
-
-	},
-
-	at: function ( t, target ) {
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Line3: .at() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		}
-
-		return this.delta( target ).multiplyScalar( t ).add( this.start );
-
-	},
-
-	closestPointToPointParameter: function () {
-
-		var startP = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-		var startEnd = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		return function closestPointToPointParameter( point, clampToLine ) {
-
-			startP.subVectors( point, this.start );
-			startEnd.subVectors( this.end, this.start );
-
-			var startEnd2 = startEnd.dot( startEnd );
-			var startEnd_startP = startEnd.dot( startP );
-
-			var t = startEnd_startP / startEnd2;
-
-			if ( clampToLine ) {
-
-				t = _Math_js__WEBPACK_IMPORTED_MODULE_1__["_Math"].clamp( t, 0, 1 );
-
-			}
-
-			return t;
-
-		};
-
-	}(),
-
-	closestPointToPoint: function ( point, clampToLine, target ) {
-
-		var t = this.closestPointToPointParameter( point, clampToLine );
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Line3: .closestPointToPoint() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		}
-
-		return this.delta( target ).multiplyScalar( t ).add( this.start );
-
-	},
-
-	applyMatrix4: function ( matrix ) {
-
-		this.start.applyMatrix4( matrix );
-		this.end.applyMatrix4( matrix );
-
-		return this;
-
-	},
-
-	equals: function ( line ) {
-
-		return line.start.equals( this.start ) && line.end.equals( this.end );
 
 	}
 
@@ -21912,409 +21761,6 @@ var _Math = {
 
 /***/ }),
 
-/***/ "./node_modules/three/src/math/Matrix3.js":
-/*!************************************************!*\
-  !*** ./node_modules/three/src/math/Matrix3.js ***!
-  \************************************************/
-/*! exports provided: Matrix3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Matrix3", function() { return Matrix3; });
-/* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
-
-
-/**
- * @author alteredq / http://alteredqualia.com/
- * @author WestLangley / http://github.com/WestLangley
- * @author bhouston / http://clara.io
- * @author tschw
- */
-
-function Matrix3() {
-
-	this.elements = [
-
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1
-
-	];
-
-	if ( arguments.length > 0 ) {
-
-		console.error( 'THREE.Matrix3: the constructor no longer reads arguments. use .set() instead.' );
-
-	}
-
-}
-
-Object.assign( Matrix3.prototype, {
-
-	isMatrix3: true,
-
-	set: function ( n11, n12, n13, n21, n22, n23, n31, n32, n33 ) {
-
-		var te = this.elements;
-
-		te[ 0 ] = n11; te[ 1 ] = n21; te[ 2 ] = n31;
-		te[ 3 ] = n12; te[ 4 ] = n22; te[ 5 ] = n32;
-		te[ 6 ] = n13; te[ 7 ] = n23; te[ 8 ] = n33;
-
-		return this;
-
-	},
-
-	identity: function () {
-
-		this.set(
-
-			1, 0, 0,
-			0, 1, 0,
-			0, 0, 1
-
-		);
-
-		return this;
-
-	},
-
-	clone: function () {
-
-		return new this.constructor().fromArray( this.elements );
-
-	},
-
-	copy: function ( m ) {
-
-		var te = this.elements;
-		var me = m.elements;
-
-		te[ 0 ] = me[ 0 ]; te[ 1 ] = me[ 1 ]; te[ 2 ] = me[ 2 ];
-		te[ 3 ] = me[ 3 ]; te[ 4 ] = me[ 4 ]; te[ 5 ] = me[ 5 ];
-		te[ 6 ] = me[ 6 ]; te[ 7 ] = me[ 7 ]; te[ 8 ] = me[ 8 ];
-
-		return this;
-
-	},
-
-	setFromMatrix4: function ( m ) {
-
-		var me = m.elements;
-
-		this.set(
-
-			me[ 0 ], me[ 4 ], me[ 8 ],
-			me[ 1 ], me[ 5 ], me[ 9 ],
-			me[ 2 ], me[ 6 ], me[ 10 ]
-
-		);
-
-		return this;
-
-	},
-
-	applyToBufferAttribute: function () {
-
-		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-
-		return function applyToBufferAttribute( attribute ) {
-
-			for ( var i = 0, l = attribute.count; i < l; i ++ ) {
-
-				v1.x = attribute.getX( i );
-				v1.y = attribute.getY( i );
-				v1.z = attribute.getZ( i );
-
-				v1.applyMatrix3( this );
-
-				attribute.setXYZ( i, v1.x, v1.y, v1.z );
-
-			}
-
-			return attribute;
-
-		};
-
-	}(),
-
-	multiply: function ( m ) {
-
-		return this.multiplyMatrices( this, m );
-
-	},
-
-	premultiply: function ( m ) {
-
-		return this.multiplyMatrices( m, this );
-
-	},
-
-	multiplyMatrices: function ( a, b ) {
-
-		var ae = a.elements;
-		var be = b.elements;
-		var te = this.elements;
-
-		var a11 = ae[ 0 ], a12 = ae[ 3 ], a13 = ae[ 6 ];
-		var a21 = ae[ 1 ], a22 = ae[ 4 ], a23 = ae[ 7 ];
-		var a31 = ae[ 2 ], a32 = ae[ 5 ], a33 = ae[ 8 ];
-
-		var b11 = be[ 0 ], b12 = be[ 3 ], b13 = be[ 6 ];
-		var b21 = be[ 1 ], b22 = be[ 4 ], b23 = be[ 7 ];
-		var b31 = be[ 2 ], b32 = be[ 5 ], b33 = be[ 8 ];
-
-		te[ 0 ] = a11 * b11 + a12 * b21 + a13 * b31;
-		te[ 3 ] = a11 * b12 + a12 * b22 + a13 * b32;
-		te[ 6 ] = a11 * b13 + a12 * b23 + a13 * b33;
-
-		te[ 1 ] = a21 * b11 + a22 * b21 + a23 * b31;
-		te[ 4 ] = a21 * b12 + a22 * b22 + a23 * b32;
-		te[ 7 ] = a21 * b13 + a22 * b23 + a23 * b33;
-
-		te[ 2 ] = a31 * b11 + a32 * b21 + a33 * b31;
-		te[ 5 ] = a31 * b12 + a32 * b22 + a33 * b32;
-		te[ 8 ] = a31 * b13 + a32 * b23 + a33 * b33;
-
-		return this;
-
-	},
-
-	multiplyScalar: function ( s ) {
-
-		var te = this.elements;
-
-		te[ 0 ] *= s; te[ 3 ] *= s; te[ 6 ] *= s;
-		te[ 1 ] *= s; te[ 4 ] *= s; te[ 7 ] *= s;
-		te[ 2 ] *= s; te[ 5 ] *= s; te[ 8 ] *= s;
-
-		return this;
-
-	},
-
-	determinant: function () {
-
-		var te = this.elements;
-
-		var a = te[ 0 ], b = te[ 1 ], c = te[ 2 ],
-			d = te[ 3 ], e = te[ 4 ], f = te[ 5 ],
-			g = te[ 6 ], h = te[ 7 ], i = te[ 8 ];
-
-		return a * e * i - a * f * h - b * d * i + b * f * g + c * d * h - c * e * g;
-
-	},
-
-	getInverse: function ( matrix, throwOnDegenerate ) {
-
-		if ( matrix && matrix.isMatrix4 ) {
-
-			console.error( "THREE.Matrix3: .getInverse() no longer takes a Matrix4 argument." );
-
-		}
-
-		var me = matrix.elements,
-			te = this.elements,
-
-			n11 = me[ 0 ], n21 = me[ 1 ], n31 = me[ 2 ],
-			n12 = me[ 3 ], n22 = me[ 4 ], n32 = me[ 5 ],
-			n13 = me[ 6 ], n23 = me[ 7 ], n33 = me[ 8 ],
-
-			t11 = n33 * n22 - n32 * n23,
-			t12 = n32 * n13 - n33 * n12,
-			t13 = n23 * n12 - n22 * n13,
-
-			det = n11 * t11 + n21 * t12 + n31 * t13;
-
-		if ( det === 0 ) {
-
-			var msg = "THREE.Matrix3: .getInverse() can't invert matrix, determinant is 0";
-
-			if ( throwOnDegenerate === true ) {
-
-				throw new Error( msg );
-
-			} else {
-
-				console.warn( msg );
-
-			}
-
-			return this.identity();
-
-		}
-
-		var detInv = 1 / det;
-
-		te[ 0 ] = t11 * detInv;
-		te[ 1 ] = ( n31 * n23 - n33 * n21 ) * detInv;
-		te[ 2 ] = ( n32 * n21 - n31 * n22 ) * detInv;
-
-		te[ 3 ] = t12 * detInv;
-		te[ 4 ] = ( n33 * n11 - n31 * n13 ) * detInv;
-		te[ 5 ] = ( n31 * n12 - n32 * n11 ) * detInv;
-
-		te[ 6 ] = t13 * detInv;
-		te[ 7 ] = ( n21 * n13 - n23 * n11 ) * detInv;
-		te[ 8 ] = ( n22 * n11 - n21 * n12 ) * detInv;
-
-		return this;
-
-	},
-
-	transpose: function () {
-
-		var tmp, m = this.elements;
-
-		tmp = m[ 1 ]; m[ 1 ] = m[ 3 ]; m[ 3 ] = tmp;
-		tmp = m[ 2 ]; m[ 2 ] = m[ 6 ]; m[ 6 ] = tmp;
-		tmp = m[ 5 ]; m[ 5 ] = m[ 7 ]; m[ 7 ] = tmp;
-
-		return this;
-
-	},
-
-	getNormalMatrix: function ( matrix4 ) {
-
-		return this.setFromMatrix4( matrix4 ).getInverse( this ).transpose();
-
-	},
-
-	transposeIntoArray: function ( r ) {
-
-		var m = this.elements;
-
-		r[ 0 ] = m[ 0 ];
-		r[ 1 ] = m[ 3 ];
-		r[ 2 ] = m[ 6 ];
-		r[ 3 ] = m[ 1 ];
-		r[ 4 ] = m[ 4 ];
-		r[ 5 ] = m[ 7 ];
-		r[ 6 ] = m[ 2 ];
-		r[ 7 ] = m[ 5 ];
-		r[ 8 ] = m[ 8 ];
-
-		return this;
-
-	},
-
-	setUvTransform: function ( tx, ty, sx, sy, rotation, cx, cy ) {
-
-		var c = Math.cos( rotation );
-		var s = Math.sin( rotation );
-
-		this.set(
-			sx * c, sx * s, - sx * ( c * cx + s * cy ) + cx + tx,
-			- sy * s, sy * c, - sy * ( - s * cx + c * cy ) + cy + ty,
-			0, 0, 1
-		);
-
-	},
-
-	scale: function ( sx, sy ) {
-
-		var te = this.elements;
-
-		te[ 0 ] *= sx; te[ 3 ] *= sx; te[ 6 ] *= sx;
-		te[ 1 ] *= sy; te[ 4 ] *= sy; te[ 7 ] *= sy;
-
-		return this;
-
-	},
-
-	rotate: function ( theta ) {
-
-		var c = Math.cos( theta );
-		var s = Math.sin( theta );
-
-		var te = this.elements;
-
-		var a11 = te[ 0 ], a12 = te[ 3 ], a13 = te[ 6 ];
-		var a21 = te[ 1 ], a22 = te[ 4 ], a23 = te[ 7 ];
-
-		te[ 0 ] = c * a11 + s * a21;
-		te[ 3 ] = c * a12 + s * a22;
-		te[ 6 ] = c * a13 + s * a23;
-
-		te[ 1 ] = - s * a11 + c * a21;
-		te[ 4 ] = - s * a12 + c * a22;
-		te[ 7 ] = - s * a13 + c * a23;
-
-		return this;
-
-	},
-
-	translate: function ( tx, ty ) {
-
-		var te = this.elements;
-
-		te[ 0 ] += tx * te[ 2 ]; te[ 3 ] += tx * te[ 5 ]; te[ 6 ] += tx * te[ 8 ];
-		te[ 1 ] += ty * te[ 2 ]; te[ 4 ] += ty * te[ 5 ]; te[ 7 ] += ty * te[ 8 ];
-
-		return this;
-
-	},
-
-	equals: function ( matrix ) {
-
-		var te = this.elements;
-		var me = matrix.elements;
-
-		for ( var i = 0; i < 9; i ++ ) {
-
-			if ( te[ i ] !== me[ i ] ) return false;
-
-		}
-
-		return true;
-
-	},
-
-	fromArray: function ( array, offset ) {
-
-		if ( offset === undefined ) offset = 0;
-
-		for ( var i = 0; i < 9; i ++ ) {
-
-			this.elements[ i ] = array[ i + offset ];
-
-		}
-
-		return this;
-
-	},
-
-	toArray: function ( array, offset ) {
-
-		if ( array === undefined ) array = [];
-		if ( offset === undefined ) offset = 0;
-
-		var te = this.elements;
-
-		array[ offset ] = te[ 0 ];
-		array[ offset + 1 ] = te[ 1 ];
-		array[ offset + 2 ] = te[ 2 ];
-
-		array[ offset + 3 ] = te[ 3 ];
-		array[ offset + 4 ] = te[ 4 ];
-		array[ offset + 5 ] = te[ 5 ];
-
-		array[ offset + 6 ] = te[ 6 ];
-		array[ offset + 7 ] = te[ 7 ];
-		array[ offset + 8 ] = te[ 8 ];
-
-		return array;
-
-	}
-
-} );
-
-
-
-
-
-/***/ }),
-
 /***/ "./node_modules/three/src/math/Matrix4.js":
 /*!************************************************!*\
   !*** ./node_modules/three/src/math/Matrix4.js ***!
@@ -22453,6 +21899,8 @@ Object.assign( Matrix4.prototype, {
 
 		return function extractRotation( m ) {
 
+			// this method does not support reflection matrices
+
 			var te = this.elements;
 			var me = m.elements;
 
@@ -22463,14 +21911,22 @@ Object.assign( Matrix4.prototype, {
 			te[ 0 ] = me[ 0 ] * scaleX;
 			te[ 1 ] = me[ 1 ] * scaleX;
 			te[ 2 ] = me[ 2 ] * scaleX;
+			te[ 3 ] = 0;
 
 			te[ 4 ] = me[ 4 ] * scaleY;
 			te[ 5 ] = me[ 5 ] * scaleY;
 			te[ 6 ] = me[ 6 ] * scaleY;
+			te[ 7 ] = 0;
 
 			te[ 8 ] = me[ 8 ] * scaleZ;
 			te[ 9 ] = me[ 9 ] * scaleZ;
 			te[ 10 ] = me[ 10 ] * scaleZ;
+			te[ 11 ] = 0;
+
+			te[ 12 ] = 0;
+			te[ 13 ] = 0;
+			te[ 14 ] = 0;
+			te[ 15 ] = 1;
 
 			return this;
 
@@ -22591,12 +22047,12 @@ Object.assign( Matrix4.prototype, {
 
 		}
 
-		// last column
+		// bottom row
 		te[ 3 ] = 0;
 		te[ 7 ] = 0;
 		te[ 11 ] = 0;
 
-		// bottom row
+		// last column
 		te[ 12 ] = 0;
 		te[ 13 ] = 0;
 		te[ 14 ] = 0;
@@ -22606,42 +22062,18 @@ Object.assign( Matrix4.prototype, {
 
 	},
 
-	makeRotationFromQuaternion: function ( q ) {
+	makeRotationFromQuaternion: function () {
 
-		var te = this.elements;
+		var zero = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]( 0, 0, 0 );
+		var one = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]( 1, 1, 1 );
 
-		var x = q._x, y = q._y, z = q._z, w = q._w;
-		var x2 = x + x, y2 = y + y, z2 = z + z;
-		var xx = x * x2, xy = x * y2, xz = x * z2;
-		var yy = y * y2, yz = y * z2, zz = z * z2;
-		var wx = w * x2, wy = w * y2, wz = w * z2;
+		return function makeRotationFromQuaternion( q ) {
 
-		te[ 0 ] = 1 - ( yy + zz );
-		te[ 4 ] = xy - wz;
-		te[ 8 ] = xz + wy;
+			return this.compose( zero, q, one );
 
-		te[ 1 ] = xy + wz;
-		te[ 5 ] = 1 - ( xx + zz );
-		te[ 9 ] = yz - wx;
+		};
 
-		te[ 2 ] = xz - wy;
-		te[ 6 ] = yz + wx;
-		te[ 10 ] = 1 - ( xx + yy );
-
-		// last column
-		te[ 3 ] = 0;
-		te[ 7 ] = 0;
-		te[ 11 ] = 0;
-
-		// bottom row
-		te[ 12 ] = 0;
-		te[ 13 ] = 0;
-		te[ 14 ] = 0;
-		te[ 15 ] = 1;
-
-		return this;
-
-	},
+	}(),
 
 	lookAt: function () {
 
@@ -23082,11 +22514,37 @@ Object.assign( Matrix4.prototype, {
 
 	compose: function ( position, quaternion, scale ) {
 
-		this.makeRotationFromQuaternion( quaternion );
-		this.scale( scale );
-		this.setPosition( position );
+		var te = this.elements;
 
-		return this;
+		var x = quaternion._x, y = quaternion._y, z = quaternion._z, w = quaternion._w;
+		var x2 = x + x,	y2 = y + y, z2 = z + z;
+		var xx = x * x2, xy = x * y2, xz = x * z2;
+		var yy = y * y2, yz = y * z2, zz = z * z2;
+		var wx = w * x2, wy = w * y2, wz = w * z2;
+
+		var sx = scale.x, sy = scale.y, sz = scale.z;
+
+	        te[ 0 ] = ( 1 - ( yy + zz ) ) * sx;
+	        te[ 1 ] = ( xy + wz ) * sx;
+	        te[ 2 ] = ( xz - wy ) * sx;
+	        te[ 3 ] = 0;
+
+	        te[ 4 ] = ( xy - wz ) * sy;
+	        te[ 5 ] = ( 1 - ( xx + zz ) ) * sy;
+	        te[ 6 ] = ( yz + wx ) * sy;
+	        te[ 7 ] = 0;
+
+	        te[ 8 ] = ( xz + wy ) * sz;
+	        te[ 9 ] = ( yz - wx ) * sz;
+	        te[ 10 ] = ( 1 - ( xx + yy ) ) * sz;
+	        te[ 11 ] = 0;
+
+	        te[ 12 ] = position.x;
+	        te[ 13 ] = position.y;
+	        te[ 14 ] = position.z;
+	        te[ 15 ] = 1;
+
+	        return this;
 
 	},
 
@@ -23256,267 +22714,6 @@ Object.assign( Matrix4.prototype, {
 
 /***/ }),
 
-/***/ "./node_modules/three/src/math/Plane.js":
-/*!**********************************************!*\
-  !*** ./node_modules/three/src/math/Plane.js ***!
-  \**********************************************/
-/*! exports provided: Plane */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Plane", function() { return Plane; });
-/* harmony import */ var _Matrix3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Matrix3.js */ "./node_modules/three/src/math/Matrix3.js");
-/* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
-
-
-
-/**
- * @author bhouston / http://clara.io
- */
-
-function Plane( normal, constant ) {
-
-	// normal is assumed to be normalized
-
-	this.normal = ( normal !== undefined ) ? normal : new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]( 1, 0, 0 );
-	this.constant = ( constant !== undefined ) ? constant : 0;
-
-}
-
-Object.assign( Plane.prototype, {
-
-	set: function ( normal, constant ) {
-
-		this.normal.copy( normal );
-		this.constant = constant;
-
-		return this;
-
-	},
-
-	setComponents: function ( x, y, z, w ) {
-
-		this.normal.set( x, y, z );
-		this.constant = w;
-
-		return this;
-
-	},
-
-	setFromNormalAndCoplanarPoint: function ( normal, point ) {
-
-		this.normal.copy( normal );
-		this.constant = - point.dot( this.normal );
-
-		return this;
-
-	},
-
-	setFromCoplanarPoints: function () {
-
-		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-		var v2 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-
-		return function setFromCoplanarPoints( a, b, c ) {
-
-			var normal = v1.subVectors( c, b ).cross( v2.subVectors( a, b ) ).normalize();
-
-			// Q: should an error be thrown if normal is zero (e.g. degenerate plane)?
-
-			this.setFromNormalAndCoplanarPoint( normal, a );
-
-			return this;
-
-		};
-
-	}(),
-
-	clone: function () {
-
-		return new this.constructor().copy( this );
-
-	},
-
-	copy: function ( plane ) {
-
-		this.normal.copy( plane.normal );
-		this.constant = plane.constant;
-
-		return this;
-
-	},
-
-	normalize: function () {
-
-		// Note: will lead to a divide by zero if the plane is invalid.
-
-		var inverseNormalLength = 1.0 / this.normal.length();
-		this.normal.multiplyScalar( inverseNormalLength );
-		this.constant *= inverseNormalLength;
-
-		return this;
-
-	},
-
-	negate: function () {
-
-		this.constant *= - 1;
-		this.normal.negate();
-
-		return this;
-
-	},
-
-	distanceToPoint: function ( point ) {
-
-		return this.normal.dot( point ) + this.constant;
-
-	},
-
-	distanceToSphere: function ( sphere ) {
-
-		return this.distanceToPoint( sphere.center ) - sphere.radius;
-
-	},
-
-	projectPoint: function ( point, target ) {
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Plane: .projectPoint() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-
-		}
-
-		return target.copy( this.normal ).multiplyScalar( - this.distanceToPoint( point ) ).add( point );
-
-	},
-
-	intersectLine: function () {
-
-		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-
-		return function intersectLine( line, target ) {
-
-			if ( target === undefined ) {
-
-				console.warn( 'THREE.Plane: .intersectLine() target is now required' );
-				target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-
-			}
-
-			var direction = line.delta( v1 );
-
-			var denominator = this.normal.dot( direction );
-
-			if ( denominator === 0 ) {
-
-				// line is coplanar, return origin
-				if ( this.distanceToPoint( line.start ) === 0 ) {
-
-					return target.copy( line.start );
-
-				}
-
-				// Unsure if this is the correct method to handle this case.
-				return undefined;
-
-			}
-
-			var t = - ( line.start.dot( this.normal ) + this.constant ) / denominator;
-
-			if ( t < 0 || t > 1 ) {
-
-				return undefined;
-
-			}
-
-			return target.copy( direction ).multiplyScalar( t ).add( line.start );
-
-		};
-
-	}(),
-
-	intersectsLine: function ( line ) {
-
-		// Note: this tests if a line intersects the plane, not whether it (or its end-points) are coplanar with it.
-
-		var startSign = this.distanceToPoint( line.start );
-		var endSign = this.distanceToPoint( line.end );
-
-		return ( startSign < 0 && endSign > 0 ) || ( endSign < 0 && startSign > 0 );
-
-	},
-
-	intersectsBox: function ( box ) {
-
-		return box.intersectsPlane( this );
-
-	},
-
-	intersectsSphere: function ( sphere ) {
-
-		return sphere.intersectsPlane( this );
-
-	},
-
-	coplanarPoint: function ( target ) {
-
-		if ( target === undefined ) {
-
-			console.warn( 'THREE.Plane: .coplanarPoint() target is now required' );
-			target = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-
-		}
-
-		return target.copy( this.normal ).multiplyScalar( - this.constant );
-
-	},
-
-	applyMatrix4: function () {
-
-		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
-		var m1 = new _Matrix3_js__WEBPACK_IMPORTED_MODULE_0__["Matrix3"]();
-
-		return function applyMatrix4( matrix, optionalNormalMatrix ) {
-
-			var normalMatrix = optionalNormalMatrix || m1.getNormalMatrix( matrix );
-
-			var referencePoint = this.coplanarPoint( v1 ).applyMatrix4( matrix );
-
-			var normal = this.normal.applyMatrix3( normalMatrix ).normalize();
-
-			this.constant = - referencePoint.dot( normal );
-
-			return this;
-
-		};
-
-	}(),
-
-	translate: function ( offset ) {
-
-		this.constant -= offset.dot( this.normal );
-
-		return this;
-
-	},
-
-	equals: function ( plane ) {
-
-		return plane.normal.equals( this.normal ) && ( plane.constant === this.constant );
-
-	}
-
-} );
-
-
-
-
-
-/***/ }),
-
 /***/ "./node_modules/three/src/math/Quaternion.js":
 /*!***************************************************!*\
   !*** ./node_modules/three/src/math/Quaternion.js ***!
@@ -23527,15 +22724,17 @@ Object.assign( Plane.prototype, {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Quaternion", function() { return Quaternion; });
-/* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
-
-
+/* harmony import */ var _Math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Math.js */ "./node_modules/three/src/math/Math.js");
+/* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
 /**
  * @author mikael emtinger / http://gomo.se/
  * @author alteredq / http://alteredqualia.com/
  * @author WestLangley / http://github.com/WestLangley
  * @author bhouston / http://clara.io
  */
+
+
+
 
 function Quaternion( x, y, z, w ) {
 
@@ -23691,6 +22890,8 @@ Object.defineProperties( Quaternion.prototype, {
 } );
 
 Object.assign( Quaternion.prototype, {
+
+	isQuaternion: true,
 
 	set: function ( x, y, z, w ) {
 
@@ -23881,14 +23082,14 @@ Object.assign( Quaternion.prototype, {
 
 		// assumes direction vectors vFrom and vTo are normalized
 
-		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
 		var r;
 
 		var EPS = 0.000001;
 
 		return function setFromUnitVectors( vFrom, vTo ) {
 
-			if ( v1 === undefined ) v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+			if ( v1 === undefined ) v1 = new _Vector3_js__WEBPACK_IMPORTED_MODULE_1__["Vector3"]();
 
 			r = vFrom.dot( vTo ) + 1;
 
@@ -23922,6 +23123,26 @@ Object.assign( Quaternion.prototype, {
 		};
 
 	}(),
+
+	angleTo: function ( q ) {
+
+		return 2 * Math.acos( Math.abs( _Math_js__WEBPACK_IMPORTED_MODULE_0__["_Math"].clamp( this.dot( q ), - 1, 1 ) ) );
+
+	},
+
+	rotateTowards: function ( q, step ) {
+
+		var angle = this.angleTo( q );
+
+		if ( angle === 0 ) return this;
+
+		var t = Math.min( 1, step / angle );
+
+		this.slerp( q, t );
+
+		return this;
+
+	},
 
 	inverse: function () {
 
@@ -24063,19 +23284,21 @@ Object.assign( Quaternion.prototype, {
 
 		}
 
-		var sinHalfTheta = Math.sqrt( 1.0 - cosHalfTheta * cosHalfTheta );
+		var sqrSinHalfTheta = 1.0 - cosHalfTheta * cosHalfTheta;
 
-		if ( Math.abs( sinHalfTheta ) < 0.001 ) {
+		if ( sqrSinHalfTheta <= Number.EPSILON ) {
 
-			this._w = 0.5 * ( w + this._w );
-			this._x = 0.5 * ( x + this._x );
-			this._y = 0.5 * ( y + this._y );
-			this._z = 0.5 * ( z + this._z );
+			var s = 1 - t;
+			this._w = s * w + t * this._w;
+			this._x = s * x + t * this._x;
+			this._y = s * y + t * this._y;
+			this._z = s * z + t * this._z;
 
-			return this;
+			return this.normalize();
 
 		}
 
+		var sinHalfTheta = Math.sqrt( sqrSinHalfTheta );
 		var halfTheta = Math.atan2( sinHalfTheta, cosHalfTheta );
 		var ratioA = Math.sin( ( 1 - t ) * halfTheta ) / sinHalfTheta,
 			ratioB = Math.sin( t * halfTheta ) / sinHalfTheta;
@@ -24447,7 +23670,7 @@ Object.assign( Ray.prototype, {
 
 	intersectsSphere: function ( sphere ) {
 
-		return this.distanceToPoint( sphere.center ) <= sphere.radius;
+		return this.distanceSqToPoint( sphere.center ) <= ( sphere.radius * sphere.radius );
 
 	},
 
@@ -24912,10 +24135,6 @@ Object.assign( Sphere.prototype, {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Triangle", function() { return Triangle; });
 /* harmony import */ var _Vector3_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vector3.js */ "./node_modules/three/src/math/Vector3.js");
-/* harmony import */ var _Line3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Line3.js */ "./node_modules/three/src/math/Line3.js");
-/* harmony import */ var _Plane_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Plane.js */ "./node_modules/three/src/math/Plane.js");
-
-
 
 
 /**
@@ -25024,6 +24243,25 @@ Object.assign( Triangle, {
 
 		};
 
+	}(),
+
+	getUV: function () {
+
+		var barycoord = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+
+		return function getUV( point, p1, p2, p3, uv1, uv2, uv3, target ) {
+
+			this.getBarycoord( point, p1, p2, p3, barycoord );
+
+			target.set( 0, 0 );
+			target.addScaledVector( uv1, barycoord.x );
+			target.addScaledVector( uv2, barycoord.y );
+			target.addScaledVector( uv3, barycoord.z );
+
+			return target;
+
+		};
+
 	}()
 
 } );
@@ -25126,6 +24364,12 @@ Object.assign( Triangle.prototype, {
 
 	},
 
+	getUV: function ( point, uv1, uv2, uv3, result ) {
+
+		return Triangle.getUV( point, this.a, this.b, this.c, uv1, uv2, uv3, result );
+
+	},
+
 	intersectsBox: function ( box ) {
 
 		return box.intersectsTriangle( this );
@@ -25134,12 +24378,14 @@ Object.assign( Triangle.prototype, {
 
 	closestPointToPoint: function () {
 
-		var plane = new _Plane_js__WEBPACK_IMPORTED_MODULE_2__["Plane"]();
-		var edgeList = [ new _Line3_js__WEBPACK_IMPORTED_MODULE_1__["Line3"](), new _Line3_js__WEBPACK_IMPORTED_MODULE_1__["Line3"](), new _Line3_js__WEBPACK_IMPORTED_MODULE_1__["Line3"]() ];
-		var projectedPoint = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
-		var closestPoint = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vab = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vac = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vbc = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vap = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vbp = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
+		var vcp = new _Vector3_js__WEBPACK_IMPORTED_MODULE_0__["Vector3"]();
 
-		return function closestPointToPoint( point, target ) {
+		return function closestPointToPoint( p, target ) {
 
 			if ( target === undefined ) {
 
@@ -25148,48 +24394,81 @@ Object.assign( Triangle.prototype, {
 
 			}
 
-			var minDistance = Infinity;
+			var a = this.a, b = this.b, c = this.c;
+			var v, w;
 
-			// project the point onto the plane of the triangle
+			// algorithm thanks to Real-Time Collision Detection by Christer Ericson,
+			// published by Morgan Kaufmann Publishers, (c) 2005 Elsevier Inc.,
+			// under the accompanying license; see chapter 5.1.5 for detailed explanation.
+			// basically, we're distinguishing which of the voronoi regions of the triangle
+			// the point lies in with the minimum amount of redundant computation.
 
-			plane.setFromCoplanarPoints( this.a, this.b, this.c );
-			plane.projectPoint( point, projectedPoint );
+			vab.subVectors( b, a );
+			vac.subVectors( c, a );
+			vap.subVectors( p, a );
+			var d1 = vab.dot( vap );
+			var d2 = vac.dot( vap );
+			if ( d1 <= 0 && d2 <= 0 ) {
 
-			// check if the projection lies within the triangle
-
-			if ( this.containsPoint( projectedPoint ) === true ) {
-
-				// if so, this is the closest point
-
-				target.copy( projectedPoint );
-
-			} else {
-
-				// if not, the point falls outside the triangle. the target is the closest point to the triangle's edges or vertices
-
-				edgeList[ 0 ].set( this.a, this.b );
-				edgeList[ 1 ].set( this.b, this.c );
-				edgeList[ 2 ].set( this.c, this.a );
-
-				for ( var i = 0; i < edgeList.length; i ++ ) {
-
-					edgeList[ i ].closestPointToPoint( projectedPoint, true, closestPoint );
-
-					var distance = projectedPoint.distanceToSquared( closestPoint );
-
-					if ( distance < minDistance ) {
-
-						minDistance = distance;
-
-						target.copy( closestPoint );
-
-					}
-
-				}
+				// vertex region of A; barycentric coords (1, 0, 0)
+				return target.copy( a );
 
 			}
 
-			return target;
+			vbp.subVectors( p, b );
+			var d3 = vab.dot( vbp );
+			var d4 = vac.dot( vbp );
+			if ( d3 >= 0 && d4 <= d3 ) {
+
+				// vertex region of B; barycentric coords (0, 1, 0)
+				return target.copy( b );
+
+			}
+
+			var vc = d1 * d4 - d3 * d2;
+			if ( vc <= 0 && d1 >= 0 && d3 <= 0 ) {
+
+				v = d1 / ( d1 - d3 );
+				// edge region of AB; barycentric coords (1-v, v, 0)
+				return target.copy( a ).addScaledVector( vab, v );
+
+			}
+
+			vcp.subVectors( p, c );
+			var d5 = vab.dot( vcp );
+			var d6 = vac.dot( vcp );
+			if ( d6 >= 0 && d5 <= d6 ) {
+
+				// vertex region of C; barycentric coords (0, 0, 1)
+				return target.copy( c );
+
+			}
+
+			var vb = d5 * d2 - d1 * d6;
+			if ( vb <= 0 && d2 >= 0 && d6 <= 0 ) {
+
+				w = d2 / ( d2 - d6 );
+				// edge region of AC; barycentric coords (1-w, 0, w)
+				return target.copy( a ).addScaledVector( vac, w );
+
+			}
+
+			var va = d3 * d6 - d5 * d4;
+			if ( va <= 0 && ( d4 - d3 ) >= 0 && ( d5 - d6 ) >= 0 ) {
+
+				vbc.subVectors( c, b );
+				w = ( d4 - d3 ) / ( ( d4 - d3 ) + ( d5 - d6 ) );
+				// edge region of BC; barycentric coords (0, 1-w, w)
+				return target.copy( b ).addScaledVector( vbc, w ); // edge region of BC
+
+			}
+
+			// face region
+			var denom = 1 / ( va + vb + vc );
+			// u = va * denom
+			v = vb * denom;
+			w = vc * denom;
+			return target.copy( a ).addScaledVector( vab, v ).addScaledVector( vac, w );
 
 		};
 
@@ -25571,6 +24850,12 @@ Object.assign( Vector2.prototype, {
 	dot: function ( v ) {
 
 		return this.x * v.x + this.y * v.y;
+
+	},
+
+	cross: function ( v ) {
+
+		return this.x * v.y - this.y * v.x;
 
 	},
 
@@ -26043,18 +25328,11 @@ Object.assign( Vector3.prototype, {
 
 	},
 
-	project: function () {
+	project: function ( camera ) {
 
-		var matrix = new _Matrix4_js__WEBPACK_IMPORTED_MODULE_1__["Matrix4"]();
+		return this.applyMatrix4( camera.matrixWorldInverse ).applyMatrix4( camera.projectionMatrix );
 
-		return function project( camera ) {
-
-			matrix.multiplyMatrices( camera.projectionMatrix, matrix.getInverse( camera.matrixWorld ) );
-			return this.applyMatrix4( matrix );
-
-		};
-
-	}(),
+	},
 
 	unproject: function () {
 
@@ -26062,8 +25340,7 @@ Object.assign( Vector3.prototype, {
 
 		return function unproject( camera ) {
 
-			matrix.multiplyMatrices( camera.matrixWorld, matrix.getInverse( camera.projectionMatrix ) );
-			return this.applyMatrix4( matrix );
+			return this.applyMatrix4( matrix.getInverse( camera.projectionMatrix ) ).applyMatrix4( camera.matrixWorld );
 
 		};
 
@@ -26356,11 +25633,17 @@ Object.assign( Vector3.prototype, {
 
 	setFromSpherical: function ( s ) {
 
-		var sinPhiRadius = Math.sin( s.phi ) * s.radius;
+		return this.setFromSphericalCoords( s.radius, s.phi, s.theta );
 
-		this.x = sinPhiRadius * Math.sin( s.theta );
-		this.y = Math.cos( s.phi ) * s.radius;
-		this.z = sinPhiRadius * Math.cos( s.theta );
+	},
+
+	setFromSphericalCoords: function ( radius, phi, theta ) {
+
+		var sinPhiRadius = Math.sin( phi ) * radius;
+
+		this.x = sinPhiRadius * Math.sin( theta );
+		this.y = Math.cos( phi ) * radius;
+		this.z = sinPhiRadius * Math.cos( theta );
 
 		return this;
 
@@ -26368,9 +25651,15 @@ Object.assign( Vector3.prototype, {
 
 	setFromCylindrical: function ( c ) {
 
-		this.x = c.radius * Math.sin( c.theta );
-		this.y = c.y;
-		this.z = c.radius * Math.cos( c.theta );
+		return this.setFromCylindricalCoords( c.radius, c.theta, c.y );
+
+	},
+
+	setFromCylindricalCoords: function ( radius, theta, y ) {
+
+		this.x = radius * Math.sin( theta );
+		this.y = y;
+		this.z = radius * Math.cos( theta );
 
 		return this;
 
@@ -27574,209 +26863,41 @@ module.exports = g;
 /*!**********************!*\
   !*** ./package.json ***!
   \**********************/
-/*! exports provided: name, version, main, keywords, author, license, repository, config, sideEffects, dependencies, scripts, devDependencies, engines, default */
+/*! exports provided: name, version, main, keywords, author, license, repository, config, lint-staged, prettier, sideEffects, dependencies, scripts, devDependencies, engines, default */
 /***/ (function(module) {
 
-module.exports = {"name":"ami.js","version":"0.0.23-dev","main":"build/ami.js","keywords":["ami","ami.js","three.js","webgl","dicom","nifti","awesome","medical","imaging","xtk","nrrd","vtk","stl","trk"],"author":{"name":"Nicolas Rannou","email":"nicolas@eunate.ch","url":"https://eunate.ch"},"license":"Apache-2.0","repository":{"type":"git","url":"https://fnndsc.github.io/ami"},"config":{"threeVersion":"93","amiCDN":"https://cdnjs.cloudflare.com/ajax/libs/ami.js","gaKey":"UA-39303022-3","babel":"--module-bind js=babel-loader --colors --display-error-details"},"sideEffects":false,"dependencies":{"OpenJPEG.js":"joedrago/openjpeg#master","dicom-parser":"1.8.1","image-JPEG2000":"ReflexionMed/image-JPEG2000#master","jpeg-lossless-decoder-js":"1.2.3","math-float32-to-binary-string":"^1.0.0","nifti-reader-js":"v0.5.3","nrrd-js":"^0.2.1","pako":"1.0.1","three":"0.92.0"},"scripts":{"build:ami":"webpack --config webpack.config.build.js","build:ami:prod":"cross-env NODE_ENV=production yarn build:ami","build:clean":"rimraf -rf build/*","build:clean:hot":"rimraf -rf build/*.hot-update.*","dev:ami":"webpack --config webpack.config.build.js --hot --watch --colors","dist:ami":"yarn build:clean && yarn build:ami && yarn build:ami:prod && yarn doc","dist:examples":"node ./scripts/buildDist.js && node ./scripts/router.js examples deploy","dist:clean":"rimraf -rf dist/*","analyze:ami":"cross-env NODE_WEBPACK_ANALYZE=true yarn build:ami","analyze:ami:prod":"cross-env NODE_WEBPACK_ANALYZE=true yarn build:ami:prod","clean":"yarn build:clean && yarn dist:clean","example":"node ./scripts/router.js examples","gen:index:examples":"node ./scripts/genIndexFiles.js examples","gen:index:examples:ga":"cross-env NODE_GA=true node ./scripts/genIndexFiles.js examples","test":"karma start","testExamples":"yarn dist:clean && yarn dist:examples && echo 'hi'","lint":"eslint src/**/*.js --fix","doc":"jsdoc -p -r -R README.md -c jsdoc.json -d dist/doc src","ami":"yarn lint && yarn dist:ami && yarn test","deploy":"yarn dist:clean && yarn build:clean && yarn dist:ami && yarn dist:examples && gh-pages -d dist"},"devDependencies":{"babel-cli":"latest","babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-env":"^1.6.0","babel-runtime":"^6.26.0","compression-webpack-plugin":"^1.0.1","cross-env":"^3.2.3","eslint":"^5.2.0","eslint-config-google":"latest","gh-pages":"^1.2.0","glslify":"5.1.0","jasmine-core":"^2.99.1","jsdoc":"jsdoc3/jsdoc#master","karma":"^2.0.5","karma-chrome-launcher":"^2.2.0","karma-jasmine":"^1.1.2","karma-sinon":"^1.0.5","karma-spec-reporter":"^0.0.32","karma-webpack":"3.0.0","live-server":"^1.1.0","node-pre-gyp":"^0.10.0","puppeteer":"^1.6.1","rimraf":"^2.6.1","rollup-plugin-node-builtins":"^2.1.2","shelljs":"^0.8.2","sinon":"^2.0.0","uglifyjs-webpack-plugin":"^1.2.7","webpack":"^4.16.3","webpack-bundle-analyzer":"^2.9.0","webpack-dev-server":"^3.1.5","webpack-cli":"^3.1.0","webpack-watch-livereload-plugin":"^0.0.1"},"engines":{"node":">=6.9.0"}};
+module.exports = {"name":"ami.js","version":"0.22.0","main":"build/ami.js","keywords":["ami","ami.js","three.js","webgl","dicom","nifti","awesome","medical","imaging","xtk","nrrd","vtk","stl","trk"],"author":{"name":"Nicolas Rannou","email":"nicolas@eunate.ch","url":"https://eunate.ch"},"license":"Apache-2.0","repository":{"type":"git","url":"https://fnndsc.github.io/ami"},"config":{"gaKey":"UA-39303022-3","babel":"--module-bind js=babel-loader --colors --display-error-details"},"lint-staged":{"{{src/**,examples/**, lessons/**}/,}.{js,jsx,json,css,ts,tsx}":["prettier --write","git add"]},"prettier":{"printWidth":100,"singleQuote":true,"trailingComma":"es5","overrides":[{"files":"*.css","options":{"useTabs":false,"tabWidth":2}}]},"sideEffects":false,"dependencies":{"OpenJPEG.js":"joedrago/openjpeg#master","dicom-parser":"1.8.1","image-JPEG2000":"ReflexionMed/image-JPEG2000#master","jpeg-lossless-decoder-js":"1.2.3","math-float32-to-binary-string":"^1.0.0","nifti-reader-js":"v0.5.3","nrrd-js":"^0.2.1","pako":"1.0.1","three":"latest"},"scripts":{"precommit":"lint-staged","tslint-check":"tslint-config-prettier-check ./tslint.json","check-codestyle":"prettier-check 'src/**/*.{js,jsx,json,css,ts,tsx}'","fix-all-code-style":"prettier --write '{{src/**,examples/**, lessons/**}/,}*.{js,jsx,json,css,ts,tsx}'","build:ami":"webpack --config webpack.config.build.js","build:ami:prod":"cross-env NODE_ENV=production yarn build:ami","build:clean":"rimraf -rf build/*","build:clean:hot":"rimraf -rf build/*.hot-update.*","dev:ami":"webpack --config webpack.config.build.js --hot --watch --colors","dist:ami":"yarn build:clean && yarn build:ami && yarn build:ami:prod && yarn doc","dist:examples":"node ./scripts/buildDist.js && node ./scripts/router.js examples deploy","dist:clean":"rimraf -rf dist/*","analyze:ami":"cross-env NODE_WEBPACK_ANALYZE=true yarn build:ami","analyze:ami:prod":"cross-env NODE_WEBPACK_ANALYZE=true yarn build:ami:prod","clean":"yarn build:clean && yarn dist:clean","example":"node ./scripts/router.js examples","gen:index:examples":"node ./scripts/genIndexFiles.js examples","gen:index:examples:ga":"cross-env NODE_GA=true node ./scripts/genIndexFiles.js examples","test":"karma start","testExamples":"yarn dist:clean && yarn dist:examples","doc":"jsdoc -p -r -R README.md -c jsdoc.json -d dist/doc src","ami":"yarn dist:ami && yarn test","deploy":"yarn dist:clean && yarn build:clean && yarn dist:ami && yarn dist:examples && gh-pages -d dist"},"devDependencies":{"@types/node":"^10.11.3","babel-cli":"latest","babel-core":"^6.26.0","babel-loader":"^7.1.2","babel-preset-env":"^1.6.0","babel-runtime":"^6.26.0","compression-webpack-plugin":"^1.0.1","cross-env":"^3.2.3","gh-pages":"^1.2.0","husky":"^1.1.3","jasmine-core":"^2.99.1","jsdoc":"jsdoc3/jsdoc#master","karma":"^2.0.5","karma-chrome-launcher":"^2.2.0","karma-jasmine":"^1.1.2","karma-sinon":"^1.0.5","karma-spec-reporter":"^0.0.32","karma-webpack":"3.0.0","lint-staged":"^8.0.4","live-server":"^1.1.0","node-pre-gyp":"^0.10.0","prettier":"^1.15.1","prettier-check":"^2.0.0","puppeteer":"^1.6.1","rimraf":"^2.6.1","rollup-plugin-node-builtins":"^2.1.2","shelljs":"^0.8.2","sinon":"^2.0.0","ts-loader":"^5.2.1","tslint":"^5.11.0","tslint-config-prettier":"^1.15.0","tslint-loader":"^3.6.0","typescript":"^3.1.1","uglifyjs-webpack-plugin":"^1.2.7","webpack":"^4.16.3","webpack-bundle-analyzer":"^2.9.0","webpack-cli":"^3.1.0","webpack-dev-server":"^3.1.5","webpack-watch-livereload-plugin":"^0.0.1"},"engines":{"node":">=6.9.0"}};
 
 /***/ }),
 
-/***/ "./src/ami.js":
+/***/ "./src/ami.ts":
 /*!********************!*\
-  !*** ./src/ami.js ***!
+  !*** ./src/ami.ts ***!
   \********************/
-/*! exports provided: OrthographicCamera, orthographicCameraFactory, TrackballControl, trackballControlFactory, TrackballOrthoControl, trackballOrthoControlFactory, ColorsCore, IntersectionsCore, UtilsCore, ValidatorsCore, SliceGeometry, sliceGeometryFactory, VoxelGeometry, voxelGeometryFactory, BorderHelper, borderHelperFactory, BoundingBoxHelper, boundingBoxHelperFactory, ContourHelper, contourHelperFactory, LocalizerHelper, localizerHelperFactory, LutHelper, lutHelperFactory, SegmentationLutHelper, ProgressBarHelper, ProgressBarEventBasedHelper, SliceHelper, sliceHelperFactory, StackHelper, stackHelperFactory, VolumeRenderingHelper, VolumeRenderingHelperFactory, VolumeLoader, FrameModel, StackModel, SeriesModel, VoxelModel, DicomParser, MghParser, NiftiParser, NrrdParser, SegmentationPreset, ContourUniformShader, ContourFragmentShader, ContourVertexShader, DataUniformShader, DataFragmentShader, DataVertexShader, VRUniformShader, VRFragmentShader, VRVertexShader, LayerUniformShader, LayerFragmentShader, LayerVertexShader, LocalizerUniformShader, LocalizerFragmentShader, LocalizerVertexShader, WidgetsCss, AngleWidget, angleWidgetFactory, AnnotationWidget, annotationWidgetFactory, BiRulerWidget, birulerWidgetFactory, CrossRulerWidget, crossrulerWidgetFactory, EllipseWidget, ellipseWidgetFactory, FreehandWidget, freehandWidgetFactory, HandleWidget, handleWidgetFactory, PolygonWidget, polygonWidgetFactory, RectangleWidget, rectangleWidgetFactory, RulerWidget, rulerWidgetFactory, VoxelProbeWidget, voxelprobeWidgetFactory */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cameras_cameras__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cameras/cameras */ "./src/cameras/cameras.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OrthographicCamera", function() { return _cameras_cameras__WEBPACK_IMPORTED_MODULE_0__["OrthographicCamera"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "orthographicCameraFactory", function() { return _cameras_cameras__WEBPACK_IMPORTED_MODULE_0__["orthographicCameraFactory"]; });
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./cameras/cameras */ "./src/cameras/cameras.js"));
+__export(__webpack_require__(/*! ./controls/controls */ "./src/controls/controls.js"));
+__export(__webpack_require__(/*! ./core/core */ "./src/core/core.js"));
+__export(__webpack_require__(/*! ./geometries/geometries */ "./src/geometries/geometries.js"));
+__export(__webpack_require__(/*! ./helpers/helpers */ "./src/helpers/helpers.js"));
+__export(__webpack_require__(/*! ./loaders/loaders */ "./src/loaders/loaders.js"));
+__export(__webpack_require__(/*! ./models/models */ "./src/models/models.js"));
+__export(__webpack_require__(/*! ./parsers/parsers */ "./src/parsers/parsers.js"));
+__export(__webpack_require__(/*! ./presets/presets */ "./src/presets/presets.js"));
+__export(__webpack_require__(/*! ./shaders/shaders */ "./src/shaders/shaders.js"));
+__export(__webpack_require__(/*! ./widgets/widgets */ "./src/widgets/widgets.js"));
+var packageVersion = __webpack_require__(/*! ../package.json */ "./package.json").version;
+var d3Version = __webpack_require__(/*! ../node_modules/three/package.json */ "./node_modules/three/package.json").version;
+window.console.log("ami " + packageVersion + " (three " + d3Version + ")");
 
-/* harmony import */ var _controls_controls__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controls/controls */ "./src/controls/controls.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrackballControl", function() { return _controls_controls__WEBPACK_IMPORTED_MODULE_1__["TrackballControl"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "trackballControlFactory", function() { return _controls_controls__WEBPACK_IMPORTED_MODULE_1__["trackballControlFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrackballOrthoControl", function() { return _controls_controls__WEBPACK_IMPORTED_MODULE_1__["TrackballOrthoControl"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "trackballOrthoControlFactory", function() { return _controls_controls__WEBPACK_IMPORTED_MODULE_1__["trackballOrthoControlFactory"]; });
-
-/* harmony import */ var _core_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core/core */ "./src/core/core.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorsCore", function() { return _core_core__WEBPACK_IMPORTED_MODULE_2__["ColorsCore"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IntersectionsCore", function() { return _core_core__WEBPACK_IMPORTED_MODULE_2__["IntersectionsCore"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UtilsCore", function() { return _core_core__WEBPACK_IMPORTED_MODULE_2__["UtilsCore"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValidatorsCore", function() { return _core_core__WEBPACK_IMPORTED_MODULE_2__["ValidatorsCore"]; });
-
-/* harmony import */ var _geometries_geometries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geometries/geometries */ "./src/geometries/geometries.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SliceGeometry", function() { return _geometries_geometries__WEBPACK_IMPORTED_MODULE_3__["SliceGeometry"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sliceGeometryFactory", function() { return _geometries_geometries__WEBPACK_IMPORTED_MODULE_3__["sliceGeometryFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoxelGeometry", function() { return _geometries_geometries__WEBPACK_IMPORTED_MODULE_3__["VoxelGeometry"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "voxelGeometryFactory", function() { return _geometries_geometries__WEBPACK_IMPORTED_MODULE_3__["voxelGeometryFactory"]; });
-
-/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers/helpers */ "./src/helpers/helpers.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BorderHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["BorderHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "borderHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["borderHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BoundingBoxHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["BoundingBoxHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "boundingBoxHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["boundingBoxHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ContourHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["ContourHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "contourHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["contourHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocalizerHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["LocalizerHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "localizerHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["localizerHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LutHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["LutHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lutHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["lutHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SegmentationLutHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["SegmentationLutHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProgressBarHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["ProgressBarHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProgressBarEventBasedHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["ProgressBarEventBasedHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SliceHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["SliceHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sliceHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["sliceHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StackHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["StackHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "stackHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["stackHelperFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VolumeRenderingHelper", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["VolumeRenderingHelper"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VolumeRenderingHelperFactory", function() { return _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__["VolumeRenderingHelperFactory"]; });
-
-/* harmony import */ var _loaders_loaders__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loaders/loaders */ "./src/loaders/loaders.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VolumeLoader", function() { return _loaders_loaders__WEBPACK_IMPORTED_MODULE_5__["VolumeLoader"]; });
-
-/* harmony import */ var _models_models__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/models */ "./src/models/models.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FrameModel", function() { return _models_models__WEBPACK_IMPORTED_MODULE_6__["FrameModel"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StackModel", function() { return _models_models__WEBPACK_IMPORTED_MODULE_6__["StackModel"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SeriesModel", function() { return _models_models__WEBPACK_IMPORTED_MODULE_6__["SeriesModel"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoxelModel", function() { return _models_models__WEBPACK_IMPORTED_MODULE_6__["VoxelModel"]; });
-
-/* harmony import */ var _parsers_parsers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./parsers/parsers */ "./src/parsers/parsers.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DicomParser", function() { return _parsers_parsers__WEBPACK_IMPORTED_MODULE_7__["DicomParser"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MghParser", function() { return _parsers_parsers__WEBPACK_IMPORTED_MODULE_7__["MghParser"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NiftiParser", function() { return _parsers_parsers__WEBPACK_IMPORTED_MODULE_7__["NiftiParser"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NrrdParser", function() { return _parsers_parsers__WEBPACK_IMPORTED_MODULE_7__["NrrdParser"]; });
-
-/* harmony import */ var _presets_presets__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./presets/presets */ "./src/presets/presets.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SegmentationPreset", function() { return _presets_presets__WEBPACK_IMPORTED_MODULE_8__["SegmentationPreset"]; });
-
-/* harmony import */ var _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shaders/shaders */ "./src/shaders/shaders.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ContourUniformShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["ContourUniformShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ContourFragmentShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["ContourFragmentShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ContourVertexShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["ContourVertexShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataUniformShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["DataUniformShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataFragmentShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["DataFragmentShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataVertexShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["DataVertexShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VRUniformShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["VRUniformShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VRFragmentShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["VRFragmentShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VRVertexShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["VRVertexShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayerUniformShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LayerUniformShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayerFragmentShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LayerFragmentShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayerVertexShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LayerVertexShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocalizerUniformShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LocalizerUniformShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocalizerFragmentShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LocalizerFragmentShader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocalizerVertexShader", function() { return _shaders_shaders__WEBPACK_IMPORTED_MODULE_9__["LocalizerVertexShader"]; });
-
-/* harmony import */ var _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./widgets/widgets */ "./src/widgets/widgets.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WidgetsCss", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["WidgetsCss"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AngleWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["AngleWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "angleWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["angleWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AnnotationWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["AnnotationWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "annotationWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["annotationWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BiRulerWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["BiRulerWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "birulerWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["birulerWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CrossRulerWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["CrossRulerWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "crossrulerWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["crossrulerWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EllipseWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["EllipseWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ellipseWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["ellipseWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FreehandWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["FreehandWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "freehandWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["freehandWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HandleWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["HandleWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "handleWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["handleWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PolygonWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["PolygonWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "polygonWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["polygonWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RectangleWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["RectangleWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rectangleWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["rectangleWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulerWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["RulerWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rulerWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["rulerWidgetFactory"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoxelProbeWidget", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["VoxelProbeWidget"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "voxelprobeWidgetFactory", function() { return _widgets_widgets__WEBPACK_IMPORTED_MODULE_10__["voxelprobeWidgetFactory"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-var pckg = __webpack_require__(/*! ../package.json */ "./package.json");
-window.console.log('ami v' + pckg.version + ' (three v' + pckg.config.threeVersion + ')');
 
 /***/ }),
 
@@ -28608,7 +27729,16 @@ var trackball = function trackball() {
       var _this2 = _possibleConstructorReturn(this, _Constructor.call(this));
 
       var _this = _this2;
-      var STATE = { NONE: -1, ROTATE: 0, ZOOM: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_ZOOM: 4, TOUCH_PAN: 5, CUSTOM: 99 };
+      var STATE = {
+        NONE: -1,
+        ROTATE: 0,
+        ZOOM: 1,
+        PAN: 2,
+        TOUCH_ROTATE: 3,
+        TOUCH_ZOOM: 4,
+        TOUCH_PAN: 5,
+        CUSTOM: 99
+      };
 
       _this2.object = object;
       _this2.domElement = domElement !== undefined ? domElement : document;
@@ -28976,7 +28106,6 @@ var trackball = function trackball() {
       }
 
       function mousewheel(event) {
-
         if (_this.enabled === false) return;
 
         if (_this.noZoom === true) return;
@@ -28985,7 +28114,6 @@ var trackball = function trackball() {
         event.stopPropagation();
 
         switch (event.deltaMode) {
-
           case 2:
             // Zoom in pages
             _zoomStart.y -= event.deltaY * 0.025;
@@ -29000,7 +28128,6 @@ var trackball = function trackball() {
             // undefined, 0, assume pixels
             _zoomStart.y -= event.deltaY * 0.00025;
             break;
-
         }
 
         // _zoomStart.y += delta * 0.01;
@@ -29304,7 +28431,15 @@ var trackballOrtho = function trackballOrtho() {
     _inherits(_class, _Constructor);
 
     function _class(object, domElement) {
-      var state = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { NONE: -1, ROTATE: 1, ZOOM: 2, PAN: 0, SCROLL: 4, TOUCH_ROTATE: 4, TOUCH_ZOOM_PAN: 5 };
+      var state = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+        NONE: -1,
+        ROTATE: 1,
+        ZOOM: 2,
+        PAN: 0,
+        SCROLL: 4,
+        TOUCH_ROTATE: 4,
+        TOUCH_ZOOM_PAN: 5
+      };
 
       _classCallCheck(this, _class);
 
@@ -29606,7 +28741,7 @@ var trackballOrtho = function trackballOrtho() {
         /**
          * Watch deltaX and deltaY because in some cases, (i.e. Shift or Alt key pressed)
          * deltaX and deltaY are inverted.
-         * 
+         *
          * It is known behaviors/shortcuts to scroll through a page horizontally.
          */
         _this.dispatchEvent({
@@ -29653,7 +28788,6 @@ var trackballOrtho = function trackballOrtho() {
 
         switch (event.touches.length) {
           case 1:
-
             break;
 
           case 2:
@@ -29676,7 +28810,6 @@ var trackballOrtho = function trackballOrtho() {
 
         switch (event.touches.length) {
           case 1:
-
             break;
 
           case 2:
@@ -29770,7 +28903,7 @@ var Colors = function () {
    */
   Colors.cielab2XYZ = function cielab2XYZ(l, a, b) {
     var refX = 95.047;
-    var refY = 100.00;
+    var refY = 100.0;
     var refZ = 108.883;
 
     var y = (l + 16) / 116;
@@ -29815,7 +28948,7 @@ var Colors = function () {
     z /= 100;
     var r = x * 3.2406 + y * -1.5372 + z * -0.4986;
     var g = x * -0.9689 + y * 1.8758 + z * 0.0415;
-    var b = x * 0.0557 + y * -0.2040 + z * 1.0570;
+    var b = x * 0.0557 + y * -0.204 + z * 1.057;
 
     if (r > 0.0031308) {
       r = 1.055 * Math.pow(r, 1 / 2.4) - 0.055;
@@ -30666,15 +29799,13 @@ var CoreUtils = function () {
   };
 
   /**
-  *
-  * Convenience function to extract center of mass from list of points.
-  *
-  * @private
-  *
-  * @param {Array<Vector3>} points - Set of points from which we want to extract the center of mass.
-  *
-  * @returns {Vector3} Center of mass from given points.
-  */
+   *
+   * Convenience function to extract center of mass from list of points.
+   *
+   * @param {Array<Vector3>} points - Set of points from which we want to extract the center of mass.
+   *
+   * @returns {Vector3} Center of mass from given points.
+   */
 
 
   CoreUtils.centerOfMass = function centerOfMass(points) {
@@ -30690,16 +29821,16 @@ var CoreUtils = function () {
   };
 
   /**
-  *
-  * Order 3D planar points around a refence point.
-  *
-  * @private
-  *
-  * @param {Array<Vector3>} points - Set of planar 3D points to be ordered.
-  * @param {Vector3} direction - Direction of the plane in which points and reference are sitting.
-  *
-  * @returns {Array<Object>} Set of object representing the ordered points.
-  */
+   *
+   * Order 3D planar points around a refence point.
+   *
+   * @private
+   *
+   * @param {Array<Vector3>} points - Set of planar 3D points to be ordered.
+   * @param {Vector3} direction - Direction of the plane in which points and reference are sitting.
+   *
+   * @returns {Array<Object>} Set of object representing the ordered points.
+   */
 
 
   CoreUtils.orderIntersections = function orderIntersections(points, direction) {
@@ -30823,6 +29954,7 @@ var CoreUtils = function () {
 
   /**
    * Calculate shape area (sum of triangle polygons area).
+   * May be inaccurate or completely wrong for some shapes.
    *
    * @param {THREE.Geometry} geometry
    *
@@ -30896,10 +30028,10 @@ var Validators = function () {
   };
 
   /**
-  * Validates a vector as a THREEJS.Vector3
-  * @param {Object} objectToTest - The object to be tested.
-  * @return {boolean} True if valid Vector3, false if NOT.
-  */
+   * Validates a vector as a THREEJS.Vector3
+   * @param {Object} objectToTest - The object to be tested.
+   * @return {boolean} True if valid Vector3, false if NOT.
+   */
 
 
   Validators.vector3 = function vector3(objectToTest) {
@@ -31234,11 +30366,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var geometriesSlice = function geometriesSlice() {
   var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-  if (three === undefined || three.ShapeGeometry === undefined) {
+  if (three === undefined || three.ShapeBufferGeometry === undefined) {
     return null;
   }
 
-  var Constructor = three.ShapeGeometry;
+  var Constructor = three.ShapeBufferGeometry;
   return function (_Constructor) {
     _inherits(_class, _Constructor);
 
@@ -31284,27 +30416,30 @@ var geometriesSlice = function geometriesSlice() {
       shape.moveTo(points[0].xy.x, points[0].xy.y);
 
       // loop through all points!
-      for (var l = 1; l < points.length; l++) {
+      var positions = new Float32Array(points.length * 3);
+      positions.set(points[0].toArray(), 0);
+
+      for (var i = 1; i < points.length; i++) {
         // project each on plane!
-        shape.lineTo(points[l].xy.x, points[l].xy.y);
+        positions.set(points[i].toArray(), i * 3);
+
+        shape.lineTo(points[i].xy.x, points[i].xy.y);
       }
 
       // close the shape!
       shape.lineTo(points[0].xy.x, points[0].xy.y);
 
       //
-      // Generate Geometry from shape
-      // It does triangulation for us!
-      //
+      // Generate Slice Buffer Geometry from Shape Buffer Geomtry
+      // bewcause it does triangulation for us!
 
       var _this = _possibleConstructorReturn(this, _Constructor.call(this, shape));
 
-      _this.type = 'SliceGeometry';
+      _this.type = 'SliceBufferGeometry';
 
       // update real position of each vertex! (not in 2d)
-      _this.vertices = points;
-      _this.verticesNeedUpdate = true;
-      _this.computeVertexNormals();
+      _this.addAttribute('position', new three.Float32BufferAttribute(positions, 3));
+      _this.vertices = points; // legacy code to compute normals int he SliceHelper
       return _this;
     }
 
@@ -31476,11 +30611,14 @@ var helpersBorder = function helpersBorder() {
         return;
       }
 
-      this._geometry = new three.Geometry();
-      for (var i = 0; i < this._helpersSlice.geometry.vertices.length; i++) {
-        this._geometry.vertices.push(this._helpersSlice.geometry.vertices[i]);
-      }
-      this._geometry.vertices.push(this._helpersSlice.geometry.vertices[0]);
+      this._geometry = new three.BufferGeometry();
+
+      // set vertices positions
+      var nbOfVertices = this._helpersSlice.geometry.vertices.length;
+      var positions = new Float32Array((nbOfVertices + 1) * 3);
+      positions.set(this._helpersSlice.geometry.attributes.position.array, 0);
+      positions.set(this._helpersSlice.geometry.vertices[0].toArray(), nbOfVertices * 3);
+      this._geometry.addAttribute('position', new three.Float32BufferAttribute(positions, 3));
 
       this._mesh = new three.Line(this._geometry, this._material);
       if (this._helpersSlice.aabbSpace === 'IJK') {
@@ -31599,7 +30737,7 @@ var helpersBoundingBox = function helpersBoundingBox() {
 
       _this._stack = stack;
       _this._visible = true;
-      _this._color = 0xFFFFFF;
+      _this._color = 0xffffff;
       _this._material = null;
       _this._geometry = null;
       _this._mesh = null;
@@ -31725,8 +30863,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 /**
-* @module helpers/contour
-*/
+ * @module helpers/contour
+ */
 var helpersContour = function helpersContour() {
   var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
@@ -32088,7 +31226,8 @@ var helpersLocalizer = function helpersLocalizer() {
         // generate material
         var fs = new _shaders_shaders_localizer_fragment__WEBPACK_IMPORTED_MODULE_2__["default"](this._uniforms);
         var vs = new _shaders_shaders_localizer_vertex__WEBPACK_IMPORTED_MODULE_1__["default"]();
-        this._material = new three.ShaderMaterial({ side: three.DoubleSide,
+        this._material = new three.ShaderMaterial({
+          side: three.DoubleSide,
           uniforms: this._uniforms,
           vertexShader: vs.compute(),
           fragmentShader: fs.compute()
@@ -32429,28 +31568,28 @@ var helpersLut = function helpersLut() {
 
     _class.presetLuts = function presetLuts() {
       return {
-        'default': [[0, 0, 0, 0], [1, 1, 1, 1]],
-        'spectrum': [[0, 0, 0, 0], [0.1, 0, 0, 1], [0.33, 0, 1, 1], [0.5, 0, 1, 0], [0.66, 1, 1, 0], [0.9, 1, 0, 0], [1, 1, 1, 1]],
-        'hot_and_cold': [[0, 0, 0, 1], [0.15, 0, 1, 1], [0.3, 0, 1, 0], [0.45, 0, 0, 0], [0.5, 0, 0, 0], [0.55, 0, 0, 0], [0.7, 1, 1, 0], [0.85, 1, 0, 0], [1, 1, 1, 1]],
-        'gold': [[0, 0, 0, 0], [0.13, 0.19, 0.03, 0], [0.25, 0.39, 0.12, 0], [0.38, 0.59, 0.26, 0], [0.50, 0.80, 0.46, 0.08], [0.63, 0.99, 0.71, 0.21], [0.75, 0.99, 0.88, 0.34], [0.88, 0.99, 0.99, 0.48], [1, 0.90, 0.95, 0.61]],
-        'red': [[0, 0.75, 0, 0], [0.5, 1, 0.5, 0], [0.95, 1, 1, 0], [1, 1, 1, 1]],
-        'green': [[0, 0, 0.75, 0], [0.5, 0.5, 1, 0], [0.95, 1, 1, 0], [1, 1, 1, 1]],
-        'blue': [[0, 0, 0, 1], [0.5, 0, 0.5, 1], [0.95, 0, 1, 1], [1, 1, 1, 1]],
-        'walking_dead': [[0, 0.1, 1, 1], [1, 1, 1, 1]],
-        'random': [[0, 0, 0, 0], [0.27, 0.18, 0.18, 0.18], [0.41, 1, 1, 1], [0.7, 1, 0, 0], [1, 1, 1, 1]],
-        'muscle_bone': [[0, 0, 0, 0], [0.00392156862745098, 0.00784313725490196, 0, 0], [0.00784313725490196, 0.0196078431372549, 0, 0], [0.011764705882352941, 0.03137254901960784, 0, 0], [0.01568627450980392, 0.0392156862745098, 0, 0.00392156862745098], [0.0196078431372549, 0.050980392156862744, 0.00392156862745098, 0.00392156862745098], [0.023529411764705882, 0.06274509803921569, 0.00392156862745098, 0.00392156862745098], [0.027450980392156862, 0.07058823529411765, 0.00392156862745098, 0.00784313725490196], [0.03137254901960784, 0.08235294117647059, 0.00392156862745098, 0.00784313725490196], [0.03529411764705882, 0.09411764705882353, 0.00784313725490196, 0.00784313725490196], [0.0392156862745098, 0.10196078431372549, 0.00784313725490196, 0.00784313725490196], [0.043137254901960784, 0.11372549019607843, 0.00784313725490196, 0.011764705882352941], [0.047058823529411764, 0.12549019607843137, 0.00784313725490196, 0.011764705882352941], [0.050980392156862744, 0.13333333333333333, 0.011764705882352941, 0.011764705882352941], [0.054901960784313725, 0.1450980392156863, 0.011764705882352941, 0.01568627450980392], [0.058823529411764705, 0.1568627450980392, 0.011764705882352941, 0.01568627450980392], [0.06274509803921569, 0.16470588235294117, 0.011764705882352941, 0.01568627450980392], [0.06666666666666667, 0.17647058823529413, 0.011764705882352941, 0.0196078431372549], [0.07058823529411765, 0.18823529411764706, 0.01568627450980392, 0.0196078431372549], [0.07450980392156863, 0.2, 0.01568627450980392, 0.0196078431372549], [0.0784313725490196, 0.20784313725490197, 0.01568627450980392, 0.0196078431372549], [0.08235294117647059, 0.2196078431372549, 0.01568627450980392, 0.023529411764705882], [0.08627450980392157, 0.23137254901960785, 0.0196078431372549, 0.023529411764705882], [0.09019607843137255, 0.23921568627450981, 0.0196078431372549, 0.023529411764705882], [0.09411764705882353, 0.25098039215686274, 0.0196078431372549, 0.027450980392156862], [0.09803921568627451, 0.2627450980392157, 0.0196078431372549, 0.027450980392156862], [0.10196078431372549, 0.27058823529411763, 0.023529411764705882, 0.027450980392156862], [0.10588235294117647, 0.2823529411764706, 0.023529411764705882, 0.027450980392156862], [0.10980392156862745, 0.29411764705882354, 0.023529411764705882, 0.03137254901960784], [0.11372549019607843, 0.30196078431372547, 0.023529411764705882, 0.03137254901960784], [0.11764705882352941, 0.3137254901960784, 0.023529411764705882, 0.03137254901960784], [0.12156862745098039, 0.3254901960784314, 0.027450980392156862, 0.03529411764705882], [0.12549019607843137, 0.3333333333333333, 0.027450980392156862, 0.03529411764705882], [0.12941176470588237, 0.34509803921568627, 0.027450980392156862, 0.03529411764705882], [0.13333333333333333, 0.3568627450980392, 0.027450980392156862, 0.0392156862745098], [0.13725490196078433, 0.36470588235294116, 0.03137254901960784, 0.0392156862745098], [0.1411764705882353, 0.3764705882352941, 0.03137254901960784, 0.0392156862745098], [0.1450980392156863, 0.38823529411764707, 0.03137254901960784, 0.0392156862745098], [0.14901960784313725, 0.4, 0.03137254901960784, 0.043137254901960784], [0.15294117647058825, 0.40784313725490196, 0.03529411764705882, 0.043137254901960784], [0.1568627450980392, 0.4196078431372549, 0.03529411764705882, 0.043137254901960784], [0.1607843137254902, 0.43137254901960786, 0.03529411764705882, 0.047058823529411764], [0.16470588235294117, 0.4392156862745098, 0.03529411764705882, 0.047058823529411764], [0.16862745098039217, 0.45098039215686275, 0.03529411764705882, 0.047058823529411764], [0.17254901960784313, 0.4627450980392157, 0.0392156862745098, 0.047058823529411764], [0.17647058823529413, 0.47058823529411764, 0.0392156862745098, 0.050980392156862744], [0.1803921568627451, 0.4823529411764706, 0.0392156862745098, 0.050980392156862744], [0.1843137254901961, 0.49411764705882355, 0.0392156862745098, 0.050980392156862744], [0.18823529411764706, 0.5019607843137255, 0.043137254901960784, 0.054901960784313725], [0.19215686274509805, 0.5137254901960784, 0.043137254901960784, 0.054901960784313725], [0.19607843137254902, 0.5254901960784314, 0.043137254901960784, 0.054901960784313725], [0.2, 0.5333333333333333, 0.043137254901960784, 0.058823529411764705], [0.20392156862745098, 0.5450980392156862, 0.047058823529411764, 0.058823529411764705], [0.20784313725490197, 0.5568627450980392, 0.047058823529411764, 0.058823529411764705], [0.21176470588235294, 0.5647058823529412, 0.047058823529411764, 0.058823529411764705], [0.21568627450980393, 0.5764705882352941, 0.047058823529411764, 0.06274509803921569], [0.2196078431372549, 0.5882352941176471, 0.047058823529411764, 0.06274509803921569], [0.2235294117647059, 0.6, 0.050980392156862744, 0.06274509803921569], [0.22745098039215686, 0.6078431372549019, 0.050980392156862744, 0.06666666666666667], [0.23137254901960785, 0.6196078431372549, 0.050980392156862744, 0.06666666666666667], [0.23529411764705882, 0.6313725490196078, 0.050980392156862744, 0.06666666666666667], [0.23921568627450981, 0.6392156862745098, 0.054901960784313725, 0.06666666666666667], [0.24313725490196078, 0.6509803921568628, 0.054901960784313725, 0.07058823529411765], [0.24705882352941178, 0.6627450980392157, 0.054901960784313725, 0.07058823529411765], [0.25098039215686274, 0.6705882352941176, 0.054901960784313725, 0.07058823529411765], [0.2549019607843137, 0.6823529411764706, 0.058823529411764705, 0.07450980392156863], [0.25882352941176473, 0.6941176470588235, 0.058823529411764705, 0.07450980392156863], [0.2627450980392157, 0.7019607843137254, 0.058823529411764705, 0.07450980392156863], [0.26666666666666666, 0.7137254901960784, 0.058823529411764705, 0.0784313725490196], [0.27058823529411763, 0.7254901960784313, 0.058823529411764705, 0.0784313725490196], [0.27450980392156865, 0.7333333333333333, 0.06274509803921569, 0.0784313725490196], [0.2784313725490196, 0.7450980392156863, 0.06274509803921569, 0.0784313725490196], [0.2823529411764706, 0.7568627450980392, 0.06274509803921569, 0.08235294117647059], [0.28627450980392155, 0.7647058823529411, 0.06274509803921569, 0.08235294117647059], [0.2901960784313726, 0.7764705882352941, 0.06666666666666667, 0.08235294117647059], [0.29411764705882354, 0.788235294117647, 0.06666666666666667, 0.08627450980392157], [0.2980392156862745, 0.8, 0.06666666666666667, 0.08627450980392157], [0.30196078431372547, 0.807843137254902, 0.06666666666666667, 0.08627450980392157], [0.3058823529411765, 0.8196078431372549, 0.07058823529411765, 0.08627450980392157], [0.30980392156862746, 0.8313725490196079, 0.07058823529411765, 0.09019607843137255], [0.3137254901960784, 0.8392156862745098, 0.07058823529411765, 0.09019607843137255], [0.3176470588235294, 0.8509803921568627, 0.07058823529411765, 0.09019607843137255], [0.3215686274509804, 0.8627450980392157, 0.07058823529411765, 0.09411764705882353], [0.3254901960784314, 0.8705882352941177, 0.07450980392156863, 0.09411764705882353], [0.32941176470588235, 0.8823529411764706, 0.07450980392156863, 0.09411764705882353], [0.3333333333333333, 0.8941176470588236, 0.07450980392156863, 0.09803921568627451], [0.33725490196078434, 0.9019607843137255, 0.07450980392156863, 0.09803921568627451], [0.3411764705882353, 0.9137254901960784, 0.0784313725490196, 0.09803921568627451], [0.34509803921568627, 0.9254901960784314, 0.0784313725490196, 0.09803921568627451], [0.34901960784313724, 0.9333333333333333, 0.0784313725490196, 0.10196078431372549], [0.35294117647058826, 0.9450980392156862, 0.0784313725490196, 0.10196078431372549], [0.3568627450980392, 0.9568627450980393, 0.08235294117647059, 0.10196078431372549], [0.3607843137254902, 0.9647058823529412, 0.08235294117647059, 0.10588235294117647], [0.36470588235294116, 0.9764705882352941, 0.08235294117647059, 0.10588235294117647], [0.3686274509803922, 0.9882352941176471, 0.08235294117647059, 0.10588235294117647], [0.37254901960784315, 1, 0.08235294117647059, 0.10588235294117647], [0.3764705882352941, 1, 0.09411764705882353, 0.10588235294117647], [0.3803921568627451, 1, 0.10588235294117647, 0.10588235294117647], [0.3843137254901961, 1, 0.11764705882352941, 0.10196078431372549], [0.38823529411764707, 1, 0.12941176470588237, 0.10196078431372549], [0.39215686274509803, 1, 0.1411764705882353, 0.10196078431372549], [0.396078431372549, 1, 0.15294117647058825, 0.09803921568627451], [0.4, 1, 0.16470588235294117, 0.09803921568627451], [0.403921568627451, 1, 0.17647058823529413, 0.09803921568627451], [0.40784313725490196, 1, 0.18823529411764706, 0.09411764705882353], [0.4117647058823529, 1, 0.2, 0.09411764705882353], [0.41568627450980394, 1, 0.21176470588235294, 0.09411764705882353], [0.4196078431372549, 1, 0.2235294117647059, 0.09019607843137255], [0.4235294117647059, 1, 0.23529411764705882, 0.09019607843137255], [0.42745098039215684, 1, 0.24705882352941178, 0.08627450980392157], [0.43137254901960786, 1, 0.25882352941176473, 0.08627450980392157], [0.43529411764705883, 1, 0.27058823529411763, 0.08627450980392157], [0.4392156862745098, 1, 0.2823529411764706, 0.08235294117647059], [0.44313725490196076, 1, 0.29411764705882354, 0.08235294117647059], [0.4470588235294118, 1, 0.3058823529411765, 0.08235294117647059], [0.45098039215686275, 1, 0.3176470588235294, 0.0784313725490196], [0.4549019607843137, 1, 0.32941176470588235, 0.0784313725490196], [0.4588235294117647, 1, 0.3411764705882353, 0.0784313725490196], [0.4627450980392157, 1, 0.35294117647058826, 0.07450980392156863], [0.4666666666666667, 1, 0.36470588235294116, 0.07450980392156863], [0.47058823529411764, 1, 0.3764705882352941, 0.07450980392156863], [0.4745098039215686, 1, 0.38823529411764707, 0.07058823529411765], [0.47843137254901963, 1, 0.4, 0.07058823529411765], [0.4823529411764706, 1, 0.4117647058823529, 0.07058823529411765], [0.48627450980392156, 1, 0.4235294117647059, 0.06666666666666667], [0.49019607843137253, 1, 0.43529411764705883, 0.06666666666666667], [0.49411764705882355, 1, 0.4470588235294118, 0.06274509803921569], [0.4980392156862745, 1, 0.4588235294117647, 0.06274509803921569], [0.5019607843137255, 1, 0.47058823529411764, 0.06274509803921569], [0.5058823529411764, 1, 0.4823529411764706, 0.058823529411764705], [0.5098039215686274, 1, 0.49411764705882355, 0.058823529411764705], [0.5137254901960784, 1, 0.5058823529411764, 0.058823529411764705], [0.5176470588235295, 1, 0.5137254901960784, 0.054901960784313725], [0.5215686274509804, 1, 0.5254901960784314, 0.054901960784313725], [0.5254901960784314, 1, 0.5372549019607843, 0.054901960784313725], [0.5294117647058824, 1, 0.5490196078431373, 0.050980392156862744], [0.5333333333333333, 1, 0.5607843137254902, 0.050980392156862744], [0.5372549019607843, 1, 0.5725490196078431, 0.050980392156862744], [0.5411764705882353, 1, 0.5843137254901961, 0.047058823529411764], [0.5450980392156862, 1, 0.596078431372549, 0.047058823529411764], [0.5490196078431373, 1, 0.6078431372549019, 0.043137254901960784], [0.5529411764705883, 1, 0.6196078431372549, 0.043137254901960784], [0.5568627450980392, 1, 0.6313725490196078, 0.043137254901960784], [0.5607843137254902, 1, 0.6431372549019608, 0.0392156862745098], [0.5647058823529412, 1, 0.6549019607843137, 0.0392156862745098], [0.5686274509803921, 1, 0.6666666666666666, 0.0392156862745098], [0.5725490196078431, 1, 0.6784313725490196, 0.03529411764705882], [0.5764705882352941, 1, 0.6901960784313725, 0.03529411764705882], [0.5803921568627451, 1, 0.6941176470588235, 0.0392156862745098], [0.5843137254901961, 1, 0.7019607843137254, 0.0392156862745098], [0.5882352941176471, 1, 0.7058823529411765, 0.043137254901960784], [0.592156862745098, 1, 0.7098039215686275, 0.043137254901960784], [0.596078431372549, 1, 0.7137254901960784, 0.047058823529411764], [0.6, 1, 0.7176470588235294, 0.047058823529411764], [0.6039215686274509, 1, 0.7254901960784313, 0.050980392156862744], [0.6078431372549019, 1, 0.7294117647058823, 0.050980392156862744], [0.611764705882353, 1, 0.7333333333333333, 0.054901960784313725], [0.615686274509804, 1, 0.7372549019607844, 0.058823529411764705], [0.6196078431372549, 1, 0.7411764705882353, 0.058823529411764705], [0.6235294117647059, 1, 0.7490196078431373, 0.06274509803921569], [0.6274509803921569, 1, 0.7529411764705882, 0.06274509803921569], [0.6313725490196078, 1, 0.7568627450980392, 0.06666666666666667], [0.6352941176470588, 1, 0.7607843137254902, 0.06666666666666667], [0.6392156862745098, 1, 0.7647058823529411, 0.07058823529411765], [0.6431372549019608, 1, 0.7725490196078432, 0.07058823529411765], [0.6470588235294118, 1, 0.7764705882352941, 0.07450980392156863], [0.6509803921568628, 1, 0.7803921568627451, 0.07450980392156863], [0.6549019607843137, 1, 0.7843137254901961, 0.0784313725490196], [0.6588235294117647, 1, 0.788235294117647, 0.08235294117647059], [0.6627450980392157, 1, 0.796078431372549, 0.08235294117647059], [0.6666666666666666, 1, 0.8, 0.08627450980392157], [0.6705882352941176, 1, 0.803921568627451, 0.08627450980392157], [0.6745098039215687, 1, 0.807843137254902, 0.09019607843137255], [0.6784313725490196, 1, 0.8117647058823529, 0.09019607843137255], [0.6823529411764706, 1, 0.8196078431372549, 0.09411764705882353], [0.6862745098039216, 1, 0.8235294117647058, 0.09411764705882353], [0.6901960784313725, 1, 0.8274509803921568, 0.09803921568627451], [0.6941176470588235, 1, 0.8313725490196079, 0.10196078431372549], [0.6980392156862745, 1, 0.8352941176470589, 0.10196078431372549], [0.7019607843137254, 1, 0.8431372549019608, 0.10588235294117647], [0.7058823529411765, 1, 0.8470588235294118, 0.10588235294117647], [0.7098039215686275, 1, 0.8509803921568627, 0.10980392156862745], [0.7137254901960784, 1, 0.8549019607843137, 0.10980392156862745], [0.7176470588235294, 1, 0.8627450980392157, 0.11372549019607843], [0.7215686274509804, 1, 0.8666666666666667, 0.11372549019607843], [0.7254901960784313, 1, 0.8705882352941177, 0.11764705882352941], [0.7294117647058823, 1, 0.8745098039215686, 0.12156862745098039], [0.7333333333333333, 1, 0.8784313725490196, 0.12156862745098039], [0.7372549019607844, 1, 0.8862745098039215, 0.12549019607843137], [0.7411764705882353, 1, 0.8901960784313725, 0.12549019607843137], [0.7450980392156863, 1, 0.8941176470588236, 0.12941176470588237], [0.7490196078431373, 1, 0.8980392156862745, 0.12941176470588237], [0.7529411764705882, 1, 0.9019607843137255, 0.13333333333333333], [0.7568627450980392, 1, 0.9098039215686274, 0.13333333333333333], [0.7607843137254902, 1, 0.9137254901960784, 0.13725490196078433], [0.7647058823529411, 1, 0.9176470588235294, 0.1411764705882353], [0.7686274509803922, 1, 0.9215686274509803, 0.1411764705882353], [0.7725490196078432, 1, 0.9254901960784314, 0.1450980392156863], [0.7764705882352941, 1, 0.9333333333333333, 0.1450980392156863], [0.7803921568627451, 1, 0.9372549019607843, 0.14901960784313725], [0.7843137254901961, 1, 0.9411764705882353, 0.14901960784313725], [0.788235294117647, 1, 0.9450980392156862, 0.15294117647058825], [0.792156862745098, 1, 0.9450980392156862, 0.16862745098039217], [0.796078431372549, 1, 0.9490196078431372, 0.1843137254901961], [0.8, 1, 0.9490196078431372, 0.2], [0.803921568627451, 1, 0.9490196078431372, 0.21568627450980393], [0.807843137254902, 1, 0.9490196078431372, 0.22745098039215686], [0.8117647058823529, 1, 0.9529411764705882, 0.24313725490196078], [0.8156862745098039, 1, 0.9529411764705882, 0.25882352941176473], [0.8196078431372549, 1, 0.9529411764705882, 0.27450980392156865], [0.8235294117647058, 1, 0.9529411764705882, 0.2901960784313726], [0.8274509803921568, 1, 0.9568627450980393, 0.3058823529411765], [0.8313725490196079, 1, 0.9568627450980393, 0.3215686274509804], [0.8352941176470589, 1, 0.9568627450980393, 0.33725490196078434], [0.8392156862745098, 1, 0.9568627450980393, 0.35294117647058826], [0.8431372549019608, 1, 0.9607843137254902, 0.3686274509803922], [0.8470588235294118, 1, 0.9607843137254902, 0.3843137254901961], [0.8509803921568627, 1, 0.9607843137254902, 0.4], [0.8549019607843137, 1, 0.9607843137254902, 0.4117647058823529], [0.8588235294117647, 1, 0.9647058823529412, 0.42745098039215684], [0.8627450980392157, 1, 0.9647058823529412, 0.44313725490196076], [0.8666666666666667, 1, 0.9647058823529412, 0.4588235294117647], [0.8705882352941177, 1, 0.9647058823529412, 0.4745098039215686], [0.8745098039215686, 1, 0.9686274509803922, 0.49019607843137253], [0.8784313725490196, 1, 0.9686274509803922, 0.5058823529411764], [0.8823529411764706, 1, 0.9686274509803922, 0.5215686274509804], [0.8862745098039215, 1, 0.9686274509803922, 0.5372549019607843], [0.8901960784313725, 1, 0.9725490196078431, 0.5529411764705883], [0.8941176470588236, 1, 0.9725490196078431, 0.5686274509803921], [0.8980392156862745, 1, 0.9725490196078431, 0.5843137254901961], [0.9019607843137255, 1, 0.9725490196078431, 0.6], [0.9058823529411765, 1, 0.9725490196078431, 0.611764705882353], [0.9098039215686274, 1, 0.9764705882352941, 0.6274509803921569], [0.9137254901960784, 1, 0.9764705882352941, 0.6431372549019608], [0.9176470588235294, 1, 0.9764705882352941, 0.6588235294117647], [0.9215686274509803, 1, 0.9764705882352941, 0.6745098039215687], [0.9254901960784314, 1, 0.9803921568627451, 0.6901960784313725], [0.9294117647058824, 1, 0.9803921568627451, 0.7058823529411765], [0.9333333333333333, 1, 0.9803921568627451, 0.7215686274509804], [0.9372549019607843, 1, 0.9803921568627451, 0.7372549019607844], [0.9411764705882353, 1, 0.984313725490196, 0.7529411764705882], [0.9450980392156862, 1, 0.984313725490196, 0.7686274509803922], [0.9490196078431372, 1, 0.984313725490196, 0.7843137254901961], [0.9529411764705882, 1, 0.984313725490196, 0.8], [0.9568627450980393, 1, 0.9882352941176471, 0.8117647058823529], [0.9607843137254902, 1, 0.9882352941176471, 0.8274509803921568], [0.9647058823529412, 1, 0.9882352941176471, 0.8431372549019608], [0.9686274509803922, 1, 0.9882352941176471, 0.8588235294117647], [0.9725490196078431, 1, 0.9921568627450981, 0.8745098039215686], [0.9764705882352941, 1, 0.9921568627450981, 0.8901960784313725], [0.9803921568627451, 1, 0.9921568627450981, 0.9058823529411765], [0.984313725490196, 1, 0.9921568627450981, 0.9215686274509803], [0.9882352941176471, 1, 0.996078431372549, 0.9372549019607843], [0.9921568627450981, 1, 0.996078431372549, 0.9529411764705882], [0.996078431372549, 1, 0.996078431372549, 0.9686274509803922], [1, 1, 0.996078431372549, 0.984313725490196]]
+        default: [[0, 0, 0, 0], [1, 1, 1, 1]],
+        spectrum: [[0, 0, 0, 0], [0.1, 0, 0, 1], [0.33, 0, 1, 1], [0.5, 0, 1, 0], [0.66, 1, 1, 0], [0.9, 1, 0, 0], [1, 1, 1, 1]],
+        hot_and_cold: [[0, 0, 0, 1], [0.15, 0, 1, 1], [0.3, 0, 1, 0], [0.45, 0, 0, 0], [0.5, 0, 0, 0], [0.55, 0, 0, 0], [0.7, 1, 1, 0], [0.85, 1, 0, 0], [1, 1, 1, 1]],
+        gold: [[0, 0, 0, 0], [0.13, 0.19, 0.03, 0], [0.25, 0.39, 0.12, 0], [0.38, 0.59, 0.26, 0], [0.5, 0.8, 0.46, 0.08], [0.63, 0.99, 0.71, 0.21], [0.75, 0.99, 0.88, 0.34], [0.88, 0.99, 0.99, 0.48], [1, 0.9, 0.95, 0.61]],
+        red: [[0, 0.75, 0, 0], [0.5, 1, 0.5, 0], [0.95, 1, 1, 0], [1, 1, 1, 1]],
+        green: [[0, 0, 0.75, 0], [0.5, 0.5, 1, 0], [0.95, 1, 1, 0], [1, 1, 1, 1]],
+        blue: [[0, 0, 0, 1], [0.5, 0, 0.5, 1], [0.95, 0, 1, 1], [1, 1, 1, 1]],
+        walking_dead: [[0, 0.1, 1, 1], [1, 1, 1, 1]],
+        random: [[0, 0, 0, 0], [0.27, 0.18, 0.18, 0.18], [0.41, 1, 1, 1], [0.7, 1, 0, 0], [1, 1, 1, 1]],
+        muscle_bone: [[0, 0, 0, 0], [0.00392156862745098, 0.00784313725490196, 0, 0], [0.00784313725490196, 0.0196078431372549, 0, 0], [0.011764705882352941, 0.03137254901960784, 0, 0], [0.01568627450980392, 0.0392156862745098, 0, 0.00392156862745098], [0.0196078431372549, 0.050980392156862744, 0.00392156862745098, 0.00392156862745098], [0.023529411764705882, 0.06274509803921569, 0.00392156862745098, 0.00392156862745098], [0.027450980392156862, 0.07058823529411765, 0.00392156862745098, 0.00784313725490196], [0.03137254901960784, 0.08235294117647059, 0.00392156862745098, 0.00784313725490196], [0.03529411764705882, 0.09411764705882353, 0.00784313725490196, 0.00784313725490196], [0.0392156862745098, 0.10196078431372549, 0.00784313725490196, 0.00784313725490196], [0.043137254901960784, 0.11372549019607843, 0.00784313725490196, 0.011764705882352941], [0.047058823529411764, 0.12549019607843137, 0.00784313725490196, 0.011764705882352941], [0.050980392156862744, 0.13333333333333333, 0.011764705882352941, 0.011764705882352941], [0.054901960784313725, 0.1450980392156863, 0.011764705882352941, 0.01568627450980392], [0.058823529411764705, 0.1568627450980392, 0.011764705882352941, 0.01568627450980392], [0.06274509803921569, 0.16470588235294117, 0.011764705882352941, 0.01568627450980392], [0.06666666666666667, 0.17647058823529413, 0.011764705882352941, 0.0196078431372549], [0.07058823529411765, 0.18823529411764706, 0.01568627450980392, 0.0196078431372549], [0.07450980392156863, 0.2, 0.01568627450980392, 0.0196078431372549], [0.0784313725490196, 0.20784313725490197, 0.01568627450980392, 0.0196078431372549], [0.08235294117647059, 0.2196078431372549, 0.01568627450980392, 0.023529411764705882], [0.08627450980392157, 0.23137254901960785, 0.0196078431372549, 0.023529411764705882], [0.09019607843137255, 0.23921568627450981, 0.0196078431372549, 0.023529411764705882], [0.09411764705882353, 0.25098039215686274, 0.0196078431372549, 0.027450980392156862], [0.09803921568627451, 0.2627450980392157, 0.0196078431372549, 0.027450980392156862], [0.10196078431372549, 0.27058823529411763, 0.023529411764705882, 0.027450980392156862], [0.10588235294117647, 0.2823529411764706, 0.023529411764705882, 0.027450980392156862], [0.10980392156862745, 0.29411764705882354, 0.023529411764705882, 0.03137254901960784], [0.11372549019607843, 0.30196078431372547, 0.023529411764705882, 0.03137254901960784], [0.11764705882352941, 0.3137254901960784, 0.023529411764705882, 0.03137254901960784], [0.12156862745098039, 0.3254901960784314, 0.027450980392156862, 0.03529411764705882], [0.12549019607843137, 0.3333333333333333, 0.027450980392156862, 0.03529411764705882], [0.12941176470588237, 0.34509803921568627, 0.027450980392156862, 0.03529411764705882], [0.13333333333333333, 0.3568627450980392, 0.027450980392156862, 0.0392156862745098], [0.13725490196078433, 0.36470588235294116, 0.03137254901960784, 0.0392156862745098], [0.1411764705882353, 0.3764705882352941, 0.03137254901960784, 0.0392156862745098], [0.1450980392156863, 0.38823529411764707, 0.03137254901960784, 0.0392156862745098], [0.14901960784313725, 0.4, 0.03137254901960784, 0.043137254901960784], [0.15294117647058825, 0.40784313725490196, 0.03529411764705882, 0.043137254901960784], [0.1568627450980392, 0.4196078431372549, 0.03529411764705882, 0.043137254901960784], [0.1607843137254902, 0.43137254901960786, 0.03529411764705882, 0.047058823529411764], [0.16470588235294117, 0.4392156862745098, 0.03529411764705882, 0.047058823529411764], [0.16862745098039217, 0.45098039215686275, 0.03529411764705882, 0.047058823529411764], [0.17254901960784313, 0.4627450980392157, 0.0392156862745098, 0.047058823529411764], [0.17647058823529413, 0.47058823529411764, 0.0392156862745098, 0.050980392156862744], [0.1803921568627451, 0.4823529411764706, 0.0392156862745098, 0.050980392156862744], [0.1843137254901961, 0.49411764705882355, 0.0392156862745098, 0.050980392156862744], [0.18823529411764706, 0.5019607843137255, 0.043137254901960784, 0.054901960784313725], [0.19215686274509805, 0.5137254901960784, 0.043137254901960784, 0.054901960784313725], [0.19607843137254902, 0.5254901960784314, 0.043137254901960784, 0.054901960784313725], [0.2, 0.5333333333333333, 0.043137254901960784, 0.058823529411764705], [0.20392156862745098, 0.5450980392156862, 0.047058823529411764, 0.058823529411764705], [0.20784313725490197, 0.5568627450980392, 0.047058823529411764, 0.058823529411764705], [0.21176470588235294, 0.5647058823529412, 0.047058823529411764, 0.058823529411764705], [0.21568627450980393, 0.5764705882352941, 0.047058823529411764, 0.06274509803921569], [0.2196078431372549, 0.5882352941176471, 0.047058823529411764, 0.06274509803921569], [0.2235294117647059, 0.6, 0.050980392156862744, 0.06274509803921569], [0.22745098039215686, 0.6078431372549019, 0.050980392156862744, 0.06666666666666667], [0.23137254901960785, 0.6196078431372549, 0.050980392156862744, 0.06666666666666667], [0.23529411764705882, 0.6313725490196078, 0.050980392156862744, 0.06666666666666667], [0.23921568627450981, 0.6392156862745098, 0.054901960784313725, 0.06666666666666667], [0.24313725490196078, 0.6509803921568628, 0.054901960784313725, 0.07058823529411765], [0.24705882352941178, 0.6627450980392157, 0.054901960784313725, 0.07058823529411765], [0.25098039215686274, 0.6705882352941176, 0.054901960784313725, 0.07058823529411765], [0.2549019607843137, 0.6823529411764706, 0.058823529411764705, 0.07450980392156863], [0.25882352941176473, 0.6941176470588235, 0.058823529411764705, 0.07450980392156863], [0.2627450980392157, 0.7019607843137254, 0.058823529411764705, 0.07450980392156863], [0.26666666666666666, 0.7137254901960784, 0.058823529411764705, 0.0784313725490196], [0.27058823529411763, 0.7254901960784313, 0.058823529411764705, 0.0784313725490196], [0.27450980392156865, 0.7333333333333333, 0.06274509803921569, 0.0784313725490196], [0.2784313725490196, 0.7450980392156863, 0.06274509803921569, 0.0784313725490196], [0.2823529411764706, 0.7568627450980392, 0.06274509803921569, 0.08235294117647059], [0.28627450980392155, 0.7647058823529411, 0.06274509803921569, 0.08235294117647059], [0.2901960784313726, 0.7764705882352941, 0.06666666666666667, 0.08235294117647059], [0.29411764705882354, 0.788235294117647, 0.06666666666666667, 0.08627450980392157], [0.2980392156862745, 0.8, 0.06666666666666667, 0.08627450980392157], [0.30196078431372547, 0.807843137254902, 0.06666666666666667, 0.08627450980392157], [0.3058823529411765, 0.8196078431372549, 0.07058823529411765, 0.08627450980392157], [0.30980392156862746, 0.8313725490196079, 0.07058823529411765, 0.09019607843137255], [0.3137254901960784, 0.8392156862745098, 0.07058823529411765, 0.09019607843137255], [0.3176470588235294, 0.8509803921568627, 0.07058823529411765, 0.09019607843137255], [0.3215686274509804, 0.8627450980392157, 0.07058823529411765, 0.09411764705882353], [0.3254901960784314, 0.8705882352941177, 0.07450980392156863, 0.09411764705882353], [0.32941176470588235, 0.8823529411764706, 0.07450980392156863, 0.09411764705882353], [0.3333333333333333, 0.8941176470588236, 0.07450980392156863, 0.09803921568627451], [0.33725490196078434, 0.9019607843137255, 0.07450980392156863, 0.09803921568627451], [0.3411764705882353, 0.9137254901960784, 0.0784313725490196, 0.09803921568627451], [0.34509803921568627, 0.9254901960784314, 0.0784313725490196, 0.09803921568627451], [0.34901960784313724, 0.9333333333333333, 0.0784313725490196, 0.10196078431372549], [0.35294117647058826, 0.9450980392156862, 0.0784313725490196, 0.10196078431372549], [0.3568627450980392, 0.9568627450980393, 0.08235294117647059, 0.10196078431372549], [0.3607843137254902, 0.9647058823529412, 0.08235294117647059, 0.10588235294117647], [0.36470588235294116, 0.9764705882352941, 0.08235294117647059, 0.10588235294117647], [0.3686274509803922, 0.9882352941176471, 0.08235294117647059, 0.10588235294117647], [0.37254901960784315, 1, 0.08235294117647059, 0.10588235294117647], [0.3764705882352941, 1, 0.09411764705882353, 0.10588235294117647], [0.3803921568627451, 1, 0.10588235294117647, 0.10588235294117647], [0.3843137254901961, 1, 0.11764705882352941, 0.10196078431372549], [0.38823529411764707, 1, 0.12941176470588237, 0.10196078431372549], [0.39215686274509803, 1, 0.1411764705882353, 0.10196078431372549], [0.396078431372549, 1, 0.15294117647058825, 0.09803921568627451], [0.4, 1, 0.16470588235294117, 0.09803921568627451], [0.403921568627451, 1, 0.17647058823529413, 0.09803921568627451], [0.40784313725490196, 1, 0.18823529411764706, 0.09411764705882353], [0.4117647058823529, 1, 0.2, 0.09411764705882353], [0.41568627450980394, 1, 0.21176470588235294, 0.09411764705882353], [0.4196078431372549, 1, 0.2235294117647059, 0.09019607843137255], [0.4235294117647059, 1, 0.23529411764705882, 0.09019607843137255], [0.42745098039215684, 1, 0.24705882352941178, 0.08627450980392157], [0.43137254901960786, 1, 0.25882352941176473, 0.08627450980392157], [0.43529411764705883, 1, 0.27058823529411763, 0.08627450980392157], [0.4392156862745098, 1, 0.2823529411764706, 0.08235294117647059], [0.44313725490196076, 1, 0.29411764705882354, 0.08235294117647059], [0.4470588235294118, 1, 0.3058823529411765, 0.08235294117647059], [0.45098039215686275, 1, 0.3176470588235294, 0.0784313725490196], [0.4549019607843137, 1, 0.32941176470588235, 0.0784313725490196], [0.4588235294117647, 1, 0.3411764705882353, 0.0784313725490196], [0.4627450980392157, 1, 0.35294117647058826, 0.07450980392156863], [0.4666666666666667, 1, 0.36470588235294116, 0.07450980392156863], [0.47058823529411764, 1, 0.3764705882352941, 0.07450980392156863], [0.4745098039215686, 1, 0.38823529411764707, 0.07058823529411765], [0.47843137254901963, 1, 0.4, 0.07058823529411765], [0.4823529411764706, 1, 0.4117647058823529, 0.07058823529411765], [0.48627450980392156, 1, 0.4235294117647059, 0.06666666666666667], [0.49019607843137253, 1, 0.43529411764705883, 0.06666666666666667], [0.49411764705882355, 1, 0.4470588235294118, 0.06274509803921569], [0.4980392156862745, 1, 0.4588235294117647, 0.06274509803921569], [0.5019607843137255, 1, 0.47058823529411764, 0.06274509803921569], [0.5058823529411764, 1, 0.4823529411764706, 0.058823529411764705], [0.5098039215686274, 1, 0.49411764705882355, 0.058823529411764705], [0.5137254901960784, 1, 0.5058823529411764, 0.058823529411764705], [0.5176470588235295, 1, 0.5137254901960784, 0.054901960784313725], [0.5215686274509804, 1, 0.5254901960784314, 0.054901960784313725], [0.5254901960784314, 1, 0.5372549019607843, 0.054901960784313725], [0.5294117647058824, 1, 0.5490196078431373, 0.050980392156862744], [0.5333333333333333, 1, 0.5607843137254902, 0.050980392156862744], [0.5372549019607843, 1, 0.5725490196078431, 0.050980392156862744], [0.5411764705882353, 1, 0.5843137254901961, 0.047058823529411764], [0.5450980392156862, 1, 0.596078431372549, 0.047058823529411764], [0.5490196078431373, 1, 0.6078431372549019, 0.043137254901960784], [0.5529411764705883, 1, 0.6196078431372549, 0.043137254901960784], [0.5568627450980392, 1, 0.6313725490196078, 0.043137254901960784], [0.5607843137254902, 1, 0.6431372549019608, 0.0392156862745098], [0.5647058823529412, 1, 0.6549019607843137, 0.0392156862745098], [0.5686274509803921, 1, 0.6666666666666666, 0.0392156862745098], [0.5725490196078431, 1, 0.6784313725490196, 0.03529411764705882], [0.5764705882352941, 1, 0.6901960784313725, 0.03529411764705882], [0.5803921568627451, 1, 0.6941176470588235, 0.0392156862745098], [0.5843137254901961, 1, 0.7019607843137254, 0.0392156862745098], [0.5882352941176471, 1, 0.7058823529411765, 0.043137254901960784], [0.592156862745098, 1, 0.7098039215686275, 0.043137254901960784], [0.596078431372549, 1, 0.7137254901960784, 0.047058823529411764], [0.6, 1, 0.7176470588235294, 0.047058823529411764], [0.6039215686274509, 1, 0.7254901960784313, 0.050980392156862744], [0.6078431372549019, 1, 0.7294117647058823, 0.050980392156862744], [0.611764705882353, 1, 0.7333333333333333, 0.054901960784313725], [0.615686274509804, 1, 0.7372549019607844, 0.058823529411764705], [0.6196078431372549, 1, 0.7411764705882353, 0.058823529411764705], [0.6235294117647059, 1, 0.7490196078431373, 0.06274509803921569], [0.6274509803921569, 1, 0.7529411764705882, 0.06274509803921569], [0.6313725490196078, 1, 0.7568627450980392, 0.06666666666666667], [0.6352941176470588, 1, 0.7607843137254902, 0.06666666666666667], [0.6392156862745098, 1, 0.7647058823529411, 0.07058823529411765], [0.6431372549019608, 1, 0.7725490196078432, 0.07058823529411765], [0.6470588235294118, 1, 0.7764705882352941, 0.07450980392156863], [0.6509803921568628, 1, 0.7803921568627451, 0.07450980392156863], [0.6549019607843137, 1, 0.7843137254901961, 0.0784313725490196], [0.6588235294117647, 1, 0.788235294117647, 0.08235294117647059], [0.6627450980392157, 1, 0.796078431372549, 0.08235294117647059], [0.6666666666666666, 1, 0.8, 0.08627450980392157], [0.6705882352941176, 1, 0.803921568627451, 0.08627450980392157], [0.6745098039215687, 1, 0.807843137254902, 0.09019607843137255], [0.6784313725490196, 1, 0.8117647058823529, 0.09019607843137255], [0.6823529411764706, 1, 0.8196078431372549, 0.09411764705882353], [0.6862745098039216, 1, 0.8235294117647058, 0.09411764705882353], [0.6901960784313725, 1, 0.8274509803921568, 0.09803921568627451], [0.6941176470588235, 1, 0.8313725490196079, 0.10196078431372549], [0.6980392156862745, 1, 0.8352941176470589, 0.10196078431372549], [0.7019607843137254, 1, 0.8431372549019608, 0.10588235294117647], [0.7058823529411765, 1, 0.8470588235294118, 0.10588235294117647], [0.7098039215686275, 1, 0.8509803921568627, 0.10980392156862745], [0.7137254901960784, 1, 0.8549019607843137, 0.10980392156862745], [0.7176470588235294, 1, 0.8627450980392157, 0.11372549019607843], [0.7215686274509804, 1, 0.8666666666666667, 0.11372549019607843], [0.7254901960784313, 1, 0.8705882352941177, 0.11764705882352941], [0.7294117647058823, 1, 0.8745098039215686, 0.12156862745098039], [0.7333333333333333, 1, 0.8784313725490196, 0.12156862745098039], [0.7372549019607844, 1, 0.8862745098039215, 0.12549019607843137], [0.7411764705882353, 1, 0.8901960784313725, 0.12549019607843137], [0.7450980392156863, 1, 0.8941176470588236, 0.12941176470588237], [0.7490196078431373, 1, 0.8980392156862745, 0.12941176470588237], [0.7529411764705882, 1, 0.9019607843137255, 0.13333333333333333], [0.7568627450980392, 1, 0.9098039215686274, 0.13333333333333333], [0.7607843137254902, 1, 0.9137254901960784, 0.13725490196078433], [0.7647058823529411, 1, 0.9176470588235294, 0.1411764705882353], [0.7686274509803922, 1, 0.9215686274509803, 0.1411764705882353], [0.7725490196078432, 1, 0.9254901960784314, 0.1450980392156863], [0.7764705882352941, 1, 0.9333333333333333, 0.1450980392156863], [0.7803921568627451, 1, 0.9372549019607843, 0.14901960784313725], [0.7843137254901961, 1, 0.9411764705882353, 0.14901960784313725], [0.788235294117647, 1, 0.9450980392156862, 0.15294117647058825], [0.792156862745098, 1, 0.9450980392156862, 0.16862745098039217], [0.796078431372549, 1, 0.9490196078431372, 0.1843137254901961], [0.8, 1, 0.9490196078431372, 0.2], [0.803921568627451, 1, 0.9490196078431372, 0.21568627450980393], [0.807843137254902, 1, 0.9490196078431372, 0.22745098039215686], [0.8117647058823529, 1, 0.9529411764705882, 0.24313725490196078], [0.8156862745098039, 1, 0.9529411764705882, 0.25882352941176473], [0.8196078431372549, 1, 0.9529411764705882, 0.27450980392156865], [0.8235294117647058, 1, 0.9529411764705882, 0.2901960784313726], [0.8274509803921568, 1, 0.9568627450980393, 0.3058823529411765], [0.8313725490196079, 1, 0.9568627450980393, 0.3215686274509804], [0.8352941176470589, 1, 0.9568627450980393, 0.33725490196078434], [0.8392156862745098, 1, 0.9568627450980393, 0.35294117647058826], [0.8431372549019608, 1, 0.9607843137254902, 0.3686274509803922], [0.8470588235294118, 1, 0.9607843137254902, 0.3843137254901961], [0.8509803921568627, 1, 0.9607843137254902, 0.4], [0.8549019607843137, 1, 0.9607843137254902, 0.4117647058823529], [0.8588235294117647, 1, 0.9647058823529412, 0.42745098039215684], [0.8627450980392157, 1, 0.9647058823529412, 0.44313725490196076], [0.8666666666666667, 1, 0.9647058823529412, 0.4588235294117647], [0.8705882352941177, 1, 0.9647058823529412, 0.4745098039215686], [0.8745098039215686, 1, 0.9686274509803922, 0.49019607843137253], [0.8784313725490196, 1, 0.9686274509803922, 0.5058823529411764], [0.8823529411764706, 1, 0.9686274509803922, 0.5215686274509804], [0.8862745098039215, 1, 0.9686274509803922, 0.5372549019607843], [0.8901960784313725, 1, 0.9725490196078431, 0.5529411764705883], [0.8941176470588236, 1, 0.9725490196078431, 0.5686274509803921], [0.8980392156862745, 1, 0.9725490196078431, 0.5843137254901961], [0.9019607843137255, 1, 0.9725490196078431, 0.6], [0.9058823529411765, 1, 0.9725490196078431, 0.611764705882353], [0.9098039215686274, 1, 0.9764705882352941, 0.6274509803921569], [0.9137254901960784, 1, 0.9764705882352941, 0.6431372549019608], [0.9176470588235294, 1, 0.9764705882352941, 0.6588235294117647], [0.9215686274509803, 1, 0.9764705882352941, 0.6745098039215687], [0.9254901960784314, 1, 0.9803921568627451, 0.6901960784313725], [0.9294117647058824, 1, 0.9803921568627451, 0.7058823529411765], [0.9333333333333333, 1, 0.9803921568627451, 0.7215686274509804], [0.9372549019607843, 1, 0.9803921568627451, 0.7372549019607844], [0.9411764705882353, 1, 0.984313725490196, 0.7529411764705882], [0.9450980392156862, 1, 0.984313725490196, 0.7686274509803922], [0.9490196078431372, 1, 0.984313725490196, 0.7843137254901961], [0.9529411764705882, 1, 0.984313725490196, 0.8], [0.9568627450980393, 1, 0.9882352941176471, 0.8117647058823529], [0.9607843137254902, 1, 0.9882352941176471, 0.8274509803921568], [0.9647058823529412, 1, 0.9882352941176471, 0.8431372549019608], [0.9686274509803922, 1, 0.9882352941176471, 0.8588235294117647], [0.9725490196078431, 1, 0.9921568627450981, 0.8745098039215686], [0.9764705882352941, 1, 0.9921568627450981, 0.8901960784313725], [0.9803921568627451, 1, 0.9921568627450981, 0.9058823529411765], [0.984313725490196, 1, 0.9921568627450981, 0.9215686274509803], [0.9882352941176471, 1, 0.996078431372549, 0.9372549019607843], [0.9921568627450981, 1, 0.996078431372549, 0.9529411764705882], [0.996078431372549, 1, 0.996078431372549, 0.9686274509803922], [1, 1, 0.996078431372549, 0.984313725490196]]
       };
     };
 
     _class.presetLutsO = function presetLutsO() {
       return {
-        'linear': [[0, 0], [1, 1]],
-        'lowpass': [[0, 0.8], [0.2, 0.6], [0.3, 0.1], [1, 0]],
-        'bandpass': [[0, 0], [0.4, 0.8], [0.6, 0.8], [1, 0]],
-        'highpass': [[0, 0], [0.7, 0.1], [0.8, 0.6], [1, 0.8]],
-        'flat': [[0, .7], [1, 1]],
-        'random': [[0, 0.], [0.38, 0.], [0.55, 1.], [0.72, 1.], [1, 0.05]],
-        'linear_full': [[0, 0], [0.00392156862745098, 0.00392156862745098], [0.00784313725490196, 0.00784313725490196], [0.011764705882352941, 0.011764705882352941], [0.01568627450980392, 0.01568627450980392], [0.0196078431372549, 0.0196078431372549], [0.023529411764705882, 0.023529411764705882], [0.027450980392156862, 0.027450980392156862], [0.03137254901960784, 0.03137254901960784], [0.03529411764705882, 0.03529411764705882], [0.0392156862745098, 0.0392156862745098], [0.043137254901960784, 0.043137254901960784], [0.047058823529411764, 0.047058823529411764], [0.050980392156862744, 0.050980392156862744], [0.054901960784313725, 0.054901960784313725], [0.058823529411764705, 0.058823529411764705], [0.06274509803921569, 0.06274509803921569], [0.06666666666666667, 0.06666666666666667], [0.07058823529411765, 0.07058823529411765], [0.07450980392156863, 0.07450980392156863], [0.0784313725490196, 0.0784313725490196], [0.08235294117647059, 0.08235294117647059], [0.08627450980392157, 0.08627450980392157], [0.09019607843137255, 0.09019607843137255], [0.09411764705882353, 0.09411764705882353], [0.09803921568627451, 0.09803921568627451], [0.10196078431372549, 0.10196078431372549], [0.10588235294117647, 0.10588235294117647], [0.10980392156862745, 0.10980392156862745], [0.11372549019607843, 0.11372549019607843], [0.11764705882352941, 0.11764705882352941], [0.12156862745098039, 0.12156862745098039], [0.12549019607843137, 0.12549019607843137], [0.12941176470588237, 0.12941176470588237], [0.13333333333333333, 0.13333333333333333], [0.13725490196078433, 0.13725490196078433], [0.1411764705882353, 0.1411764705882353], [0.1450980392156863, 0.1450980392156863], [0.14901960784313725, 0.14901960784313725], [0.15294117647058825, 0.15294117647058825], [0.1568627450980392, 0.1568627450980392], [0.1607843137254902, 0.1607843137254902], [0.16470588235294117, 0.16470588235294117], [0.16862745098039217, 0.16862745098039217], [0.17254901960784313, 0.17254901960784313], [0.17647058823529413, 0.17647058823529413], [0.1803921568627451, 0.1803921568627451], [0.1843137254901961, 0.1843137254901961], [0.18823529411764706, 0.18823529411764706], [0.19215686274509805, 0.19215686274509805], [0.19607843137254902, 0.19607843137254902], [0.2, 0.2], [0.20392156862745098, 0.20392156862745098], [0.20784313725490197, 0.20784313725490197], [0.21176470588235294, 0.21176470588235294], [0.21568627450980393, 0.21568627450980393], [0.2196078431372549, 0.2196078431372549], [0.2235294117647059, 0.2235294117647059], [0.22745098039215686, 0.22745098039215686], [0.23137254901960785, 0.23137254901960785], [0.23529411764705882, 0.23529411764705882], [0.23921568627450981, 0.23921568627450981], [0.24313725490196078, 0.24313725490196078], [0.24705882352941178, 0.24705882352941178], [0.25098039215686274, 0.25098039215686274], [0.2549019607843137, 0.2549019607843137], [0.25882352941176473, 0.25882352941176473], [0.2627450980392157, 0.2627450980392157], [0.26666666666666666, 0.26666666666666666], [0.27058823529411763, 0.27058823529411763], [0.27450980392156865, 0.27450980392156865], [0.2784313725490196, 0.2784313725490196], [0.2823529411764706, 0.2823529411764706], [0.28627450980392155, 0.28627450980392155], [0.2901960784313726, 0.2901960784313726], [0.29411764705882354, 0.29411764705882354], [0.2980392156862745, 0.2980392156862745], [0.30196078431372547, 0.30196078431372547], [0.3058823529411765, 0.3058823529411765], [0.30980392156862746, 0.30980392156862746], [0.3137254901960784, 0.3137254901960784], [0.3176470588235294, 0.3176470588235294], [0.3215686274509804, 0.3215686274509804], [0.3254901960784314, 0.3254901960784314], [0.32941176470588235, 0.32941176470588235], [0.3333333333333333, 0.3333333333333333], [0.33725490196078434, 0.33725490196078434], [0.3411764705882353, 0.3411764705882353], [0.34509803921568627, 0.34509803921568627], [0.34901960784313724, 0.34901960784313724], [0.35294117647058826, 0.35294117647058826], [0.3568627450980392, 0.3568627450980392], [0.3607843137254902, 0.3607843137254902], [0.36470588235294116, 0.36470588235294116], [0.3686274509803922, 0.3686274509803922], [0.37254901960784315, 0.37254901960784315], [0.3764705882352941, 0.3764705882352941], [0.3803921568627451, 0.3803921568627451], [0.3843137254901961, 0.3843137254901961], [0.38823529411764707, 0.38823529411764707], [0.39215686274509803, 0.39215686274509803], [0.396078431372549, 0.396078431372549], [0.4, 0.4], [0.403921568627451, 0.403921568627451], [0.40784313725490196, 0.40784313725490196], [0.4117647058823529, 0.4117647058823529], [0.41568627450980394, 0.41568627450980394], [0.4196078431372549, 0.4196078431372549], [0.4235294117647059, 0.4235294117647059], [0.42745098039215684, 0.42745098039215684], [0.43137254901960786, 0.43137254901960786], [0.43529411764705883, 0.43529411764705883], [0.4392156862745098, 0.4392156862745098], [0.44313725490196076, 0.44313725490196076], [0.4470588235294118, 0.4470588235294118], [0.45098039215686275, 0.45098039215686275], [0.4549019607843137, 0.4549019607843137], [0.4588235294117647, 0.4588235294117647], [0.4627450980392157, 0.4627450980392157], [0.4666666666666667, 0.4666666666666667], [0.47058823529411764, 0.47058823529411764], [0.4745098039215686, 0.4745098039215686], [0.47843137254901963, 0.47843137254901963], [0.4823529411764706, 0.4823529411764706], [0.48627450980392156, 0.48627450980392156], [0.49019607843137253, 0.49019607843137253], [0.49411764705882355, 0.49411764705882355], [0.4980392156862745, 0.4980392156862745], [0.5019607843137255, 0.5019607843137255], [0.5058823529411764, 0.5058823529411764], [0.5098039215686274, 0.5098039215686274], [0.5137254901960784, 0.5137254901960784], [0.5176470588235295, 0.5176470588235295], [0.5215686274509804, 0.5215686274509804], [0.5254901960784314, 0.5254901960784314], [0.5294117647058824, 0.5294117647058824], [0.5333333333333333, 0.5333333333333333], [0.5372549019607843, 0.5372549019607843], [0.5411764705882353, 0.5411764705882353], [0.5450980392156862, 0.5450980392156862], [0.5490196078431373, 0.5490196078431373], [0.5529411764705883, 0.5529411764705883], [0.5568627450980392, 0.5568627450980392], [0.5607843137254902, 0.5607843137254902], [0.5647058823529412, 0.5647058823529412], [0.5686274509803921, 0.5686274509803921], [0.5725490196078431, 0.5725490196078431], [0.5764705882352941, 0.5764705882352941], [0.5803921568627451, 0.5803921568627451], [0.5843137254901961, 0.5843137254901961], [0.5882352941176471, 0.5882352941176471], [0.592156862745098, 0.592156862745098], [0.596078431372549, 0.596078431372549], [0.6, 0.6], [0.6039215686274509, 0.6039215686274509], [0.6078431372549019, 0.6078431372549019], [0.611764705882353, 0.611764705882353], [0.615686274509804, 0.615686274509804], [0.6196078431372549, 0.6196078431372549], [0.6235294117647059, 0.6235294117647059], [0.6274509803921569, 0.6274509803921569], [0.6313725490196078, 0.6313725490196078], [0.6352941176470588, 0.6352941176470588], [0.6392156862745098, 0.6392156862745098], [0.6431372549019608, 0.6431372549019608], [0.6470588235294118, 0.6470588235294118], [0.6509803921568628, 0.6509803921568628], [0.6549019607843137, 0.6549019607843137], [0.6588235294117647, 0.6588235294117647], [0.6627450980392157, 0.6627450980392157], [0.6666666666666666, 0.6666666666666666], [0.6705882352941176, 0.6705882352941176], [0.6745098039215687, 0.6745098039215687], [0.6784313725490196, 0.6784313725490196], [0.6823529411764706, 0.6823529411764706], [0.6862745098039216, 0.6862745098039216], [0.6901960784313725, 0.6901960784313725], [0.6941176470588235, 0.6941176470588235], [0.6980392156862745, 0.6980392156862745], [0.7019607843137254, 0.7019607843137254], [0.7058823529411765, 0.7058823529411765], [0.7098039215686275, 0.7098039215686275], [0.7137254901960784, 0.7137254901960784], [0.7176470588235294, 0.7176470588235294], [0.7215686274509804, 0.7215686274509804], [0.7254901960784313, 0.7254901960784313], [0.7294117647058823, 0.7294117647058823], [0.7333333333333333, 0.7333333333333333], [0.7372549019607844, 0.7372549019607844], [0.7411764705882353, 0.7411764705882353], [0.7450980392156863, 0.7450980392156863], [0.7490196078431373, 0.7490196078431373], [0.7529411764705882, 0.7529411764705882], [0.7568627450980392, 0.7568627450980392], [0.7607843137254902, 0.7607843137254902], [0.7647058823529411, 0.7647058823529411], [0.7686274509803922, 0.7686274509803922], [0.7725490196078432, 0.7725490196078432], [0.7764705882352941, 0.7764705882352941], [0.7803921568627451, 0.7803921568627451], [0.7843137254901961, 0.7843137254901961], [0.788235294117647, 0.788235294117647], [0.792156862745098, 0.792156862745098], [0.796078431372549, 0.796078431372549], [0.8, 0.8], [0.803921568627451, 0.803921568627451], [0.807843137254902, 0.807843137254902], [0.8117647058823529, 0.8117647058823529], [0.8156862745098039, 0.8156862745098039], [0.8196078431372549, 0.8196078431372549], [0.8235294117647058, 0.8235294117647058], [0.8274509803921568, 0.8274509803921568], [0.8313725490196079, 0.8313725490196079], [0.8352941176470589, 0.8352941176470589], [0.8392156862745098, 0.8392156862745098], [0.8431372549019608, 0.8431372549019608], [0.8470588235294118, 0.8470588235294118], [0.8509803921568627, 0.8509803921568627], [0.8549019607843137, 0.8549019607843137], [0.8588235294117647, 0.8588235294117647], [0.8627450980392157, 0.8627450980392157], [0.8666666666666667, 0.8666666666666667], [0.8705882352941177, 0.8705882352941177], [0.8745098039215686, 0.8745098039215686], [0.8784313725490196, 0.8784313725490196], [0.8823529411764706, 0.8823529411764706], [0.8862745098039215, 0.8862745098039215], [0.8901960784313725, 0.8901960784313725], [0.8941176470588236, 0.8941176470588236], [0.8980392156862745, 0.8980392156862745], [0.9019607843137255, 0.9019607843137255], [0.9058823529411765, 0.9058823529411765], [0.9098039215686274, 0.9098039215686274], [0.9137254901960784, 0.9137254901960784], [0.9176470588235294, 0.9176470588235294], [0.9215686274509803, 0.9215686274509803], [0.9254901960784314, 0.9254901960784314], [0.9294117647058824, 0.9294117647058824], [0.9333333333333333, 0.9333333333333333], [0.9372549019607843, 0.9372549019607843], [0.9411764705882353, 0.9411764705882353], [0.9450980392156862, 0.9450980392156862], [0.9490196078431372, 0.9490196078431372], [0.9529411764705882, 0.9529411764705882], [0.9568627450980393, 0.9568627450980393], [0.9607843137254902, 0.9607843137254902], [0.9647058823529412, 0.9647058823529412], [0.9686274509803922, 0.9686274509803922], [0.9725490196078431, 0.9725490196078431], [0.9764705882352941, 0.9764705882352941], [0.9803921568627451, 0.9803921568627451], [0.984313725490196, 0.984313725490196], [0.9882352941176471, 0.9882352941176471], [0.9921568627450981, 0.9921568627450981], [0.996078431372549, 0.996078431372549], [1, 1]]
+        linear: [[0, 0], [1, 1]],
+        lowpass: [[0, 0.8], [0.2, 0.6], [0.3, 0.1], [1, 0]],
+        bandpass: [[0, 0], [0.4, 0.8], [0.6, 0.8], [1, 0]],
+        highpass: [[0, 0], [0.7, 0.1], [0.8, 0.6], [1, 0.8]],
+        flat: [[0, 0.7], [1, 1]],
+        random: [[0, 0], [0.38, 0], [0.55, 1], [0.72, 1], [1, 0.05]],
+        linear_full: [[0, 0], [0.00392156862745098, 0.00392156862745098], [0.00784313725490196, 0.00784313725490196], [0.011764705882352941, 0.011764705882352941], [0.01568627450980392, 0.01568627450980392], [0.0196078431372549, 0.0196078431372549], [0.023529411764705882, 0.023529411764705882], [0.027450980392156862, 0.027450980392156862], [0.03137254901960784, 0.03137254901960784], [0.03529411764705882, 0.03529411764705882], [0.0392156862745098, 0.0392156862745098], [0.043137254901960784, 0.043137254901960784], [0.047058823529411764, 0.047058823529411764], [0.050980392156862744, 0.050980392156862744], [0.054901960784313725, 0.054901960784313725], [0.058823529411764705, 0.058823529411764705], [0.06274509803921569, 0.06274509803921569], [0.06666666666666667, 0.06666666666666667], [0.07058823529411765, 0.07058823529411765], [0.07450980392156863, 0.07450980392156863], [0.0784313725490196, 0.0784313725490196], [0.08235294117647059, 0.08235294117647059], [0.08627450980392157, 0.08627450980392157], [0.09019607843137255, 0.09019607843137255], [0.09411764705882353, 0.09411764705882353], [0.09803921568627451, 0.09803921568627451], [0.10196078431372549, 0.10196078431372549], [0.10588235294117647, 0.10588235294117647], [0.10980392156862745, 0.10980392156862745], [0.11372549019607843, 0.11372549019607843], [0.11764705882352941, 0.11764705882352941], [0.12156862745098039, 0.12156862745098039], [0.12549019607843137, 0.12549019607843137], [0.12941176470588237, 0.12941176470588237], [0.13333333333333333, 0.13333333333333333], [0.13725490196078433, 0.13725490196078433], [0.1411764705882353, 0.1411764705882353], [0.1450980392156863, 0.1450980392156863], [0.14901960784313725, 0.14901960784313725], [0.15294117647058825, 0.15294117647058825], [0.1568627450980392, 0.1568627450980392], [0.1607843137254902, 0.1607843137254902], [0.16470588235294117, 0.16470588235294117], [0.16862745098039217, 0.16862745098039217], [0.17254901960784313, 0.17254901960784313], [0.17647058823529413, 0.17647058823529413], [0.1803921568627451, 0.1803921568627451], [0.1843137254901961, 0.1843137254901961], [0.18823529411764706, 0.18823529411764706], [0.19215686274509805, 0.19215686274509805], [0.19607843137254902, 0.19607843137254902], [0.2, 0.2], [0.20392156862745098, 0.20392156862745098], [0.20784313725490197, 0.20784313725490197], [0.21176470588235294, 0.21176470588235294], [0.21568627450980393, 0.21568627450980393], [0.2196078431372549, 0.2196078431372549], [0.2235294117647059, 0.2235294117647059], [0.22745098039215686, 0.22745098039215686], [0.23137254901960785, 0.23137254901960785], [0.23529411764705882, 0.23529411764705882], [0.23921568627450981, 0.23921568627450981], [0.24313725490196078, 0.24313725490196078], [0.24705882352941178, 0.24705882352941178], [0.25098039215686274, 0.25098039215686274], [0.2549019607843137, 0.2549019607843137], [0.25882352941176473, 0.25882352941176473], [0.2627450980392157, 0.2627450980392157], [0.26666666666666666, 0.26666666666666666], [0.27058823529411763, 0.27058823529411763], [0.27450980392156865, 0.27450980392156865], [0.2784313725490196, 0.2784313725490196], [0.2823529411764706, 0.2823529411764706], [0.28627450980392155, 0.28627450980392155], [0.2901960784313726, 0.2901960784313726], [0.29411764705882354, 0.29411764705882354], [0.2980392156862745, 0.2980392156862745], [0.30196078431372547, 0.30196078431372547], [0.3058823529411765, 0.3058823529411765], [0.30980392156862746, 0.30980392156862746], [0.3137254901960784, 0.3137254901960784], [0.3176470588235294, 0.3176470588235294], [0.3215686274509804, 0.3215686274509804], [0.3254901960784314, 0.3254901960784314], [0.32941176470588235, 0.32941176470588235], [0.3333333333333333, 0.3333333333333333], [0.33725490196078434, 0.33725490196078434], [0.3411764705882353, 0.3411764705882353], [0.34509803921568627, 0.34509803921568627], [0.34901960784313724, 0.34901960784313724], [0.35294117647058826, 0.35294117647058826], [0.3568627450980392, 0.3568627450980392], [0.3607843137254902, 0.3607843137254902], [0.36470588235294116, 0.36470588235294116], [0.3686274509803922, 0.3686274509803922], [0.37254901960784315, 0.37254901960784315], [0.3764705882352941, 0.3764705882352941], [0.3803921568627451, 0.3803921568627451], [0.3843137254901961, 0.3843137254901961], [0.38823529411764707, 0.38823529411764707], [0.39215686274509803, 0.39215686274509803], [0.396078431372549, 0.396078431372549], [0.4, 0.4], [0.403921568627451, 0.403921568627451], [0.40784313725490196, 0.40784313725490196], [0.4117647058823529, 0.4117647058823529], [0.41568627450980394, 0.41568627450980394], [0.4196078431372549, 0.4196078431372549], [0.4235294117647059, 0.4235294117647059], [0.42745098039215684, 0.42745098039215684], [0.43137254901960786, 0.43137254901960786], [0.43529411764705883, 0.43529411764705883], [0.4392156862745098, 0.4392156862745098], [0.44313725490196076, 0.44313725490196076], [0.4470588235294118, 0.4470588235294118], [0.45098039215686275, 0.45098039215686275], [0.4549019607843137, 0.4549019607843137], [0.4588235294117647, 0.4588235294117647], [0.4627450980392157, 0.4627450980392157], [0.4666666666666667, 0.4666666666666667], [0.47058823529411764, 0.47058823529411764], [0.4745098039215686, 0.4745098039215686], [0.47843137254901963, 0.47843137254901963], [0.4823529411764706, 0.4823529411764706], [0.48627450980392156, 0.48627450980392156], [0.49019607843137253, 0.49019607843137253], [0.49411764705882355, 0.49411764705882355], [0.4980392156862745, 0.4980392156862745], [0.5019607843137255, 0.5019607843137255], [0.5058823529411764, 0.5058823529411764], [0.5098039215686274, 0.5098039215686274], [0.5137254901960784, 0.5137254901960784], [0.5176470588235295, 0.5176470588235295], [0.5215686274509804, 0.5215686274509804], [0.5254901960784314, 0.5254901960784314], [0.5294117647058824, 0.5294117647058824], [0.5333333333333333, 0.5333333333333333], [0.5372549019607843, 0.5372549019607843], [0.5411764705882353, 0.5411764705882353], [0.5450980392156862, 0.5450980392156862], [0.5490196078431373, 0.5490196078431373], [0.5529411764705883, 0.5529411764705883], [0.5568627450980392, 0.5568627450980392], [0.5607843137254902, 0.5607843137254902], [0.5647058823529412, 0.5647058823529412], [0.5686274509803921, 0.5686274509803921], [0.5725490196078431, 0.5725490196078431], [0.5764705882352941, 0.5764705882352941], [0.5803921568627451, 0.5803921568627451], [0.5843137254901961, 0.5843137254901961], [0.5882352941176471, 0.5882352941176471], [0.592156862745098, 0.592156862745098], [0.596078431372549, 0.596078431372549], [0.6, 0.6], [0.6039215686274509, 0.6039215686274509], [0.6078431372549019, 0.6078431372549019], [0.611764705882353, 0.611764705882353], [0.615686274509804, 0.615686274509804], [0.6196078431372549, 0.6196078431372549], [0.6235294117647059, 0.6235294117647059], [0.6274509803921569, 0.6274509803921569], [0.6313725490196078, 0.6313725490196078], [0.6352941176470588, 0.6352941176470588], [0.6392156862745098, 0.6392156862745098], [0.6431372549019608, 0.6431372549019608], [0.6470588235294118, 0.6470588235294118], [0.6509803921568628, 0.6509803921568628], [0.6549019607843137, 0.6549019607843137], [0.6588235294117647, 0.6588235294117647], [0.6627450980392157, 0.6627450980392157], [0.6666666666666666, 0.6666666666666666], [0.6705882352941176, 0.6705882352941176], [0.6745098039215687, 0.6745098039215687], [0.6784313725490196, 0.6784313725490196], [0.6823529411764706, 0.6823529411764706], [0.6862745098039216, 0.6862745098039216], [0.6901960784313725, 0.6901960784313725], [0.6941176470588235, 0.6941176470588235], [0.6980392156862745, 0.6980392156862745], [0.7019607843137254, 0.7019607843137254], [0.7058823529411765, 0.7058823529411765], [0.7098039215686275, 0.7098039215686275], [0.7137254901960784, 0.7137254901960784], [0.7176470588235294, 0.7176470588235294], [0.7215686274509804, 0.7215686274509804], [0.7254901960784313, 0.7254901960784313], [0.7294117647058823, 0.7294117647058823], [0.7333333333333333, 0.7333333333333333], [0.7372549019607844, 0.7372549019607844], [0.7411764705882353, 0.7411764705882353], [0.7450980392156863, 0.7450980392156863], [0.7490196078431373, 0.7490196078431373], [0.7529411764705882, 0.7529411764705882], [0.7568627450980392, 0.7568627450980392], [0.7607843137254902, 0.7607843137254902], [0.7647058823529411, 0.7647058823529411], [0.7686274509803922, 0.7686274509803922], [0.7725490196078432, 0.7725490196078432], [0.7764705882352941, 0.7764705882352941], [0.7803921568627451, 0.7803921568627451], [0.7843137254901961, 0.7843137254901961], [0.788235294117647, 0.788235294117647], [0.792156862745098, 0.792156862745098], [0.796078431372549, 0.796078431372549], [0.8, 0.8], [0.803921568627451, 0.803921568627451], [0.807843137254902, 0.807843137254902], [0.8117647058823529, 0.8117647058823529], [0.8156862745098039, 0.8156862745098039], [0.8196078431372549, 0.8196078431372549], [0.8235294117647058, 0.8235294117647058], [0.8274509803921568, 0.8274509803921568], [0.8313725490196079, 0.8313725490196079], [0.8352941176470589, 0.8352941176470589], [0.8392156862745098, 0.8392156862745098], [0.8431372549019608, 0.8431372549019608], [0.8470588235294118, 0.8470588235294118], [0.8509803921568627, 0.8509803921568627], [0.8549019607843137, 0.8549019607843137], [0.8588235294117647, 0.8588235294117647], [0.8627450980392157, 0.8627450980392157], [0.8666666666666667, 0.8666666666666667], [0.8705882352941177, 0.8705882352941177], [0.8745098039215686, 0.8745098039215686], [0.8784313725490196, 0.8784313725490196], [0.8823529411764706, 0.8823529411764706], [0.8862745098039215, 0.8862745098039215], [0.8901960784313725, 0.8901960784313725], [0.8941176470588236, 0.8941176470588236], [0.8980392156862745, 0.8980392156862745], [0.9019607843137255, 0.9019607843137255], [0.9058823529411765, 0.9058823529411765], [0.9098039215686274, 0.9098039215686274], [0.9137254901960784, 0.9137254901960784], [0.9176470588235294, 0.9176470588235294], [0.9215686274509803, 0.9215686274509803], [0.9254901960784314, 0.9254901960784314], [0.9294117647058824, 0.9294117647058824], [0.9333333333333333, 0.9333333333333333], [0.9372549019607843, 0.9372549019607843], [0.9411764705882353, 0.9411764705882353], [0.9450980392156862, 0.9450980392156862], [0.9490196078431372, 0.9490196078431372], [0.9529411764705882, 0.9529411764705882], [0.9568627450980393, 0.9568627450980393], [0.9607843137254902, 0.9607843137254902], [0.9647058823529412, 0.9647058823529412], [0.9686274509803922, 0.9686274509803922], [0.9725490196078431, 0.9725490196078431], [0.9764705882352941, 0.9764705882352941], [0.9803921568627451, 0.9803921568627451], [0.984313725490196, 0.984313725490196], [0.9882352941176471, 0.9882352941176471], [0.9921568627450981, 0.9921568627450981], [0.996078431372549, 0.996078431372549], [1, 1]]
       };
     };
 
@@ -32798,13 +31937,13 @@ var HelpersProgressBar = function () {
 
     this._container = container;
     this._modes = {
-      'load': {
-        'name': 'load',
-        'color': '#FFF56F'
+      load: {
+        name: 'load',
+        color: '#FFF56F'
       },
-      'parse': {
-        'name': 'parse',
-        'color': '#2196F3'
+      parse: {
+        name: 'parse',
+        color: '#2196F3'
       }
     };
 
@@ -33146,10 +32285,11 @@ var helpersSlice = function helpersSlice() {
       _this._index = index;
       _this._windowWidth = null;
       _this._windowCenter = null;
+      _this._opacity = 1;
       _this._rescaleSlope = null;
       _this._rescaleIntercept = null;
-      _this._spacing = 1.;
-      _this._thickness = 0.;
+      _this._spacing = 1;
+      _this._thickness = 0;
       _this._thicknessMethod = 0; // default to MIP (Maximum Intensity Projection); 1 - Mean; 2 - MinIP
 
       // threshold
@@ -33315,6 +32455,9 @@ var helpersSlice = function helpersSlice() {
       this._uniforms.uRescaleSlopeIntercept.value = [this._rescaleSlope, this._rescaleIntercept];
       this._uniforms.uWindowCenterWidth.value = [offset + this._windowCenter, this._windowWidth];
 
+      // set slice opacity
+      this._uniforms.uOpacity.value = this._opacity;
+
       // set slice upper/lower threshold
       this._uniforms.uLowerUpperThreshold.value = [offset + this._lowerThreshold, offset + this._upperThreshold];
 
@@ -33456,6 +32599,15 @@ var helpersSlice = function helpersSlice() {
       },
       set: function set(windowCenter) {
         this._windowCenter = windowCenter;
+        this.updateIntensitySettingsUniforms();
+      }
+    }, {
+      key: 'opacity',
+      get: function get() {
+        return this._opacity;
+      },
+      set: function set(opacity) {
+        this._opacity = opacity;
         this.updateIntensitySettingsUniforms();
       }
 
@@ -34279,7 +33431,7 @@ var helpersVolumeRendering = function helpersVolumeRendering() {
       _this._shading = 1; // shading is on by default
       _this._shininess = 10.0;
       _this._steps = 256; // default
-      _this._offset = 0.;
+      _this._offset = 0;
       _this._windowCenter = 0.0;
       _this._windowWidth = 1.0;
 
@@ -35099,6 +34251,7 @@ var LoadersVolumes = function (_LoadersBase) {
     frame.index = i;
     frame.invert = stack.invert;
     frame.frameTime = dataParser.frameTime(i);
+    frame.ultrasoundRegions = dataParser.ultrasoundRegions(i);
     frame.rows = dataParser.rows(i);
     frame.columns = dataParser.columns(i);
     frame.numberOfChannels = stack.numberOfChannels;
@@ -35432,6 +34585,7 @@ var ModelsFrame = function (_ModelsBase) {
     _this._stackID = -1;
     _this._invert = false;
     _this._frameTime = null;
+    _this._ultrasoundRegions = [];
     _this._rows = 0;
     _this._columns = 0;
     _this._dimensionIndexValues = [];
@@ -35733,6 +34887,14 @@ var ModelsFrame = function (_ModelsBase) {
     },
     set: function set(frameTime) {
       this._frameTime = frameTime;
+    }
+  }, {
+    key: 'ultrasoundRegions',
+    get: function get() {
+      return this._ultrasoundRegions;
+    },
+    set: function set(ultrasoundRegions) {
+      this._ultrasoundRegions = ultrasoundRegions;
     }
   }, {
     key: 'rows',
@@ -36869,7 +36031,7 @@ var ModelsStack = function (_ModelsBase) {
     if (this._frame && this._frame.length > 0) {
       this._numberOfFrames = this._frame.length;
     } else {
-      window.console.warn('_frame doesn\'t contain anything....');
+      window.console.warn("_frame doesn't contain anything....");
       window.console.warn(this._frame);
       return false;
     }
@@ -37138,8 +36300,8 @@ var ModelsStack = function (_ModelsBase) {
 
         var _raw = frame[frameIndex].pixelData[inFrameIndex] + offset;
         if (!Number.isNaN(_raw)) {
-          _data[4 * _coordinate + 2 * _channelOffset] = _raw & 0x00FF;
-          _data[4 * _coordinate + 2 * _channelOffset + 1] = _raw >>> 8 & 0x00FF;
+          _data[4 * _coordinate + 2 * _channelOffset] = _raw & 0x00ff;
+          _data[4 * _coordinate + 2 * _channelOffset + 1] = _raw >>> 8 & 0x00ff;
         }
 
         packIndex++;
@@ -37157,10 +36319,10 @@ var ModelsStack = function (_ModelsBase) {
 
         var _raw2 = frame[frameIndex].pixelData[inFrameIndex] + offset;
         if (!Number.isNaN(_raw2)) {
-          _data2[4 * packIndex] = _raw2 & 0x000000FF;
-          _data2[4 * packIndex + 1] = _raw2 >>> 8 & 0x000000FF;
-          _data2[4 * packIndex + 2] = _raw2 >>> 16 & 0x000000FF;
-          _data2[4 * packIndex + 3] = _raw2 >>> 24 & 0x000000FF;
+          _data2[4 * packIndex] = _raw2 & 0x000000ff;
+          _data2[4 * packIndex + 1] = _raw2 >>> 8 & 0x000000ff;
+          _data2[4 * packIndex + 2] = _raw2 >>> 16 & 0x000000ff;
+          _data2[4 * packIndex + 3] = _raw2 >>> 24 & 0x000000ff;
         }
 
         packIndex++;
@@ -37297,7 +36459,7 @@ var ModelsStack = function (_ModelsBase) {
         }
       }
     } else {
-      window.console.warn('One of the frames doesn\'t have a dimensionIndexValues array.');
+      window.console.warn("One of the frames doesn't have a dimensionIndexValues array.");
       window.console.warn(a);
       window.console.warn(b);
     }
@@ -38253,13 +37415,42 @@ var ParsersDicom = function (_ParsersVolume) {
     return pixelSpacing;
   };
 
+  ParsersDicom.prototype.ultrasoundRegions = function ultrasoundRegions() {
+    var _this2 = this;
+
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    var sequence = this._dataSet.elements['x00186011'];
+
+    if (!sequence || !sequence.items) {
+      return [];
+    }
+
+    var ultrasoundRegions = [];
+
+    sequence.items.forEach(function (item) {
+      ultrasoundRegions.push({
+        x0: item.dataSet.uint32('x00186018'),
+        y0: item.dataSet.uint32('x0018601a'),
+        x1: item.dataSet.uint32('x0018601c'),
+        y1: item.dataSet.uint32('x0018601e'),
+        axisX: item.dataSet.int32('x00186020') || null, // optional
+        axisY: item.dataSet.int32('x00186022') || null, // optional
+        unitsX: _this2._getUnitsName(item.dataSet.uint16('x00186024')),
+        unitsY: _this2._getUnitsName(item.dataSet.uint16('x00186026')),
+        deltaX: item.dataSet.double('x0018602c'),
+        deltaY: item.dataSet.double('x0018602e')
+      });
+    });
+
+    return ultrasoundRegions;
+  };
+
   ParsersDicom.prototype.frameTime = function frameTime() {
     var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
     var frameIncrementPointer = this._dataSet.uint16('x00280009', 1);
-
     var frameRate = this._dataSet.intString('x00082144');
-
     var frameTime = void 0;
 
     if (typeof frameIncrementPointer === 'number') {
@@ -38550,8 +37741,6 @@ var ParsersDicom = function (_ParsersVolume) {
 
       if (dataInGroupSequence !== null) {
         return dataInGroupSequence.floatString(tag);
-      } else {
-        return null;
       }
     }
 
@@ -38605,7 +37794,7 @@ var ParsersDicom = function (_ParsersVolume) {
     }
   };
 
-  // https://github.com/chafey/cornerstoneWADOImageLoader/blob/master/src/imageLoader/wadouri/getEncapsulatedImageFrame.js
+  // github.com/chafey/cornerstoneWADOImageLoader/blob/master/src/imageLoader/wadouri/getEncapsulatedImageFrame.js
 
 
   ParsersDicom.prototype.framesAreFragmented = function framesAreFragmented() {
@@ -38964,9 +38153,9 @@ var ParsersDicom = function (_ParsersVolume) {
         var y = uncompressedData[ybrIndex++];
         var cb = uncompressedData[ybrIndex++];
         var cr = uncompressedData[ybrIndex++];
-        rgbData[_rgbaIndex++] = y + 1.40200 * (cr - 128); // red
+        rgbData[_rgbaIndex++] = y + 1.402 * (cr - 128); // red
         rgbData[_rgbaIndex++] = y - 0.34414 * (cb - 128) - 0.71414 * (cr - 128); // green
-        rgbData[_rgbaIndex++] = y + 1.77200 * (cb - 128); // blue
+        rgbData[_rgbaIndex++] = y + 1.772 * (cb - 128); // blue
         // rgbData[rgbaIndex++] = 255; //alpha
       }
     } else {
@@ -38997,6 +38186,26 @@ var ParsersDicom = function (_ParsersVolume) {
     }
 
     return frame;
+  };
+
+  ParsersDicom.prototype._getUnitsName = function _getUnitsName(value) {
+    var units = {
+      0: 'none',
+      1: 'percent',
+      2: 'dB',
+      3: 'cm',
+      4: 'seconds',
+      5: 'hertz',
+      6: 'dB/seconds',
+      7: 'cm/sec',
+      8: 'cm2',
+      9: 'cm2/sec',
+      10: 'cm3',
+      11: 'cm3/sec',
+      12: 'degrees'
+    };
+
+    return units.hasOwnProperty(value) ? units[value] : 'none';
   };
 
   return ParsersDicom;
@@ -39063,406 +38272,406 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  */
 
 var ParsersMgh = function (_ParsersVolume) {
-    _inherits(ParsersMgh, _ParsersVolume);
+  _inherits(ParsersMgh, _ParsersVolume);
 
-    function ParsersMgh(data, id) {
-        _classCallCheck(this, ParsersMgh);
+  function ParsersMgh(data, id) {
+    _classCallCheck(this, ParsersMgh);
 
-        /**
-          * @member
-          * @type {arraybuffer}
-        */
-        var _this = _possibleConstructorReturn(this, _ParsersVolume.call(this));
+    /**
+     * @member
+     * @type {arraybuffer}
+     */
+    var _this = _possibleConstructorReturn(this, _ParsersVolume.call(this));
 
-        _this._id = id;
-        _this._url = data.url;
-        _this._buffer = null;
-        _this._bufferPos = 0;
-        _this._dataPos = 0;
-        _this._pixelData = null;
+    _this._id = id;
+    _this._url = data.url;
+    _this._buffer = null;
+    _this._bufferPos = 0;
+    _this._dataPos = 0;
+    _this._pixelData = null;
 
-        // Default MGH Header as described at:
-        // https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/MghFormat
-        // Image "header" with default values
-        _this._version = 1;
-        _this._width = 0;
-        _this._height = 0;
-        _this._depth = 0;
-        _this._nframes = 0;
-        _this._type = ParsersMgh.MRI_UCHAR; // 0-UCHAR, 4-SHORT, 1-INT, 3-FLOAT
-        _this._dof = 0;
-        _this._goodRASFlag = 0; // True: Use directional cosines, false assume CORONAL
-        _this._spacingXYZ = [1, 1, 1];
-        _this._Xras = [-1, 0, 0];
-        _this._Yras = [0, 0, -1];
-        _this._Zras = [0, 1, 0];
-        _this._Cras = [0, 0, 0];
-        // Image "footer"
-        _this._tr = 0; // ms
-        _this._flipAngle = 0; // radians
-        _this._te = 0; // ms
-        _this._ti = 0; // ms
-        _this._fov = 0; // from doc: IGNORE THIS FIELD (data is inconsistent)
-        _this._tags = []; // Will then contain variable length char strings
+    // Default MGH Header as described at:
+    // https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/MghFormat
+    // Image "header" with default values
+    _this._version = 1;
+    _this._width = 0;
+    _this._height = 0;
+    _this._depth = 0;
+    _this._nframes = 0;
+    _this._type = ParsersMgh.MRI_UCHAR; // 0-UCHAR, 4-SHORT, 1-INT, 3-FLOAT
+    _this._dof = 0;
+    _this._goodRASFlag = 0; // True: Use directional cosines, false assume CORONAL
+    _this._spacingXYZ = [1, 1, 1];
+    _this._Xras = [-1, 0, 0];
+    _this._Yras = [0, 0, -1];
+    _this._Zras = [0, 1, 0];
+    _this._Cras = [0, 0, 0];
+    // Image "footer"
+    _this._tr = 0; // ms
+    _this._flipAngle = 0; // radians
+    _this._te = 0; // ms
+    _this._ti = 0; // ms
+    _this._fov = 0; // from doc: IGNORE THIS FIELD (data is inconsistent)
+    _this._tags = []; // Will then contain variable length char strings
 
-        // Other misc
-        _this._origin = [0, 0, 0];
-        _this._imageOrient = [0, 0, 0, 0, 0, 0];
+    // Other misc
+    _this._origin = [0, 0, 0];
+    _this._imageOrient = [0, 0, 0, 0, 0, 0];
 
-        // Read header
-        // ArrayBuffer in data.buffer may need endian swap
-        _this._buffer = data.buffer;
+    // Read header
+    // ArrayBuffer in data.buffer may need endian swap
+    _this._buffer = data.buffer;
 
-        _this._version = _this._readInt();
-        _this._swapEndian = false;
-        if (_this._version == 1) {
-            // Life is good
-        } else if (_this._version == 16777216) {
-            _this._swapEndian = true;
-            _this._version = _this._swap32(_this._version);
-        } else {
-            var error = new Error('MGH/MGZ parser: Unknown Endian.  Version reports: ' + _this._version);
-            throw error;
-        }
-        _this._width = _this._readInt();
-        _this._height = _this._readInt();
-        _this._depth = _this._readInt(); // AMI calls this frames
-        _this._nframes = _this._readInt();
-        _this._type = _this._readInt();
-        _this._dof = _this._readInt();
-        _this._goodRASFlag = _this._readShort();
-        _this._spacingXYZ = _this._readFloat(3);
-        _this._Xras = _this._readFloat(3);
-        _this._Yras = _this._readFloat(3);
-        _this._Zras = _this._readFloat(3);
-        _this._Cras = _this._readFloat(3);
+    _this._version = _this._readInt();
+    _this._swapEndian = false;
+    if (_this._version == 1) {
+      // Life is good
+    } else if (_this._version == 16777216) {
+      _this._swapEndian = true;
+      _this._version = _this._swap32(_this._version);
+    } else {
+      var error = new Error('MGH/MGZ parser: Unknown Endian.  Version reports: ' + _this._version);
+      throw error;
+    }
+    _this._width = _this._readInt();
+    _this._height = _this._readInt();
+    _this._depth = _this._readInt(); // AMI calls this frames
+    _this._nframes = _this._readInt();
+    _this._type = _this._readInt();
+    _this._dof = _this._readInt();
+    _this._goodRASFlag = _this._readShort();
+    _this._spacingXYZ = _this._readFloat(3);
+    _this._Xras = _this._readFloat(3);
+    _this._Yras = _this._readFloat(3);
+    _this._Zras = _this._readFloat(3);
+    _this._Cras = _this._readFloat(3);
 
-        _this._bufferPos = 284;
-        var dataSize = _this._width * _this._height * _this._depth * _this._nframes;
-        var vSize = _this._width * _this._height * _this._depth;
+    _this._bufferPos = 284;
+    var dataSize = _this._width * _this._height * _this._depth * _this._nframes;
+    var vSize = _this._width * _this._height * _this._depth;
 
-        switch (_this._type) {
-            case ParsersMgh.MRI_UCHAR:
-                _this._pixelData = _this._readUChar(dataSize);
-                break;
-            case ParsersMgh.MRI_INT:
-                _this._pixelData = _this._readInt(dataSize);
-                break;
-            case ParsersMgh.MRI_FLOAT:
-                _this._pixelData = _this._readFloat(dataSize);
-                break;
-            case ParsersMgh.MRI_SHORT:
-                _this._pixelData = _this._readShort(dataSize);
-                break;
-            default:
-                throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + _this._type);
-        }
-
-        _this._tr = _this._readFloat(1);
-        _this._flipAngle = _this._readFloat(1);
-        _this._te = _this._readFloat(1);
-        _this._ti = _this._readFloat(1);
-        _this._fov = _this._readFloat(1);
-
-        var enc = new TextDecoder();
-        var t = _this._tagReadStart();
-        while (t[0] != undefined) {
-            var tagType = t[0];
-            var tagLen = t[1];
-            var tagValue = undefined;
-
-            switch (tagType) {
-                case ParsersMgh.TAG_OLD_MGH_XFORM:
-                case ParsersMgh.TAG_MGH_XFORM:
-                    tagValue = _this._readChar(tagLen);
-                    break;
-                default:
-                    tagValue = _this._readChar(tagLen);
-            }
-            tagValue = enc.decode(tagValue);
-            _this._tags.push({ tagType: tagType, tagValue: tagValue });
-
-            // read for next loop
-            t = _this._tagReadStart();
-        }
-
-        // detect if we are in a right handed coordinate system
-        var first = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Xras);
-        var second = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Yras);
-        var crossFirstSecond = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().crossVectors(first, second);
-        var third = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Zras);
-
-        if (crossFirstSecond.angleTo(third) > Math.PI / 2) {
-            _this._rightHanded = false;
-        }
-
-        // - sign to move to LPS space
-        _this._imageOrient = [-_this._Xras[0], -_this._Xras[1], _this._Xras[2], -_this._Yras[0], -_this._Yras[1], _this._Yras[2]];
-
-        // Calculate origin
-        var fcx = _this._width / 2.0;
-        var fcy = _this._height / 2.0;
-        var fcz = _this._depth / 2.0;
-
-        for (var ui = 0; ui < 3; ++ui) {
-            _this._origin[ui] = _this._Cras[ui] - (_this._Xras[ui] * _this._spacingXYZ[0] * fcx + _this._Yras[ui] * _this._spacingXYZ[1] * fcy + _this._Zras[ui] * _this._spacingXYZ[2] * fcz);
-        }
-
-        // - sign to move to LPS space
-        _this._origin = [-_this._origin[0], -_this._origin[1], _this._origin[2]];
-        return _this;
+    switch (_this._type) {
+      case ParsersMgh.MRI_UCHAR:
+        _this._pixelData = _this._readUChar(dataSize);
+        break;
+      case ParsersMgh.MRI_INT:
+        _this._pixelData = _this._readInt(dataSize);
+        break;
+      case ParsersMgh.MRI_FLOAT:
+        _this._pixelData = _this._readFloat(dataSize);
+        break;
+      case ParsersMgh.MRI_SHORT:
+        _this._pixelData = _this._readShort(dataSize);
+        break;
+      default:
+        throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + _this._type);
     }
 
-    ParsersMgh.prototype.seriesInstanceUID = function seriesInstanceUID() {
-        // use filename + timestamp..?
-        return this._url;
-    };
+    _this._tr = _this._readFloat(1);
+    _this._flipAngle = _this._readFloat(1);
+    _this._te = _this._readFloat(1);
+    _this._ti = _this._readFloat(1);
+    _this._fov = _this._readFloat(1);
 
-    ParsersMgh.prototype.numberOfFrames = function numberOfFrames() {
-        // AMI calls Z component frames, not T (_nframes)
-        return this._depth;
-    };
+    var enc = new TextDecoder();
+    var t = _this._tagReadStart();
+    while (t[0] != undefined) {
+      var tagType = t[0];
+      var tagLen = t[1];
+      var tagValue = undefined;
 
-    ParsersMgh.prototype.sopInstanceUID = function sopInstanceUID() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      switch (tagType) {
+        case ParsersMgh.TAG_OLD_MGH_XFORM:
+        case ParsersMgh.TAG_MGH_XFORM:
+          tagValue = _this._readChar(tagLen);
+          break;
+        default:
+          tagValue = _this._readChar(tagLen);
+      }
+      tagValue = enc.decode(tagValue);
+      _this._tags.push({ tagType: tagType, tagValue: tagValue });
 
-        return frameIndex;
-    };
+      // read for next loop
+      t = _this._tagReadStart();
+    }
 
-    ParsersMgh.prototype.rows = function rows() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    // detect if we are in a right handed coordinate system
+    var first = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Xras);
+    var second = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Yras);
+    var crossFirstSecond = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().crossVectors(first, second);
+    var third = new three_src_math_Vector3__WEBPACK_IMPORTED_MODULE_1__["Vector3"]().fromArray(_this._Zras);
 
-        return this._width;
-    };
+    if (crossFirstSecond.angleTo(third) > Math.PI / 2) {
+      _this._rightHanded = false;
+    }
 
-    ParsersMgh.prototype.columns = function columns() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    // - sign to move to LPS space
+    _this._imageOrient = [-_this._Xras[0], -_this._Xras[1], _this._Xras[2], -_this._Yras[0], -_this._Yras[1], _this._Yras[2]];
 
-        return this._height;
-    };
+    // Calculate origin
+    var fcx = _this._width / 2.0;
+    var fcy = _this._height / 2.0;
+    var fcz = _this._depth / 2.0;
 
-    ParsersMgh.prototype.pixelType = function pixelType() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    for (var ui = 0; ui < 3; ++ui) {
+      _this._origin[ui] = _this._Cras[ui] - (_this._Xras[ui] * _this._spacingXYZ[0] * fcx + _this._Yras[ui] * _this._spacingXYZ[1] * fcy + _this._Zras[ui] * _this._spacingXYZ[2] * fcz);
+    }
 
-        // Return: 0 integer, 1 float
-        switch (this._type) {
-            case ParsersMgh.MRI_UCHAR:
-            case ParsersMgh.MRI_INT:
-            case ParsersMgh.MRI_SHORT:
-                return 0;
-            case ParsersMgh.MRI_FLOAT:
-                return 1;
-            default:
-                throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + this._type);
-        }
-    };
+    // - sign to move to LPS space
+    _this._origin = [-_this._origin[0], -_this._origin[1], _this._origin[2]];
+    return _this;
+  }
 
-    ParsersMgh.prototype.bitsAllocated = function bitsAllocated() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  ParsersMgh.prototype.seriesInstanceUID = function seriesInstanceUID() {
+    // use filename + timestamp..?
+    return this._url;
+  };
 
-        switch (this._type) {
-            case ParsersMgh.MRI_UCHAR:
-                return 8;
-            case ParsersMgh.MRI_SHORT:
-                return 16;
-            case ParsersMgh.MRI_INT:
-            case ParsersMgh.MRI_FLOAT:
-                return 32;
-            default:
-                throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + this._type);
-        }
-    };
+  ParsersMgh.prototype.numberOfFrames = function numberOfFrames() {
+    // AMI calls Z component frames, not T (_nframes)
+    return this._depth;
+  };
 
-    ParsersMgh.prototype.pixelSpacing = function pixelSpacing() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  ParsersMgh.prototype.sopInstanceUID = function sopInstanceUID() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        return this._spacingXYZ;
-    };
+    return frameIndex;
+  };
 
-    ParsersMgh.prototype.imageOrientation = function imageOrientation() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  ParsersMgh.prototype.rows = function rows() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        return this._imageOrient;
-    };
+    return this._width;
+  };
 
-    ParsersMgh.prototype.imagePosition = function imagePosition() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  ParsersMgh.prototype.columns = function columns() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        return this._origin;
-    };
+    return this._height;
+  };
 
-    ParsersMgh.prototype.extractPixelData = function extractPixelData() {
-        var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  ParsersMgh.prototype.pixelType = function pixelType() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        var sliceSize = this._width * this._height;
-        return this._pixelData.slice(frameIndex * sliceSize, (frameIndex + 1) * sliceSize);
-    };
+    // Return: 0 integer, 1 float
+    switch (this._type) {
+      case ParsersMgh.MRI_UCHAR:
+      case ParsersMgh.MRI_INT:
+      case ParsersMgh.MRI_SHORT:
+        return 0;
+      case ParsersMgh.MRI_FLOAT:
+        return 1;
+      default:
+        throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + this._type);
+    }
+  };
 
-    // signed int32
+  ParsersMgh.prototype.bitsAllocated = function bitsAllocated() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
+    switch (this._type) {
+      case ParsersMgh.MRI_UCHAR:
+        return 8;
+      case ParsersMgh.MRI_SHORT:
+        return 16;
+      case ParsersMgh.MRI_INT:
+      case ParsersMgh.MRI_FLOAT:
+        return 32;
+      default:
+        throw Error('MGH/MGZ parser: Unknown _type.  _type reports: ' + this._type);
+    }
+  };
 
-    ParsersMgh.prototype._readInt = function _readInt() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  ParsersMgh.prototype.pixelSpacing = function pixelSpacing() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 4));
-        this._bufferPos += len * 4;
-        var v = undefined;
-        if (len == 1) {
-            v = tempBuff.getInt32(0, this._swapEndian);
-        } else {
-            v = new Int32Array(len);
-            for (var i = 0; i < len; i++) {
-                v[i] = tempBuff.getInt32(i * 4, this._swapEndian);
-            }
-        }
-        return v;
-    };
+    return this._spacingXYZ;
+  };
 
-    // signed int16
+  ParsersMgh.prototype.imageOrientation = function imageOrientation() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
+    return this._imageOrient;
+  };
 
-    ParsersMgh.prototype._readShort = function _readShort() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  ParsersMgh.prototype.imagePosition = function imagePosition() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 2));
-        this._bufferPos += len * 2;
-        var v = undefined;
-        if (len == 1) {
-            v = tempBuff.getInt16(0, this._swapEndian);
-        } else {
-            v = new Int16Array(len);
-            for (var i = 0; i < len; i++) {
-                v[i] = tempBuff.getInt16(i * 2, this._swapEndian);
-            }
-        }
-        return v;
-    };
+    return this._origin;
+  };
 
-    // signed int64
+  ParsersMgh.prototype.extractPixelData = function extractPixelData() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
+    var sliceSize = this._width * this._height;
+    return this._pixelData.slice(frameIndex * sliceSize, (frameIndex + 1) * sliceSize);
+  };
 
-    ParsersMgh.prototype._readLong = function _readLong() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 8));
-        this._bufferPos += len * 8;
-        var v = new Uint16Array(len);
-        for (var i = 0; i < len; i++) {
-            /* DataView doesn't have Int64.
-             * This work around based off Scalajs
-             * (https://github.com/scala-js/scala-js/blob/master/library/src/main/scala/scala/scalajs/js/typedarray/DataViewExt.scala)
-             * v[i]=tempBuff.getInt64(i*8,this._swapEndian);
-            */
-            var shiftHigh = 0;
-            var shiftLow = 0;
-            if (this._swapendian) {
-                shiftHigh = 4;
-            } else {
-                shiftLow = 4;
-            }
-            var high = tempBuff.getInt32(i * 8 + shiftHigh, this._swapEndian);
-            var low = tempBuff.getInt32(i * 8 + shiftLow, this._swapEndian);
-            if (high != 0) {
-                console.log('Unable to read Int64 with high word: ' + high + 'low word: ' + low);
-                low = undefined;
-            }
-            v[i] = low;
-        }
-        if (len == 0) {
-            return undefined;
-        } else if (len == 1) {
-            return v[0];
-        } else {
-            return v;
-        }
-    };
-
-    // signed int8
+  // signed int32
 
 
-    ParsersMgh.prototype._readChar = function _readChar() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  ParsersMgh.prototype._readInt = function _readInt() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len));
-        this._bufferPos += len;
-        var v = undefined;
-        if (len == 1) {
-            v = tempBuff.getInt8(0, this._swapEndian);
-        } else {
-            v = new Int8Array(len);
-            for (var i = 0; i < len; i++) {
-                v[i] = tempBuff.getInt8(i, this._swapEndian);
-            }
-        }
-        return v;
-    };
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 4));
+    this._bufferPos += len * 4;
+    var v = undefined;
+    if (len == 1) {
+      v = tempBuff.getInt32(0, this._swapEndian);
+    } else {
+      v = new Int32Array(len);
+      for (var i = 0; i < len; i++) {
+        v[i] = tempBuff.getInt32(i * 4, this._swapEndian);
+      }
+    }
+    return v;
+  };
 
-    // unsigned int8
-
-
-    ParsersMgh.prototype._readUChar = function _readUChar() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len));
-        this._bufferPos += len;
-        var v = undefined;
-        if (len == 1) {
-            v = tempBuff.getUint8(0, this._swapEndian);
-        } else {
-            v = new Uint8Array(len);
-            for (var i = 0; i < len; i++) {
-                v[i] = tempBuff.getUint8(i, this._swapEndian);
-            }
-        }
-        return v;
-    };
-
-    // float32
+  // signed int16
 
 
-    ParsersMgh.prototype._readFloat = function _readFloat() {
-        var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  ParsersMgh.prototype._readShort = function _readShort() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-        var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 4));
-        this._bufferPos += len * 4;
-        var v = undefined;
-        if (len == 1) {
-            v = tempBuff.getFloat32(0, this._swapEndian);
-        } else {
-            v = new Float32Array(len);
-            for (var i = 0; i < len; i++) {
-                v[i] = tempBuff.getFloat32(i * 4, this._swapEndian);
-            }
-        }
-        return v;
-    };
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 2));
+    this._bufferPos += len * 2;
+    var v = undefined;
+    if (len == 1) {
+      v = tempBuff.getInt16(0, this._swapEndian);
+    } else {
+      v = new Int16Array(len);
+      for (var i = 0; i < len; i++) {
+        v[i] = tempBuff.getInt16(i * 2, this._swapEndian);
+      }
+    }
+    return v;
+  };
 
-    ParsersMgh.prototype._tagReadStart = function _tagReadStart() {
-        if (this._bufferPos >= this._buffer.byteLength) {
-            return [undefined, undefined];
-        }
-        var tagType = this._readInt();
-        var tagLen = undefined;
-        switch (tagType) {
-            case ParsersMgh.TAG_OLD_MGH_XFORM:
-                tagLen = this._readInt();
-                tagLen -= 1;
-                break;
-            case ParsersMgh.TAG_OLD_SURF_GEOM:
-            case ParsersMgh.TAG_OLD_USEREALRAS:
-            case ParsersMgh.TAG_OLD_COLORTABLE:
-                tagLen = 0;
-                break;
-            default:
-                tagLen = this._readLong();
-        }
-        if (tagLen == undefined) {
-            tagType = undefined;
-        }
-        return [tagType, tagLen];
-    };
+  // signed int64
 
-    return ParsersMgh;
+
+  ParsersMgh.prototype._readLong = function _readLong() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 8));
+    this._bufferPos += len * 8;
+    var v = new Uint16Array(len);
+    for (var i = 0; i < len; i++) {
+      /* DataView doesn't have Int64.
+       * This work around based off Scalajs
+       * (https://github.com/scala-js/scala-js/blob/master/library/src/main/scala/scala/scalajs/js/typedarray/DataViewExt.scala)
+       * v[i]=tempBuff.getInt64(i*8,this._swapEndian);
+       */
+      var shiftHigh = 0;
+      var shiftLow = 0;
+      if (this._swapendian) {
+        shiftHigh = 4;
+      } else {
+        shiftLow = 4;
+      }
+      var high = tempBuff.getInt32(i * 8 + shiftHigh, this._swapEndian);
+      var low = tempBuff.getInt32(i * 8 + shiftLow, this._swapEndian);
+      if (high != 0) {
+        console.log('Unable to read Int64 with high word: ' + high + 'low word: ' + low);
+        low = undefined;
+      }
+      v[i] = low;
+    }
+    if (len == 0) {
+      return undefined;
+    } else if (len == 1) {
+      return v[0];
+    } else {
+      return v;
+    }
+  };
+
+  // signed int8
+
+
+  ParsersMgh.prototype._readChar = function _readChar() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len));
+    this._bufferPos += len;
+    var v = undefined;
+    if (len == 1) {
+      v = tempBuff.getInt8(0, this._swapEndian);
+    } else {
+      v = new Int8Array(len);
+      for (var i = 0; i < len; i++) {
+        v[i] = tempBuff.getInt8(i, this._swapEndian);
+      }
+    }
+    return v;
+  };
+
+  // unsigned int8
+
+
+  ParsersMgh.prototype._readUChar = function _readUChar() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len));
+    this._bufferPos += len;
+    var v = undefined;
+    if (len == 1) {
+      v = tempBuff.getUint8(0, this._swapEndian);
+    } else {
+      v = new Uint8Array(len);
+      for (var i = 0; i < len; i++) {
+        v[i] = tempBuff.getUint8(i, this._swapEndian);
+      }
+    }
+    return v;
+  };
+
+  // float32
+
+
+  ParsersMgh.prototype._readFloat = function _readFloat() {
+    var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+    var tempBuff = new DataView(this._buffer.slice(this._bufferPos, this._bufferPos + len * 4));
+    this._bufferPos += len * 4;
+    var v = undefined;
+    if (len == 1) {
+      v = tempBuff.getFloat32(0, this._swapEndian);
+    } else {
+      v = new Float32Array(len);
+      for (var i = 0; i < len; i++) {
+        v[i] = tempBuff.getFloat32(i * 4, this._swapEndian);
+      }
+    }
+    return v;
+  };
+
+  ParsersMgh.prototype._tagReadStart = function _tagReadStart() {
+    if (this._bufferPos >= this._buffer.byteLength) {
+      return [undefined, undefined];
+    }
+    var tagType = this._readInt();
+    var tagLen = undefined;
+    switch (tagType) {
+      case ParsersMgh.TAG_OLD_MGH_XFORM:
+        tagLen = this._readInt();
+        tagLen -= 1;
+        break;
+      case ParsersMgh.TAG_OLD_SURF_GEOM:
+      case ParsersMgh.TAG_OLD_USEREALRAS:
+      case ParsersMgh.TAG_OLD_COLORTABLE:
+        tagLen = 0;
+        break;
+      default:
+        tagLen = this._readLong();
+    }
+    if (tagLen == undefined) {
+      tagType = undefined;
+    }
+    return [tagType, tagLen];
+  };
+
+  return ParsersMgh;
 }(_parsers_volume__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 // https://github.com/freesurfer/freesurfer/
@@ -39537,9 +38746,9 @@ var ParsersMHD = function (_ParsersVolume) {
     _classCallCheck(this, ParsersMHD);
 
     /**
-      * @member
-      * @type {arraybuffer}
-    */
+     * @member
+     * @type {arraybuffer}
+     */
     var _this = _possibleConstructorReturn(this, _ParsersVolume.call(this));
 
     _this._id = id;
@@ -39754,9 +38963,9 @@ var ParsersNifti = function (_ParsersVolume) {
     _classCallCheck(this, ParsersNifti);
 
     /**
-      * @member
-      * @type {arraybuffer}
-    */
+     * @member
+     * @type {arraybuffer}
+     */
     var _this = _possibleConstructorReturn(this, _ParsersVolume.call(this));
 
     _this._id = id;
@@ -39934,7 +39143,9 @@ var ParsersNifti = function (_ParsersVolume) {
         /* special case */
 
         a = 1.0 / Math.sqrt(b * b + c * c + d * d);
-        b *= a;c *= a;d *= a; /* normalize (b,c,d) vector */
+        b *= a;
+        c *= a;
+        d *= a; /* normalize (b,c,d) vector */
         a = 0.0; /* a = 0 ==> 180 degree rotation */
       } else {
         a = Math.sqrt(a); /* angle = 2*arccos(a) */
@@ -39965,11 +39176,9 @@ var ParsersNifti = function (_ParsersVolume) {
       // -------------------------------------------------------
       // The coordinate mapping from (i,j,k) to (x,y,z) is the ANALYZE
       // 7.5 way.  This is a simple scaling relationship:
-
       //   x = pixdim[1] * i
       //   y = pixdim[2] * j
       //   z = pixdim[3] * k
-
       // No particular spatial orientation is attached to these (x,y,z)
       // coordinates.  (NIFTI-1 does not have the ANALYZE 7.5 orient field,
       // which is not general and is often not set properly.)  This method
@@ -40190,9 +39399,9 @@ var ParsersNifti = function (_ParsersVolume) {
     _classCallCheck(this, ParsersNifti);
 
     /**
-      * @member
-      * @type {arraybuffer}
-    */
+     * @member
+     * @type {arraybuffer}
+     */
     var _this = _possibleConstructorReturn(this, _ParsersVolume.call(this));
 
     _this._id = id;
@@ -40583,6 +39792,12 @@ var ParsersVolume = function () {
     return 0;
   };
 
+  ParsersVolume.prototype.ultrasoundRegions = function ultrasoundRegions() {
+    var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    return [];
+  };
+
   ParsersVolume.prototype.frameTime = function frameTime() {
     var frameIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
@@ -40595,11 +39810,11 @@ var ParsersVolume = function () {
 
 
   ParsersVolume.prototype._swap16 = function _swap16(val) {
-    return (val & 0xFF) << 8 | val >> 8 & 0xFF;
+    return (val & 0xff) << 8 | val >> 8 & 0xff;
   };
 
   ParsersVolume.prototype._swap32 = function _swap32(val) {
-    return (val & 0xFF) << 24 | (val & 0xFF00) << 8 | val >> 8 & 0xFF00 | val >> 24 & 0xFF;
+    return (val & 0xff) << 24 | (val & 0xff00) << 8 | val >> 8 & 0xff00 | val >> 24 & 0xff;
   };
 
   ParsersVolume.prototype.invert = function invert() {
@@ -41333,11 +40548,19 @@ var segmentationFs = {
   1116: { color: [20, 220, 60], opacity: 1, label: 'ctx-lh-G_occipital_superior' },
   1117: { color: [60, 20, 140], opacity: 1, label: 'ctx-lh-G_occipit-temp_lat-Or_fusiform' },
   1118: { color: [220, 180, 140], opacity: 1, label: 'ctx-lh-G_occipit-temp_med-Lingual_part' },
-  1119: { color: [65, 100, 20], opacity: 1, label: 'ctx-lh-G_occipit-temp_med-Parahippocampal_part' },
+  1119: {
+    color: [65, 100, 20],
+    opacity: 1,
+    label: 'ctx-lh-G_occipit-temp_med-Parahippocampal_part'
+  },
   1120: { color: [220, 60, 20], opacity: 1, label: 'ctx-lh-G_orbital' },
   1121: { color: [60, 100, 60], opacity: 1, label: 'ctx-lh-G_paracentral' },
   1122: { color: [20, 60, 220], opacity: 1, label: 'ctx-lh-G_parietal_inferior-Angular_part' },
-  1123: { color: [100, 100, 60], opacity: 1, label: 'ctx-lh-G_parietal_inferior-Supramarginal_part' },
+  1123: {
+    color: [100, 100, 60],
+    opacity: 1,
+    label: 'ctx-lh-G_parietal_inferior-Supramarginal_part'
+  },
   1124: { color: [220, 180, 220], opacity: 1, label: 'ctx-lh-G_parietal_superior' },
   1125: { color: [20, 180, 140], opacity: 1, label: 'ctx-lh-G_postcentral' },
   1126: { color: [60, 140, 180], opacity: 1, label: 'ctx-lh-G_precentral' },
@@ -41361,7 +40584,11 @@ var segmentationFs = {
   1144: { color: [63, 180, 180], opacity: 1, label: 'ctx-lh-S_calcarine' },
   1145: { color: [221, 20, 10], opacity: 1, label: 'ctx-lh-S_central' },
   1146: { color: [21, 220, 20], opacity: 1, label: 'ctx-lh-S_central_insula' },
-  1147: { color: [183, 100, 20], opacity: 1, label: 'ctx-lh-S_cingulate-Main_part_and_Intracingulate' },
+  1147: {
+    color: [183, 100, 20],
+    opacity: 1,
+    label: 'ctx-lh-S_cingulate-Main_part_and_Intracingulate'
+  },
   1148: { color: [221, 20, 100], opacity: 1, label: 'ctx-lh-S_cingulate-Marginalis_part' },
   1149: { color: [221, 60, 140], opacity: 1, label: 'ctx-lh-S_circular_insula_anterior' },
   1150: { color: [221, 20, 220], opacity: 1, label: 'ctx-lh-S_circular_insula_inferior' },
@@ -41373,12 +40600,24 @@ var segmentationFs = {
   1156: { color: [61, 220, 100], opacity: 1, label: 'ctx-lh-S_frontal_superior' },
   1157: { color: [21, 220, 60], opacity: 1, label: 'ctx-lh-S_frontomarginal' },
   1158: { color: [141, 60, 20], opacity: 1, label: 'ctx-lh-S_intermedius_primus-Jensen' },
-  1159: { color: [143, 20, 220], opacity: 1, label: 'ctx-lh-S_intraparietal-and_Parietal_transverse' },
+  1159: {
+    color: [143, 20, 220],
+    opacity: 1,
+    label: 'ctx-lh-S_intraparietal-and_Parietal_transverse'
+  },
   1160: { color: [61, 20, 180], opacity: 1, label: 'ctx-lh-S_occipital_anterior' },
   1161: { color: [101, 60, 220], opacity: 1, label: 'ctx-lh-S_occipital_middle_and_Lunatus' },
-  1162: { color: [21, 20, 140], opacity: 1, label: 'ctx-lh-S_occipital_superior_and_transversalis' },
+  1162: {
+    color: [21, 20, 140],
+    opacity: 1,
+    label: 'ctx-lh-S_occipital_superior_and_transversalis'
+  },
   1163: { color: [221, 140, 20], opacity: 1, label: 'ctx-lh-S_occipito-temporal_lateral' },
-  1164: { color: [141, 100, 220], opacity: 1, label: 'ctx-lh-S_occipito-temporal_medial_and_S_Lingual' },
+  1164: {
+    color: [141, 100, 220],
+    opacity: 1,
+    label: 'ctx-lh-S_occipito-temporal_medial_and_S_Lingual'
+  },
   1165: { color: [101, 20, 20], opacity: 1, label: 'ctx-lh-S_orbital-H_shapped' },
   1166: { color: [221, 100, 20], opacity: 1, label: 'ctx-lh-S_orbital_lateral' },
   1167: { color: [181, 200, 20], opacity: 1, label: 'ctx-lh-S_orbital_medial-Or_olfactory' },
@@ -41415,11 +40654,19 @@ var segmentationFs = {
   2116: { color: [20, 220, 60], opacity: 1, label: 'ctx-rh-G_occipital_superior' },
   2117: { color: [60, 20, 140], opacity: 1, label: 'ctx-rh-G_occipit-temp_lat-Or_fusiform' },
   2118: { color: [220, 180, 140], opacity: 1, label: 'ctx-rh-G_occipit-temp_med-Lingual_part' },
-  2119: { color: [65, 100, 20], opacity: 1, label: 'ctx-rh-G_occipit-temp_med-Parahippocampal_part' },
+  2119: {
+    color: [65, 100, 20],
+    opacity: 1,
+    label: 'ctx-rh-G_occipit-temp_med-Parahippocampal_part'
+  },
   2120: { color: [220, 60, 20], opacity: 1, label: 'ctx-rh-G_orbital' },
   2121: { color: [60, 100, 60], opacity: 1, label: 'ctx-rh-G_paracentral' },
   2122: { color: [20, 60, 220], opacity: 1, label: 'ctx-rh-G_parietal_inferior-Angular_part' },
-  2123: { color: [100, 100, 60], opacity: 1, label: 'ctx-rh-G_parietal_inferior-Supramarginal_part' },
+  2123: {
+    color: [100, 100, 60],
+    opacity: 1,
+    label: 'ctx-rh-G_parietal_inferior-Supramarginal_part'
+  },
   2124: { color: [220, 180, 220], opacity: 1, label: 'ctx-rh-G_parietal_superior' },
   2125: { color: [20, 180, 140], opacity: 1, label: 'ctx-rh-G_postcentral' },
   2126: { color: [60, 140, 180], opacity: 1, label: 'ctx-rh-G_precentral' },
@@ -41443,7 +40690,11 @@ var segmentationFs = {
   2144: { color: [63, 180, 180], opacity: 1, label: 'ctx-rh-S_calcarine' },
   2145: { color: [221, 20, 10], opacity: 1, label: 'ctx-rh-S_central' },
   2146: { color: [21, 220, 20], opacity: 1, label: 'ctx-rh-S_central_insula' },
-  2147: { color: [183, 100, 20], opacity: 1, label: 'ctx-rh-S_cingulate-Main_part_and_Intracingulate' },
+  2147: {
+    color: [183, 100, 20],
+    opacity: 1,
+    label: 'ctx-rh-S_cingulate-Main_part_and_Intracingulate'
+  },
   2148: { color: [221, 20, 100], opacity: 1, label: 'ctx-rh-S_cingulate-Marginalis_part' },
   2149: { color: [221, 60, 140], opacity: 1, label: 'ctx-rh-S_circular_insula_anterior' },
   2150: { color: [221, 20, 220], opacity: 1, label: 'ctx-rh-S_circular_insula_inferior' },
@@ -41455,12 +40706,24 @@ var segmentationFs = {
   2156: { color: [61, 220, 100], opacity: 1, label: 'ctx-rh-S_frontal_superior' },
   2157: { color: [21, 220, 60], opacity: 1, label: 'ctx-rh-S_frontomarginal' },
   2158: { color: [141, 60, 20], opacity: 1, label: 'ctx-rh-S_intermedius_primus-Jensen' },
-  2159: { color: [143, 20, 220], opacity: 1, label: 'ctx-rh-S_intraparietal-and_Parietal_transverse' },
+  2159: {
+    color: [143, 20, 220],
+    opacity: 1,
+    label: 'ctx-rh-S_intraparietal-and_Parietal_transverse'
+  },
   2160: { color: [61, 20, 180], opacity: 1, label: 'ctx-rh-S_occipital_anterior' },
   2161: { color: [101, 60, 220], opacity: 1, label: 'ctx-rh-S_occipital_middle_and_Lunatus' },
-  2162: { color: [21, 20, 140], opacity: 1, label: 'ctx-rh-S_occipital_superior_and_transversalis' },
+  2162: {
+    color: [21, 20, 140],
+    opacity: 1,
+    label: 'ctx-rh-S_occipital_superior_and_transversalis'
+  },
   2163: { color: [221, 140, 20], opacity: 1, label: 'ctx-rh-S_occipito-temporal_lateral' },
-  2164: { color: [141, 100, 220], opacity: 1, label: 'ctx-rh-S_occipito-temporal_medial_and_S_Lingual' },
+  2164: {
+    color: [141, 100, 220],
+    opacity: 1,
+    label: 'ctx-rh-S_occipito-temporal_medial_and_S_Lingual'
+  },
   2165: { color: [101, 20, 20], opacity: 1, label: 'ctx-rh-S_orbital-H_shapped' },
   2166: { color: [221, 100, 20], opacity: 1, label: 'ctx-rh-S_orbital_lateral' },
   2167: { color: [181, 200, 20], opacity: 1, label: 'ctx-rh-S_orbital_medial-Or_olfactory' },
@@ -41506,11 +40769,19 @@ var segmentationFs = {
   3116: { color: [20, 220, 60], opacity: 1, label: 'wm-lh-G_occipital_superior' },
   3117: { color: [60, 20, 140], opacity: 1, label: 'wm-lh-G_occipit-temp_lat-Or_fusiform' },
   3118: { color: [220, 180, 140], opacity: 1, label: 'wm-lh-G_occipit-temp_med-Lingual_part' },
-  3119: { color: [65, 100, 20], opacity: 1, label: 'wm-lh-G_occipit-temp_med-Parahippocampal_part' },
+  3119: {
+    color: [65, 100, 20],
+    opacity: 1,
+    label: 'wm-lh-G_occipit-temp_med-Parahippocampal_part'
+  },
   3120: { color: [220, 60, 20], opacity: 1, label: 'wm-lh-G_orbital' },
   3121: { color: [60, 100, 60], opacity: 1, label: 'wm-lh-G_paracentral' },
   3122: { color: [20, 60, 220], opacity: 1, label: 'wm-lh-G_parietal_inferior-Angular_part' },
-  3123: { color: [100, 100, 60], opacity: 1, label: 'wm-lh-G_parietal_inferior-Supramarginal_part' },
+  3123: {
+    color: [100, 100, 60],
+    opacity: 1,
+    label: 'wm-lh-G_parietal_inferior-Supramarginal_part'
+  },
   3124: { color: [220, 180, 220], opacity: 1, label: 'wm-lh-G_parietal_superior' },
   3125: { color: [20, 180, 140], opacity: 1, label: 'wm-lh-G_postcentral' },
   3126: { color: [60, 140, 180], opacity: 1, label: 'wm-lh-G_precentral' },
@@ -41534,7 +40805,11 @@ var segmentationFs = {
   3144: { color: [63, 180, 180], opacity: 1, label: 'wm-lh-S_calcarine' },
   3145: { color: [221, 20, 10], opacity: 1, label: 'wm-lh-S_central' },
   3146: { color: [21, 220, 20], opacity: 1, label: 'wm-lh-S_central_insula' },
-  3147: { color: [183, 100, 20], opacity: 1, label: 'wm-lh-S_cingulate-Main_part_and_Intracingulate' },
+  3147: {
+    color: [183, 100, 20],
+    opacity: 1,
+    label: 'wm-lh-S_cingulate-Main_part_and_Intracingulate'
+  },
   3148: { color: [221, 20, 100], opacity: 1, label: 'wm-lh-S_cingulate-Marginalis_part' },
   3149: { color: [221, 60, 140], opacity: 1, label: 'wm-lh-S_circular_insula_anterior' },
   3150: { color: [221, 20, 220], opacity: 1, label: 'wm-lh-S_circular_insula_inferior' },
@@ -41546,12 +40821,20 @@ var segmentationFs = {
   3156: { color: [61, 220, 100], opacity: 1, label: 'wm-lh-S_frontal_superior' },
   3157: { color: [21, 220, 60], opacity: 1, label: 'wm-lh-S_frontomarginal' },
   3158: { color: [141, 60, 20], opacity: 1, label: 'wm-lh-S_intermedius_primus-Jensen' },
-  3159: { color: [143, 20, 220], opacity: 1, label: 'wm-lh-S_intraparietal-and_Parietal_transverse' },
+  3159: {
+    color: [143, 20, 220],
+    opacity: 1,
+    label: 'wm-lh-S_intraparietal-and_Parietal_transverse'
+  },
   3160: { color: [61, 20, 180], opacity: 1, label: 'wm-lh-S_occipital_anterior' },
   3161: { color: [101, 60, 220], opacity: 1, label: 'wm-lh-S_occipital_middle_and_Lunatus' },
   3162: { color: [21, 20, 140], opacity: 1, label: 'wm-lh-S_occipital_superior_and_transversalis' },
   3163: { color: [221, 140, 20], opacity: 1, label: 'wm-lh-S_occipito-temporal_lateral' },
-  3164: { color: [141, 100, 220], opacity: 1, label: 'wm-lh-S_occipito-temporal_medial_and_S_Lingual' },
+  3164: {
+    color: [141, 100, 220],
+    opacity: 1,
+    label: 'wm-lh-S_occipito-temporal_medial_and_S_Lingual'
+  },
   3165: { color: [101, 20, 20], opacity: 1, label: 'wm-lh-S_orbital-H_shapped' },
   3166: { color: [221, 100, 20], opacity: 1, label: 'wm-lh-S_orbital_lateral' },
   3167: { color: [181, 200, 20], opacity: 1, label: 'wm-lh-S_orbital_medial-Or_olfactory' },
@@ -41588,11 +40871,19 @@ var segmentationFs = {
   4116: { color: [20, 220, 60], opacity: 1, label: 'wm-rh-G_occipital_superior' },
   4117: { color: [60, 20, 140], opacity: 1, label: 'wm-rh-G_occipit-temp_lat-Or_fusiform' },
   4118: { color: [220, 180, 140], opacity: 1, label: 'wm-rh-G_occipit-temp_med-Lingual_part' },
-  4119: { color: [65, 100, 20], opacity: 1, label: 'wm-rh-G_occipit-temp_med-Parahippocampal_part' },
+  4119: {
+    color: [65, 100, 20],
+    opacity: 1,
+    label: 'wm-rh-G_occipit-temp_med-Parahippocampal_part'
+  },
   4120: { color: [220, 60, 20], opacity: 1, label: 'wm-rh-G_orbital' },
   4121: { color: [60, 100, 60], opacity: 1, label: 'wm-rh-G_paracentral' },
   4122: { color: [20, 60, 220], opacity: 1, label: 'wm-rh-G_parietal_inferior-Angular_part' },
-  4123: { color: [100, 100, 60], opacity: 1, label: 'wm-rh-G_parietal_inferior-Supramarginal_part' },
+  4123: {
+    color: [100, 100, 60],
+    opacity: 1,
+    label: 'wm-rh-G_parietal_inferior-Supramarginal_part'
+  },
   4124: { color: [220, 180, 220], opacity: 1, label: 'wm-rh-G_parietal_superior' },
   4125: { color: [20, 180, 140], opacity: 1, label: 'wm-rh-G_postcentral' },
   4126: { color: [60, 140, 180], opacity: 1, label: 'wm-rh-G_precentral' },
@@ -41616,7 +40907,11 @@ var segmentationFs = {
   4144: { color: [63, 180, 180], opacity: 1, label: 'wm-rh-S_calcarine' },
   4145: { color: [221, 20, 10], opacity: 1, label: 'wm-rh-S_central' },
   4146: { color: [21, 220, 20], opacity: 1, label: 'wm-rh-S_central_insula' },
-  4147: { color: [183, 100, 20], opacity: 1, label: 'wm-rh-S_cingulate-Main_part_and_Intracingulate' },
+  4147: {
+    color: [183, 100, 20],
+    opacity: 1,
+    label: 'wm-rh-S_cingulate-Main_part_and_Intracingulate'
+  },
   4148: { color: [221, 20, 100], opacity: 1, label: 'wm-rh-S_cingulate-Marginalis_part' },
   4149: { color: [221, 60, 140], opacity: 1, label: 'wm-rh-S_circular_insula_anterior' },
   4150: { color: [221, 20, 220], opacity: 1, label: 'wm-rh-S_circular_insula_inferior' },
@@ -41628,12 +40923,20 @@ var segmentationFs = {
   4156: { color: [61, 220, 100], opacity: 1, label: 'wm-rh-S_frontal_superior' },
   4157: { color: [21, 220, 60], opacity: 1, label: 'wm-rh-S_frontomarginal' },
   4158: { color: [141, 60, 20], opacity: 1, label: 'wm-rh-S_intermedius_primus-Jensen' },
-  4159: { color: [143, 20, 220], opacity: 1, label: 'wm-rh-S_intraparietal-and_Parietal_transverse' },
+  4159: {
+    color: [143, 20, 220],
+    opacity: 1,
+    label: 'wm-rh-S_intraparietal-and_Parietal_transverse'
+  },
   4160: { color: [61, 20, 180], opacity: 1, label: 'wm-rh-S_occipital_anterior' },
   4161: { color: [101, 60, 220], opacity: 1, label: 'wm-rh-S_occipital_middle_and_Lunatus' },
   4162: { color: [21, 20, 140], opacity: 1, label: 'wm-rh-S_occipital_superior_and_transversalis' },
   4163: { color: [221, 140, 20], opacity: 1, label: 'wm-rh-S_occipito-temporal_lateral' },
-  4164: { color: [141, 100, 220], opacity: 1, label: 'wm-rh-S_occipito-temporal_medial_and_S_Lingual' },
+  4164: {
+    color: [141, 100, 220],
+    opacity: 1,
+    label: 'wm-rh-S_occipito-temporal_medial_and_S_Lingual'
+  },
   4165: { color: [101, 20, 20], opacity: 1, label: 'wm-rh-S_orbital-H_shapped' },
   4166: { color: [221, 100, 20], opacity: 1, label: 'wm-rh-S_orbital_lateral' },
   4167: { color: [181, 200, 20], opacity: 1, label: 'wm-rh-S_orbital_medial-Or_olfactory' },
@@ -42115,7 +41418,7 @@ var PresetsSegmentation = function () {
 
   PresetsSegmentation.prototype.presetSegs = function presetSegs() {
     return {
-      'Freesurfer': _presets_segmentation_freesurfer__WEBPACK_IMPORTED_MODULE_0__["default"]
+      Freesurfer: _presets_segmentation_freesurfer__WEBPACK_IMPORTED_MODULE_0__["default"]
     };
   };
 
@@ -42376,13 +41679,13 @@ var Unpack = function (_ShadersBase) {
   Unpack.prototype.upack8 = function upack8() {
     this._base._functions['uInt8'] = this.uInt8();
 
-    return '\nuInt8(\n  step( abs( float(offset - 0) ), 0.0 ) * packedData.r +\n  step( abs( float(offset - 1) ), 0.0 ) * packedData.g +\n  step( abs( float(offset - 2) ), 0.0 ) * packedData.b +\n  step( abs( float(offset - 3) ), 0.0 ) * packedData.a\n  ,\n  unpackedData.x);\n    ';
+    return '\nfloat floatedOffset = float(offset);\nfloat floatedOffsetSquared = floatedOffset * floatedOffset;\nuInt8(\n  step( floatedOffsetSquared , 0.0 ) * packedData.r +\n  step( floatedOffsetSquared - 2. * floatedOffset + 1., 0.0 ) * packedData.g +\n  step( floatedOffsetSquared - 2. * 2. *  floatedOffset + 4., 0.0 ) * packedData.b +\n  step( floatedOffsetSquared - 2. * 3. *  floatedOffset + 9., 0.0 ) * packedData.a\n  ,\n  unpackedData.x);\n    ';
   };
 
   Unpack.prototype.upack16 = function upack16() {
     this._base._functions['uInt16'] = this.uInt16();
 
-    return '\nuInt16(\n  packedData.r * float( 1 - offset) + packedData.b * float(offset),\n  packedData.g * float( 1 - offset) + packedData.a * float(offset),\n  unpackedData.x);\n    ';
+    return '\nfloat floatedOffset = float(offset);\nuInt16(\n  packedData.r * (1. - floatedOffset) + packedData.b * floatedOffset,\n  packedData.g * (1. - floatedOffset) + packedData.a * floatedOffset,\n  unpackedData.x);\n    ';
   };
 
   Unpack.prototype.upack32 = function upack32() {
@@ -42719,27 +42022,27 @@ var ShadersUniform = function () {
 
   ShadersUniform.uniforms = function uniforms() {
     return {
-      'uCanvasWidth': {
+      uCanvasWidth: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uCanvasHeight': {
+      uCanvasHeight: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uWidth': {
+      uWidth: {
         type: 'f',
-        value: 1.,
+        value: 1,
         typeGLSL: 'float'
       },
-      'uOpacity': {
+      uOpacity: {
         type: 'f',
-        value: 1.,
+        value: 1,
         typeGLSL: 'float'
       },
-      'uTextureFilled': {
+      uTextureFilled: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
@@ -42879,141 +42182,141 @@ var ShadersUniform = function () {
    */
   ShadersUniform.uniforms = function uniforms() {
     return {
-      'uTextureSize': {
+      uTextureSize: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uTextureContainer': {
+      uTextureContainer: {
         type: 'tv',
         value: [],
         typeGLSL: 'sampler2D',
         length: 7
       },
-      'uDataDimensions': {
+      uDataDimensions: {
         type: 'iv',
         value: [0, 0, 0],
         typeGLSL: 'ivec3'
       },
-      'uWorldToData': {
+      uWorldToData: {
         type: 'm4',
         value: new three_src_math_Matrix4__WEBPACK_IMPORTED_MODULE_0__["Matrix4"](),
         typeGLSL: 'mat4'
       },
-      'uWindowCenterWidth': {
+      uWindowCenterWidth: {
         type: 'fv1',
         value: [0.0, 0.0],
         typeGLSL: 'float',
         length: 2
       },
-      'uLowerUpperThreshold': {
+      uLowerUpperThreshold: {
         type: 'fv1',
         value: [0.0, 0.0],
         typeGLSL: 'float',
         length: 2
       },
-      'uRescaleSlopeIntercept': {
+      uRescaleSlopeIntercept: {
         type: 'fv1',
         value: [0.0, 0.0],
         typeGLSL: 'float',
         length: 2
       },
-      'uNumberOfChannels': {
+      uNumberOfChannels: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uBitsAllocated': {
+      uBitsAllocated: {
         type: 'i',
         value: 8,
         typeGLSL: 'int'
       },
-      'uInvert': {
+      uInvert: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uLut': {
+      uLut: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uTextureLUT': {
+      uTextureLUT: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
       },
-      'uLutSegmentation': {
+      uLutSegmentation: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uTextureLUTSegmentation': {
+      uTextureLUTSegmentation: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
       },
-      'uPixelType': {
+      uPixelType: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uPackedPerPixel': {
+      uPackedPerPixel: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uInterpolation': {
+      uInterpolation: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uCanvasWidth': {
+      uCanvasWidth: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uCanvasHeight': {
+      uCanvasHeight: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uBorderColor': {
+      uBorderColor: {
         type: 'v3',
         value: [1.0, 0.0, 0.5],
         typeGLSL: 'vec3'
       },
-      'uBorderWidth': {
+      uBorderWidth: {
         type: 'f',
-        value: 2.,
+        value: 2,
         typeGLSL: 'float'
       },
-      'uBorderMargin': {
+      uBorderMargin: {
         type: 'f',
-        value: 2.,
+        value: 2,
         typeGLSL: 'float'
       },
-      'uBorderDashLength': {
+      uBorderDashLength: {
         type: 'f',
-        value: 10.,
+        value: 10,
         typeGLSL: 'float'
       },
-      'uOpacity': {
+      uOpacity: {
         type: 'f',
         value: 1.0,
         typeGLSL: 'float'
       },
-      'uSpacing': {
+      uSpacing: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uThickness': {
+      uThickness: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uThicknessMethod': {
+      uThicknessMethod: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
@@ -43229,42 +42532,42 @@ var ShadersUniform = function () {
 
   ShadersUniform.uniforms = function uniforms() {
     return {
-      'uTextureBackTest0': {
+      uTextureBackTest0: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
       },
-      'uTextureBackTest1': {
+      uTextureBackTest1: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
       },
-      'uOpacity0': {
+      uOpacity0: {
         type: 'f',
         value: 1.0,
         typeGLSL: 'float'
       },
-      'uOpacity1': {
+      uOpacity1: {
         type: 'f',
         value: 1.0,
         typeGLSL: 'float'
       },
-      'uType0': {
+      uType0: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uType1': {
+      uType1: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uTrackMouse': {
+      uTrackMouse: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uMouse': {
+      uMouse: {
         type: 'v2',
         value: new three_src_math_Vector2__WEBPACK_IMPORTED_MODULE_0__["Vector2"](),
         typeGLSL: 'vec2'
@@ -43423,52 +42726,51 @@ var _class = function () {
    */
   _class.uniforms = function uniforms() {
     return {
-      'uCanvasWidth': {
+      uCanvasWidth: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uCanvasHeight': {
+      uCanvasHeight: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uSlice': {
+      uSlice: {
         type: 'v4',
         value: [0.0, 0.0, 0.0, 0.0],
         typeGLSL: 'vec4'
       },
-      'uPlane1': {
+      uPlane1: {
         type: 'v4',
         value: [0.0, 0.0, 0.0, 0.0],
         typeGLSL: 'vec4'
       },
-      'uPlaneColor1': {
+      uPlaneColor1: {
         type: 'v3',
         value: [1.0, 1.0, 0.0],
         typeGLSL: 'vec3'
       },
-      'uPlane2': {
+      uPlane2: {
         type: 'v4',
         value: [0.0, 0.0, 0.0, 0.0],
         typeGLSL: 'vec4'
       },
-      'uPlaneColor2': {
+      uPlaneColor2: {
         type: 'v3',
         value: [1.0, 1.0, 0.0],
         typeGLSL: 'vec3'
       },
-      'uPlane3': {
+      uPlane3: {
         type: 'v4',
         value: [0.0, 0.0, 0.0, 0.0],
         typeGLSL: 'vec4'
       },
-      'uPlaneColor3': {
+      uPlaneColor3: {
         type: 'v3',
         value: [1.0, 1.0, 0.0],
         typeGLSL: 'vec3'
       }
-
     };
   };
 
@@ -43613,171 +42915,171 @@ var ShadersUniform = function () {
 
   ShadersUniform.uniforms = function uniforms() {
     return {
-      'uTextureSize': {
+      uTextureSize: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uTextureContainer': {
+      uTextureContainer: {
         type: 'tv',
         value: [],
         typeGLSL: 'sampler2D',
         length: 7
       },
-      'uDataDimensions': {
+      uDataDimensions: {
         type: 'iv',
         value: [0, 0, 0],
         typeGLSL: 'ivec3'
       },
-      'uWorldToData': {
+      uWorldToData: {
         type: 'm4',
         value: new three_src_math_Matrix4__WEBPACK_IMPORTED_MODULE_0__["Matrix4"](),
         typeGLSL: 'mat4'
       },
-      'uWindowCenterWidth': {
+      uWindowCenterWidth: {
         type: 'fv1',
         value: [0.0, 0.0],
         typeGLSL: 'float',
         length: 2
       },
-      'uRescaleSlopeIntercept': {
+      uRescaleSlopeIntercept: {
         type: 'fv1',
         value: [0.0, 0.0],
         typeGLSL: 'float',
         length: 2
       },
-      'uNumberOfChannels': {
+      uNumberOfChannels: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uBitsAllocated': {
+      uBitsAllocated: {
         type: 'i',
         value: 8,
         typeGLSL: 'int'
       },
-      'uInvert': {
+      uInvert: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uLut': {
+      uLut: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uTextureLUT': {
+      uTextureLUT: {
         type: 't',
         value: [],
         typeGLSL: 'sampler2D'
       },
-      'uPixelType': {
+      uPixelType: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
       },
-      'uPackedPerPixel': {
+      uPackedPerPixel: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uInterpolation': {
+      uInterpolation: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uWorldBBox': {
+      uWorldBBox: {
         type: 'fv1',
         value: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         typeGLSL: 'float',
         length: 6
       },
-      'uSteps': {
+      uSteps: {
         type: 'i',
         value: 256,
         typeGLSL: 'int'
       },
-      'uAlphaCorrection': {
+      uAlphaCorrection: {
         type: 'f',
         value: 0.5,
         typeGLSL: 'float'
       },
-      'uFrequence': {
+      uFrequence: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uAmplitude': {
+      uAmplitude: {
         type: 'f',
-        value: 0.,
+        value: 0,
         typeGLSL: 'float'
       },
-      'uShading': {
+      uShading: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uAmbient': {
+      uAmbient: {
         type: 'f',
         value: 0.1,
         typeGLSL: 'float'
       },
-      'uAmbientColor': {
+      uAmbientColor: {
         type: 'v3',
         value: [1.0, 1.0, 0.0],
         typeGLSL: 'vec3'
       },
-      'uSampleColorToAmbient': {
+      uSampleColorToAmbient: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uSpecular': {
+      uSpecular: {
         type: 'f',
-        value: 1.,
+        value: 1,
         typeGLSL: 'float'
       },
-      'uSpecularColor': {
+      uSpecularColor: {
         type: 'v3',
         value: [1.0, 1.0, 1.0],
         typeGLSL: 'vec3'
       },
-      'uDiffuse': {
+      uDiffuse: {
         type: 'f',
         value: 0.3,
         typeGLSL: 'float'
       },
-      'uDiffuseColor': {
+      uDiffuseColor: {
         type: 'v3',
         value: [1.0, 1.0, 0.0],
         typeGLSL: 'vec3'
       },
-      'uSampleColorToDiffuse': {
+      uSampleColorToDiffuse: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uShininess': {
+      uShininess: {
         type: 'f',
-        value: 5.,
+        value: 5,
         typeGLSL: 'float'
       },
-      'uLightPosition': {
+      uLightPosition: {
         type: 'v3',
         value: [0.0, 0.0, 0.0],
         typeGLSL: 'vec3'
       },
-      'uLightPositionInCamera': {
+      uLightPositionInCamera: {
         type: 'i',
         value: 1,
         typeGLSL: 'int'
       },
-      'uIntensity': {
+      uIntensity: {
         type: 'v3',
-        value: [.8, .8, .8],
+        value: [0.8, 0.8, 0.8],
         typeGLSL: 'vec3'
       },
-      'uAlgorithm': {
+      uAlgorithm: {
         type: 'i',
         value: 0,
         typeGLSL: 'int'
@@ -43846,419 +43148,388 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/angle
  */
 var widgetsAngle = function widgetsAngle() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'Angle';
+
+      // incoming parameters (optional: worldPosition)
+
+      // outgoing values
+      _this._opangle = null;
+
+      _this._moving = false;
+      _this._domHovered = false;
+      _this._defaultAngle = true;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._line = null;
+      _this._line2 = null;
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+
+      var handle = void 0;
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      for (var i = 0; i < 3; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+      _this._handles[2].active = true;
+      _this._handles[2].tracking = true;
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._handles.push(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.create();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
 
-        function _class(targetMesh, controls) {
-            _classCallCheck(this, _class);
+      this._line.addEventListener('mouseenter', this.onHover);
+      this._line.addEventListener('mouseleave', this.onHover);
+      this._line2.addEventListener('mouseenter', this.onHover);
+      this._line2.addEventListener('mouseleave', this.onHover);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
 
-            _this._widgetType = 'Angle';
-            _this._moving = false;
-            _this._domHovered = false;
+      this._line.removeEventListener('mouseenter', this.onHover);
+      this._line.removeEventListener('mouseleave', this.onHover);
+      this._line2.removeEventListener('mouseenter', this.onHover);
+      this._line2.removeEventListener('mouseleave', this.onHover);
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
 
-            // mesh stuff
-            _this._material = null;
-            _this._material2 = null;
-            _this._geometry = null;
-            _this._geometry2 = null;
-            _this._mesh = null;
-            _this._mesh2 = null;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            // dom stuff
-            _this._line = null;
-            _this._line2 = null;
-            _this._label = null;
+      this.hoverMesh();
 
-            _this._opangle = null;
-            _this._defaultAngle = true;
+      this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            // add handles
-            _this._handles = [];
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, do we want to hover on mesh or just css?
+    };
 
-            var handle = void 0;
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-            for (var i = 0; i < 3; i++) {
-                handle = new WidgetsHandle(targetMesh, controls);
-                handle.worldPosition.copy(_this._worldPosition);
-                _this.add(handle);
-                _this._handles.push(handle);
-            }
-            _this._handles[1].active = true;
-            _this._handles[1].tracking = true;
-            _this._handles[2].active = true;
-            _this._handles[2].tracking = true;
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._handles.push(_this._moveHandle);
-            _this._moveHandle.hide();
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
 
-            _this.create();
+      this._handles[0].onStart(evt);
+      this._handles[1].onStart(evt);
+      this._handles[2].onStart(evt);
 
-            _this.onMove = _this.onMove.bind(_this);
-            _this.onHover = _this.onHover.bind(_this);
-            _this.addEventListeners();
-            return _this;
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._domHovered;
+
+      if (this._domHovered && !this._handles[1].tracking && !this._handles[2].tracking) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._dragged = true;
+        this._moveHandle.onMove(evt, true);
+
+        if (this._moving) {
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+          });
         }
-
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('wheel', this.onMove);
-
-            this._line.addEventListener('mouseenter', this.onHover);
-            this._line.addEventListener('mouseleave', this.onHover);
-            this._line2.addEventListener('mouseenter', this.onHover);
-            this._line2.addEventListener('mouseleave', this.onHover);
-            this._label.addEventListener('mouseenter', this.onHover);
-            this._label.addEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('wheel', this.onMove);
-
-            this._line.removeEventListener('mouseenter', this.onHover);
-            this._line.removeEventListener('mouseleave', this.onHover);
-            this._line2.removeEventListener('mouseenter', this.onHover);
-            this._line2.removeEventListener('mouseleave', this.onHover);
-            this._label.removeEventListener('mouseenter', this.onHover);
-            this._label.removeEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, do we want to hover on mesh or just css?
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            this._moveHandle.onMove(evt, true);
-
-            this._handles[0].onStart(evt);
-            this._handles[1].onStart(evt);
-            this._handles[2].onStart(evt);
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._domHovered;
-
-            if (this._domHovered && !this._handles[1].tracking && !this._handles[2].tracking) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            if (this._active) {
-                var prevPosition = this._moveHandle.worldPosition.clone();
-
-                this._dragged = true;
-                this._moveHandle.onMove(evt, true);
-
-                if (this._moving) {
-                    this._handles.slice(0, -1).forEach(function (elem, ind) {
-                        this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                    }, this);
-                }
-            } else {
-                this.onHover(null);
-            }
-
-            this._handles[0].onMove(evt);
-            this._handles[1].onMove(evt);
-            this._handles[2].onMove(evt);
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            this._handles[0].onEnd(); // First Handle
-
-            if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10 || !this._handles[1].tracking && this._handles[2].tracking && this._handles[1].screenPosition.distanceTo(this._handles[2].screenPosition) < 10) {
-                return;
-            }
-
-            if (!this._dragged && this._active && !this._handles[2].tracking) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles[0].selected = this._selected;
-            }
-
-            // Third Handle
-            if (this._handles[1].active) {
-                this._handles[2].onEnd();
-            } else if (this._dragged || !this._handles[2].tracking) {
-                this._handles[2].tracking = false;
-                this._handles[2].onEnd();
-            } else {
-                this._handles[2].tracking = false;
-            }
-            this._handles[2].selected = this._selected;
-
-            // Second Handle
-            if (this._dragged || !this._handles[1].tracking) {
-                this._handles[1].tracking = false;
-                this._handles[1].onEnd();
-            } else {
-                this._handles[1].tracking = false;
-            }
-            this._handles[1].selected = this._selected;
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active;
-            this._dragged = this._handles[2].tracking;
-            this._moving = false;
-            this.update();
-        };
-
-        _class.prototype.create = function create() {
-            this.createMesh();
-            this.createDOM();
-        };
-
-        _class.prototype.createMesh = function createMesh() {
-            // geometry
-            this._geometry = new three.Geometry();
-            this._geometry.vertices.push(this._handles[0].worldPosition);
-            this._geometry.vertices.push(this._handles[1].worldPosition);
-
-            // geometry
-            this._geometry2 = new three.Geometry();
-            this._geometry2.vertices.push(this._handles[1].worldPosition);
-            this._geometry2.vertices.push(this._handles[2].worldPosition);
-
-            // material
-            this._material = new three.LineBasicMaterial();
-            this._material2 = new three.LineBasicMaterial();
-
-            this.updateMeshColor();
-
-            // mesh
-            this._mesh = new three.Line(this._geometry, this._material);
-            this._mesh.visible = true;
-            this._mesh2 = new three.Line(this._geometry2, this._material2);
-            this._mesh2.visible = true;
-
-            this.add(this._mesh);
-            this.add(this._mesh2);
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._line = document.createElement('div');
-            this._line.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line);
-
-            this._line2 = document.createElement('div');
-            this._line2.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line2);
-
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-            this._container.appendChild(this._label);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._line.style.display = 'none';
-            this._line2.style.display = 'none';
-            this._label.style.display = 'none';
-
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._line.style.display = '';
-            this._line2.style.display = '';
-            this._label.style.display = '';
-
-            this._handles[0].showDOM();
-            this._handles[1].showDOM();
-            this._handles[2].showDOM();
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles[0].update();
-            this._handles[1].update();
-            this._handles[2].update();
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-            if (this._material2) {
-                this._material2.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                this._geometry.verticesNeedUpdate = true;
-            }
-            if (this._geometry2) {
-                this._geometry2.verticesNeedUpdate = true;
-            }
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            // update first line
-            var lineData = this.getLineData(this._handles[1].screenPosition, this._handles[0].screenPosition);
-
-            this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n            rotate(' + lineData.transformAngle + 'rad)';
-            this._line.style.width = lineData.length + 'px';
-
-            // update second line
-            var line2Data = this.getLineData(this._handles[1].screenPosition, this._handles[2].screenPosition);
-
-            this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n            rotate(' + line2Data.transformAngle + 'rad)';
-            this._line2.style.width = line2Data.length + 'px';
-
-            // update angle and label
-            this._opangle = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition).angleTo(this._handles[1].worldPosition.clone().sub(this._handles[2].worldPosition)) * 180 / Math.PI || 0.0;
-            this._opangle = this._defaultAngle ? this._opangle : 360 - this._opangle;
-
-            this._label.innerHTML = this._opangle.toFixed(2) + '&deg;';
-
-            var paddingNormVector = lineData.line.clone().add(line2Data.line).normalize().negate();
-
-            var normAngle = paddingNormVector.angleTo(new three.Vector3(1, 0, 0));
-
-            if (normAngle > Math.PI / 2) {
-                normAngle = Math.PI - normAngle;
-            }
-
-            var labelPadding = Math.tan(normAngle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(normAngle) + 15 // 15px padding
-            : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - normAngle) + 15;
-
-            var paddingPoint = this._handles[1].screenPosition.clone().add(paddingNormVector.multiplyScalar(labelPadding));
-
-            var transform = this.adjustLabelTransform(this._label, paddingPoint);
-
-            this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._line.style.backgroundColor = this._color;
-            this._line2.style.backgroundColor = this._color;
-            this._label.style.borderColor = this._color;
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this._container.removeChild(this._line);
-            this._container.removeChild(this._line2);
-            this._container.removeChild(this._label);
-
-            // mesh, geometry, material
-            this.remove(this._mesh);
-            this._mesh.geometry.dispose();
-            this._mesh.geometry = null;
-            this._mesh.material.dispose();
-            this._mesh.material = null;
-            this._mesh = null;
-            this._geometry.dispose();
-            this._geometry = null;
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-            this.remove(this._mesh2);
-            this._mesh2.geometry.dispose();
-            this._mesh2.geometry = null;
-            this._mesh2.material.dispose();
-            this._mesh2.material = null;
-            this._mesh2 = null;
-            this._geometry2.dispose();
-            this._geometry2 = null;
-            this._material2.vertexShader = null;
-            this._material2.fragmentShader = null;
-            this._material2.uniforms = null;
-            this._material2.dispose();
-            this._material2 = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _class.prototype.toggleDefaultAngle = function toggleDefaultAngle() {
-            this._defaultAngle = !this._defaultAngle;
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles[0].worldPosition.copy(worldPosition);
-                this._handles[1].worldPosition.copy(worldPosition);
-                this._handles[2].worldPosition.copy(worldPosition);
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }, {
-            key: 'angle',
-            get: function get() {
-                return this._opangle;
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles[0].onMove(evt);
+      this._handles[1].onMove(evt);
+      this._handles[2].onMove(evt);
+
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd(); // First Handle
+
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10 || !this._handles[1].tracking && this._handles[2].tracking && this._handles[1].screenPosition.distanceTo(this._handles[2].screenPosition) < 10) {
+        return;
+      }
+
+      if (!this._dragged && this._active && !this._handles[2].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+      }
+
+      // Third Handle
+      if (this._handles[1].active) {
+        this._handles[2].onEnd();
+      } else if (this._dragged || !this._handles[2].tracking) {
+        this._handles[2].tracking = false;
+        this._handles[2].onEnd();
+      } else {
+        this._handles[2].tracking = false;
+      }
+      this._handles[2].selected = this._selected;
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active;
+      this._dragged = this._handles[2].tracking;
+      this._moving = false;
+      this.update();
+    };
+
+    _class.prototype.create = function create() {
+      this.createMesh();
+      this.createDOM();
+    };
+
+    _class.prototype.createMesh = function createMesh() {
+      // geometry
+      this._geometry = new three.Geometry();
+      this._geometry.vertices = [this._handles[0].worldPosition, this._handles[1].worldPosition, this._handles[1].worldPosition, this._handles[2].worldPosition];
+
+      // material
+      this._material = new three.LineBasicMaterial();
+
+      this.updateMeshColor();
+
+      // mesh
+      this._mesh = new three.LineSegments(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._line = document.createElement('div');
+      this._line.className = 'widgets-line';
+      this._container.appendChild(this._line);
+
+      this._line2 = document.createElement('div');
+      this._line2.className = 'widgets-line';
+      this._container.appendChild(this._line2);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._line.style.display = 'none';
+      this._line2.style.display = 'none';
+      this._label.style.display = 'none';
+
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._line.style.display = '';
+      this._line2.style.display = '';
+      this._label.style.display = '';
+
+      this._handles[0].showDOM();
+      this._handles[1].showDOM();
+      this._handles[2].showDOM();
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles[0].update();
+      this._handles[1].update();
+      this._handles[2].update();
+
+      // calculate values
+      this._opangle = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition).angleTo(this._handles[1].worldPosition.clone().sub(this._handles[2].worldPosition)) * 180 / Math.PI || 0.0;
+      this._opangle = this._defaultAngle ? this._opangle : 360 - this._opangle;
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      // update first line
+      var lineData = this.getLineData(this._handles[1].screenPosition, this._handles[0].screenPosition);
+
+      this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n            rotate(' + lineData.transformAngle + 'rad)';
+      this._line.style.width = lineData.length + 'px';
+
+      // update second line
+      var line2Data = this.getLineData(this._handles[1].screenPosition, this._handles[2].screenPosition);
+
+      this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n            rotate(' + line2Data.transformAngle + 'rad)';
+      this._line2.style.width = line2Data.length + 'px';
+
+      // update angle and label
+      this._label.innerHTML = this._opangle.toFixed(2) + '&deg;';
+
+      var paddingNormVector = lineData.line.clone().add(line2Data.line).normalize().negate();
+      var normAngle = paddingNormVector.angleTo(new three.Vector3(1, 0, 0));
+
+      if (normAngle > Math.PI / 2) {
+        normAngle = Math.PI - normAngle;
+      }
+
+      var labelPadding = Math.tan(normAngle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(normAngle) + 15 // 15px padding
+      : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - normAngle) + 15;
+      var paddingPoint = this._handles[1].screenPosition.clone().add(paddingNormVector.multiplyScalar(labelPadding));
+      var transform = this.adjustLabelTransform(this._label, paddingPoint);
+
+      this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._line.style.backgroundColor = this._color;
+      this._line2.style.backgroundColor = this._color;
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.free = function free() {
+      var _this3 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this3.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._line);
+      this._container.removeChild(this._line2);
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      this.remove(this._mesh);
+      this._mesh.geometry.dispose();
+      this._mesh.geometry = null;
+      this._mesh.material.dispose();
+      this._mesh.material = null;
+      this._mesh = null;
+      this._geometry.dispose();
+      this._geometry = null;
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.toggleDefaultAngle = function toggleDefaultAngle() {
+      this._defaultAngle = !this._defaultAngle;
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles[0].worldPosition.copy(worldPosition);
+        this._handles[1].worldPosition.copy(worldPosition);
+        this._handles[2].worldPosition.copy(worldPosition);
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'angle',
+      get: function get() {
+        return this._opangle;
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -44305,11 +43576,16 @@ var widgetsAnnotation = function widgetsAnnotation() {
     _inherits(_class, _Constructor);
 
     function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
       _classCallCheck(this, _class);
 
-      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
 
       _this._widgetType = 'Annotation';
+
+      // incoming parameters (optional: worldPosition)
+
       _this._initialized = false; // set to true when the name of the label is entered
       _this._movinglabel = null; // bool that turns true when the label is moving with the mouse
       _this._labelmoved = false; // bool that turns true once the label is moved by the user (at least once)
@@ -44338,8 +43614,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
       var handle = void 0;
       var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
       for (var i = 0; i < 2; i++) {
-        handle = new WidgetsHandle(targetMesh, controls);
-        handle.worldPosition.copy(_this._worldPosition);
+        handle = new WidgetsHandle(targetMesh, controls, params);
         _this.add(handle);
         _this._handles.push(handle);
       }
@@ -44399,7 +43674,6 @@ var widgetsAnnotation = function widgetsAnnotation() {
         // if label hovered then it should be moved
         // save mouse coordinates offset from label center
         var offsets = this.getMouseOffsets(evt, this._container);
-
         var paddingPoint = this._handles[1].screenPosition.clone().sub(this._labelOffset);
 
         this._mouseLabelOffset = new three.Vector3(offsets.screenX - paddingPoint.x, offsets.screenY - paddingPoint.y, 0);
@@ -44523,16 +43797,16 @@ var widgetsAnnotation = function widgetsAnnotation() {
 
     _class.prototype.createDOM = function createDOM() {
       this._line = document.createElement('div');
-      this._line.setAttribute('class', 'widgets-line');
+      this._line.className = 'widgets-line';
       this._container.appendChild(this._line);
 
       this._dashline = document.createElement('div');
-      this._dashline.setAttribute('class', 'widgets-dashline');
+      this._dashline.className = 'widgets-dashline';
       this._dashline.style.display = 'none';
       this._container.appendChild(this._dashline);
 
       this._label = document.createElement('div');
-      this._label.setAttribute('class', 'widgets-label');
+      this._label.className = 'widgets-label';
       this._label.style.display = 'none';
       this._container.appendChild(this._label);
 
@@ -44542,17 +43816,13 @@ var widgetsAnnotation = function widgetsAnnotation() {
     _class.prototype.update = function update() {
       this.updateColor();
 
-      // update handles
       this._handles[0].update();
       this._handles[1].update();
 
-      // mesh stuff
       this.updateMeshColor();
       this.updateMeshPosition();
 
-      // DOM stuff
-      this.updateDOMColor();
-      this.updateDOMPosition();
+      this.updateDOM();
     };
 
     _class.prototype.updateMeshColor = function updateMeshColor() {
@@ -44572,7 +43842,9 @@ var widgetsAnnotation = function widgetsAnnotation() {
       }
     };
 
-    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
       // update line
       var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
 
@@ -44581,11 +43853,8 @@ var widgetsAnnotation = function widgetsAnnotation() {
 
       // update label
       var paddingVector = lineData.line.multiplyScalar(0.5);
-
       var paddingPoint = this._handles[1].screenPosition.clone().sub(this._labelmoved ? this._labelOffset // if the label is moved, then its position is defined by labelOffset
-      : paddingVector);
-      // otherwise it's placed in the center of the line
-
+      : paddingVector); // otherwise it's placed in the center of the line
       var labelPosition = this.adjustLabelTransform(this._label, paddingPoint);
 
       this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
@@ -44597,9 +43866,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
 
       // update dash line
       var minLine = this.getLineData(this._handles[0].screenPosition, paddingPoint);
-
       var lineCL = this.getLineData(lineData.center, paddingPoint);
-
       var line1L = this.getLineData(this._handles[1].screenPosition, paddingPoint);
 
       if (minLine.length > lineCL.length) {
@@ -44624,7 +43891,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
       this._dashline.style.display = 'none';
       this._label.style.display = 'none';
       this._handles.forEach(function (elem) {
-        elem.hideDOM();
+        return elem.hideDOM();
       });
     };
 
@@ -44633,7 +43900,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
       this._dashline.style.display = '';
       this._label.style.display = '';
       this._handles.forEach(function (elem) {
-        elem.showDOM();
+        return elem.showDOM();
       });
     };
 
@@ -44686,7 +43953,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
       set: function set(targetMesh) {
         this._targetMesh = targetMesh;
         this._handles.forEach(function (elem) {
-          elem.targetMesh = targetMesh;
+          return elem.targetMesh = targetMesh;
         });
         this.update();
       }
@@ -44723,6 +43990,7 @@ var widgetsAnnotation = function widgetsAnnotation() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "widgetsBase", function() { return widgetsBase; });
 /* harmony import */ var _widgets_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets.css */ "./src/widgets/widgets.css.js");
+/* harmony import */ var _core_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/core.utils */ "./src/core/core.utils.js");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44730,6 +43998,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -44748,6 +44017,8 @@ var widgetsBase = function widgetsBase() {
     _inherits(_class, _Constructor);
 
     function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
       _classCallCheck(this, _class);
 
       // init THREE Object 3D
@@ -44756,21 +44027,28 @@ var widgetsBase = function widgetsBase() {
 
       _this._widgetType = 'Base';
 
+      // List of supported parameters:
+      //   calibrationFactor (number), frameIndex (number), hideMesh (bool), hideHandleMesh (bool),
+      //   ijk2LPS (Matrix4), lps2IJK (Matrix4), pixelSpacing (number), stack (ModelsStack),
+      //   ultrasoundRegions (Array<Object>), worldPosition (Vector3)
+      _this._params = params;
+      if (params.hideMesh === true) {
+        _this.visible = false;
+      }
+
       var elementStyle = document.getElementById('ami-widgets');
       if (elementStyle === null) {
         var styleEl = document.createElement('style');
-        styleEl.setAttribute('id', 'ami-widgets');
+        styleEl.id = 'ami-widgets';
         styleEl.innerHTML = _widgets_css__WEBPACK_IMPORTED_MODULE_0__["default"].code;
         document.head.appendChild(styleEl);
       }
 
       _this._enabled = true; // is widget enabled?
 
-      // STATE, ENUM might be better
       _this._selected = false;
       _this._hovered = true;
       _this._active = true;
-      // thos._state = 'SELECTED';
 
       _this._colors = {
         default: '#00B0FF',
@@ -44792,7 +44070,9 @@ var widgetsBase = function widgetsBase() {
       _this._container = controls.domElement;
 
       _this._worldPosition = new three.Vector3(); // LPS position
-      if (_this._targetMesh !== null) {
+      if (params.worldPosition) {
+        _this._worldPosition.copy(params.worldPosition);
+      } else if (_this._targetMesh !== null) {
         _this._worldPosition.copy(_this._targetMesh.position);
       }
       return _this;
@@ -44825,13 +44105,151 @@ var widgetsBase = function widgetsBase() {
       };
     };
 
+    /**
+     * Get area of polygon.
+     *
+     * @param {Array} points Ordered vertices' coordinates
+     *
+     * @returns {Number}
+     */
+
+
+    _class.prototype.getArea = function getArea(points) {
+      var area = 0;
+      var j = points.length - 1; // the last vertex is the 'previous' one to the first
+
+      for (var i = 0; i < points.length; i++) {
+        area += (points[j].x + points[i].x) * (points[j].y - points[i].y);
+        j = i; // j is the previous vertex to i
+      }
+
+      return Math.abs(area / 2);
+    };
+
+    /**
+     * Get index of ultrasound region by data coordinates.
+     *
+     * @param {Array}   regions US regions
+     * @param {Vector3} point   Data coordinates
+     *
+     * @returns {Number|null}
+     */
+
+
+    _class.prototype.getRegionByXY = function getRegionByXY(regions, point) {
+      var result = null;
+
+      regions.some(function (region, ind) {
+        if (point.x >= region.x0 && point.x <= region.x1 && point.y >= region.y0 && point.y <= region.y1) {
+          result = ind;
+
+          return true;
+        }
+      });
+
+      return result;
+    };
+
+    /**
+     * Get point inside ultrasound region by data coordinates.
+     *
+     * @param {Object}  region US region data
+     * @param {Vector3} point  Data coordinates
+     *
+     * @returns {Vector2|null}
+     */
+
+
+    _class.prototype.getPointInRegion = function getPointInRegion(region, point) {
+      if (!region) {
+        return null;
+      }
+
+      return new three.Vector2((point.x - region.x0 - (region.axisX || 0)) * region.deltaX, (point.y - region.y0 - (region.axisY || 0)) * region.deltaY);
+    };
+
+    /**
+     * Get point's ultrasound coordinates by data coordinates.
+     *
+     * @param {Array}   regions US regions
+     * @param {Vector3} point   Data coordinates
+     *
+     * @returns {Vector2|null}
+     */
+
+
+    _class.prototype.getUsPoint = function getUsPoint(regions, point) {
+      return this.getPointInRegion(regions[this.getRegionByXY(regions, point)], point);
+    };
+
+    /**
+     * Get distance between points inside ultrasound region.
+     *
+     * @param {Vector3} pointA Begin data coordinates
+     * @param {Vector3} pointB End data coordinates
+     *
+     * @returns {Number|null}
+     */
+
+
+    _class.prototype.getUsDistance = function getUsDistance(pointA, pointB) {
+      var regions = this._params.ultrasoundRegions || [];
+
+      if (regions.length < 1) {
+        return null;
+      }
+
+      var regionA = this.getRegionByXY(regions, pointA);
+      var regionB = this.getRegionByXY(regions, pointB);
+
+      if (regionA === null || regionB === null || regionA !== regionB || regions[regionA].unitsX !== 'cm' || regions[regionA].unitsY !== 'cm') {
+        return null;
+      }
+
+      return this.getPointInRegion(regions[regionA], pointA).distanceTo(this.getPointInRegion(regions[regionA], pointB));
+    };
+
+    /**
+     * Get distance between points
+     *
+     * @param {Vector3} pointA Begin world coordinates
+     * @param {Vector3} pointB End world coordinates
+     * @param {number}  cf     Calibration factor
+     *
+     * @returns {Object}
+     */
+
+
+    _class.prototype.getDistanceData = function getDistanceData(pointA, pointB, cf) {
+      var distance = null;
+      var units = null;
+
+      if (cf) {
+        distance = pointA.distanceTo(pointB) * cf;
+      } else if (this._params.ultrasoundRegions && this._params.lps2IJK) {
+        var usDistance = this.getUsDistance(_core_core_utils__WEBPACK_IMPORTED_MODULE_1__["default"].worldToData(this._params.lps2IJK, pointA), _core_core_utils__WEBPACK_IMPORTED_MODULE_1__["default"].worldToData(this._params.lps2IJK, pointB));
+
+        if (usDistance !== null) {
+          distance = usDistance * 10;
+          units = 'mm';
+        } else {
+          distance = pointA.distanceTo(pointB);
+          units = this._params.pixelSpacing ? 'mm' : 'units';
+        }
+      } else {
+        distance = pointA.distanceTo(pointB);
+      }
+
+      return {
+        distance: distance,
+        units: units
+      };
+    };
+
     _class.prototype.getLineData = function getLineData(pointA, pointB) {
       var line = pointB.clone().sub(pointA);
-
       var center = pointB.clone().add(pointA).multiplyScalar(0.5);
-
       var length = line.length();
-
       var angle = line.angleTo(new three.Vector3(1, 0, 0));
 
       return {
@@ -44846,9 +44264,7 @@ var widgetsBase = function widgetsBase() {
 
     _class.prototype.getRectData = function getRectData(pointA, pointB) {
       var line = pointB.clone().sub(pointA);
-
       var vertical = line.clone().projectOnVector(new three.Vector3(0, 1, 0));
-
       var min = pointA.clone().min(pointB); // coordinates of the top left corner
 
       return {
@@ -44869,7 +44285,6 @@ var widgetsBase = function widgetsBase() {
 
     _class.prototype.adjustLabelTransform = function adjustLabelTransform(label, point, corner) {
       var x = Math.round(point.x - (corner ? 0 : label.offsetWidth / 2));
-
       var y = Math.round(point.y - (corner ? 0 : label.offsetHeight / 2)) - this._container.offsetHeight;
 
       if (x < 0) {
@@ -44915,15 +44330,27 @@ var widgetsBase = function widgetsBase() {
       }
     };
 
+    _class.prototype.setDefaultColor = function setDefaultColor(color) {
+      this._colors.default = color;
+      if (this._handles) {
+        this._handles.forEach(function (elem) {
+          return elem._colors.default = color;
+        });
+      }
+      this.update();
+    };
+
     _class.prototype.show = function show() {
       this.showDOM();
       this.showMesh();
       this.update();
+      this._displayed = true;
     };
 
     _class.prototype.hide = function hide() {
       this.hideDOM();
       this.hideMesh();
+      this._displayed = false;
     };
 
     _class.prototype.hideDOM = function hideDOM() {
@@ -44941,11 +44368,19 @@ var widgetsBase = function widgetsBase() {
     };
 
     _class.prototype.showMesh = function showMesh() {
+      if (this._params.hideMesh === true) {
+        return;
+      }
+
       this.visible = true;
     };
 
     _class.prototype.free = function free() {
+      this._camera = null;
       this._container = null;
+      this._controls = null;
+      this._params = null;
+      this._targetMesh = null;
     };
 
     _createClass(_class, [{
@@ -45072,425 +44507,422 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/biruler
  */
 var widgetsBiruler = function widgetsBiruler() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'BiRuler';
+
+      // incoming parameters (optional: lps2IJK, pixelSpacing, ultrasoundRegions, worldPosition)
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._distance = null;
+      _this._distance2 = null;
+      _this._units = !_this._calibrationFactor && !params.pixelSpacing ? 'units' : 'mm';
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._line = null;
+      _this._label = null;
+      _this._line2 = null;
+      _this._label2 = null;
+      _this._dashline = null;
+
+      // add handles
+      _this._handles = [];
+
+      var handle = void 0;
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      for (var i = 0; i < 4; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+      _this._handles[3].active = true;
+      _this._handles[3].tracking = true;
+
+      _this.create();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
+    };
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.onStart = function onStart(evt) {
+      this._handles.forEach(function (elem) {
+        return elem.onStart(evt);
+      });
 
-            _this._stack = stack;
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
 
-            _this._widgetType = 'BiRuler';
+      this.update();
+    };
 
-            // mesh stuff
-            _this._material = null;
-            _this._material2 = null;
-            _this._geometry = null;
-            _this._geometry2 = null;
-            _this._mesh = null;
-            _this._mesh2 = null;
+    _class.prototype.onMove = function onMove(evt) {
+      if (this._active) {
+        this._dragged = true;
+      } else {
+        this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._handles[3].hovered;
+        this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+      }
 
-            // dom stuff
-            _this._line = null;
-            _this._label = null;
-            _this._line2 = null;
-            _this._label2 = null;
-            _this._dashline = null;
+      this._handles.forEach(function (elem) {
+        return elem.onMove(evt);
+      });
 
-            // add handles
-            _this._handles = [];
+      this.update();
+    };
 
-            var handle = void 0;
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-            for (var i = 0; i < 4; i++) {
-                handle = new WidgetsHandle(targetMesh, controls);
-                handle.worldPosition.copy(_this._worldPosition);
-                _this.add(handle);
-                _this._handles.push(handle);
-            }
-            _this._handles[1].active = true;
-            _this._handles[1].tracking = true;
-            _this._handles[3].active = true;
-            _this._handles[3].tracking = true;
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd();
+      this._handles[2].onEnd();
 
-            _this.create();
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
+        return;
+      }
 
-            _this.onMove = _this.onMove.bind(_this);
-            _this.addEventListeners();
-            return _this;
+      if (!this._dragged && this._active && !this._handles[3].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+        this._handles[2].selected = this._selected;
+      }
+
+      // Fourth Handle
+      if (this._handles[1].active) {
+        this._handles[3].onEnd();
+      } else if (this._dragged || !this._handles[3].tracking) {
+        this._handles[3].tracking = false;
+        this._handles[3].onEnd();
+      } else {
+        this._handles[3].tracking = false;
+      }
+      this._handles[3].selected = this._selected;
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
+      this._dragged = false;
+      this.update();
+    };
+
+    _class.prototype.create = function create() {
+      this.createMesh();
+      this.createDOM();
+    };
+
+    _class.prototype.createMesh = function createMesh() {
+      // geometry
+      this._geometry = new three.Geometry();
+      this._geometry.vertices = [this._handles[0].worldPosition, this._handles[1].worldPosition, this._handles[2].worldPosition, this._handles[3].worldPosition];
+
+      // material
+      this._material = new three.LineBasicMaterial();
+
+      this.updateMeshColor();
+
+      // mesh
+      this._mesh = new three.LineSegments(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._line = document.createElement('div');
+      this._line.className = 'widgets-line';
+      this._container.appendChild(this._line);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+      this._container.appendChild(this._label);
+
+      this._line2 = document.createElement('div');
+      this._line2.className = 'widgets-line';
+      this._container.appendChild(this._line2);
+
+      this._label2 = document.createElement('div');
+      this._label2.className = 'widgets-label';
+      this._container.appendChild(this._label2);
+
+      this._dashline = document.createElement('div');
+      this._dashline.className = 'widgets-dashline';
+      this._container.appendChild(this._dashline);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._line.style.display = 'none';
+      this._label.style.display = 'none';
+      this._line2.style.display = 'none';
+      this._label2.style.display = 'none';
+      this._dashline.style.display = 'none';
+
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._line.style.display = '';
+      this._label.style.display = '';
+      this._line2.style.display = '';
+      this._label2.style.display = '';
+      this._dashline.style.display = '';
+
+      this._handles.forEach(function (elem) {
+        return elem.showDOM();
+      });
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles.forEach(function (elem) {
+        return elem.update();
+      });
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      // update first line
+      var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
+
+      this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                rotate(' + lineData.transformAngle + 'rad)';
+      this._line.style.width = lineData.length + 'px';
+
+      // update second line
+      var line2Data = this.getLineData(this._handles[2].screenPosition, this._handles[3].screenPosition);
+
+      this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n                rotate(' + line2Data.transformAngle + 'rad)';
+      this._line2.style.width = line2Data.length + 'px';
+
+      // update dash line
+      var line1Center = this._handles[0].worldPosition.clone().add(this._handles[1].worldPosition).multiplyScalar(0.5);
+      var line2Center = this._handles[2].worldPosition.clone().add(this._handles[3].worldPosition).multiplyScalar(0.5);
+      var dashLineData = this.getLineData(this.worldToScreen(line1Center), this.worldToScreen(line2Center));
+
+      this._dashline.style.transform = 'translate3D(' + dashLineData.transformX + 'px, ' + dashLineData.transformY + 'px, 0)\n                rotate(' + dashLineData.transformAngle + 'rad)';
+      this._dashline.style.width = dashLineData.length + 'px';
+
+      // update labels
+      var distanceData = this.getDistanceData(this._handles[0].worldPosition, this._handles[1].worldPosition, this._calibrationFactor);
+      var distanceData2 = this.getDistanceData(this._handles[2].worldPosition, this._handles[3].worldPosition, this._calibrationFactor);
+      var title = 'Calibration is required to display the distance in mm';
+
+      this._distance = distanceData.distance;
+      this._distance2 = distanceData2.distance;
+      if (distanceData.units && distanceData2.units && distanceData.units === distanceData2.units) {
+        this._units = distanceData.units;
+      } else {
+        if (!distanceData.units) {
+          distanceData.units = this._units;
         }
-
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('wheel', this.onMove);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('wheel', this.onMove);
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            this._handles.forEach(function (elem) {
-                elem.onStart(evt);
-            });
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            if (this._active) {
-                this._dragged = true;
-            } else {
-                this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._handles[3].hovered;
-                this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-            }
-
-            this._handles.forEach(function (elem) {
-                elem.onMove(evt);
-            });
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            this._handles[0].onEnd();
-            this._handles[2].onEnd();
-
-            if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
-                return;
-            }
-
-            if (!this._dragged && this._active && !this._handles[3].tracking) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles[0].selected = this._selected;
-                this._handles[2].selected = this._selected;
-            }
-
-            // Fourth Handle
-            if (this._handles[1].active) {
-                this._handles[3].onEnd();
-            } else if (this._dragged || !this._handles[3].tracking) {
-                this._handles[3].tracking = false;
-                this._handles[3].onEnd();
-            } else {
-                this._handles[3].tracking = false;
-            }
-            this._handles[3].selected = this._selected;
-
-            // Second Handle
-            if (this._dragged || !this._handles[1].tracking) {
-                this._handles[1].tracking = false;
-                this._handles[1].onEnd();
-            } else {
-                this._handles[1].tracking = false;
-            }
-            this._handles[1].selected = this._selected;
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
-            this._dragged = false;
-            this.update();
-        };
-
-        _class.prototype.create = function create() {
-            this.createMesh();
-            this.createDOM();
-        };
-
-        _class.prototype.createMesh = function createMesh() {
-            // geometry
-            this._geometry = new three.Geometry();
-            this._geometry.vertices.push(this._handles[0].worldPosition);
-            this._geometry.vertices.push(this._handles[1].worldPosition);
-
-            // geometry
-            this._geometry2 = new three.Geometry();
-            this._geometry2.vertices.push(this._handles[2].worldPosition);
-            this._geometry2.vertices.push(this._handles[3].worldPosition);
-
-            // material
-            this._material = new three.LineBasicMaterial();
-            this._material2 = new three.LineBasicMaterial();
-
-            this.updateMeshColor();
-
-            // mesh
-            this._mesh = new three.Line(this._geometry, this._material);
-            this._mesh.visible = true;
-            this._mesh2 = new three.Line(this._geometry2, this._material2);
-            this._mesh2.visible = true;
-
-            this.add(this._mesh);
-            this.add(this._mesh2);
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._line = document.createElement('div');
-            this._line.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line);
-
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-            this._container.appendChild(this._label);
-
-            this._line2 = document.createElement('div');
-            this._line2.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line2);
-
-            this._label2 = document.createElement('div');
-            this._label2.setAttribute('class', 'widgets-label');
-            this._container.appendChild(this._label2);
-
-            this._dashline = document.createElement('div');
-            this._dashline.setAttribute('class', 'widgets-dashline');
-            this._container.appendChild(this._dashline);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._line.style.display = 'none';
-            this._label.style.display = 'none';
-            this._line2.style.display = 'none';
-            this._label2.style.display = 'none';
-            this._dashline.style.display = 'none';
-
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._line.style.display = '';
-            this._label.style.display = '';
-            this._line2.style.display = '';
-            this._label2.style.display = '';
-            this._dashline.style.display = '';
-
-            this._handles.forEach(function (elem) {
-                elem.showDOM();
-            });
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles.forEach(function (elem) {
-                elem.update();
-            });
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-            if (this._material2) {
-                this._material2.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                this._geometry.verticesNeedUpdate = true;
-            }
-            if (this._geometry2) {
-                this._geometry2.verticesNeedUpdate = true;
-            }
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            // update first line
-            var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
-
-            this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                rotate(' + lineData.transformAngle + 'rad)';
-            this._line.style.width = lineData.length + 'px';
-
-            // update second line
-            var line2Data = this.getLineData(this._handles[2].screenPosition, this._handles[3].screenPosition);
-
-            this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n                rotate(' + line2Data.transformAngle + 'rad)';
-            this._line2.style.width = line2Data.length + 'px';
-
-            // update dash line
-            var line1Center = this._handles[0].worldPosition.clone().add(this._handles[1].worldPosition).multiplyScalar(0.5);
-
-            var line2Center = this._handles[2].worldPosition.clone().add(this._handles[3].worldPosition).multiplyScalar(0.5);
-
-            var dashLineData = this.getLineData(this.worldToScreen(line1Center), this.worldToScreen(line2Center));
-
-            this._dashline.style.transform = 'translate3D(' + dashLineData.transformX + 'px, ' + dashLineData.transformY + 'px, 0)\n                rotate(' + dashLineData.transformAngle + 'rad)';
-            this._dashline.style.width = dashLineData.length + 'px';
-
-            // update labels
-            var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'mm';
-
-            var title = units === 'units' ? 'Calibration is required to display the distance in mm' : '';
-
-            this._distance = this._handles[0].worldPosition.distanceTo(this._handles[1].worldPosition);
-            this._distance2 = this._handles[2].worldPosition.distanceTo(this._handles[3].worldPosition);
-
-            this._label.innerHTML = this._distance.toFixed(2) + ' ' + units;
-            this._label2.innerHTML = this._distance2.toFixed(2) + ' ' + units;
-
-            if (title !== '') {
-                this._label.setAttribute('title', title);
-                this._label.style.color = this._colors.error;
-                this._label2.setAttribute('title', title);
-                this._label2.style.color = this._colors.error;
-            } else {
-                this._label.removeAttribute('title');
-                this._label.style.color = this._colors.text;
-                this._label2.removeAttribute('title');
-                this._label2.style.color = this._colors.text;
-            }
-
-            var angle = Math.abs(lineData.transformAngle);
-            if (angle > Math.PI / 2) {
-                angle = Math.PI - angle;
-            }
-
-            var labelPadding = Math.tan(angle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(angle) + 15 // 5px for each handle + padding
-            : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle) + 15;
-
-            var paddingVector = lineData.line.normalize().multiplyScalar(labelPadding);
-
-            var paddingPoint = lineData.length > labelPadding * 2 ? this._handles[1].screenPosition.clone().sub(paddingVector) : this._handles[1].screenPosition.clone().add(paddingVector);
-
-            var transform = this.adjustLabelTransform(this._label, paddingPoint);
-
-            this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
-
-            var angle2 = Math.abs(line2Data.transformAngle);
-            if (angle2 > Math.PI / 2) {
-                angle2 = Math.PI - angle2;
-            }
-
-            var label2Padding = Math.tan(angle2) < this._label2.offsetHeight / this._label2.offsetWidth ? this._label2.offsetWidth / 2 / Math.cos(angle2) + 15 // 5px for each handle + padding
-            : this._label2.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle2) + 15;
-
-            var paddingVector2 = line2Data.line.normalize().multiplyScalar(label2Padding);
-
-            var paddingPoint2 = line2Data.length > label2Padding * 2 ? this._handles[3].screenPosition.clone().sub(paddingVector2) : this._handles[3].screenPosition.clone().add(paddingVector2);
-
-            var transform2 = this.adjustLabelTransform(this._label2, paddingPoint2);
-
-            this._label2.style.transform = 'translate3D(' + transform2.x + 'px, ' + transform2.y + 'px, 0)';
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._line.style.backgroundColor = this._color;
-            this._label.style.borderColor = this._color;
-
-            this._line2.style.backgroundColor = this._color;
-            this._label2.style.borderColor = this._color;
-
-            this._dashline.style.borderTop = '1.5px dashed ' + this._color;
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this._container.removeChild(this._line);
-            this._container.removeChild(this._label);
-            this._container.removeChild(this._line2);
-            this._container.removeChild(this._label2);
-            this._container.removeChild(this._dashline);
-
-            // mesh, geometry, material
-            this.remove(this._mesh);
-            this._mesh.geometry.dispose();
-            this._mesh.geometry = null;
-            this._mesh.material.dispose();
-            this._mesh.material = null;
-            this._mesh = null;
-            this._geometry.dispose();
-            this._geometry = null;
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-            this.remove(this._mesh2);
-            this._mesh2.geometry.dispose();
-            this._mesh2.geometry = null;
-            this._mesh2.material.dispose();
-            this._mesh2.material = null;
-            this._mesh2 = null;
-            this._geometry2.dispose();
-            this._geometry2 = null;
-            this._material2.vertexShader = null;
-            this._material2.fragmentShader = null;
-            this._material2.uniforms = null;
-            this._material2.dispose();
-            this._material2 = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles.forEach(function (elem) {
-                    elem.worldPosition.copy(worldPosition);
-                });
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }, {
-            key: 'shotestDistance',
-            get: function get() {
-                return this._distance < this._distance2 ? this._distance : this._distance2;
-            }
-        }, {
-            key: 'longestDistance',
-            get: function get() {
-                return this._distance > this._distance2 ? this._distance : this._distance2;
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        if (!distanceData2.units) {
+          distanceData2.units = this._units;
+        }
+      }
+
+      if (distanceData.units === 'units' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', title);
+        this._label.style.color = this._colors.error;
+      } else if (distanceData.units !== 'units' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+      if (distanceData2.units === 'units' && !this._label2.hasAttribute('title')) {
+        this._label2.setAttribute('title', title);
+        this._label2.style.color = this._colors.error;
+      } else if (distanceData2.units !== 'units' && this._label2.hasAttribute('title')) {
+        this._label2.removeAttribute('title');
+        this._label2.style.color = this._colors.text;
+      }
+      this._label.innerHTML = this._distance.toFixed(2) + ' ' + distanceData.units;
+      this._label2.innerHTML = this._distance2.toFixed(2) + ' ' + distanceData2.units;
+
+      var angle = Math.abs(lineData.transformAngle);
+      if (angle > Math.PI / 2) {
+        angle = Math.PI - angle;
+      }
+
+      var labelPadding = Math.tan(angle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(angle) + 15 // 5px for each handle + padding
+      : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle) + 15;
+      var paddingVector = lineData.line.normalize().multiplyScalar(labelPadding);
+      var paddingPoint = lineData.length > labelPadding * 2 ? this._handles[1].screenPosition.clone().sub(paddingVector) : this._handles[1].screenPosition.clone().add(paddingVector);
+      var transform = this.adjustLabelTransform(this._label, paddingPoint);
+
+      this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
+
+      var angle2 = Math.abs(line2Data.transformAngle);
+      if (angle2 > Math.PI / 2) {
+        angle2 = Math.PI - angle2;
+      }
+
+      var label2Padding = Math.tan(angle2) < this._label2.offsetHeight / this._label2.offsetWidth ? this._label2.offsetWidth / 2 / Math.cos(angle2) + 15 // 5px for each handle + padding
+      : this._label2.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle2) + 15;
+      var paddingVector2 = line2Data.line.normalize().multiplyScalar(label2Padding);
+      var paddingPoint2 = line2Data.length > label2Padding * 2 ? this._handles[3].screenPosition.clone().sub(paddingVector2) : this._handles[3].screenPosition.clone().add(paddingVector2);
+      var transform2 = this.adjustLabelTransform(this._label2, paddingPoint2);
+
+      this._label2.style.transform = 'translate3D(' + transform2.x + 'px, ' + transform2.y + 'px, 0)';
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._line.style.backgroundColor = this._color;
+      this._label.style.borderColor = this._color;
+
+      this._line2.style.backgroundColor = this._color;
+      this._label2.style.borderColor = this._color;
+
+      this._dashline.style.borderTop = '1.5px dashed ' + this._color;
+    };
+
+    _class.prototype.free = function free() {
+      var _this2 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this2.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._line);
+      this._container.removeChild(this._label);
+      this._container.removeChild(this._line2);
+      this._container.removeChild(this._label2);
+      this._container.removeChild(this._dashline);
+
+      // mesh, geometry, material
+      this.remove(this._mesh);
+      this._mesh.geometry.dispose();
+      this._mesh.geometry = null;
+      this._mesh.material.dispose();
+      this._mesh.material = null;
+      this._mesh = null;
+      this._geometry.dispose();
+      this._geometry = null;
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    /**
+     * Get length of rulers
+     *
+     * @return {Array}
+     */
+
+
+    _class.prototype.getDistances = function getDistances() {
+      return [this._distance, this._distance2];
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles.forEach(function (elem) {
+          return elem.worldPosition.copy(worldPosition);
+        });
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'mm';
+        this.update();
+      }
+    }, {
+      key: 'shotestDistance',
+      get: function get() {
+        return this._distance < this._distance2 ? this._distance : this._distance2;
+      }
+    }, {
+      key: 'longestDistance',
+      get: function get() {
+        return this._distance > this._distance2 ? this._distance : this._distance2;
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -45525,515 +44957,575 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/crossRuler
  */
 var widgetsCrossRuler = function widgetsCrossRuler() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'CrossRuler';
+
+      // incoming parameters (optional: lps2IJK, pixelSpacing, ultrasoundRegions, worldPosition)
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      _this._distances = null; // from intersection point to handles
+      _this._line01 = null; // vector from 0 to 1st handle
+      _this._normal = null; // normal vector to line01
+
+      // outgoing values
+      _this._distance = null;
+      _this._distance2 = null;
+      _this._units = !_this._calibrationFactor && !params.pixelSpacing ? 'units' : 'mm';
+
+      _this._domHovered = false;
+      _this._moving = false;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._line = null;
+      _this._line2 = null;
+      _this._label = null;
+      _this._label2 = null;
+
+      // add handles
+      _this._handles = [];
+
+      var handle = void 0;
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      for (var i = 0; i < 4; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._handles.push(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.onHover = _this.onHover.bind(_this);
+      _this.onMove = _this.onMove.bind(_this);
+
+      _this.create();
+
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._line.addEventListener('mouseenter', this.onHover);
+      this._line.addEventListener('mouseleave', this.onHover);
+      this._line2.addEventListener('mouseenter', this.onHover);
+      this._line2.addEventListener('mouseleave', this.onHover);
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+      this._container.addEventListener('wheel', this.onMove);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._line.removeEventListener('mouseenter', this.onHover);
+      this._line.removeEventListener('mouseleave', this.onHover);
+      this._line2.removeEventListener('mouseenter', this.onHover);
+      this._line2.removeEventListener('mouseleave', this.onHover);
 
-            _this._stack = stack;
+      this._container.removeEventListener('wheel', this.onMove);
+    };
 
-            _this._widgetType = 'CrossRuler';
-            _this._domHovered = false;
-            _this._moving = false;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            _this._distances = null; // from intersection point to handles
-            _this._line01 = null; // vector from 0 to 1st handle
-            _this._normal = null; // normal vector to line01
+      this.hoverMesh();
 
-            // mesh stuff
-            _this._material = null;
-            _this._material2 = null;
-            _this._geometry = null;
-            _this._geometry2 = null;
-            _this._mesh = null;
-            _this._mesh2 = null;
+      this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._handles[3].hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            // dom stuff
-            _this._line = null;
-            _this._line2 = null;
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, do we want to hover on mesh or just css?
+    };
 
-            // add handles
-            _this._handles = [];
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            var handle = void 0;
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-            for (var i = 0; i < 4; i++) {
-                handle = new WidgetsHandle(targetMesh, controls);
-                handle.worldPosition.copy(_this._worldPosition);
-                _this.add(handle);
-                _this._handles.push(handle);
-            }
-            _this._handles[1].active = true;
-            _this._handles[1].tracking = true;
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._handles.push(_this._moveHandle);
-            _this._moveHandle.hide();
+      this._handles.slice(0, -1).forEach(function (elem) {
+        return elem.onStart(evt);
+      });
 
-            _this.onHover = _this.onHover.bind(_this);
-            _this.onMove = _this.onMove.bind(_this);
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active || this._domHovered;
 
-            _this.create();
+      if (this._domHovered && this._distances) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
 
-            _this.addEventListeners();
-            return _this;
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._dragged = true;
+        this._moveHandle.onMove(evt, true);
+
+        if (this._moving) {
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+          });
+        }
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        return elem.onMove(evt);
+      });
+
+      if (this._distances) {
+        if (this._handles[0].active || this._handles[1].active) {
+          this.repositionOrtho(); // change worldPosition of 2nd and 3rd handle
+        } else if (this._handles[2].active || this._handles[3].active) {
+          this.recalculateOrtho();
+        }
+      }
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd();
+      this._handles[2].onEnd();
+      this._handles[3].onEnd();
+
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
+        return;
+      }
+
+      if (!this._dragged && this._active && !this._handles[1].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+        this._handles[2].selected = this._selected;
+        this._handles[3].selected = this._selected;
+      }
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
+      this._dragged = false;
+      this._moving = false;
+
+      if (!this._distances) {
+        this.initOrtho();
+      }
+      this.update();
+    };
+
+    _class.prototype.create = function create() {
+      this.createMesh();
+      this.createDOM();
+    };
+
+    _class.prototype.createMesh = function createMesh() {
+      // geometry
+      this._geometry = new three.Geometry();
+      this._geometry.vertices = [this._handles[0].worldPosition, this._handles[1].worldPosition, this._handles[2].worldPosition, this._handles[3].worldPosition];
+
+      // material
+      this._material = new three.LineBasicMaterial();
+
+      this.updateMeshColor();
+
+      // mesh
+      this._mesh = new three.LineSegments(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._line = document.createElement('div');
+      this._line.className = 'widgets-line';
+      this._container.appendChild(this._line);
+
+      this._line2 = document.createElement('div');
+      this._line2.className = 'widgets-line';
+      this._container.appendChild(this._line2);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+      this._container.appendChild(this._label);
+
+      this._label2 = document.createElement('div');
+      this._label2.className = 'widgets-label';
+      this._container.appendChild(this._label2);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._line.style.display = 'none';
+      this._line2.style.display = 'none';
+      this._label.style.display = 'none';
+      this._label2.style.display = 'none';
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        return elem.hideDOM();
+      });
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._line.style.display = '';
+      this._line2.style.display = '';
+      this._label.style.display = '';
+      this._label2.style.display = '';
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        return elem.showDOM();
+      });
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        return elem.update();
+      });
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      // update first line
+      var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
+
+      this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n            rotate(' + lineData.transformAngle + 'rad)';
+      this._line.style.width = lineData.length + 'px';
+
+      // update second line
+      var line2Data = this.getLineData(this._handles[2].screenPosition, this._handles[3].screenPosition);
+
+      this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n            rotate(' + line2Data.transformAngle + 'rad)';
+      this._line2.style.width = line2Data.length + 'px';
+
+      // update labels
+      var distanceData = this.getDistanceData(this._handles[0].worldPosition, this._handles[1].worldPosition, this._calibrationFactor);
+      var distanceData2 = this.getDistanceData(this._handles[2].worldPosition, this._handles[3].worldPosition, this._calibrationFactor);
+      var title = 'Calibration is required to display the distance in mm';
+
+      this._distance = distanceData.distance;
+      this._distance2 = distanceData2.distance;
+      if (distanceData.units && distanceData2.units && distanceData.units === distanceData2.units) {
+        this._units = distanceData.units;
+      } else {
+        if (!distanceData.units) {
+          distanceData.units = this._units;
+        }
+        if (!distanceData2.units) {
+          distanceData2.units = this._units;
+        }
+      }
+
+      if (distanceData.units === 'units' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', title);
+        this._label.style.color = this._colors.error;
+      } else if (distanceData.units !== 'units' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+      if (distanceData2.units === 'units' && !this._label2.hasAttribute('title')) {
+        this._label2.setAttribute('title', title);
+        this._label2.style.color = this._colors.error;
+      } else if (distanceData2.units !== 'units' && this._label2.hasAttribute('title')) {
+        this._label2.removeAttribute('title');
+        this._label2.style.color = this._colors.text;
+      }
+      this._label.innerHTML = this._distance.toFixed(2) + ' ' + distanceData.units;
+      this._label2.innerHTML = this._distance2.toFixed(2) + ' ' + distanceData2.units;
+
+      var angle = Math.abs(lineData.transformAngle);
+      if (angle > Math.PI / 2) {
+        angle = Math.PI - angle;
+      }
+
+      var labelPadding = Math.tan(angle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(angle) + 15 // 5px for each handle + padding
+      : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle) + 15,
+          paddingVector = lineData.line.normalize().multiplyScalar(labelPadding),
+          paddingPoint = lineData.length > labelPadding * 4 ? this._handles[1].screenPosition.clone().sub(paddingVector) : this._handles[1].screenPosition.clone().add(paddingVector),
+          transform = this.adjustLabelTransform(this._label, paddingPoint);
+
+      this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
+
+      var angle2 = Math.abs(line2Data.transformAngle);
+      if (angle2 > Math.PI / 2) {
+        angle2 = Math.PI - angle2;
+      }
+
+      var label2Padding = Math.tan(angle2) < this._label2.offsetHeight / this._label2.offsetWidth ? this._label2.offsetWidth / 2 / Math.cos(angle2) + 15 // 5px for each handle + padding
+      : this._label2.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle2) + 15,
+          paddingVector2 = line2Data.line.normalize().multiplyScalar(label2Padding),
+          paddingPoint2 = line2Data.length > label2Padding * 4 ? this._handles[3].screenPosition.clone().sub(paddingVector2) : this._handles[3].screenPosition.clone().add(paddingVector2),
+          transform2 = this.adjustLabelTransform(this._label2, paddingPoint2);
+
+      this._label2.style.transform = 'translate3D(' + transform2.x + 'px, ' + transform2.y + 'px, 0)';
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._line.style.backgroundColor = this._color;
+      this._line2.style.backgroundColor = this._color;
+      this._label.style.borderColor = this._color;
+      this._label2.style.borderColor = this._color;
+    };
+
+    _class.prototype.free = function free() {
+      var _this3 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this3.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._line);
+      this._container.removeChild(this._line2);
+      this._container.removeChild(this._label);
+      this._container.removeChild(this._label2);
+
+      // mesh, geometry, material
+      this.remove(this._mesh);
+      this._mesh.geometry.dispose();
+      this._mesh.geometry = null;
+      this._mesh.material.dispose();
+      this._mesh.material = null;
+      this._mesh = null;
+      this._geometry.dispose();
+      this._geometry = null;
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.initLineAndNormal = function initLineAndNormal() {
+      this._line01 = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition);
+      this._normal = this._line01.clone().cross(this._camera._direction).normalize();
+    };
+
+    _class.prototype.initOrtho = function initOrtho() {
+      // called onEnd if distances are null
+      this.initLineAndNormal();
+
+      var center = this._handles[1].worldPosition.clone().add(this._handles[0].worldPosition).multiplyScalar(0.5);
+      var halfLength = this._line01.length() / 2;
+      var normLine = this._normal.clone().multiplyScalar(halfLength * 0.8);
+      var normLength = normLine.length();
+
+      this._handles[2].worldPosition.copy(center.clone().add(normLine));
+      this._handles[3].worldPosition.copy(center.clone().sub(normLine));
+
+      this._distances = [halfLength, halfLength, normLength, normLength];
+    };
+
+    _class.prototype.repositionOrtho = function repositionOrtho() {
+      // called onMove if 0 or 1st handle is active
+      this.initLineAndNormal();
+      this._distances[0] *= this._line01.length() / (this._distances[0] + this._distances[1]);
+      this._distances[1] = this._line01.length() - this._distances[0];
+
+      var intersect = this._handles[0].worldPosition.clone().add(this._line01.clone().normalize().multiplyScalar(this._distances[0]));
+
+      this._handles[2].worldPosition.copy(intersect.clone().add(this._normal.clone().multiplyScalar(this._distances[2])));
+      this._handles[3].worldPosition.copy(intersect.clone().sub(this._normal.clone().multiplyScalar(this._distances[3])));
+    };
+
+    _class.prototype.recalculateOrtho = function recalculateOrtho() {
+      // called onMove if 2nd or 3rd handle is active
+      var activeInd = this._handles[2].active ? 2 : 3;
+      var lines = [];
+      var intersect = new three.Vector3();
+
+      lines[2] = this._handles[2].worldPosition.clone().sub(this._handles[0].worldPosition);
+      lines[3] = this._handles[3].worldPosition.clone().sub(this._handles[0].worldPosition);
+      new three.Ray(this._handles[0].worldPosition, this._line01.clone().normalize()).closestPointToPoint(this._handles[activeInd].worldPosition, intersect);
+
+      var isOutside = intersect.clone().sub(this._handles[0].worldPosition).length() > this._line01.length();
+      // if intersection is outside of the line01 then change worldPosition of active handle
+      if (isOutside || intersect.equals(this._handles[0].worldPosition)) {
+        if (isOutside) {
+          intersect.copy(this._handles[1].worldPosition);
         }
 
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._line.addEventListener('mouseenter', this.onHover);
-            this._line.addEventListener('mouseleave', this.onHover);
-            this._line2.addEventListener('mouseenter', this.onHover);
-            this._line2.addEventListener('mouseleave', this.onHover);
-
-            this._container.addEventListener('wheel', this.onMove);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._line.removeEventListener('mouseenter', this.onHover);
-            this._line.removeEventListener('mouseleave', this.onHover);
-            this._line2.removeEventListener('mouseenter', this.onHover);
-            this._line2.removeEventListener('mouseleave', this.onHover);
-
-            this._container.removeEventListener('wheel', this.onMove);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._handles[2].hovered || this._handles[3].hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, do we want to hover on mesh or just css?
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            this._moveHandle.onMove(evt, true);
-
-            this._handles.slice(0, -1).forEach(function (elem) {
-                elem.onStart(evt);
-            });
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active || this._domHovered;
-
-            if (this._domHovered && this._distances) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            if (this._active) {
-                var prevPosition = this._moveHandle.worldPosition.clone();
-
-                this._dragged = true;
-                this._moveHandle.onMove(evt, true);
-
-                if (this._moving) {
-                    this._handles.slice(0, -1).forEach(function (elem, ind) {
-                        this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                    }, this);
-                }
-            } else {
-                this.onHover(null);
-            }
-
-            this._handles.slice(0, -1).forEach(function (elem) {
-                elem.onMove(evt);
-            });
-
-            if (this._distances) {
-                if (this._handles[0].active || this._handles[1].active) {
-                    this.repositionOrtho(); // change worldPosition of 2nd and 3rd handle
-                } else if (this._handles[2].active || this._handles[3].active) {
-                    this.recalculateOrtho();
-                }
-            }
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            this._handles[0].onEnd();
-            this._handles[2].onEnd();
-            this._handles[3].onEnd();
-
-            if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
-                return;
-            }
-
-            if (!this._dragged && this._active && !this._handles[1].tracking) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles[0].selected = this._selected;
-                this._handles[2].selected = this._selected;
-                this._handles[3].selected = this._selected;
-            }
-
-            // Second Handle
-            if (this._dragged || !this._handles[1].tracking) {
-                this._handles[1].tracking = false;
-                this._handles[1].onEnd();
-            } else {
-                this._handles[1].tracking = false;
-            }
-            this._handles[1].selected = this._selected;
-
-            this._active = this._handles[0].active || this._handles[1].active || this._handles[2].active || this._handles[3].active;
-            this._dragged = false;
-            this._moving = false;
-
-            if (!this._distances) {
-                this.initOrtho();
-            }
-            this.update();
-        };
-
-        _class.prototype.create = function create() {
-            this.createMesh();
-            this.createDOM();
-        };
-
-        _class.prototype.createMesh = function createMesh() {
-            // geometry
-            this._geometry = new three.Geometry();
-            this._geometry.vertices.push(this._handles[0].worldPosition);
-            this._geometry.vertices.push(this._handles[1].worldPosition);
-
-            // geometry
-            this._geometry2 = new three.Geometry();
-            this._geometry2.vertices.push(this._handles[2].worldPosition);
-            this._geometry2.vertices.push(this._handles[3].worldPosition);
-
-            // material
-            this._material = new three.LineBasicMaterial();
-            this._material2 = new three.LineBasicMaterial();
-
-            this.updateMeshColor();
-
-            // mesh
-            this._mesh = new three.Line(this._geometry, this._material);
-            this._mesh.visible = true;
-            this._mesh2 = new three.Line(this._geometry2, this._material2);
-            this._mesh2.visible = true;
-
-            this.add(this._mesh);
-            this.add(this._mesh2);
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._line = document.createElement('div');
-            this._line.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line);
-
-            this._line2 = document.createElement('div');
-            this._line2.setAttribute('class', 'widgets-line');
-            this._container.appendChild(this._line2);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._line.style.display = 'none';
-            this._line2.style.display = 'none';
-
-            this._handles.slice(0, -1).forEach(function (elem) {
-                elem.hideDOM();
-            });
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._line.style.display = '';
-            this._line2.style.display = '';
-
-            this._handles.slice(0, -1).forEach(function (elem) {
-                elem.showDOM();
-            });
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles.slice(0, -1).forEach(function (elem) {
-                elem.update();
-            });
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-            if (this._material2) {
-                this._material2.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                this._geometry.verticesNeedUpdate = true;
-            }
-            if (this._geometry2) {
-                this._geometry2.verticesNeedUpdate = true;
-            }
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            // update first line
-            var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
-
-            this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n            rotate(' + lineData.transformAngle + 'rad)';
-            this._line.style.width = lineData.length + 'px';
-
-            // update second line
-            var line2Data = this.getLineData(this._handles[2].screenPosition, this._handles[3].screenPosition);
-
-            this._line2.style.transform = 'translate3D(' + line2Data.transformX + 'px, ' + line2Data.transformY + 'px, 0)\n            rotate(' + line2Data.transformAngle + 'rad)';
-            this._line2.style.width = line2Data.length + 'px';
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._line.style.backgroundColor = this._color;
-            this._line2.style.backgroundColor = this._color;
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this._container.removeChild(this._line);
-            this._container.removeChild(this._line2);
-
-            // mesh, geometry, material
-            this.remove(this._mesh);
-            this._mesh.geometry.dispose();
-            this._mesh.geometry = null;
-            this._mesh.material.dispose();
-            this._mesh.material = null;
-            this._mesh = null;
-            this._geometry.dispose();
-            this._geometry = null;
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-            this.remove(this._mesh2);
-            this._mesh2.geometry.dispose();
-            this._mesh2.geometry = null;
-            this._mesh2.material.dispose();
-            this._mesh2.material = null;
-            this._mesh2 = null;
-            this._geometry2.dispose();
-            this._geometry2 = null;
-            this._material2.vertexShader = null;
-            this._material2.fragmentShader = null;
-            this._material2.uniforms = null;
-            this._material2.dispose();
-            this._material2 = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _class.prototype.initLineAndNormal = function initLineAndNormal() {
-            this._line01 = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition);
-            this._normal = this._line01.clone().cross(this._camera._direction).normalize();
-        };
-
-        _class.prototype.initOrtho = function initOrtho() {
-            // called onEnd if distances are null
-            this.initLineAndNormal();
-
-            var center = this._handles[1].worldPosition.clone().add(this._handles[0].worldPosition).multiplyScalar(0.5);
-
-            var halfLength = this._line01.length() / 2;
-
-            var normLine = this._normal.clone().multiplyScalar(halfLength * 0.8);
-
-            var normLength = normLine.length();
-
-            this._handles[2].worldPosition.copy(center.clone().add(normLine));
-            this._handles[3].worldPosition.copy(center.clone().sub(normLine));
-
-            this._distances = [halfLength, halfLength, normLength, normLength];
-        };
-
-        _class.prototype.repositionOrtho = function repositionOrtho() {
-            // called onMove if 0 or 1st handle is active
-            this.initLineAndNormal();
-            this._distances[0] *= this._line01.length() / (this._distances[0] + this._distances[1]);
-            this._distances[1] = this._line01.length() - this._distances[0];
-
-            var intersect = this._handles[0].worldPosition.clone().add(this._line01.clone().normalize().multiplyScalar(this._distances[0]));
-
-            this._handles[2].worldPosition.copy(intersect.clone().add(this._normal.clone().multiplyScalar(this._distances[2])));
-            this._handles[3].worldPosition.copy(intersect.clone().sub(this._normal.clone().multiplyScalar(this._distances[3])));
-        };
-
-        _class.prototype.recalculateOrtho = function recalculateOrtho() {
-            // called onMove if 2nd or 3rd handle is active
-            var activeInd = this._handles[2].active ? 2 : 3;
-
-            var lines = [];
-
-            var intersect = new three.Vector3();
-
-            lines[2] = this._handles[2].worldPosition.clone().sub(this._handles[0].worldPosition);
-            lines[3] = this._handles[3].worldPosition.clone().sub(this._handles[0].worldPosition);
-            new three.Ray(this._handles[0].worldPosition, this._line01.clone().normalize()).closestPointToPoint(this._handles[activeInd].worldPosition, intersect);
-
-            var isOutside = intersect.clone().sub(this._handles[0].worldPosition).length() > this._line01.length();
-            // if intersection is outside of the line01 then change worldPosition of active handle
-            if (isOutside || intersect.equals(this._handles[0].worldPosition)) {
-                if (isOutside) {
-                    intersect.copy(this._handles[1].worldPosition);
-                }
-
-                this._handles[activeInd].worldPosition.copy(intersect.clone().add(lines[activeInd].clone().projectOnVector(this._normal)));
-            }
-
-            if (lines[2].cross(this._line01).angleTo(this._camera._direction) > 0.01) {
-                this._handles[2].worldPosition.copy(intersect); // 2nd handle should always be above line01
-            }
-            if (lines[3].cross(this._line01).angleTo(this._camera._direction) < Math.PI - 0.01) {
-                this._handles[3].worldPosition.copy(intersect); // 3nd handle should always be below line01
-            }
-
-            lines[0] = this._normal.clone().multiplyScalar(this._distances[5 - activeInd]);
-            if (activeInd === 2) {
-                lines[0].negate();
-            }
-            this._handles[5 - activeInd].worldPosition.copy(intersect.clone().add(lines[0]));
-
-            this._distances[activeInd] = intersect.clone().sub(this._handles[activeInd].worldPosition).length();
-            this._distances[0] = intersect.clone().sub(this._handles[0].worldPosition).length();
-            this._distances[1] = intersect.clone().sub(this._handles[1].worldPosition).length();
-        };
-
-        /**
-         * Get CrossRuler handles position
-         *
-         * @return {Array.<Vector3>} First begin, first end, second begin, second end
-         */
-
-
-        _class.prototype.getCoordinates = function getCoordinates() {
-            return [this._handles[0].worldPosition, this._handles[1].worldPosition, this._handles[2].worldPosition, this._handles[3].worldPosition];
-        };
-
-        /**
-         * Set CrossRuler handles position
-         *
-         * @param {Vector3} first   The beginning of the first line
-         * @param {Vector3} second  The end of the first line
-         * @param {Vector3} third   The beginning of the second line (clockwise relative to the first line)
-         * @param {Vector3} fourth  The end of the second line
-         */
-
-
-        _class.prototype.initCoordinates = function initCoordinates(first, second, third, fourth) {
-            var intersectR = new three.Vector3();
-
-            var intersectS = new three.Vector3();
-
-            var ray = new three.Ray(first);
-
-            ray.lookAt(second);
-            ray.distanceSqToSegment(third, fourth, intersectR, intersectS);
-
-            if (intersectR.distanceTo(intersectS) > 0.01 && intersectR.clone().sub(first).length() > second.clone().sub(first).length() + 0.01) {
-                window.console.warn('Lines do not intersect');
-
-                return;
-            }
-
-            this.active = false;
-            this.hovered = false;
-            this.setDefaultColor('#198');
-            this._worldPosition.copy(first);
-            this._handles[0].worldPosition.copy(first);
-            this._handles[1].worldPosition.copy(second);
-            this._handles[1].active = false;
-            this._handles[1].tracking = false;
-            this._handles[2].worldPosition.copy(third);
-            this._handles[3].worldPosition.copy(fourth);
-            this._distances = [intersectR.clone().sub(first).length(), intersectR.clone().sub(second).length(), intersectR.clone().sub(third).length(), intersectR.clone().sub(fourth).length()];
-
-            this.initLineAndNormal();
-            this.update();
-        };
-
-        _class.prototype.setDefaultColor = function setDefaultColor(color) {
-            this._colors.default = color;
-            this._handles.forEach(function (elem) {
-                elem._colors.default = color;
-            });
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles.slice(0, -1).forEach(function (elem) {
-                    elem.worldPosition.copy(worldPosition);
-                });
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        this._handles[activeInd].worldPosition.copy(intersect.clone().add(lines[activeInd].clone().projectOnVector(this._normal)));
+      }
+
+      if (lines[2].cross(this._line01).angleTo(this._camera._direction) > 0.01) {
+        this._handles[2].worldPosition.copy(intersect); // 2nd handle should always be above line01
+      }
+      if (lines[3].cross(this._line01).angleTo(this._camera._direction) < Math.PI - 0.01) {
+        this._handles[3].worldPosition.copy(intersect); // 3nd handle should always be below line01
+      }
+
+      lines[0] = this._normal.clone().multiplyScalar(this._distances[5 - activeInd]);
+      if (activeInd === 2) {
+        lines[0].negate();
+      }
+      this._handles[5 - activeInd].worldPosition.copy(intersect.clone().add(lines[0]));
+
+      this._distances[activeInd] = intersect.distanceTo(this._handles[activeInd].worldPosition);
+      this._distances[0] = intersect.distanceTo(this._handles[0].worldPosition);
+      this._distances[1] = intersect.distanceTo(this._handles[1].worldPosition);
+    };
+
+    /**
+     * Get length of rulers
+     *
+     * @return {Array}
+     */
+
+
+    _class.prototype.getDimensions = function getDimensions() {
+      return [this._distance, this._distance2];
+    };
+
+    /**
+     * Get CrossRuler handles position
+     *
+     * @return {Array.<Vector3>} First begin, first end, second begin, second end
+     */
+
+
+    _class.prototype.getCoordinates = function getCoordinates() {
+      return [this._handles[0].worldPosition, this._handles[1].worldPosition, this._handles[2].worldPosition, this._handles[3].worldPosition];
+    };
+
+    /**
+     * Set CrossRuler handles position
+     *
+     * @param {Vector3} first   The beginning of the first line
+     * @param {Vector3} second  The end of the first line
+     * @param {Vector3} third   The beginning of the second line (clockwise relative to the first line)
+     * @param {Vector3} fourth  The end of the second line
+     */
+
+
+    _class.prototype.initCoordinates = function initCoordinates(first, second, third, fourth) {
+      var intersectR = new three.Vector3();
+      var intersectS = new three.Vector3();
+      var ray = new three.Ray(first);
+
+      ray.lookAt(second);
+      ray.distanceSqToSegment(third, fourth, intersectR, intersectS);
+
+      if (intersectR.distanceTo(intersectS) > 0.01 && intersectR.distanceTo(first) > second.distanceTo(first) + 0.01) {
+        window.console.warn('Lines do not intersect');
+
+        return;
+      }
+
+      this.active = false;
+      this.hovered = false;
+      this.setDefaultColor('#198');
+      this._worldPosition.copy(first);
+      this._handles[0].worldPosition.copy(first);
+      this._handles[1].worldPosition.copy(second);
+      this._handles[1].active = false;
+      this._handles[1].tracking = false;
+      this._handles[2].worldPosition.copy(third);
+      this._handles[3].worldPosition.copy(fourth);
+      this._distances = [intersectR.distanceTo(first), intersectR.distanceTo(second), intersectR.distanceTo(third), intersectR.distanceTo(fourth)];
+
+      this.initLineAndNormal();
+      this.update();
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles.slice(0, -1).forEach(function (elem) {
+          return elem.worldPosition.copy(worldPosition);
+        });
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'mm';
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -46065,7 +45557,7 @@ var WidgetsCss = function () {
     _createClass(WidgetsCss, null, [{
         key: "code",
         get: function get() {
-            return "\n        .widgets-handle {\n            position: absolute;\n            border: 1px solid;\n            border-radius: 50%;\n            width: 10px;\n            height: 10px;\n            margin: -5.5px; /* border + width / 2 */\n            z-index: 3;\n        }\n        .widgets-line {\n            position: absolute;\n            width: 1px;\n            height: 1px;\n            margin-top: -0.5px; /* height / 2 */\n        }\n        .widgets-line:before { /* for dragging */\n            content: \" \";\n            position: absolute;\n            height: 11.5px;\n            left: 0;\n            right: 0;\n            margin-top: -5px;\n        }\n        .widgets-dashline {\n            position: absolute;\n            border-top: 1px dashed;\n            margin-top: -1px; /* border */\n        }\n        .widgets-rectangle {\n            position: absolute;\n            border: 1px solid;\n            margin: -1px; /* border */\n        }\n        .widgets-rectangle-helper {\n            position: absolute;\n            border: 1px dashed;\n            margin: -1px; /* border */\n        }\n        .widgets-ellipse {\n            position: absolute;\n            border: 1px solid;\n            border-radius: 50%;\n            margin: -1px; /* border */\n            z-index: 2;\n        }\n        .widgets-label {\n            position: absolute;\n            border: 1px solid;\n            background-color: rgba(0, 0, 0, 0.7);\n            color: rgb(255, 255, 255);\n            padding: 4px;\n            z-index: 3;\n        }\n        ";
+            return "\n        .widgets-handle {\n            position: absolute;\n            border: 1px solid;\n            border-radius: 50%;\n            width: 10px;\n            height: 10px;\n            margin: -6px; /* border + width / 2 */\n            z-index: 3;\n        }\n        .widgets-line {\n            position: absolute;\n            width: 1px;\n            height: 1px;\n            margin-top: -0.5px; /* height / 2 */\n        }\n        .widgets-dashline {\n            position: absolute;\n            border-top: 1px dashed;\n            margin-top: -0.5px; /* border / 2 */\n        }\n        .widgets-line:before,\n        .widgets-dashline:before { /* for dragging */\n            content: \" \";\n            position: absolute;\n            height: 12px;\n            left: 0;\n            right: 0;\n            margin-top: -6px;\n        }\n        .widgets-rectangle {\n            position: absolute;\n            border: 1px solid;\n            margin: -1px; /* border */\n        }\n        .widgets-rectangle-helper {\n            position: absolute;\n            border: 1px dashed;\n            margin: -1px; /* border */\n        }\n        .widgets-ellipse {\n            position: absolute;\n            border: 1px solid;\n            border-radius: 50%;\n            margin: -1px; /* border */\n            z-index: 2;\n        }\n        .widgets-label {\n            position: absolute;\n            border: 1px solid;\n            background-color: rgba(0, 0, 0, 0.7);\n            color: rgb(255, 255, 255);\n            padding: 4px;\n            z-index: 3;\n        }\n        ";
         }
     }]);
 
@@ -46105,419 +45597,458 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/ellipse
  */
 var widgetsEllipse = function widgetsEllipse() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'Ellipse';
+
+      // incoming parameters (optional: frameIndex, worldPosition)
+      _this._stack = params.stack; // required
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._area = null;
+      _this._units = !_this._calibrationFactor && !params.stack.frame[params.frameIndex].pixelSpacing ? 'units' : 'cm²';
+
+      _this._moving = false;
+      _this._domHovered = false;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._rectangle = null;
+      _this._ellipse = null;
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+
+      var handle = void 0;
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      for (var i = 0; i < 2; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._handles.push(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.create();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+      this._rectangle.addEventListener('mouseenter', this.onHover);
+      this._rectangle.addEventListener('mouseleave', this.onHover);
+      this._ellipse.addEventListener('mouseenter', this.onHover);
+      this._ellipse.addEventListener('mouseleave', this.onHover);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
 
-            _this._stack = stack;
+      this._rectangle.removeEventListener('mouseenter', this.onHover);
+      this._rectangle.removeEventListener('mouseleave', this.onHover);
+      this._ellipse.removeEventListener('mouseenter', this.onHover);
+      this._ellipse.removeEventListener('mouseleave', this.onHover);
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
 
-            _this._widgetType = 'Ellipse';
-            _this._moving = false;
-            _this._domHovered = false;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            // mesh stuff
-            _this._material = null;
-            _this._geometry = null;
-            _this._mesh = null;
+      this.hoverMesh();
 
-            // dom stuff
-            _this._rectangle = null;
-            _this._ellipse = null;
-            _this._label = null;
+      this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            // add handles
-            _this._handles = [];
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, if we want to hover on mesh instead of just css
+    };
 
-            var handle = void 0;
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-            for (var i = 0; i < 2; i++) {
-                handle = new WidgetsHandle(targetMesh, controls);
-                handle.worldPosition.copy(_this._worldPosition);
-                _this.add(handle);
-                _this._handles.push(handle);
-            }
-            _this._handles[1].active = true;
-            _this._handles[1].tracking = true;
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._handles.push(_this._moveHandle);
-            _this._moveHandle.hide();
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
 
-            _this.create();
+      this._handles[0].onStart(evt);
+      this._handles[1].onStart(evt);
 
-            _this.onMove = _this.onMove.bind(_this);
-            _this.onHover = _this.onHover.bind(_this);
-            _this.addEventListeners();
-            return _this;
+      this._active = this._handles[0].active || this._handles[1].active || this._domHovered;
+
+      if (this._domHovered && !this._handles[1].tracking) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._dragged = true;
+        this._moveHandle.onMove(evt, true);
+
+        if (this._moving) {
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+          });
         }
 
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('wheel', this.onMove);
-
-            this._rectangle.addEventListener('mouseenter', this.onHover);
-            this._rectangle.addEventListener('mouseleave', this.onHover);
-            this._ellipse.addEventListener('mouseenter', this.onHover);
-            this._ellipse.addEventListener('mouseleave', this.onHover);
-            this._label.addEventListener('mouseenter', this.onHover);
-            this._label.addEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('wheel', this.onMove);
-
-            this._rectangle.removeEventListener('mouseenter', this.onHover);
-            this._rectangle.removeEventListener('mouseleave', this.onHover);
-            this._ellipse.removeEventListener('mouseenter', this.onHover);
-            this._ellipse.removeEventListener('mouseleave', this.onHover);
-            this._label.removeEventListener('mouseenter', this.onHover);
-            this._label.removeEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, if we want to hover on mesh instead of just css
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            this._moveHandle.onMove(evt, true);
-
-            this._handles[0].onStart(evt);
-            this._handles[1].onStart(evt);
-
-            this._active = this._handles[0].active || this._handles[1].active || this._domHovered;
-
-            if (this._domHovered && !this._handles[1].tracking) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            if (this._active) {
-                var prevPosition = this._moveHandle.worldPosition.clone();
-
-                this._dragged = true;
-                this._moveHandle.onMove(evt, true);
-
-                if (this._moving) {
-                    this._handles.slice(0, -1).forEach(function (elem, ind) {
-                        this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                    }, this);
-                }
-
-                this.updateRoI(true);
-            } else {
-                this.onHover(null);
-            }
-
-            this._handles[0].onMove(evt);
-            this._handles[1].onMove(evt);
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            this._handles[0].onEnd(); // First Handle
-
-            if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
-                return;
-            }
-
-            if (!this._dragged && this._active && !this._handles[1].tracking) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles[0].selected = this._selected;
-            }
-
-            // Second Handle
-            if (this._dragged || !this._handles[1].tracking) {
-                this._handles[1].tracking = false;
-                this._handles[1].onEnd();
-            } else {
-                this._handles[1].tracking = false;
-            }
-            this._handles[1].selected = this._selected;
-
-            this._active = this._handles[0].active || this._handles[1].active;
-            this._dragged = false;
-            this._moving = false;
-
-            this.updateRoI();
-            this.update();
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-
-            this._rectangle.style.display = 'none';
-            this._ellipse.style.display = 'none';
-            this._label.style.display = 'none';
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._handles[0].showDOM();
-            this._handles[1].showDOM();
-
-            this._rectangle.style.display = '';
-            this._ellipse.style.display = '';
-            this._label.style.display = '';
-        };
-
-        _class.prototype.create = function create() {
-            this.createMaterial();
-            this.createDOM();
-        };
-
-        _class.prototype.createMaterial = function createMaterial() {
-            this._material = new three.MeshBasicMaterial();
-            this._material.transparent = true;
-            this._material.opacity = 0.2;
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._rectangle = document.createElement('div');
-            this._rectangle.setAttribute('class', 'widgets-rectangle-helper');
-            this._container.appendChild(this._rectangle);
-
-            this._ellipse = document.createElement('div');
-            this._ellipse.setAttribute('class', 'widgets-ellipse');
-            this._container.appendChild(this._ellipse);
-
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-
-            // measurenents
-            var measurementsContainer = document.createElement('div');
-            // Mean / SD
-            var meanSDContainer = document.createElement('div');
-            meanSDContainer.setAttribute('class', 'mean-sd');
-            measurementsContainer.appendChild(meanSDContainer);
-            // Max / Min
-            var maxMinContainer = document.createElement('div');
-            maxMinContainer.setAttribute('class', 'max-min');
-            measurementsContainer.appendChild(maxMinContainer);
-            // Area
-            var areaContainer = document.createElement('div');
-            areaContainer.setAttribute('class', 'area');
-            measurementsContainer.appendChild(areaContainer);
-
-            this._label.appendChild(measurementsContainer);
-
-            this._container.appendChild(this._label);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles[0].update();
-            this._handles[1].update();
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMContent();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._mesh) {
-                this.remove(this._mesh);
-            }
-
-            var vec01 = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition);
-
-            var height = vec01.clone().projectOnVector(this._camera.up).length();
-
-            var width = vec01.clone().projectOnVector(this._camera._right).length();
-
-            if (width === 0 || height === 0) {
-                return;
-            }
-
-            this._geometry = new three.ShapeGeometry(new three.Shape(new three.EllipseCurve(0, 0, width / 2, height / 2, 0, 2 * Math.PI, false).getPoints(50)));
-
-            this._mesh = new three.Mesh(this._geometry, this._material);
-            this._mesh.position.copy(this._handles[0].worldPosition.clone().add(vec01.multiplyScalar(0.5)));
-            this._mesh.rotation.copy(this._camera.rotation);
-            this._mesh.visible = true;
-            this.add(this._mesh);
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._rectangle.style.borderColor = this._color;
-            this._ellipse.style.borderColor = this._color;
-            this._label.style.borderColor = this._color;
-        };
-
-        _class.prototype.updateRoI = function updateRoI(clear) {
-            if (!this._geometry) {
-                return;
-            }
-
-            var meanSDContainer = this._label.querySelector('.mean-sd');
-            var maxMinContainer = this._label.querySelector('.max-min');
-
-            if (clear) {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-
-                return;
-            }
-
-            var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
-
-            if (roi !== null) {
-                meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
-                maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
-            } else {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-            }
-        };
-
-        _class.prototype.updateDOMContent = function updateDOMContent() {
-            if (!this._geometry) {
-                return;
-            }
-
-            var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'cm²';
-            var title = units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
-
-            if (title !== '') {
-                this._label.setAttribute('title', title);
-                this._label.style.color = this._colors.error;
-            } else {
-                this._label.removeAttribute('title');
-                this._label.style.color = this._colors.text;
-            }
-            this._label.querySelector('.area').innerHTML = 'Area: ' + (_core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry) / 100).toFixed(2) + ' ' + units;
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            var rectData = this.getRectData(this._handles[0].screenPosition, this._handles[1].screenPosition);
-
-            var labelTransform = this.adjustLabelTransform(this._label, this._handles[1].screenPosition.clone().add(rectData.paddingVector.multiplyScalar(15 + this._label.offsetHeight / 2)));
-
-            // update rectangle
-            this._rectangle.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
-            this._rectangle.style.width = rectData.width + 'px';
-            this._rectangle.style.height = rectData.height + 'px';
-
-            // update ellipse
-            this._ellipse.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
-            this._ellipse.style.width = rectData.width + 'px';
-            this._ellipse.style.height = rectData.height + 'px';
-
-            // update label
-            this._label.style.transform = 'translate3D(' + labelTransform.x + 'px,' + labelTransform.y + 'px, 0)';
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this._container.removeChild(this._rectangle);
-            this._container.removeChild(this._ellipse);
-            this._container.removeChild(this._label);
-
-            // mesh, geometry, material
-            if (this._mesh) {
-                this.remove(this._mesh);
-                this._mesh.geometry.dispose();
-                this._mesh.geometry = null;
-                this._mesh.material.dispose();
-                this._mesh.material = null;
-                this._mesh = null;
-            }
-            if (this._geometry) {
-                this._geometry.dispose();
-                this._geometry = null;
-            }
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles[0].worldPosition.copy(worldPosition);
-                this._handles[1].worldPosition.copy(worldPosition);
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        this.updateRoI(true);
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles[0].onMove(evt);
+      this._handles[1].onMove(evt);
+
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd(); // First Handle
+
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
+        return;
+      }
+
+      if (!this._dragged && this._active && !this._handles[1].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+      }
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active;
+      this._dragged = false;
+      this._moving = false;
+
+      this.updateRoI(); // TODO: if (this._dragged || !this._initialized)
+      this.update();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+
+      this._rectangle.style.display = 'none';
+      this._ellipse.style.display = 'none';
+      this._label.style.display = 'none';
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._handles[0].showDOM();
+      this._handles[1].showDOM();
+
+      this._rectangle.style.display = '';
+      this._ellipse.style.display = '';
+      this._label.style.display = '';
+    };
+
+    _class.prototype.create = function create() {
+      this.createMaterial();
+      this.createDOM();
+    };
+
+    _class.prototype.createMaterial = function createMaterial() {
+      this._material = new three.MeshBasicMaterial();
+      this._material.transparent = true;
+      this._material.opacity = 0.2;
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._rectangle = document.createElement('div');
+      this._rectangle.className = 'widgets-rectangle-helper';
+      this._container.appendChild(this._rectangle);
+
+      this._ellipse = document.createElement('div');
+      this._ellipse.className = 'widgets-ellipse';
+      this._container.appendChild(this._ellipse);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      // measurements
+      var measurementsContainer = document.createElement('div');
+      // Mean / SD
+      var meanSDContainer = document.createElement('div');
+      meanSDContainer.className = 'mean-sd';
+      measurementsContainer.appendChild(meanSDContainer);
+      // Max / Min
+      var maxMinContainer = document.createElement('div');
+      maxMinContainer.className = 'max-min';
+      measurementsContainer.appendChild(maxMinContainer);
+      // Area
+      var areaContainer = document.createElement('div');
+      areaContainer.className = 'area';
+      measurementsContainer.appendChild(areaContainer);
+
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles[0].update();
+      this._handles[1].update();
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._mesh) {
+        this.remove(this._mesh);
+      }
+
+      var vec01 = this._handles[1].worldPosition.clone().sub(this._handles[0].worldPosition);
+      var height = vec01.clone().projectOnVector(this._camera.up).length();
+      var width = vec01.clone().projectOnVector(this._camera._right).length();
+
+      if (width === 0 || height === 0) {
+        return;
+      }
+
+      this._geometry = new three.ShapeGeometry(new three.Shape(new three.EllipseCurve(0, 0, width / 2, height / 2, 0, 2 * Math.PI, false).getPoints(50)));
+
+      this._mesh = new three.Mesh(this._geometry, this._material);
+      this._mesh.position.copy(this._handles[0].worldPosition.clone().add(vec01.multiplyScalar(0.5)));
+      this._mesh.rotation.copy(this._camera.rotation);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.updateRoI = function updateRoI(clear) {
+      if (!this._geometry) {
+        return;
+      }
+
+      var meanSDContainer = this._label.querySelector('.mean-sd');
+      var maxMinContainer = this._label.querySelector('.max-min');
+
+      if (clear) {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+
+        return;
+      }
+
+      var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
+
+      if (roi !== null) {
+        meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
+        maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
+      } else {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+      }
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._rectangle.style.borderColor = this._color;
+      this._ellipse.style.borderColor = this._color;
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      if (!this._geometry) {
+        return;
+      }
+
+      this.updateDOMColor();
+
+      var regions = this._stack.frame[this._params.frameIndex].ultrasoundRegions || [];
+
+      this._area = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry);
+      if (this._calibrationFactor) {
+        this._area *= Math.pow(this._calibrationFactor, 2);
+      } else if (regions && regions.length > 0 && this._stack.lps2IJK) {
+        var region0 = this.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._stack.lps2IJK, this._handles[0].worldPosition));
+        var region1 = this.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._stack.lps2IJK, this._handles[1].worldPosition));
+
+        if (region0 !== null && region1 !== null && region0 === region1 && regions[region0].unitsX === 'cm' && regions[region0].unitsY === 'cm') {
+          this._area *= Math.pow(regions[region0].deltaX, 2);
+          this._units = 'cm²';
+        } else if (this._stack.frame[this._params.frameIndex].pixelSpacing) {
+          this._area /= 100;
+          this._units = 'cm²';
+        } else {
+          this._units = 'units';
+        }
+      } else if (this._units === 'cm²') {
+        this._area /= 100;
+      }
+
+      if (this._units === 'units' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', 'Calibration is required to display the area in cm²');
+        this._label.style.color = this._colors.error;
+      } else if (this._units !== 'units' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+      this._label.querySelector('.area').innerHTML = 'Area: ' + this._area.toFixed(2) + ' ' + this._units;
+
+      var rectData = this.getRectData(this._handles[0].screenPosition, this._handles[1].screenPosition);
+      var labelTransform = this.adjustLabelTransform(this._label, this._handles[1].screenPosition.clone().add(rectData.paddingVector.multiplyScalar(15 + this._label.offsetHeight / 2)));
+
+      // update rectangle
+      this._rectangle.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
+      this._rectangle.style.width = rectData.width + 'px';
+      this._rectangle.style.height = rectData.height + 'px';
+
+      // update ellipse
+      this._ellipse.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
+      this._ellipse.style.width = rectData.width + 'px';
+      this._ellipse.style.height = rectData.height + 'px';
+
+      // update label
+      this._label.style.transform = 'translate3D(' + labelTransform.x + 'px,' + labelTransform.y + 'px, 0)';
+    };
+
+    _class.prototype.free = function free() {
+      var _this3 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this3.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._rectangle);
+      this._container.removeChild(this._ellipse);
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      if (this._mesh) {
+        this.remove(this._mesh);
+        this._mesh.geometry.dispose();
+        this._mesh.geometry = null;
+        this._mesh.material.dispose();
+        this._mesh.material = null;
+        this._mesh = null;
+      }
+      if (this._geometry) {
+        this._geometry.dispose();
+        this._geometry = null;
+      }
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      this._stack = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        area: this._area,
+        units: this._units
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles[0].worldPosition.copy(worldPosition);
+        this._handles[1].worldPosition.copy(worldPosition);
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'cm²';
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -46554,575 +46085,630 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/freehand
  */
 var widgetsFreehand = function widgetsFreehand() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'Freehand';
+
+      // incoming parameters (optional: frameIndex, worldPosition)
+      _this._stack = params.stack; // required
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._area = null;
+      _this._units = !_this._calibrationFactor && !params.stack.frame[params.frameIndex].pixelSpacing ? 'units' : 'cm²';
+
+      _this._initialized = false; // set to true onEnd if number of handles > 2
+      _this._moving = false;
+      _this._domHovered = false;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._lines = [];
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+
+      var handle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(handle);
+      _this._handles.push(handle);
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+
+      _this.create();
+
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
 
-            _this._stack = stack;
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
 
-            _this._widgetType = 'Freehand';
-            _this._initialized = false; // set to true onEnd if number of handles > 2
-            _this._moving = false;
-            _this._domHovered = false;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            // mesh stuff
-            _this._material = null;
-            _this._geometry = null;
-            _this._mesh = null;
+      this.hoverMesh();
 
-            // dom stuff
-            _this._lines = [];
-            _this._label = null;
+      var hovered = false;
 
-            // add handles
-            _this._handles = [];
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      this._handles.forEach(function (elem) {
+        return hovered = hovered || elem.hovered;
+      });
 
-            var handle = new WidgetsHandle(targetMesh, controls);
-            handle.worldPosition.copy(_this._worldPosition);
-            _this.add(handle);
-            _this._handles.push(handle);
+      this._hovered = hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._moveHandle.hide();
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, if we want to hover on mesh instead of just css
+    };
 
-            _this.onMove = _this.onMove.bind(_this);
-            _this.onHover = _this.onHover.bind(_this);
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            _this.create();
+    _class.prototype.onStart = function onStart(evt) {
+      var active = false;
 
-            _this.addEventListeners();
-            return _this;
+      this._moveHandle.onMove(evt, true);
+      this._handles.forEach(function (elem) {
+        elem.onStart(evt);
+        active = active || elem.active;
+      });
+
+      this._active = active || this._domHovered;
+
+      if (this._domHovered && this._initialized) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      var hovered = false;
+
+      if (this.active) {
+        this._dragged = true;
+
+        if (!this._initialized) {
+          this._handles[this._handles.length - 1].hovered = false;
+          this._handles[this._handles.length - 1].active = false;
+          this._handles[this._handles.length - 1].tracking = false;
+
+          var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+          var handle = new WidgetsHandle(this._targetMesh, this._controls, this._params);
+
+          handle.hovered = true;
+          handle.active = true;
+          handle.tracking = true;
+          this.add(handle);
+          this._handles.push(handle);
+
+          this.createLine();
+        } else {
+          var prevPosition = this._moveHandle.worldPosition.clone();
+
+          this._moveHandle.onMove(evt, true);
+          if (this._mesh) {
+            this.remove(this._mesh);
+          }
+          this.updateDOMContent(true);
+          if (this._moving) {
+            this._handles.forEach(function (handle) {
+              handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+            });
+          }
+        }
+      }
+
+      this._handles.forEach(function (elem) {
+        elem.onMove(evt);
+        hovered = hovered || elem.hovered;
+      });
+
+      this._hovered = hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+
+      if (this.active && this._handles.length > 2) {
+        this.pushPopHandle();
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      var _this3 = this;
+
+      if (this._handles.length < 3) {
+        return;
+      }
+
+      var active = false;
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        elem.onEnd();
+        active = active || elem.active;
+      });
+
+      // Last Handle
+      if (this._dragged || !this._handles[this._handles.length - 1].tracking) {
+        this._handles[this._handles.length - 1].tracking = false;
+        this._handles[this._handles.length - 1].onEnd();
+      } else {
+        this._handles[this._handles.length - 1].tracking = false;
+      }
+
+      if (this._lines.length < this._handles.length) {
+        this.createLine();
+      }
+
+      if (this._dragged || !this._initialized) {
+        this.updateMesh();
+        this.updateDOMContent();
+      }
+
+      if (!this._dragged && this._active) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles.forEach(function (elem) {
+          return elem.selected = _this3._selected;
+        });
+      }
+      this._active = active || this._handles[this._handles.length - 1].active;
+      this._dragged = false;
+      this._moving = false;
+      this._initialized = true;
+
+      this.update();
+    };
+
+    _class.prototype.create = function create() {
+      this.createMaterial();
+      this.createDOM();
+    };
+
+    _class.prototype.createMaterial = function createMaterial() {
+      this._material = new three.MeshBasicMaterial({ side: three.DoubleSide });
+      this._material.transparent = true;
+      this._material.opacity = 0.2;
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      // measurements
+      var measurementsContainer = document.createElement('div');
+      // Mean / SD
+      var meanSDContainer = document.createElement('div');
+      meanSDContainer.className = 'mean-sd';
+      measurementsContainer.appendChild(meanSDContainer);
+      // Max / Min
+      var maxMinContainer = document.createElement('div');
+      maxMinContainer.className = 'max-min';
+      measurementsContainer.appendChild(maxMinContainer);
+      // Area
+      var areaContainer = document.createElement('div');
+      areaContainer.className = 'area';
+      measurementsContainer.appendChild(areaContainer);
+
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.createLine = function createLine() {
+      var line = document.createElement('div');
+
+      line.className = 'widgets-line';
+      line.addEventListener('mouseenter', this.onHover);
+      line.addEventListener('mouseleave', this.onHover);
+      this._lines.push(line);
+      this._container.appendChild(line);
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = 'none';
+      });
+      this._label.style.display = 'none';
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.showDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = '';
+      });
+      this._label.style.display = '';
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      // update handles
+      this._handles.forEach(function (elem) {
+        return elem.update();
+      });
+
+      // mesh stuff
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      // DOM stuff
+      this.updateDOMColor();
+      this.updateDOMPosition();
+    };
+
+    _class.prototype.updateMesh = function updateMesh() {
+      if (this._mesh) {
+        this.remove(this._mesh);
+      }
+
+      var points = [];
+
+      this._handles.forEach(function (elem) {
+        return points.push(elem.worldPosition);
+      });
+
+      var center = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].centerOfMass(points);
+      // direction from first point to center
+      var referenceDirection = new three.Vector3().subVectors(points[0], center).normalize();
+      var direction = new three.Vector3().crossVectors(new three.Vector3().subVectors(points[0], center), // side 1
+      new three.Vector3().subVectors(points[1], center) // side 2
+      );
+      var base = new three.Vector3().crossVectors(referenceDirection, direction).normalize();
+      var orderedpoints = [];
+
+      // other lines // if inter, return location + angle
+      for (var j = 0; j < points.length; j++) {
+        var point = new three.Vector3(points[j].x, points[j].y, points[j].z);
+        point.direction = new three.Vector3().subVectors(points[j], center).normalize();
+
+        var x = referenceDirection.dot(point.direction);
+        var y = base.dot(point.direction);
+        point.xy = { x: x, y: y };
+        point.angle = Math.atan2(y, x) * (180 / Math.PI);
+
+        orderedpoints.push(point);
+      }
+
+      // override to catch console.warn "THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()"
+      this._shapeWarn = false;
+      var oldWarn = console.warn;
+      console.warn = function () {
+        for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
+          rest[_key] = arguments[_key];
         }
 
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('wheel', this.onMove);
-
-            this._label.addEventListener('mouseenter', this.onHover);
-            this._label.addEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('wheel', this.onMove);
-
-            this._label.removeEventListener('mouseenter', this.onHover);
-            this._label.removeEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            var hovered = false;
-
-            this._handles.forEach(function (elem) {
-                hovered = hovered || elem.hovered;
-            });
-
-            this._hovered = hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, if we want to hover on mesh instead of just css
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            var active = false;
-
-            this._moveHandle.onMove(evt, true);
-            this._handles.forEach(function (elem) {
-                elem.onStart(evt);
-                active = active || elem.active;
-            });
-
-            this._active = active || this._domHovered;
-
-            if (this._domHovered && this._initialized) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            var numHandles = this._handles.length;
-
-            var hovered = false;
-
-            if (this.active) {
-                this._dragged = true;
-
-                if (!this._initialized) {
-                    this._handles[numHandles - 1].hovered = false;
-                    this._handles[numHandles - 1].active = false;
-                    this._handles[numHandles - 1].tracking = false;
-
-                    var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-                    var handle = new WidgetsHandle(this._targetMesh, this._controls);
-                    handle.worldPosition.copy(this._worldPosition);
-                    handle.hovered = true;
-                    handle.active = true;
-                    handle.tracking = true;
-                    this.add(handle);
-                    this._handles.push(handle);
-
-                    this.createLine();
-                } else {
-                    var prevPosition = this._moveHandle.worldPosition.clone();
-
-                    if (this._mesh) {
-                        this.remove(this._mesh);
-                    }
-                    this.updateDOMContent(true);
-
-                    this._moveHandle.onMove(evt, true);
-
-                    if (this._moving) {
-                        this._handles.forEach(function (elem, ind) {
-                            this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                        }, this);
-                    }
-                }
-            }
-
-            this._handles.forEach(function (elem) {
-                elem.onMove(evt);
-                hovered = hovered || elem.hovered;
-            });
-
-            this._hovered = hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-
-            if (this.active && this._handles.length > 2) {
-                this.pushPopHandle();
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            var numHandles = this._handles.length;
-
-            if (numHandles < 3) {
-                return;
-            }
-
-            var active = false;
-
-            this._handles.slice(0, numHandles - 1).forEach(function (elem) {
-                elem.onEnd();
-                active = active || elem.active;
-            });
-
-            // Last Handle
-            if (this._dragged || !this._handles[numHandles - 1].tracking) {
-                this._handles[numHandles - 1].tracking = false;
-                this._handles[numHandles - 1].onEnd();
-            } else {
-                this._handles[numHandles - 1].tracking = false;
-            }
-
-            if (this._lines.length < numHandles) {
-                this.createLine();
-            }
-
-            if (!this._dragged && this._active) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles.forEach(function (elem) {
-                    elem.selected = this._selected;
-                }, this);
-            }
-            this._active = active || this._handles[numHandles - 1].active;
-            this._dragged = false;
-            this._moving = false;
-            this._initialized = true;
-
-            this.updateMesh();
-            this.updateDOMContent();
-            this.update();
-        };
-
-        _class.prototype.create = function create() {
-            this.createMaterial();
-            this.createDOM();
-        };
-
-        _class.prototype.createMaterial = function createMaterial() {
-            this._material = new three.MeshBasicMaterial({ side: three.DoubleSide });
-            this._material.transparent = true;
-            this._material.opacity = 0.2;
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-
-            // measurenents
-            var measurementsContainer = document.createElement('div');
-            // Mean / SD
-            var meanSDContainer = document.createElement('div');
-            meanSDContainer.setAttribute('class', 'mean-sd');
-            measurementsContainer.appendChild(meanSDContainer);
-            // Max / Min
-            var maxMinContainer = document.createElement('div');
-            maxMinContainer.setAttribute('class', 'max-min');
-            measurementsContainer.appendChild(maxMinContainer);
-            // Area
-            var areaContainer = document.createElement('div');
-            areaContainer.setAttribute('class', 'area');
-            measurementsContainer.appendChild(areaContainer);
-
-            this._label.appendChild(measurementsContainer);
-
-            this._container.appendChild(this._label);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.createLine = function createLine() {
-            var line = document.createElement('div');
-
-            line.setAttribute('class', 'widgets-line');
-            line.addEventListener('mouseenter', this.onHover);
-            line.addEventListener('mouseleave', this.onHover);
-            this._lines.push(line);
-            this._container.appendChild(line);
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-
-            this._lines.forEach(function (elem) {
-                elem.style.display = 'none';
-            });
-            this._label.style.display = 'none';
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._handles.forEach(function (elem) {
-                elem.showDOM();
-            });
-
-            this._lines.forEach(function (elem) {
-                elem.style.display = '';
-            });
-            this._label.style.display = '';
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles.forEach(function (elem) {
-                elem.update();
-            });
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMesh = function updateMesh() {
-            // geometry
-            if (this._mesh) {
-                this.remove(this._mesh);
-            }
-
-            var points = [];
-            this._handles.forEach(function (elem) {
-                points.push(elem.worldPosition);
-            });
-
-            var center = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].centerOfMass(points);
-            var direction = new three.Vector3().crossVectors(new three.Vector3().subVectors(points[0], center), // side 1
-            new three.Vector3().subVectors(points[1], center) // side 2
-            );
-
-            // direction from first point to center
-            var referenceDirection = new three.Vector3().subVectors(points[0], center).normalize();
-            var base = new three.Vector3().crossVectors(referenceDirection, direction).normalize();
-            var orderedpoints = [];
-
-            // other lines // if inter, return location + angle
-            for (var j = 0; j < points.length; j++) {
-                var point = new three.Vector3(points[j].x, points[j].y, points[j].z);
-                point.direction = new three.Vector3().subVectors(points[j], center).normalize();
-
-                var x = referenceDirection.dot(point.direction);
-                var y = base.dot(point.direction);
-                point.xy = { x: x, y: y };
-                point.angle = Math.atan2(y, x) * (180 / Math.PI);
-
-                orderedpoints.push(point);
-            }
-
-            // override to catch console.warn "THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()"
-            this._shapeWarn = false;
-            var oldWarn = console.warn;
-            console.warn = function () {
-                for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
-                    rest[_key] = arguments[_key];
-                }
-
-                if (rest[0] === 'three.ShapeUtils: Unable to triangulate polygon! in triangulate()') {
-                    this._shapeWarn = true;
-                }
-                return oldWarn.apply(console, rest);
-            }.bind(this);
-
-            // create the shape
-            var shape = new three.Shape();
-            // move to first point!
-            shape.moveTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
-
-            // loop through all points!
-            for (var l = 1; l < orderedpoints.length; l++) {
-                // project each on plane!
-                shape.lineTo(orderedpoints[l].xy.x, orderedpoints[l].xy.y);
-            }
-
-            // close the shape!
-            shape.lineTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
-
-            this._geometry = new three.ShapeGeometry(shape);
-
-            console.warn = oldWarn;
-
-            this._geometry.vertices = orderedpoints;
-            this._geometry.verticesNeedUpdate = true;
-            this._geometry.elementsNeedUpdate = true;
-
-            this.updateMeshColor();
-
-            this._mesh = new three.Mesh(this._geometry, this._material);
-            this._mesh.visible = true;
-            this.add(this._mesh);
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                this._geometry.verticesNeedUpdate = true;
-            }
-        };
-
-        _class.prototype.isPointOnLine = function isPointOnLine(pointA, pointB, pointToCheck) {
-            var c = new three.Vector3();
-            c.crossVectors(pointA.clone().sub(pointToCheck), pointB.clone().sub(pointToCheck));
-            return !c.length();
-        };
-
-        _class.prototype.pushPopHandle = function pushPopHandle() {
-            var handle0 = this._handles[this._handles.length - 3];
-
-            var handle1 = this._handles[this._handles.length - 2];
-
-            var newhandle = this._handles[this._handles.length - 1];
-
-            var isOnLine = this.isPointOnLine(handle0.worldPosition, handle1.worldPosition, newhandle.worldPosition);
-
-            if (isOnLine || handle0.screenPosition.distanceTo(newhandle.screenPosition) < 25) {
-                this.remove(handle1);
-                handle1.free();
-
-                this._handles[this._handles.length - 2] = newhandle;
-                this._handles.pop();
-
-                var tempLine = this._lines.pop();
-                tempLine.style.display = 'none';
-                this._container.removeChild(tempLine);
-            }
-
-            return isOnLine;
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            if (this._handles.length >= 2) {
-                this._lines.forEach(function (elem) {
-                    elem.style.backgroundColor = this._color;
-                }, this);
-            }
-            this._label.style.borderColor = this._color;
-        };
-
-        _class.prototype.updateDOMContent = function updateDOMContent(clear) {
-            var meanSDContainer = this._label.querySelector('.mean-sd');
-
-            var maxMinContainer = this._label.querySelector('.max-min');
-
-            var areaContainer = this._label.querySelector('.area');
-
-            if (clear) {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-                areaContainer.innerHTML = '';
-
-                return;
-            }
-
-            var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'cm²';
-
-            var title = units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
-
-            if (this._shapeWarn) {
-                title += 'Values may be incorrect due to triangulation error.';
-            }
-            if (title !== '') {
-                this._label.setAttribute('title', title);
-                this._label.style.color = this._colors.error;
-            } else {
-                this._label.removeAttribute('title');
-                this._label.style.color = this._colors.text;
-            }
-
-            var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
-
-            if (roi !== null) {
-                meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
-                maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
-            } else {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-            }
-            areaContainer.innerHTML = 'Area: ' + (GeometriesSlice.getGeometryArea(this._geometry) / 100).toFixed(2) + ' ' + units;
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            if (this._handles.length < 2) {
-                return;
-            }
-            // update lines and get coordinates of lowest handle
-            var labelPosition = null;
-
-            this._lines.forEach(function (elem, ind) {
-                var lineData = this.getLineData(this._handles[ind].screenPosition, this._handles[ind + 1 === this._handles.length ? 0 : ind + 1].screenPosition);
-
-                elem.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                rotate(' + lineData.transformAngle + 'rad)';
-                elem.style.width = lineData.length + 'px';
-
-                if (labelPosition === null || labelPosition.y < this._handles[ind].screenPosition.y) {
-                    labelPosition = this._handles[ind].screenPosition.clone();
-                }
-            }, this);
-
-            if (!this._initialized) {
-                return;
-            }
-
-            // update label
-            labelPosition.y += 15 + this._label.offsetHeight / 2;
-            labelPosition = this.adjustLabelTransform(this._label, labelPosition);
-
-            this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this.remove(this._moveHandle);
-            this._moveHandle.free();
-            this._moveHandle = null;
-
-            this._lines.forEach(function (elem) {
-                elem.removeEventListener('mouseenter', this.onHover);
-                elem.removeEventListener('mouseleave', this.onHover);
-                this._container.removeChild(elem);
-            }, this);
-            this._lines = [];
-            this._container.removeChild(this._label);
-
-            // mesh, geometry, material
-            if (this._mesh) {
-                this.remove(this._mesh);
-                this._mesh.geometry.dispose();
-                this._mesh.geometry = null;
-                this._mesh.material.dispose();
-                this._mesh.material = null;
-                this._mesh = null;
-            }
-            if (this._geometry) {
-                this._geometry.dispose();
-                this._geometry = null;
-            }
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this._moveHandle.targetMesh = targetMesh;
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles.forEach(function (elem) {
-                    elem._worldPosition.copy(worldPosition);
-                }, this);
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        if (rest[0] === 'three.ShapeUtils: Unable to triangulate polygon! in triangulate()') {
+          this._shapeWarn = true;
+        }
+        return oldWarn.apply(console, rest);
+      }.bind(this);
+
+      // create the shape
+      var shape = new three.Shape();
+      // move to first point!
+      shape.moveTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
+
+      // loop through all points!
+      for (var l = 1; l < orderedpoints.length; l++) {
+        // project each on plane!
+        shape.lineTo(orderedpoints[l].xy.x, orderedpoints[l].xy.y);
+      }
+
+      // close the shape!
+      shape.lineTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
+
+      this._geometry = new three.ShapeGeometry(shape);
+
+      console.warn = oldWarn;
+
+      this._geometry.vertices = orderedpoints;
+      this._geometry.verticesNeedUpdate = true;
+      this._geometry.elementsNeedUpdate = true;
+
+      this.updateMeshColor();
+
+      this._mesh = new three.Mesh(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.isPointOnLine = function isPointOnLine(pointA, pointB, pointToCheck) {
+      var c = new three.Vector3();
+      c.crossVectors(pointA.clone().sub(pointToCheck), pointB.clone().sub(pointToCheck));
+      return !c.length();
+    };
+
+    _class.prototype.pushPopHandle = function pushPopHandle() {
+      var handle0 = this._handles[this._handles.length - 3];
+      var handle1 = this._handles[this._handles.length - 2];
+      var newhandle = this._handles[this._handles.length - 1];
+
+      var isOnLine = this.isPointOnLine(handle0.worldPosition, handle1.worldPosition, newhandle.worldPosition);
+
+      if (isOnLine || handle0.screenPosition.distanceTo(newhandle.screenPosition) < 25) {
+        this.remove(handle1);
+        handle1.free();
+
+        this._handles[this._handles.length - 2] = newhandle;
+        this._handles.pop();
+
+        this._container.removeChild(this._lines.pop());
+      }
+
+      return isOnLine;
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      var _this4 = this;
+
+      if (this._handles.length >= 2) {
+        this._lines.forEach(function (elem) {
+          return elem.style.backgroundColor = _this4._color;
+        });
+      }
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.updateDOMContent = function updateDOMContent(clear) {
+      var _this5 = this;
+
+      var meanSDContainer = this._label.querySelector('.mean-sd');
+      var maxMinContainer = this._label.querySelector('.max-min');
+      var areaContainer = this._label.querySelector('.area');
+
+      if (clear) {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+        areaContainer.innerHTML = '';
+
+        return;
+      }
+
+      var regions = this._stack.frame[this._params.frameIndex].ultrasoundRegions || [];
+
+      this._area = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry); // this.getArea result is changed on dragging
+      if (this._calibrationFactor) {
+        this._area *= Math.pow(this._calibrationFactor, 2);
+      } else if (regions && regions.length > 0 && this._stack.lps2IJK) {
+        var same = true;
+        var cRegion = void 0;
+        var pRegion = void 0;
+
+        this._handles.forEach(function (elem) {
+          cRegion = _this5.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(_this5._stack.lps2IJK, elem.worldPosition));
+          if (cRegion === null || regions[cRegion].unitsX !== 'cm' || pRegion !== undefined && pRegion !== cRegion) {
+            same = false;
+          }
+          pRegion = cRegion;
+        });
+
+        if (same) {
+          this._area *= Math.pow(regions[cRegion].deltaX, 2);
+          this._units = 'cm²';
+        } else if (this._stack.frame[this._params.frameIndex].pixelSpacing) {
+          this._area /= 100;
+          this._units = 'cm²';
+        } else {
+          this._units = 'units';
+        }
+      } else if (this._units === 'cm²') {
+        this._area /= 100;
+      }
+
+      var title = this._units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
+
+      if (this._shapeWarn) {
+        title += 'Values may be incorrect due to triangulation error.';
+      }
+      if (title !== '' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', title);
+        this._label.style.color = this._colors.error;
+      } else if (title === '' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+
+      var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
+
+      if (roi !== null) {
+        meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
+        maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
+      } else {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+      }
+      areaContainer.innerHTML = 'Area: ' + this._area.toFixed(2) + ' ' + this._units;
+    };
+
+    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+      var _this6 = this;
+
+      if (this._handles.length < 2) {
+        return;
+      }
+      // update lines and get coordinates of lowest handle
+      var labelPosition = null;
+
+      this._lines.forEach(function (elem, ind) {
+        var lineData = _this6.getLineData(_this6._handles[ind].screenPosition, _this6._handles[ind + 1 === _this6._handles.length ? 0 : ind + 1].screenPosition);
+
+        elem.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                rotate(' + lineData.transformAngle + 'rad)';
+        elem.style.width = lineData.length + 'px';
+
+        if (labelPosition === null || labelPosition.y < _this6._handles[ind].screenPosition.y) {
+          labelPosition = _this6._handles[ind].screenPosition.clone();
+        }
+      });
+
+      if (!this._initialized) {
+        return;
+      }
+
+      // update label
+      labelPosition.y += 15 + this._label.offsetHeight / 2;
+      labelPosition = this.adjustLabelTransform(this._label, labelPosition);
+
+      this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
+    };
+
+    _class.prototype.free = function free() {
+      var _this7 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this7.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this.remove(this._moveHandle);
+      this._moveHandle.free();
+      this._moveHandle = null;
+
+      this._lines.forEach(function (elem) {
+        elem.removeEventListener('mouseenter', _this7.onHover);
+        elem.removeEventListener('mouseleave', _this7.onHover);
+        _this7._container.removeChild(elem);
+      });
+      this._lines = [];
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      if (this._mesh) {
+        this.remove(this._mesh);
+        this._mesh.geometry.dispose();
+        this._mesh.geometry = null;
+        this._mesh.material.dispose();
+        this._mesh.material = null;
+        this._mesh = null;
+      }
+      if (this._geometry) {
+        this._geometry.dispose();
+        this._geometry = null;
+      }
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      this._stack = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        area: this._area,
+        units: this._units
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this._moveHandle.targetMesh = targetMesh;
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles.forEach(function (elem) {
+          return elem._worldPosition.copy(worldPosition);
+        });
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'cm²';
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -47168,11 +46754,19 @@ var widgetsHandle = function widgetsHandle() {
     _inherits(_class, _Constructor);
 
     function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
       _classCallCheck(this, _class);
 
-      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
 
       _this._widgetType = 'Handle';
+
+      // incoming parameters (optional: worldPosition)
+      if (params.hideHandleMesh === true) {
+        _this.visible = false;
+      }
+
       // if no target mesh, use plane for FREE dragging.
       _this._plane = {
         position: new three.Vector3(),
@@ -47187,21 +46781,17 @@ var widgetsHandle = function widgetsHandle() {
 
       _this._mouse = new three.Vector2();
 
-      _this._initialized = false; // set to true onEnd
+      _this._initialized = false;
 
       // mesh stuff
       _this._material = null;
       _this._geometry = null;
       _this._mesh = null;
-      _this._meshDisplayed = true;
       _this._meshHovered = false;
-      _this._meshStyle = 'sphere'; // cube, etc.
 
       // dom stuff
       _this._dom = null;
-      _this._domDisplayed = true;
       _this._domHovered = false;
-      _this._domStyle = 'circle'; // square, triangle
 
       _this._screenPosition = _this.worldToScreen(_this._worldPosition);
 
@@ -47376,7 +46966,7 @@ var widgetsHandle = function widgetsHandle() {
 
     _class.prototype.createDOM = function createDOM() {
       this._dom = document.createElement('div');
-      this._dom.setAttribute('class', 'widgets-handle');
+      this._dom.className = 'widgets-handle';
 
       this._dom.style.transform = 'translate3D(\n      ' + this._screenPosition.x + 'px,\n      ' + (this._screenPosition.y - this._container.offsetHeight) + 'px, 0)';
 
@@ -47421,6 +47011,14 @@ var widgetsHandle = function widgetsHandle() {
 
     _class.prototype.updateDOMColor = function updateDOMColor() {
       this._dom.style.borderColor = this._color;
+    };
+
+    _class.prototype.showMesh = function showMesh() {
+      if (this._params.hideMesh === true || this._params.hideHandleMesh === true) {
+        return;
+      }
+
+      this.visible = true;
     };
 
     _class.prototype.free = function free() {
@@ -47498,7 +47096,7 @@ var widgetsHandle = function widgetsHandle() {
 /*!********************************!*\
   !*** ./src/widgets/widgets.js ***!
   \********************************/
-/*! exports provided: WidgetsCss, AngleWidget, angleWidgetFactory, AnnotationWidget, annotationWidgetFactory, BiRulerWidget, birulerWidgetFactory, CrossRulerWidget, crossrulerWidgetFactory, EllipseWidget, ellipseWidgetFactory, FreehandWidget, freehandWidgetFactory, HandleWidget, handleWidgetFactory, PolygonWidget, polygonWidgetFactory, RectangleWidget, rectangleWidgetFactory, RulerWidget, rulerWidgetFactory, VoxelProbeWidget, voxelprobeWidgetFactory */
+/*! exports provided: WidgetsCss, AngleWidget, angleWidgetFactory, AnnotationWidget, annotationWidgetFactory, BiRulerWidget, birulerWidgetFactory, CrossRulerWidget, crossrulerWidgetFactory, EllipseWidget, ellipseWidgetFactory, FreehandWidget, freehandWidgetFactory, HandleWidget, handleWidgetFactory, PeakVelocityWidget, peakVelocityWidgetFactory, PressureHalfTimeWidget, pressureHalfTimeWidgetFactory, PolygonWidget, polygonWidgetFactory, RectangleWidget, rectangleWidgetFactory, RulerWidget, rulerWidgetFactory, VelocityTimeIntegralWidget, velocityTimeIntegralWidgetFactory, VoxelProbeWidget, voxelprobeWidgetFactory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47541,25 +47139,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "handleWidgetFactory", function() { return _widgets_handle__WEBPACK_IMPORTED_MODULE_7__["widgetsHandle"]; });
 
-/* harmony import */ var _widgets_polygon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./widgets.polygon */ "./src/widgets/widgets.polygon.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PolygonWidget", function() { return _widgets_polygon__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+/* harmony import */ var _widgets_peakVelocity__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./widgets.peakVelocity */ "./src/widgets/widgets.peakVelocity.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PeakVelocityWidget", function() { return _widgets_peakVelocity__WEBPACK_IMPORTED_MODULE_8__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "polygonWidgetFactory", function() { return _widgets_polygon__WEBPACK_IMPORTED_MODULE_8__["widgetsPolygon"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "peakVelocityWidgetFactory", function() { return _widgets_peakVelocity__WEBPACK_IMPORTED_MODULE_8__["widgetsPeakVelocity"]; });
 
-/* harmony import */ var _widgets_rectangle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./widgets.rectangle */ "./src/widgets/widgets.rectangle.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RectangleWidget", function() { return _widgets_rectangle__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+/* harmony import */ var _widgets_pressureHalfTime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./widgets.pressureHalfTime */ "./src/widgets/widgets.pressureHalfTime.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PressureHalfTimeWidget", function() { return _widgets_pressureHalfTime__WEBPACK_IMPORTED_MODULE_9__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rectangleWidgetFactory", function() { return _widgets_rectangle__WEBPACK_IMPORTED_MODULE_9__["widgetsRectangle"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pressureHalfTimeWidgetFactory", function() { return _widgets_pressureHalfTime__WEBPACK_IMPORTED_MODULE_9__["widgetsPressureHalfTime"]; });
 
-/* harmony import */ var _widgets_ruler__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./widgets.ruler */ "./src/widgets/widgets.ruler.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulerWidget", function() { return _widgets_ruler__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+/* harmony import */ var _widgets_polygon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./widgets.polygon */ "./src/widgets/widgets.polygon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PolygonWidget", function() { return _widgets_polygon__WEBPACK_IMPORTED_MODULE_10__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rulerWidgetFactory", function() { return _widgets_ruler__WEBPACK_IMPORTED_MODULE_10__["widgetsRuler"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "polygonWidgetFactory", function() { return _widgets_polygon__WEBPACK_IMPORTED_MODULE_10__["widgetsPolygon"]; });
 
-/* harmony import */ var _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./widgets.voxelProbe */ "./src/widgets/widgets.voxelProbe.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoxelProbeWidget", function() { return _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+/* harmony import */ var _widgets_rectangle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./widgets.rectangle */ "./src/widgets/widgets.rectangle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RectangleWidget", function() { return _widgets_rectangle__WEBPACK_IMPORTED_MODULE_11__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "voxelprobeWidgetFactory", function() { return _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_11__["widgetsVoxelprobe"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rectangleWidgetFactory", function() { return _widgets_rectangle__WEBPACK_IMPORTED_MODULE_11__["widgetsRectangle"]; });
+
+/* harmony import */ var _widgets_ruler__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./widgets.ruler */ "./src/widgets/widgets.ruler.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulerWidget", function() { return _widgets_ruler__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rulerWidgetFactory", function() { return _widgets_ruler__WEBPACK_IMPORTED_MODULE_12__["widgetsRuler"]; });
+
+/* harmony import */ var _widgets_velocityTimeIntegral__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./widgets.velocityTimeIntegral */ "./src/widgets/widgets.velocityTimeIntegral.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VelocityTimeIntegralWidget", function() { return _widgets_velocityTimeIntegral__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "velocityTimeIntegralWidgetFactory", function() { return _widgets_velocityTimeIntegral__WEBPACK_IMPORTED_MODULE_13__["widgetsVelocityTimeIntegral"]; });
+
+/* harmony import */ var _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./widgets.voxelProbe */ "./src/widgets/widgets.voxelProbe.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoxelProbeWidget", function() { return _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "voxelprobeWidgetFactory", function() { return _widgets_voxelProbe__WEBPACK_IMPORTED_MODULE_14__["widgetsVoxelprobe"]; });
 
 
 
@@ -47576,6 +47189,335 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+/***/ }),
+
+/***/ "./src/widgets/widgets.peakVelocity.js":
+/*!*********************************************!*\
+  !*** ./src/widgets/widgets.peakVelocity.js ***!
+  \*********************************************/
+/*! exports provided: widgetsPeakVelocity, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "widgetsPeakVelocity", function() { return widgetsPeakVelocity; });
+/* harmony import */ var _widgets_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets.base */ "./src/widgets/widgets.base.js");
+/* harmony import */ var _widgets_handle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets.handle */ "./src/widgets/widgets.handle.js");
+/* harmony import */ var _core_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/core.utils */ "./src/core/core.utils.js");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+/**
+ * @module widgets/peakVelocity (Gradient)
+ */
+var widgetsPeakVelocity = function widgetsPeakVelocity() {
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'PeakVelocity';
+
+      // incoming parameters (required: lps2IJK, worldPosition)
+      _this._regions = params.ultrasoundRegions || []; // required
+      if (_this._regions.length < 1) {
+        throw new Error('Ultrasound regions should not be empty!');
+      }
+
+      // outgoing values
+      _this._velocity = null;
+      _this._gradient = null;
+
+      _this._container.style.cursor = 'pointer';
+      _this._controls.enabled = false; // controls should be disabled for widgets with a single handle
+      _this._initialized = false; // set to true onEnd
+      _this._active = true;
+      _this._domHovered = false;
+      _this._initialRegion = _this.getRegionByXY(_this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(params.lps2IJK, params.worldPosition));
+      if (_this._initialRegion === null) {
+        throw new Error('Invalid initial UltraSound region!');
+      }
+
+      // dom stuff
+      _this._line = null;
+      _this._label = null;
+
+      // handle (represent line)
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      _this._handle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._handle);
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.create();
+
+      // event listeners
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+      _this.addEventListeners();
+      return _this;
+    }
+
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
+
+      this._line.addEventListener('mouseenter', this.onHover);
+      this._line.addEventListener('mouseleave', this.onHover);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
+
+      this._line.removeEventListener('mouseenter', this.onHover);
+      this._line.removeEventListener('mouseleave', this.onHover);
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
+
+      this._hovered = this._handle.hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
+
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
+
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
+      this._handle.onStart(evt);
+
+      this._active = this._handle.active || this._domHovered;
+
+      if (this._domHovered) {
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._moveHandle.onMove(evt, true);
+
+        var shift = this._moveHandle.worldPosition.clone().sub(prevPosition);
+
+        if (!this.isCorrectRegion(shift)) {
+          this._moveHandle.worldPosition.copy(prevPosition);
+
+          return;
+        }
+
+        if (!this._handle.active) {
+          this._handle.worldPosition.add(shift);
+        }
+        this._dragged = true;
+      } else {
+        this.onHover(null);
+      }
+
+      this._handle.onMove(evt);
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handle.onEnd();
+
+      if (!this._dragged && this._active && this._initialized) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handle.selected = this._selected;
+      }
+
+      this._initialized = true;
+      this._active = false;
+      this._dragged = false;
+
+      this.update();
+    };
+
+    _class.prototype.isCorrectRegion = function isCorrectRegion(shift) {
+      var region = this.getRegionByXY(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handle.worldPosition.clone().add(shift)));
+
+      return region !== null && region === this._initialRegion && this._regions[region].unitsY === 'cm/sec';
+    };
+
+    _class.prototype.create = function create() {
+      this.createDOM();
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._line = document.createElement('div');
+      this._line.className = 'widgets-dashline';
+      this._container.appendChild(this._line);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      // Measurements
+      var measurementsContainer = document.createElement('div');
+      // Peak Velocity
+      var pvContainer = document.createElement('div');
+      pvContainer.className = 'peakVelocity';
+      measurementsContainer.appendChild(pvContainer);
+      // Gradient
+      var gradientContainer = document.createElement('div');
+      gradientContainer.className = 'gradient';
+      measurementsContainer.appendChild(gradientContainer);
+
+      this._label.appendChild(measurementsContainer);
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handle.update();
+      this._worldPosition.copy(this._handle.worldPosition);
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      var point = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._worldPosition);
+      var region = this._regions[this.getRegionByXY(this._regions, point)];
+      var usPosition = this.getPointInRegion(region, point);
+
+      this._velocity = Math.abs(usPosition.y / 100);
+      this._gradient = 4 * Math.pow(this._velocity, 2);
+
+      // content
+      this._label.querySelector('.peakVelocity').innerHTML = this._velocity.toFixed(2) + ' m/s';
+      this._label.querySelector('.gradient').innerHTML = this._gradient.toFixed(2) + ' mmhg';
+
+      // position
+      var transform = this.adjustLabelTransform(this._label, this._handle.screenPosition, true);
+
+      this._line.style.transform = 'translate3D(' + (transform.x - (point.x - region.x0) * this._camera.zoom) + 'px, ' + transform.y + 'px, 0)';
+      this._line.style.width = (region.x1 - region.x0) * this._camera.zoom + 'px';
+      this._label.style.transform = 'translate3D(' + (transform.x + 10) + 'px, ' + (transform.y + 10) + 'px, 0)';
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._line.style.backgroundColor = this._color;
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._line.style.display = 'none';
+      this._label.style.display = 'none';
+      this._handle.hideDOM();
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._line.style.display = '';
+      this._label.style.display = '';
+      this._handle.showDOM();
+    };
+
+    _class.prototype.free = function free() {
+      this.removeEventListeners();
+
+      this.remove(this._handle);
+      this._handle.free();
+      this._handle = null;
+      this.remove(this._moveHandle);
+      this._moveHandle.free();
+      this._moveHandle = null;
+
+      this._container.removeChild(this._line);
+      this._container.removeChild(this._label);
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        velocity: this._velocity,
+        gradient: this._gradient
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handle.targetMesh = targetMesh;
+        this._moveHandle.targetMesh = targetMesh;
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handle.worldPosition.copy(worldPosition);
+        this._moveHandle.worldPosition.copy(worldPosition);
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'active',
+      get: function get() {
+        return this._active;
+      },
+      set: function set(active) {
+        this._active = active;
+        this._controls.enabled = !this._active;
+
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (widgetsPeakVelocity());
 
 /***/ }),
 
@@ -47608,567 +47550,1082 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/polygon
  */
 var widgetsPolygon = function widgetsPolygon() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'Polygon';
+
+      // incoming parameters (optional: frameIndex, worldPosition)
+      _this._stack = params.stack; // required
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._area = null;
+      _this._units = !_this._calibrationFactor && !params.stack.frame[params.frameIndex].pixelSpacing ? 'units' : 'cm²';
+
+      _this._initialized = false; // set to true onDblClick if number of handles > 2
+      _this._newHandleRequired = true; // should handle be created onMove?
+      _this._moving = false;
+      _this._domHovered = false;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._lines = [];
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+
+      var handle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(handle);
+      _this._handles.push(handle);
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.onDoubleClick = _this.onDoubleClick.bind(_this);
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+
+      _this.create();
+
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('dblclick', this.onDoubleClick);
+      this._container.addEventListener('wheel', this.onMove);
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('dblclick', this.onDoubleClick);
+      this._container.removeEventListener('wheel', this.onMove);
 
-            _this._stack = stack;
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
 
-            _this._widgetType = 'Polygon';
-            _this._initialized = false; // set to true onDblClick if number of handles > 2
-            _this._newHandleRequired = true; // should handle be created onMove?
-            _this._moving = false;
-            _this._domHovered = false;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            // mesh stuff
-            _this._material = null;
-            _this._geometry = null;
-            _this._mesh = null;
+      this.hoverMesh();
 
-            // dom stuff
-            _this._lines = [];
-            _this._label = null;
+      var hovered = false;
 
-            // add handles
-            _this._handles = [];
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      this._handles.forEach(function (elem) {
+        return hovered = hovered || elem.hovered;
+      });
 
-            var handle = new WidgetsHandle(targetMesh, controls);
-            handle.worldPosition.copy(_this._worldPosition);
-            _this.add(handle);
-            _this._handles.push(handle);
+      this._hovered = hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._moveHandle.hide();
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, if we want to hover on mesh instead of just css
+    };
 
-            _this.onDoubleClick = _this.onDoubleClick.bind(_this);
-            _this.onMove = _this.onMove.bind(_this);
-            _this.onHover = _this.onHover.bind(_this);
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            _this.create();
+    _class.prototype.onStart = function onStart(evt) {
+      var active = false;
 
-            _this.addEventListeners();
-            return _this;
+      this._handles.forEach(function (elem) {
+        elem.onStart(evt);
+        active = active || elem.active;
+      });
+
+      if (!this._initialized) {
+        return;
+      }
+
+      this._moveHandle.onMove(evt, true);
+      this._active = active || this._domHovered;
+
+      if (this._domHovered && this._initialized) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      var hovered = false;
+
+      if (this.active) {
+        this._dragged = true;
+
+        if (this._newHandleRequired && !this._initialized) {
+          this._handles[this._handles.length - 1].hovered = false;
+          this._handles[this._handles.length - 1].active = false;
+          this._handles[this._handles.length - 1].tracking = false;
+
+          var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+          var handle = new WidgetsHandle(this._targetMesh, this._controls, this._params);
+
+          handle.hovered = true;
+          handle.active = true;
+          handle.tracking = true;
+          this.add(handle);
+          this._handles.push(handle);
+
+          this.createLine();
+          this._newHandleRequired = false;
+        } else {
+          var prevPosition = this._moveHandle.worldPosition.clone();
+
+          this._moveHandle.onMove(evt, true);
+          if (this._mesh) {
+            this.remove(this._mesh);
+          }
+          this.updateDOMContent(true);
+          if (this._moving) {
+            this._handles.forEach(function (handle) {
+              handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+            });
+          }
+        }
+      }
+
+      this._handles.forEach(function (elem) {
+        elem.onMove(evt);
+        hovered = hovered || elem.hovered;
+      });
+
+      this._hovered = hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      var _this3 = this;
+
+      var numHandles = this._handles.length;
+      var active = false;
+
+      if (!this._initialized && numHandles > 1 && this._handles[numHandles - 2].screenPosition.distanceTo(this._handles[numHandles - 1].screenPosition) < 10) {
+        return;
+      }
+
+      this._handles.forEach(function (elem) {
+        elem.onEnd();
+        active = active || elem.active;
+      });
+
+      if (!this._initialized) {
+        this._newHandleRequired = true;
+
+        return;
+      }
+
+      if (this._dragged) {
+        this.updateMesh();
+        this.updateDOMContent();
+      }
+
+      if (!this._dragged && this._active) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles.forEach(function (elem) {
+          return elem.selected = _this3._selected;
+        });
+      }
+      this._active = active || this._handles[numHandles - 1].active;
+      this._dragged = false;
+      this._moving = false;
+
+      this.update();
+    };
+
+    _class.prototype.onDoubleClick = function onDoubleClick() {
+      var numHandles = this._handles.length;
+
+      if (numHandles < 3 || this._initialized || numHandles > 1 && this._handles[numHandles - 2].screenPosition.distanceTo(this._handles[numHandles - 1].screenPosition) < 10) {
+        return;
+      }
+
+      this._handles[numHandles - 1].tracking = false;
+      this._handles.forEach(function (elem) {
+        return elem.onEnd();
+      });
+
+      this._active = false;
+      this._dragged = false;
+      this._moving = false;
+      this._initialized = true;
+
+      this.updateMesh();
+      this.updateDOMContent();
+      this.update();
+    };
+
+    _class.prototype.create = function create() {
+      this.createMaterial();
+      this.createDOM();
+    };
+
+    _class.prototype.createMaterial = function createMaterial() {
+      this._material = new three.MeshBasicMaterial({ side: THREE.DoubleSide });
+      this._material.transparent = true;
+      this._material.opacity = 0.2;
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this.createLine();
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      // measurements
+      var measurementsContainer = document.createElement('div');
+      // Mean / SD
+      var meanSDContainer = document.createElement('div');
+      meanSDContainer.className = 'mean-sd';
+      measurementsContainer.appendChild(meanSDContainer);
+      // Max / Min
+      var maxMinContainer = document.createElement('div');
+      maxMinContainer.className = 'max-min';
+      measurementsContainer.appendChild(maxMinContainer);
+      // Area
+      var areaContainer = document.createElement('div');
+      areaContainer.className = 'area';
+      measurementsContainer.appendChild(areaContainer);
+
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.createLine = function createLine() {
+      var line = document.createElement('div');
+
+      line.className = 'widgets-line';
+      line.addEventListener('mouseenter', this.onHover);
+      line.addEventListener('mouseleave', this.onHover);
+      this._lines.push(line);
+      this._container.appendChild(line);
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = 'none';
+      });
+      this._label.style.display = 'none';
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.showDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = '';
+      });
+      this._label.style.display = '';
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      // update handles
+      this._handles.forEach(function (elem) {
+        return elem.update();
+      });
+
+      // mesh stuff
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      // DOM stuff
+      this.updateDOMColor();
+      this.updateDOMPosition();
+    };
+
+    _class.prototype.updateMesh = function updateMesh() {
+      if (this._mesh) {
+        this.remove(this._mesh);
+      }
+
+      var points = [];
+
+      this._handles.forEach(function (elem) {
+        return points.push(elem.worldPosition);
+      });
+
+      var center = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].centerOfMass(points);
+      // direction from first point to center
+      var referenceDirection = new three.Vector3().subVectors(points[0], center).normalize();
+      var direction = new three.Vector3().crossVectors(new three.Vector3().subVectors(points[0], center), // side 1
+      new three.Vector3().subVectors(points[1], center) // side 2
+      );
+      var base = new three.Vector3().crossVectors(referenceDirection, direction).normalize();
+      var orderedpoints = [];
+
+      // other lines // if inter, return location + angle
+      for (var j = 0; j < points.length; j++) {
+        var point = new three.Vector3(points[j].x, points[j].y, points[j].z);
+
+        point.direction = new three.Vector3().subVectors(points[j], center).normalize();
+
+        var x = referenceDirection.dot(point.direction);
+        var y = base.dot(point.direction);
+
+        point.xy = { x: x, y: y };
+        point.angle = Math.atan2(y, x) * (180 / Math.PI);
+
+        orderedpoints.push(point);
+      }
+
+      // override to catch console.warn "THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()"
+      this._shapeWarn = false;
+      var oldWarn = console.warn;
+      console.warn = function () {
+        for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
+          rest[_key] = arguments[_key];
         }
 
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('dblclick', this.onDoubleClick);
-            this._container.addEventListener('wheel', this.onMove);
-
-            this._label.addEventListener('mouseenter', this.onHover);
-            this._label.addEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('dblclick', this.onDoubleClick);
-            this._container.removeEventListener('wheel', this.onMove);
-
-            this._label.removeEventListener('mouseenter', this.onHover);
-            this._label.removeEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            var hovered = false;
-
-            this._handles.forEach(function (elem) {
-                hovered = hovered || elem.hovered;
-            });
-
-            this._hovered = hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, if we want to hover on mesh instead of just css
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            var active = false;
-
-            this._handles.forEach(function (elem) {
-                elem.onStart(evt);
-                active = active || elem.active;
-            });
-
-            if (!this._initialized) {
-                return;
-            }
-
-            this._moveHandle.onMove(evt, true);
-            this._active = active || this._domHovered;
-
-            if (this._domHovered && this._initialized) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            var numHandles = this._handles.length;
-
-            var hovered = false;
-
-            if (this.active) {
-                this._dragged = true;
-
-                if (this._newHandleRequired && !this._initialized) {
-                    this._handles[numHandles - 1].hovered = false;
-                    this._handles[numHandles - 1].active = false;
-                    this._handles[numHandles - 1].tracking = false;
-                    var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-
-                    var handle = new WidgetsHandle(this._targetMesh, this._controls);
-                    handle.worldPosition.copy(this._worldPosition);
-                    handle.hovered = true;
-                    handle.active = true;
-                    handle.tracking = true;
-                    this.add(handle);
-                    this._handles.push(handle);
-
-                    this.createLine();
-                    this._newHandleRequired = false;
-                } else {
-                    var prevPosition = this._moveHandle.worldPosition.clone();
-
-                    if (this._mesh) {
-                        this.remove(this._mesh);
-                    }
-                    this.updateDOMContent(true);
-
-                    this._moveHandle.onMove(evt, true);
-
-                    if (this._moving) {
-                        this._handles.forEach(function (elem, ind) {
-                            this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                        }, this);
-                    }
-                }
-            }
-
-            this._handles.forEach(function (elem) {
-                elem.onMove(evt);
-                hovered = hovered || elem.hovered;
-            });
-
-            this._hovered = hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            var numHandles = this._handles.length;
-
-            var active = false;
-
-            if (!this._initialized && numHandles > 1 && this._handles[numHandles - 2].screenPosition.distanceTo(this._handles[numHandles - 1].screenPosition) < 10) {
-                return;
-            }
-
-            this._handles.forEach(function (elem) {
-                elem.onEnd();
-                active = active || elem.active;
-            });
-
-            if (!this._initialized) {
-                this._newHandleRequired = true;
-
-                return;
-            }
-
-            if (!this._dragged && this._active) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles.forEach(function (elem) {
-                    elem.selected = this._selected;
-                }, this);
-            }
-            this._active = active || this._handles[numHandles - 1].active;
-            this._dragged = false;
-            this._moving = false;
-
-            this.updateMesh();
-            this.updateDOMContent();
-            this.update();
-        };
-
-        _class.prototype.onDoubleClick = function onDoubleClick() {
-            var numHandles = this._handles.length;
-
-            if (numHandles < 3 || this._initialized || numHandles > 1 && this._handles[numHandles - 2].screenPosition.distanceTo(this._handles[numHandles - 1].screenPosition) < 10) {
-                return;
-            }
-
-            this._handles[numHandles - 1].tracking = false;
-            this._handles.forEach(function (elem) {
-                elem.onEnd();
-            });
-
-            this._active = false;
-            this._dragged = false;
-            this._moving = false;
-            this._initialized = true;
-
-            this.updateMesh();
-            this.updateDOMContent();
-            this.update();
-        };
-
-        _class.prototype.create = function create() {
-            this.createMaterial();
-            this.createDOM();
-        };
-
-        _class.prototype.createMaterial = function createMaterial() {
-            this._material = new three.MeshBasicMaterial({ side: THREE.DoubleSide });
-            this._material.transparent = true;
-            this._material.opacity = 0.2;
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this.createLine();
-
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-
-            // measurenents
-            var measurementsContainer = document.createElement('div');
-            // Mean / SD
-            var meanSDContainer = document.createElement('div');
-            meanSDContainer.setAttribute('class', 'mean-sd');
-            measurementsContainer.appendChild(meanSDContainer);
-            // Max / Min
-            var maxMinContainer = document.createElement('div');
-            maxMinContainer.setAttribute('class', 'max-min');
-            measurementsContainer.appendChild(maxMinContainer);
-            // Area
-            var areaContainer = document.createElement('div');
-            areaContainer.setAttribute('class', 'area');
-            measurementsContainer.appendChild(areaContainer);
-
-            this._label.appendChild(measurementsContainer);
-
-            this._container.appendChild(this._label);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.createLine = function createLine() {
-            var line = document.createElement('div');
-
-            line.setAttribute('class', 'widgets-line');
-            line.addEventListener('mouseenter', this.onHover);
-            line.addEventListener('mouseleave', this.onHover);
-            this._lines.push(line);
-            this._container.appendChild(line);
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-
-            this._lines.forEach(function (elem) {
-                elem.style.display = 'none';
-            });
-            this._label.style.display = 'none';
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._handles.forEach(function (elem) {
-                elem.showDOM();
-            });
-
-            this._lines.forEach(function (elem) {
-                elem.style.display = '';
-            });
-            this._label.style.display = '';
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles.forEach(function (elem) {
-                elem.update();
-            });
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMesh = function updateMesh() {
-            // geometry
-            if (this._mesh) {
-                this.remove(this._mesh);
-            }
-
-            var points = [];
-            this._handles.forEach(function (elem) {
-                points.push(elem.worldPosition);
-            });
-
-            var center = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].centerOfMass(points);
-            // direction from first point to center
-            var referenceDirection = new three.Vector3().subVectors(points[0], center).normalize();
-            var direction = new three.Vector3().crossVectors(new three.Vector3().subVectors(points[0], center), // side 1
-            new three.Vector3().subVectors(points[1], center) // side 2
-            );
-            var base = new three.Vector3().crossVectors(referenceDirection, direction).normalize();
-            var orderedpoints = [];
-
-            // other lines // if inter, return location + angle
-            for (var j = 0; j < points.length; j++) {
-                var point = new three.Vector3(points[j].x, points[j].y, points[j].z);
-
-                point.direction = new three.Vector3().subVectors(points[j], center).normalize();
-
-                var x = referenceDirection.dot(point.direction);
-                var y = base.dot(point.direction);
-
-                point.xy = { x: x, y: y };
-                point.angle = Math.atan2(y, x) * (180 / Math.PI);
-
-                orderedpoints.push(point);
-            }
-
-            // override to catch console.warn "THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()"
-            this._shapeWarn = false;
-            var oldWarn = console.warn;
-            console.warn = function () {
-                for (var _len = arguments.length, rest = Array(_len), _key = 0; _key < _len; _key++) {
-                    rest[_key] = arguments[_key];
-                }
-
-                if (rest[0] === 'THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()') {
-                    this._shapeWarn = true;
-                }
-                return oldWarn.apply(console, rest);
-            }.bind(this);
-
-            // create the shape
-            var shape = new three.Shape();
-            // move to first point!
-            shape.moveTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
-
-            // loop through all points!
-            for (var l = 1; l < orderedpoints.length; l++) {
-                // project each on plane!
-                shape.lineTo(orderedpoints[l].xy.x, orderedpoints[l].xy.y);
-            }
-
-            // close the shape!
-            shape.lineTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
-
-            this._geometry = new three.ShapeGeometry(shape);
-
-            console.warn = oldWarn;
-
-            this._geometry.vertices = orderedpoints;
-            this._geometry.verticesNeedUpdate = true;
-            this._geometry.elementsNeedUpdate = true;
-
-            this.updateMeshColor();
-
-            this._mesh = new three.Mesh(this._geometry, this._material);
-            this._mesh.visible = true;
-            this.add(this._mesh);
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                this._geometry.verticesNeedUpdate = true;
-            }
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._lines.forEach(function (elem) {
-                elem.style.backgroundColor = this._color;
-            }, this);
-            this._label.style.borderColor = this._color;
-        };
-
-        _class.prototype.updateDOMContent = function updateDOMContent(clear) {
-            var meanSDContainer = this._label.querySelector('.mean-sd');
-
-            var maxMinContainer = this._label.querySelector('.max-min');
-
-            var areaContainer = this._label.querySelector('.area');
-
-            if (clear) {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-                areaContainer.innerHTML = '';
-
-                return;
-            }
-
-            var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'cm²';
-
-            var title = units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
-
-            if (this._shapeWarn) {
-                title += 'Values may be incorrect due to triangulation error.';
-            }
-            if (title !== '') {
-                this._label.setAttribute('title', title);
-                this._label.style.color = this._colors.error;
-            } else {
-                this._label.removeAttribute('title');
-                this._label.style.color = this._colors.text;
-            }
-
-            var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
-
-            if (roi !== null) {
-                meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
-                maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
-            } else {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-            }
-            areaContainer.innerHTML = 'Area: ' + (_core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry) / 100).toFixed(2) + ' ' + units;
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            // update lines and get coordinates of lowest handle
-            var labelPosition = null;
-
-            this._lines.forEach(function (elem, ind) {
-                var lineData = this.getLineData(this._handles[ind].screenPosition, this._handles[ind + 1 === this._handles.length ? 0 : ind + 1].screenPosition);
-
-                elem.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                    rotate(' + lineData.transformAngle + 'rad)';
-                elem.style.width = lineData.length + 'px';
-
-                if (labelPosition === null || labelPosition.y < this._handles[ind].screenPosition.y) {
-                    labelPosition = this._handles[ind].screenPosition.clone();
-                }
-            }, this);
-
-            if (!this._initialized) {
-                return;
-            }
-
-            // update label
-            labelPosition.y += 15 + this._label.offsetHeight / 2;
-            labelPosition = this.adjustLabelTransform(this._label, labelPosition);
-
-            this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this.remove(this._moveHandle);
-            this._moveHandle.free();
-            this._moveHandle = null;
-
-            this._lines.forEach(function (elem) {
-                elem.removeEventListener('mouseenter', this.onHover);
-                elem.removeEventListener('mouseleave', this.onHover);
-                this._container.removeChild(elem);
-            }, this);
-            this._lines = [];
-            this._container.removeChild(this._label);
-
-            // mesh, geometry, material
-            if (this._mesh) {
-                this.remove(this._mesh);
-                this._mesh.geometry.dispose();
-                this._mesh.geometry = null;
-                this._mesh.material.dispose();
-                this._mesh.material = null;
-                this._mesh = null;
-            }
-            if (this._geometry) {
-                this._geometry.dispose();
-                this._geometry = null;
-            }
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this._moveHandle.targetMesh = targetMesh;
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles.forEach(function (elem) {
-                    elem._worldPosition.copy(worldPosition);
-                }, this);
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        if (rest[0] === 'THREE.ShapeUtils: Unable to triangulate polygon! in triangulate()') {
+          this._shapeWarn = true;
+        }
+        return oldWarn.apply(console, rest);
+      }.bind(this);
+
+      // create the shape
+      var shape = new three.Shape();
+      // move to first point!
+      shape.moveTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
+
+      // loop through all points!
+      for (var l = 1; l < orderedpoints.length; l++) {
+        // project each on plane!
+        shape.lineTo(orderedpoints[l].xy.x, orderedpoints[l].xy.y);
+      }
+
+      // close the shape!
+      shape.lineTo(orderedpoints[0].xy.x, orderedpoints[0].xy.y);
+
+      this._geometry = new three.ShapeGeometry(shape);
+
+      console.warn = oldWarn;
+
+      this._geometry.vertices = orderedpoints;
+      this._geometry.verticesNeedUpdate = true;
+      this._geometry.elementsNeedUpdate = true;
+
+      this.updateMeshColor();
+
+      this._mesh = new three.Mesh(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      var _this4 = this;
+
+      this._lines.forEach(function (elem) {
+        return elem.style.backgroundColor = _this4._color;
+      });
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.updateDOMContent = function updateDOMContent(clear) {
+      var _this5 = this;
+
+      var meanSDContainer = this._label.querySelector('.mean-sd');
+      var maxMinContainer = this._label.querySelector('.max-min');
+      var areaContainer = this._label.querySelector('.area');
+
+      if (clear) {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+        areaContainer.innerHTML = '';
+
+        return;
+      }
+
+      var regions = this._stack.frame[this._params.frameIndex].ultrasoundRegions || [];
+
+      this._area = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry); // this.getArea result is changed on dragging
+      if (this._calibrationFactor) {
+        this._area *= Math.pow(this._calibrationFactor, 2);
+      } else if (regions && regions.length > 0 && this._stack.lps2IJK) {
+        var same = true;
+        var cRegion = void 0;
+        var pRegion = void 0;
+
+        this._handles.forEach(function (elem) {
+          cRegion = _this5.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(_this5._stack.lps2IJK, elem.worldPosition));
+          if (cRegion === null || regions[cRegion].unitsX !== 'cm' || pRegion !== undefined && pRegion !== cRegion) {
+            same = false;
+          }
+          pRegion = cRegion;
+        });
+
+        if (same) {
+          this._area *= Math.pow(regions[cRegion].deltaX, 2);
+          this._units = 'cm²';
+        } else if (this._stack.frame[this._params.frameIndex].pixelSpacing) {
+          this._area /= 100;
+          this._units = 'cm²';
+        } else {
+          this._units = 'units';
+        }
+      } else if (this._units === 'cm²') {
+        this._area /= 100;
+      }
+
+      var title = this._units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
+
+      if (this._shapeWarn) {
+        title += 'Values may be incorrect due to triangulation error.';
+      }
+      if (title !== '' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', title);
+        this._label.style.color = this._colors.error;
+      } else if (title === '' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+
+      var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
+
+      if (roi !== null) {
+        meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
+        maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
+      } else {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+      }
+      areaContainer.innerHTML = 'Area: ' + this._area.toFixed(2) + ' ' + this._units;
+    };
+
+    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+      var _this6 = this;
+
+      // update lines and get coordinates of lowest handle
+      var labelPosition = null;
+
+      this._lines.forEach(function (elem, ind) {
+        var lineData = _this6.getLineData(_this6._handles[ind].screenPosition, _this6._handles[ind + 1 === _this6._handles.length ? 0 : ind + 1].screenPosition);
+
+        elem.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                    rotate(' + lineData.transformAngle + 'rad)';
+        elem.style.width = lineData.length + 'px';
+
+        if (labelPosition === null || labelPosition.y < _this6._handles[ind].screenPosition.y) {
+          labelPosition = _this6._handles[ind].screenPosition.clone();
+        }
+      });
+
+      if (!this._initialized) {
+        return;
+      }
+
+      // update label
+      labelPosition.y += 15 + this._label.offsetHeight / 2;
+      labelPosition = this.adjustLabelTransform(this._label, labelPosition);
+
+      this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
+    };
+
+    _class.prototype.free = function free() {
+      var _this7 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this7.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this.remove(this._moveHandle);
+      this._moveHandle.free();
+      this._moveHandle = null;
+
+      this._lines.forEach(function (elem) {
+        elem.removeEventListener('mouseenter', _this7.onHover);
+        elem.removeEventListener('mouseleave', _this7.onHover);
+        _this7._container.removeChild(elem);
+      });
+      this._lines = [];
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      if (this._mesh) {
+        this.remove(this._mesh);
+        this._mesh.geometry.dispose();
+        this._mesh.geometry = null;
+        this._mesh.material.dispose();
+        this._mesh.material = null;
+        this._mesh = null;
+      }
+      if (this._geometry) {
+        this._geometry.dispose();
+        this._geometry = null;
+      }
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      this._stack = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        area: this._area,
+        units: this._units
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this._moveHandle.targetMesh = targetMesh;
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles.forEach(function (elem) {
+          return elem.worldPosition.copy(worldPosition);
+        });
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'cm²';
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
 /* harmony default export */ __webpack_exports__["default"] = (widgetsPolygon());
+
+/***/ }),
+
+/***/ "./src/widgets/widgets.pressureHalfTime.js":
+/*!*************************************************!*\
+  !*** ./src/widgets/widgets.pressureHalfTime.js ***!
+  \*************************************************/
+/*! exports provided: widgetsPressureHalfTime, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "widgetsPressureHalfTime", function() { return widgetsPressureHalfTime; });
+/* harmony import */ var _widgets_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets.base */ "./src/widgets/widgets.base.js");
+/* harmony import */ var _widgets_handle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets.handle */ "./src/widgets/widgets.handle.js");
+/* harmony import */ var _core_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/core.utils */ "./src/core/core.utils.js");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+/**
+ * @module widgets/pressureHalfTime
+ */
+var widgetsPressureHalfTime = function widgetsPressureHalfTime() {
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'PressureHalfTime';
+
+      // incoming parameters (required: lps2IJK, worldPosition)
+      _this._regions = params.ultrasoundRegions || []; // required
+      if (_this._regions.length < 1) {
+        throw new Error('Ultrasound regions should not be empty!');
+      }
+
+      // outgoing values
+      _this._vMax = null; // Maximum Velocity (Vmax)
+      _this._gMax = null; // Maximum Gradient (Gmax)
+      _this._pht = null; // Pressure Half Time (PHT)
+      _this._mva = null; // Mitral Valve Area (MVA)
+      _this._dt = null; // Deceleration Time (DT)
+      _this._ds = null; // Deceleration Slope (DS)
+
+      _this._domHovered = false;
+      _this._initialRegion = _this.getRegionByXY(_this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(params.lps2IJK, params.worldPosition));
+      if (_this._initialRegion === null) {
+        throw new Error('Invalid initial UltraSound region!');
+      }
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._line = null;
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+
+      var handle = void 0;
+      for (var i = 0; i < 2; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._handles.push(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.create();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+      _this.addEventListeners();
+      return _this;
+    }
+
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
+
+      this._line.addEventListener('mouseenter', this.onHover);
+      this._line.addEventListener('mouseleave', this.onHover);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
+
+      this._line.removeEventListener('mouseenter', this.onHover);
+      this._line.removeEventListener('mouseleave', this.onHover);
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
+
+      this.hoverMesh();
+
+      this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
+
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, do we want to hover on mesh or just css?
+    };
+
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
+
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
+
+      this._handles[0].onStart(evt);
+      this._handles[1].onStart(evt);
+
+      this._active = this._handles[0].active || this._handles[1].active || this._domHovered;
+
+      if (this._domHovered) {
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._moveHandle.onMove(evt, true);
+
+        var shift = this._moveHandle.worldPosition.clone().sub(prevPosition);
+
+        if (!this.isCorrectRegion(shift)) {
+          this._moveHandle.worldPosition.copy(prevPosition);
+
+          return;
+        }
+
+        if (!this._handles[0].active && !this._handles[1].active) {
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(shift);
+          });
+        }
+        this._dragged = true;
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles[0].onMove(evt);
+      this._handles[1].onMove(evt);
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd(); // First Handle
+
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
+        return;
+      }
+
+      if (!this._dragged && this._active && !this._handles[1].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+      }
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active;
+      this._dragged = false;
+
+      this.update();
+    };
+
+    _class.prototype.isCorrectRegion = function isCorrectRegion(shift) {
+      var inActive = !(this._handles[0].active || this._handles[1].active);
+      var isCorrect = true;
+
+      if (this._handles[0].active || inActive) {
+        isCorrect = isCorrect && this.checkHandle(0, shift);
+      }
+      if (this._handles[1].active || inActive) {
+        isCorrect = isCorrect && this.checkHandle(1, shift);
+      }
+
+      return isCorrect;
+    };
+
+    _class.prototype.checkHandle = function checkHandle(index, shift) {
+      var region = this.getRegionByXY(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[index].worldPosition.clone().add(shift)));
+
+      return region !== null && region === this._initialRegion && this._regions[region].unitsY === 'cm/sec';
+    };
+
+    _class.prototype.create = function create() {
+      this.createMesh();
+      this.createDOM();
+    };
+
+    _class.prototype.createMesh = function createMesh() {
+      // geometry
+      this._geometry = new three.Geometry();
+      this._geometry.vertices = [this._handles[0].worldPosition, this._handles[1].worldPosition];
+
+      // material
+      this._material = new three.LineBasicMaterial();
+
+      this.updateMeshColor();
+
+      // mesh
+      this._mesh = new three.Line(this._geometry, this._material);
+      this._mesh.visible = true;
+
+      this.add(this._mesh);
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._line = document.createElement('div');
+      this._line.className = 'widgets-line';
+      this._container.appendChild(this._line);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      var measurementsContainer = document.createElement('div');
+
+      ['vmax', 'gmax', 'pht', 'mva', 'dt', 'ds'].forEach(function (name) {
+        var div = document.createElement('div');
+
+        div.className = name;
+        measurementsContainer.appendChild(div);
+      });
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._line.style.display = 'none';
+      this._label.style.display = 'none';
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._line.style.display = '';
+      this._label.style.display = '';
+      this._handles[0].showDOM();
+      this._handles[1].showDOM();
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles[0].update();
+      this._handles[1].update();
+
+      this.updateValues();
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateValues = function updateValues() {
+      var usPosition0 = this.getUsPoint(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[0].worldPosition));
+      var usPosition1 = this.getUsPoint(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[1].worldPosition));
+      var velocity0 = Math.abs(usPosition0.y / 100);
+      var velocity1 = Math.abs(usPosition1.y / 100);
+      var time0 = Math.abs(usPosition0.x);
+      var time1 = Math.abs(usPosition1.x);
+      var vMaxTime = this._vMax === velocity0 ? time0 : time1;
+
+      this._vMax = Math.max(velocity0, velocity1);
+      this._gMax = 4 * Math.pow(this._vMax, 2);
+
+      var phtVelocity = this._vMax / Math.sqrt(2);
+      var phtKoeff = (velocity0 - phtVelocity) / (velocity1 - phtVelocity);
+      var dtKoeff = velocity0 / velocity1;
+
+      this._pht = phtKoeff === 1 ? Number.POSITIVE_INFINITY : Math.abs(vMaxTime - (time0 - phtKoeff * time1) / (1 - phtKoeff)) * 1000;
+      this._mva = 220 / this._pht;
+      this._dt = dtKoeff === 1 ? Number.POSITIVE_INFINITY : Math.abs(vMaxTime - (time0 - dtKoeff * time1) / (1 - dtKoeff)) * 1000;
+      this._ds = this._dt === 0 ? Number.POSITIVE_INFINITY : this._vMax / this._dt * 1000;
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        this._geometry.verticesNeedUpdate = true;
+      }
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      // update line
+      var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
+
+      this._line.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                rotate(' + lineData.transformAngle + 'rad)';
+      this._line.style.width = lineData.length + 'px';
+
+      // update label
+      this._label.querySelector('.vmax').innerHTML = 'Vmax: ' + this._vMax.toFixed(2) + ' m/s';
+      this._label.querySelector('.gmax').innerHTML = 'Gmax: ' + this._gMax.toFixed(2) + ' mmhg';
+      this._label.querySelector('.pht').innerHTML = 'PHT: ' + this._pht.toFixed(1) + ' ms';
+      this._label.querySelector('.mva').innerHTML = 'MVA: ' + this._mva.toFixed(2) + ' cm\xB2';
+      this._label.querySelector('.dt').innerHTML = 'DT: ' + this._dt.toFixed(1) + ' ms';
+      this._label.querySelector('.ds').innerHTML = 'DS: ' + this._ds.toFixed(2) + ' m/s\xB2';
+
+      var angle = Math.abs(lineData.transformAngle);
+
+      if (angle > Math.PI / 2) {
+        angle = Math.PI - angle;
+      }
+
+      var labelPadding = Math.tan(angle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(angle) + 15 // 5px for each handle + padding
+      : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle) + 15;
+      var paddingVector = lineData.line.normalize().multiplyScalar(labelPadding);
+      var paddingPoint = lineData.length > labelPadding * 2 ? this._handles[1].screenPosition.clone().sub(paddingVector) : this._handles[1].screenPosition.clone().add(paddingVector);
+      var transform = this.adjustLabelTransform(this._label, paddingPoint);
+
+      this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._line.style.backgroundColor = this._color;
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.free = function free() {
+      var _this2 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this2.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._line);
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      this.remove(this._mesh);
+      this._mesh.geometry.dispose();
+      this._mesh.geometry = null;
+      this._mesh.material.dispose();
+      this._mesh.material = null;
+      this._mesh = null;
+      this._geometry.dispose();
+      this._geometry = null;
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        vMax: this._vMax,
+        gMax: this._gMax,
+        pht: this._pht,
+        mva: this._mva,
+        dt: this._dt,
+        ds: this._ds
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles[0].worldPosition.copy(worldPosition);
+        this._handles[1].worldPosition.copy(worldPosition);
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (widgetsPressureHalfTime());
 
 /***/ }),
 
@@ -48201,390 +48658,429 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @module widgets/rectangle
  */
 var widgetsRectangle = function widgetsRectangle() {
-    var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
 
-    if (three === undefined || three.Object3D === undefined) {
-        return null;
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'Rectangle';
+
+      // incoming parameters (optional: frameIndex, worldPosition)
+      _this._stack = params.stack; // required
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._area = null;
+      _this._units = !_this._calibrationFactor && !params.stack.frame[params.frameIndex].pixelSpacing ? 'units' : 'cm²';
+
+      _this._moving = false;
+      _this._domHovered = false;
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._rectangle = null;
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+
+      var handle = void 0;
+      for (var i = 0; i < 2; i++) {
+        handle = new WidgetsHandle(targetMesh, controls, params);
+        _this.add(handle);
+        _this._handles.push(handle);
+      }
+      _this._handles[1].active = true;
+      _this._handles[1].tracking = true;
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._handles.push(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.create();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+      _this.addEventListeners();
+      return _this;
     }
 
-    var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
-    return function (_Constructor) {
-        _inherits(_class, _Constructor);
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
 
-        function _class(targetMesh, controls, stack) {
-            _classCallCheck(this, _class);
+      this._rectangle.addEventListener('mouseenter', this.onHover);
+      this._rectangle.addEventListener('mouseleave', this.onHover);
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
 
-            var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
 
-            _this._stack = stack;
+      this._rectangle.removeEventListener('mouseenter', this.onHover);
+      this._rectangle.removeEventListener('mouseleave', this.onHover);
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
 
-            _this._widgetType = 'Rectangle';
-            _this._moving = false;
-            _this._domHovered = false;
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
 
-            // mesh stuff
-            _this._material = null;
-            _this._geometry = null;
-            _this._mesh = null;
+      this.hoverMesh();
 
-            // dom stuff
-            _this._rectangle = null;
-            _this._label = null;
+      this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
 
-            // add handles
-            _this._handles = [];
-            var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, if we want to hover on mesh instead of just css
+    };
 
-            var handle = void 0;
-            for (var i = 0; i < 2; i++) {
-                handle = new WidgetsHandle(targetMesh, controls);
-                handle.worldPosition.copy(_this._worldPosition);
-                _this.add(handle);
-                _this._handles.push(handle);
-            }
-            _this._handles[1].active = true;
-            _this._handles[1].tracking = true;
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
 
-            _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-            _this._moveHandle.worldPosition.copy(_this._worldPosition);
-            _this.add(_this._moveHandle);
-            _this._handles.push(_this._moveHandle);
-            _this._moveHandle.hide();
+    _class.prototype.onStart = function onStart(evt) {
+      this._moveHandle.onMove(evt, true);
 
-            _this.create();
+      this._handles[0].onStart(evt);
+      this._handles[1].onStart(evt);
 
-            _this.onMove = _this.onMove.bind(_this);
-            _this.onHover = _this.onHover.bind(_this);
-            _this.addEventListeners();
-            return _this;
+      this._active = this._handles[0].active || this._handles[1].active || this._domHovered;
+
+      if (this._domHovered && !this._handles[1].tracking) {
+        this._moving = true;
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
+      if (this._active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._dragged = true;
+        this._moveHandle.onMove(evt, true);
+
+        if (this._moving) {
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+          });
         }
 
-        _class.prototype.addEventListeners = function addEventListeners() {
-            this._container.addEventListener('wheel', this.onMove);
-
-            this._rectangle.addEventListener('mouseenter', this.onHover);
-            this._rectangle.addEventListener('mouseleave', this.onHover);
-            this._label.addEventListener('mouseenter', this.onHover);
-            this._label.addEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.removeEventListeners = function removeEventListeners() {
-            this._container.removeEventListener('wheel', this.onMove);
-
-            this._rectangle.removeEventListener('mouseenter', this.onHover);
-            this._rectangle.removeEventListener('mouseleave', this.onHover);
-            this._label.removeEventListener('mouseenter', this.onHover);
-            this._label.removeEventListener('mouseleave', this.onHover);
-        };
-
-        _class.prototype.onHover = function onHover(evt) {
-            if (evt) {
-                this.hoverDom(evt);
-            }
-
-            this.hoverMesh();
-
-            this._hovered = this._handles[0].hovered || this._handles[1].hovered || this._domHovered;
-            this._container.style.cursor = this._hovered ? 'pointer' : 'default';
-        };
-
-        _class.prototype.hoverMesh = function hoverMesh() {
-            // check raycast intersection, if we want to hover on mesh instead of just css
-        };
-
-        _class.prototype.hoverDom = function hoverDom(evt) {
-            this._domHovered = evt.type === 'mouseenter';
-        };
-
-        _class.prototype.onStart = function onStart(evt) {
-            this._moveHandle.onMove(evt, true);
-
-            this._handles[0].onStart(evt);
-            this._handles[1].onStart(evt);
-
-            this._active = this._handles[0].active || this._handles[1].active || this._domHovered;
-
-            if (this._domHovered && !this._handles[1].tracking) {
-                this._moving = true;
-                this._controls.enabled = false;
-            }
-
-            this.update();
-        };
-
-        _class.prototype.onMove = function onMove(evt) {
-            if (this._active) {
-                var prevPosition = this._moveHandle.worldPosition.clone();
-
-                this._dragged = true;
-                this._moveHandle.onMove(evt, true);
-
-                if (this._moving) {
-                    this._handles.slice(0, -1).forEach(function (elem, ind) {
-                        this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-                    }, this);
-                }
-
-                this.updateRoI(true);
-            } else {
-                this.onHover(null);
-            }
-
-            this._handles[0].onMove(evt);
-            this._handles[1].onMove(evt);
-
-            this.update();
-        };
-
-        _class.prototype.onEnd = function onEnd() {
-            this._handles[0].onEnd(); // First Handle
-
-            if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
-                return;
-            }
-
-            if (!this._dragged && this._active && !this._handles[1].tracking) {
-                this._selected = !this._selected; // change state if there was no dragging
-                this._handles[0].selected = this._selected;
-            }
-
-            // Second Handle
-            if (this._dragged || !this._handles[1].tracking) {
-                this._handles[1].tracking = false;
-                this._handles[1].onEnd();
-            } else {
-                this._handles[1].tracking = false;
-            }
-            this._handles[1].selected = this._selected;
-
-            this._active = this._handles[0].active || this._handles[1].active;
-            this._dragged = false;
-            this._moving = false;
-
-            this.updateRoI();
-            this.update();
-        };
-
-        _class.prototype.hideDOM = function hideDOM() {
-            this._handles.forEach(function (elem) {
-                elem.hideDOM();
-            });
-
-            this._rectangle.style.display = 'none';
-            this._label.style.display = 'none';
-        };
-
-        _class.prototype.showDOM = function showDOM() {
-            this._handles[0].showDOM();
-            this._handles[1].showDOM();
-
-            this._rectangle.style.display = '';
-            this._label.style.display = '';
-        };
-
-        _class.prototype.create = function create() {
-            this.createMesh();
-            this.createDOM();
-        };
-
-        _class.prototype.createMesh = function createMesh() {
-            this._geometry = new three.PlaneGeometry(1, 1);
-
-            this._material = new three.MeshBasicMaterial({ side: three.DoubleSide });
-            this._material.transparent = true;
-            this._material.opacity = 0.2;
-
-            this.updateMeshColor();
-
-            this._mesh = new three.Mesh(this._geometry, this._material);
-            this._mesh.visible = true;
-
-            this.add(this._mesh);
-        };
-
-        _class.prototype.createDOM = function createDOM() {
-            this._rectangle = document.createElement('div');
-            this._rectangle.setAttribute('class', 'widgets-rectangle');
-            this._container.appendChild(this._rectangle);
-
-            this._label = document.createElement('div');
-            this._label.setAttribute('class', 'widgets-label');
-
-            // measurenents
-            var measurementsContainer = document.createElement('div');
-            // Mean / SD
-            var meanSDContainer = document.createElement('div');
-            meanSDContainer.setAttribute('class', 'mean-sd');
-            measurementsContainer.appendChild(meanSDContainer);
-            // Max / Min
-            var maxMinContainer = document.createElement('div');
-            maxMinContainer.setAttribute('class', 'max-min');
-            measurementsContainer.appendChild(maxMinContainer);
-            // Area
-            var areaContainer = document.createElement('div');
-            areaContainer.setAttribute('class', 'area');
-            measurementsContainer.appendChild(areaContainer);
-
-            this._label.appendChild(measurementsContainer);
-
-            this._container.appendChild(this._label);
-
-            this.updateDOMColor();
-        };
-
-        _class.prototype.update = function update() {
-            this.updateColor();
-
-            // update handles
-            this._handles[0].update();
-            this._handles[1].update();
-
-            // mesh stuff
-            this.updateMeshColor();
-            this.updateMeshPosition();
-
-            // DOM stuff
-            this.updateDOMColor();
-            this.updateDOMContent();
-            this.updateDOMPosition();
-        };
-
-        _class.prototype.updateMeshColor = function updateMeshColor() {
-            if (this._material) {
-                this._material.color.set(this._color);
-            }
-        };
-
-        _class.prototype.updateMeshPosition = function updateMeshPosition() {
-            if (this._geometry) {
-                var progection = new three.Vector3().subVectors(this._handles[1].worldPosition, this._handles[0].worldPosition).projectOnVector(this._camera.up);
-
-                this._geometry.vertices[0].copy(this._handles[0].worldPosition);
-                this._geometry.vertices[1].copy(new three.Vector3().addVectors(this._handles[0].worldPosition, progection));
-                this._geometry.vertices[2].copy(new three.Vector3().subVectors(this._handles[1].worldPosition, progection));
-                this._geometry.vertices[3].copy(this._handles[1].worldPosition);
-
-                this._geometry.verticesNeedUpdate = true;
-                this._geometry.computeBoundingSphere();
-            }
-        };
-
-        _class.prototype.updateDOMColor = function updateDOMColor() {
-            this._rectangle.style.borderColor = this._color;
-            this._label.style.borderColor = this._color;
-        };
-
-        _class.prototype.updateRoI = function updateRoI(clear) {
-            var meanSDContainer = this._label.querySelector('.mean-sd');
-
-            var maxMinContainer = this._label.querySelector('.max-min');
-
-            if (clear) {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-
-                return;
-            }
-
-            var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
-
-            if (roi !== null) {
-                meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
-                maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
-            } else {
-                meanSDContainer.innerHTML = '';
-                maxMinContainer.innerHTML = '';
-            }
-        };
-
-        _class.prototype.updateDOMContent = function updateDOMContent() {
-            var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'cm²';
-
-            var title = units === 'units' ? 'Calibration is required to display the area in cm². ' : '';
-
-            if (title !== '') {
-                this._label.setAttribute('title', title);
-                this._label.style.color = this._colors.error;
-            } else {
-                this._label.removeAttribute('title');
-                this._label.style.color = this._colors.text;
-            }
-            this._label.querySelector('.area').innerHTML = 'Area: ' + (_core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry) / 100).toFixed(2) + ' ' + units;
-        };
-
-        _class.prototype.updateDOMPosition = function updateDOMPosition() {
-            var rectData = this.getRectData(this._handles[0].screenPosition, this._handles[1].screenPosition);
-
-            var labelTransform = this.adjustLabelTransform(this._label, this._handles[1].screenPosition.clone().add(rectData.paddingVector.multiplyScalar(15 + this._label.offsetHeight / 2)));
-
-            // update rectangle
-            this._rectangle.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
-            this._rectangle.style.width = rectData.width + 'px';
-            this._rectangle.style.height = rectData.height + 'px';
-
-            // update label
-            this._label.style.transform = 'translate3D(' + labelTransform.x + 'px,' + labelTransform.y + 'px, 0)';
-        };
-
-        _class.prototype.free = function free() {
-            var _this2 = this;
-
-            this.removeEventListeners();
-
-            this._handles.forEach(function (h) {
-                _this2.remove(h);
-                h.free();
-            });
-            this._handles = [];
-
-            this._container.removeChild(this._rectangle);
-            this._container.removeChild(this._label);
-
-            // mesh, geometry, material
-            this.remove(this._mesh);
-            this._mesh.geometry.dispose();
-            this._mesh.geometry = null;
-            this._mesh.material.dispose();
-            this._mesh.material = null;
-            this._mesh = null;
-            this._geometry.dispose();
-            this._geometry = null;
-            this._material.vertexShader = null;
-            this._material.fragmentShader = null;
-            this._material.uniforms = null;
-            this._material.dispose();
-            this._material = null;
-
-            _Constructor.prototype.free.call(this);
-        };
-
-        _createClass(_class, [{
-            key: 'targetMesh',
-            get: function get() {
-                return this._targetMesh;
-            },
-            set: function set(targetMesh) {
-                this._targetMesh = targetMesh;
-                this._handles.forEach(function (elem) {
-                    elem.targetMesh = targetMesh;
-                });
-                this.update();
-            }
-        }, {
-            key: 'worldPosition',
-            get: function get() {
-                return this._worldPosition;
-            },
-            set: function set(worldPosition) {
-                this._handles[0].worldPosition.copy(worldPosition);
-                this._handles[1].worldPosition.copy(worldPosition);
-                this._worldPosition.copy(worldPosition);
-                this.update();
-            }
-        }]);
-
-        return _class;
-    }(Constructor);
+        this.updateRoI(true);
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles[0].onMove(evt);
+      this._handles[1].onMove(evt);
+
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      this._handles[0].onEnd(); // First Handle
+
+      if (this._handles[1].tracking && this._handles[0].screenPosition.distanceTo(this._handles[1].screenPosition) < 10) {
+        return;
+      }
+
+      if (!this._dragged && this._active && !this._handles[1].tracking) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles[0].selected = this._selected;
+      }
+
+      // Second Handle
+      if (this._dragged || !this._handles[1].tracking) {
+        this._handles[1].tracking = false;
+        this._handles[1].onEnd();
+      } else {
+        this._handles[1].tracking = false;
+      }
+      this._handles[1].selected = this._selected;
+
+      this._active = this._handles[0].active || this._handles[1].active;
+      this._dragged = false;
+      this._moving = false;
+
+      this.updateRoI(); // TODO: if (this._dragged || !this._initialized)
+      this.update();
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+
+      this._rectangle.style.display = 'none';
+      this._label.style.display = 'none';
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._handles[0].showDOM();
+      this._handles[1].showDOM();
+
+      this._rectangle.style.display = '';
+      this._label.style.display = '';
+    };
+
+    _class.prototype.create = function create() {
+      this.createMesh();
+      this.createDOM();
+    };
+
+    _class.prototype.createMesh = function createMesh() {
+      this._geometry = new three.PlaneGeometry(1, 1);
+
+      this._material = new three.MeshBasicMaterial({ side: three.DoubleSide });
+      this._material.transparent = true;
+      this._material.opacity = 0.2;
+
+      this.updateMeshColor();
+
+      this._mesh = new three.Mesh(this._geometry, this._material);
+      this._mesh.visible = true;
+
+      this.add(this._mesh);
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._rectangle = document.createElement('div');
+      this._rectangle.className = 'widgets-rectangle';
+      this._container.appendChild(this._rectangle);
+
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      // measurements
+      var measurementsContainer = document.createElement('div');
+      // Mean / SD
+      var meanSDContainer = document.createElement('div');
+      meanSDContainer.className = 'mean-sd';
+      measurementsContainer.appendChild(meanSDContainer);
+      // Max / Min
+      var maxMinContainer = document.createElement('div');
+      maxMinContainer.className = 'max-min';
+      measurementsContainer.appendChild(maxMinContainer);
+      // Area
+      var areaContainer = document.createElement('div');
+      areaContainer.className = 'area';
+      measurementsContainer.appendChild(areaContainer);
+
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      this._handles[0].update();
+      this._handles[1].update();
+
+      this.updateMeshColor();
+      this.updateMeshPosition();
+
+      this.updateDOM();
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateMeshPosition = function updateMeshPosition() {
+      if (this._geometry) {
+        var progection = new three.Vector3().subVectors(this._handles[1].worldPosition, this._handles[0].worldPosition).projectOnVector(this._camera.up);
+
+        this._geometry.vertices[0].copy(this._handles[0].worldPosition);
+        this._geometry.vertices[1].copy(new three.Vector3().addVectors(this._handles[0].worldPosition, progection));
+        this._geometry.vertices[2].copy(new three.Vector3().subVectors(this._handles[1].worldPosition, progection));
+        this._geometry.vertices[3].copy(this._handles[1].worldPosition);
+
+        this._geometry.verticesNeedUpdate = true;
+        this._geometry.computeBoundingSphere();
+      }
+    };
+
+    _class.prototype.updateRoI = function updateRoI(clear) {
+      var meanSDContainer = this._label.querySelector('.mean-sd');
+      var maxMinContainer = this._label.querySelector('.max-min');
+
+      if (clear) {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+
+        return;
+      }
+
+      var roi = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getRoI(this._mesh, this._camera, this._stack);
+
+      if (roi !== null) {
+        meanSDContainer.innerHTML = 'Mean: ' + roi.mean.toFixed(1) + ' / SD: ' + roi.sd.toFixed(1);
+        maxMinContainer.innerHTML = 'Max: ' + roi.max.toFixed() + ' / Min: ' + roi.min.toFixed();
+      } else {
+        meanSDContainer.innerHTML = '';
+        maxMinContainer.innerHTML = '';
+      }
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      this._rectangle.style.borderColor = this._color;
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
+      var regions = this._stack.frame[this._params.frameIndex].ultrasoundRegions || [];
+
+      this._area = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].getGeometryArea(this._geometry);
+      if (this._calibrationFactor) {
+        this._area *= Math.pow(this._calibrationFactor, 2);
+      } else if (regions && regions.length > 0 && this._stack.lps2IJK) {
+        var region0 = this.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._stack.lps2IJK, this._handles[0].worldPosition));
+        var region1 = this.getRegionByXY(regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._stack.lps2IJK, this._handles[1].worldPosition));
+
+        if (region0 !== null && region1 !== null && region0 === region1 && regions[region0].unitsX === 'cm' && regions[region0].unitsY === 'cm') {
+          this._area *= Math.pow(regions[region0].deltaX, 2);
+          this._units = 'cm²';
+        } else if (this._stack.frame[this._params.frameIndex].pixelSpacing) {
+          this._area /= 100;
+          this._units = 'cm²';
+        } else {
+          this._units = 'units';
+        }
+      } else if (this._units === 'cm²') {
+        this._area /= 100;
+      }
+
+      if (this._units === 'units' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', 'Calibration is required to display the area in cm²');
+        this._label.style.color = this._colors.error;
+      } else if (this._units !== 'units' && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+      this._label.querySelector('.area').innerHTML = 'Area: ' + this._area.toFixed(2) + ' ' + this._units;
+
+      var rectData = this.getRectData(this._handles[0].screenPosition, this._handles[1].screenPosition);
+      var labelTransform = this.adjustLabelTransform(this._label, this._handles[1].screenPosition.clone().add(rectData.paddingVector.multiplyScalar(15 + this._label.offsetHeight / 2)));
+
+      // update rectangle
+      this._rectangle.style.transform = 'translate3D(' + rectData.transformX + 'px, ' + rectData.transformY + 'px, 0)';
+      this._rectangle.style.width = rectData.width + 'px';
+      this._rectangle.style.height = rectData.height + 'px';
+
+      // update label
+      this._label.style.transform = 'translate3D(' + labelTransform.x + 'px,' + labelTransform.y + 'px, 0)';
+    };
+
+    _class.prototype.free = function free() {
+      var _this3 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (h) {
+        _this3.remove(h);
+        h.free();
+      });
+      this._handles = [];
+
+      this._container.removeChild(this._rectangle);
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      this.remove(this._mesh);
+      this._mesh.geometry.dispose();
+      this._mesh.geometry = null;
+      this._mesh.material.dispose();
+      this._mesh.material = null;
+      this._mesh = null;
+      this._geometry.dispose();
+      this._geometry = null;
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      this._stack = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        area: this._area,
+        units: this._units
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles[0].worldPosition.copy(worldPosition);
+        this._handles[1].worldPosition.copy(worldPosition);
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'cm²';
+        this.update();
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
 };
 
 
@@ -48629,14 +49125,22 @@ var widgetsRuler = function widgetsRuler() {
   return function (_Constructor) {
     _inherits(_class, _Constructor);
 
-    function _class(targetMesh, controls, stack) {
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
       _classCallCheck(this, _class);
 
-      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
-
-      _this._stack = stack;
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
 
       _this._widgetType = 'Ruler';
+
+      // incoming parameters (optional: lps2IJK, pixelSpacing, ultrasoundRegions, worldPosition)
+      _this._calibrationFactor = params.calibrationFactor || null;
+
+      // outgoing values
+      _this._distance = null;
+      _this._units = !_this._calibrationFactor && !params.pixelSpacing ? 'units' : 'mm';
+
       _this._moving = false;
       _this._domHovered = false;
 
@@ -48649,24 +49153,20 @@ var widgetsRuler = function widgetsRuler() {
       _this._line = null;
       _this._label = null;
 
-      _this._distance = null;
-
       // add handles
       _this._handles = [];
       var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
 
       var handle = void 0;
       for (var i = 0; i < 2; i++) {
-        handle = new WidgetsHandle(targetMesh, controls);
-        handle.worldPosition.copy(_this._worldPosition);
+        handle = new WidgetsHandle(targetMesh, controls, params);
         _this.add(handle);
         _this._handles.push(handle);
       }
       _this._handles[1].active = true;
       _this._handles[1].tracking = true;
 
-      _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-      _this._moveHandle.worldPosition.copy(_this._worldPosition);
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
       _this.add(_this._moveHandle);
       _this._handles.push(_this._moveHandle);
       _this._moveHandle.hide();
@@ -48733,6 +49233,8 @@ var widgetsRuler = function widgetsRuler() {
     };
 
     _class.prototype.onMove = function onMove(evt) {
+      var _this2 = this;
+
       if (this._active) {
         var prevPosition = this._moveHandle.worldPosition.clone();
 
@@ -48740,9 +49242,9 @@ var widgetsRuler = function widgetsRuler() {
         this._moveHandle.onMove(evt, true);
 
         if (this._moving) {
-          this._handles.slice(0, -1).forEach(function (elem, ind) {
-            this._handles[ind].worldPosition.add(this._moveHandle.worldPosition.clone().sub(prevPosition));
-          }, this);
+          this._handles.slice(0, -1).forEach(function (handle) {
+            handle.worldPosition.add(_this2._moveHandle.worldPosition.clone().sub(prevPosition));
+          });
         }
       } else {
         this.onHover(null);
@@ -48778,6 +49280,7 @@ var widgetsRuler = function widgetsRuler() {
       this._active = this._handles[0].active || this._handles[1].active;
       this._dragged = false;
       this._moving = false;
+
       this.update();
     };
 
@@ -48806,11 +49309,11 @@ var widgetsRuler = function widgetsRuler() {
 
     _class.prototype.createDOM = function createDOM() {
       this._line = document.createElement('div');
-      this._line.setAttribute('class', 'widgets-line');
+      this._line.className = 'widgets-line';
       this._container.appendChild(this._line);
 
       this._label = document.createElement('div');
-      this._label.setAttribute('class', 'widgets-label');
+      this._label.className = 'widgets-label';
       this._container.appendChild(this._label);
 
       this.updateDOMColor();
@@ -48820,7 +49323,7 @@ var widgetsRuler = function widgetsRuler() {
       this._line.style.display = 'none';
       this._label.style.display = 'none';
       this._handles.forEach(function (elem) {
-        elem.hideDOM();
+        return elem.hideDOM();
       });
     };
 
@@ -48834,17 +49337,21 @@ var widgetsRuler = function widgetsRuler() {
     _class.prototype.update = function update() {
       this.updateColor();
 
-      // update handles
       this._handles[0].update();
       this._handles[1].update();
 
-      // mesh stuff
+      // calculate values
+      var distanceData = this.getDistanceData(this._handles[0].worldPosition, this._handles[1].worldPosition, this._calibrationFactor);
+
+      this._distance = distanceData.distance;
+      if (distanceData.units) {
+        this._units = distanceData.units;
+      }
+
       this.updateMeshColor();
       this.updateMeshPosition();
 
-      // DOM stuff
-      this.updateDOMColor();
-      this.updateDOMPosition();
+      this.updateDOM();
     };
 
     _class.prototype.updateMeshColor = function updateMeshColor() {
@@ -48859,7 +49366,9 @@ var widgetsRuler = function widgetsRuler() {
       }
     };
 
-    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+    _class.prototype.updateDOM = function updateDOM() {
+      this.updateDOMColor();
+
       // update line
       var lineData = this.getLineData(this._handles[0].screenPosition, this._handles[1].screenPosition);
 
@@ -48867,20 +49376,14 @@ var widgetsRuler = function widgetsRuler() {
       this._line.style.width = lineData.length + 'px';
 
       // update label
-      this._distance = this._handles[1].worldPosition.distanceTo(this._handles[0].worldPosition);
-
-      var units = this._stack.frame[0].pixelSpacing === null ? 'units' : 'mm';
-
-      var title = units === 'units' ? 'Calibration is required to display the distance in mm' : '';
-
-      if (title !== '') {
-        this._label.setAttribute('title', title);
+      if (this._units === 'units' && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', 'Calibration is required to display the distance in mm');
         this._label.style.color = this._colors.error;
-      } else {
+      } else if (this._units !== 'units' && this._label.hasAttribute('title')) {
         this._label.removeAttribute('title');
         this._label.style.color = this._colors.text;
       }
-      this._label.innerHTML = this._distance.toFixed(2) + ' ' + units;
+      this._label.innerHTML = this._distance.toFixed(2) + ' ' + this._units;
 
       var angle = Math.abs(lineData.transformAngle);
       if (angle > Math.PI / 2) {
@@ -48889,11 +49392,8 @@ var widgetsRuler = function widgetsRuler() {
 
       var labelPadding = Math.tan(angle) < this._label.offsetHeight / this._label.offsetWidth ? this._label.offsetWidth / 2 / Math.cos(angle) + 15 // 5px for each handle + padding
       : this._label.offsetHeight / 2 / Math.cos(Math.PI / 2 - angle) + 15;
-
       var paddingVector = lineData.line.normalize().multiplyScalar(labelPadding);
-
       var paddingPoint = lineData.length > labelPadding * 2 ? this._handles[1].screenPosition.clone().sub(paddingVector) : this._handles[1].screenPosition.clone().add(paddingVector);
-
       var transform = this.adjustLabelTransform(this._label, paddingPoint);
 
       this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
@@ -48905,12 +49405,12 @@ var widgetsRuler = function widgetsRuler() {
     };
 
     _class.prototype.free = function free() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.removeEventListeners();
 
       this._handles.forEach(function (h) {
-        _this2.remove(h);
+        _this3.remove(h);
         h.free();
       });
       this._handles = [];
@@ -48936,6 +49436,13 @@ var widgetsRuler = function widgetsRuler() {
       _Constructor.prototype.free.call(this);
     };
 
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        distance: this._distance,
+        units: this._units
+      };
+    };
+
     _createClass(_class, [{
       key: 'targetMesh',
       get: function get() {
@@ -48944,7 +49451,7 @@ var widgetsRuler = function widgetsRuler() {
       set: function set(targetMesh) {
         this._targetMesh = targetMesh;
         this._handles.forEach(function (elem) {
-          elem.targetMesh = targetMesh;
+          return elem.targetMesh = targetMesh;
         });
         this.update();
       }
@@ -48959,6 +49466,16 @@ var widgetsRuler = function widgetsRuler() {
         this._worldPosition.copy(worldPosition);
         this.update();
       }
+    }, {
+      key: 'calibrationFactor',
+      get: function get() {
+        return this._calibrationFactor;
+      },
+      set: function set(calibrationFactor) {
+        this._calibrationFactor = calibrationFactor;
+        this._units = 'mm';
+        this.update();
+      }
     }]);
 
     return _class;
@@ -48967,6 +49484,684 @@ var widgetsRuler = function widgetsRuler() {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (widgetsRuler());
+
+/***/ }),
+
+/***/ "./src/widgets/widgets.velocityTimeIntegral.js":
+/*!*****************************************************!*\
+  !*** ./src/widgets/widgets.velocityTimeIntegral.js ***!
+  \*****************************************************/
+/*! exports provided: widgetsVelocityTimeIntegral, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "widgetsVelocityTimeIntegral", function() { return widgetsVelocityTimeIntegral; });
+/* harmony import */ var _widgets_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widgets.base */ "./src/widgets/widgets.base.js");
+/* harmony import */ var _widgets_handle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets.handle */ "./src/widgets/widgets.handle.js");
+/* harmony import */ var _core_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/core.utils */ "./src/core/core.utils.js");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+/**
+ * @module widgets/velocityTimeIntegral
+ */
+var widgetsVelocityTimeIntegral = function widgetsVelocityTimeIntegral() {
+  var three = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.THREE;
+
+  if (three === undefined || three.Object3D === undefined) {
+    return null;
+  }
+
+  var Constructor = Object(_widgets_base__WEBPACK_IMPORTED_MODULE_0__["widgetsBase"])(three);
+  return function (_Constructor) {
+    _inherits(_class, _Constructor);
+
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
+
+      _this._widgetType = 'VelocityTimeIntegral';
+
+      // incoming parameters (+ ijk2LPS, lps2IJK, worldPosition)
+      _this._regions = params.ultrasoundRegions || []; // required
+      if (_this._regions.length < 1) {
+        throw new Error('Ultrasound regions should not be empty!');
+      }
+
+      // outgoing values
+      _this._vMax = null; // Maximum Velocity (Vmax)
+      _this._vMean = null; // Mean Velocity (Vmean)
+      _this._gMax = null; // Maximum Gradient (Gmax)
+      _this._gMean = null; // Mean Gradient (Gmean)
+      _this._envTi = null; // Envelope Duration (Env.Ti)
+      _this._vti = null; // Velocity Time Integral (VTI)
+      _this._extraInfo = null; // extra information which is added to label
+
+      _this._initialized = false; // set to true onEnd if number of handles > 2
+      _this._isHandleActive = true;
+      _this._domHovered = false;
+      _this._initialRegion = _this.getRegionByXY(_this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(params.lps2IJK, params.worldPosition));
+      if (_this._initialRegion === null) {
+        throw new Error('Invalid initial UltraSound region!');
+      }
+      _this._usPoints = [];
+
+      // mesh stuff
+      _this._material = null;
+      _this._geometry = null;
+      _this._mesh = null;
+
+      // dom stuff
+      _this._lines = [];
+      _this._label = null;
+
+      // add handles
+      _this._handles = [];
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+
+      var handle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(handle);
+      _this._handles.push(handle);
+
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
+      _this.add(_this._moveHandle);
+      _this._moveHandle.hide();
+
+      _this.onMove = _this.onMove.bind(_this);
+      _this.onHover = _this.onHover.bind(_this);
+
+      _this.create();
+
+      _this.addEventListeners();
+      return _this;
+    }
+
+    _class.prototype.addEventListeners = function addEventListeners() {
+      this._container.addEventListener('wheel', this.onMove);
+
+      this._label.addEventListener('mouseenter', this.onHover);
+      this._label.addEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.removeEventListeners = function removeEventListeners() {
+      this._container.removeEventListener('wheel', this.onMove);
+
+      this._label.removeEventListener('mouseenter', this.onHover);
+      this._label.removeEventListener('mouseleave', this.onHover);
+    };
+
+    _class.prototype.onHover = function onHover(evt) {
+      if (evt) {
+        this.hoverDom(evt);
+      }
+
+      this.hoverMesh();
+
+      var hovered = false;
+
+      this._handles.forEach(function (elem) {
+        return hovered = hovered || elem.hovered;
+      });
+
+      this._hovered = hovered || this._domHovered;
+      this._container.style.cursor = this._hovered ? 'pointer' : 'default';
+    };
+
+    _class.prototype.hoverMesh = function hoverMesh() {
+      // check raycast intersection, if we want to hover on mesh instead of just css
+    };
+
+    _class.prototype.hoverDom = function hoverDom(evt) {
+      this._domHovered = evt.type === 'mouseenter';
+    };
+
+    _class.prototype.onStart = function onStart(evt) {
+      var active = false;
+
+      this._moveHandle.onMove(evt, true);
+      this._handles.forEach(function (elem) {
+        elem.onStart(evt);
+        active = active || elem.active;
+      });
+
+      this._active = active || this._domHovered;
+      this._isHandleActive = active;
+
+      if (this._domHovered) {
+        this._controls.enabled = false;
+      }
+
+      this.update();
+    };
+
+    _class.prototype.onMove = function onMove(evt) {
+      if (this.active) {
+        var prevPosition = this._moveHandle.worldPosition.clone();
+
+        this._moveHandle.onMove(evt, true);
+
+        var shift = this._moveHandle.worldPosition.clone().sub(prevPosition);
+
+        if (!this.isCorrectRegion(shift)) {
+          this._moveHandle.worldPosition.copy(prevPosition);
+
+          return;
+        }
+
+        if (!this._initialized) {
+          this._handles[this._handles.length - 1].hovered = false;
+          this._handles[this._handles.length - 1].active = false;
+          this._handles[this._handles.length - 1].tracking = false;
+
+          var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+          var handle = new WidgetsHandle(this._targetMesh, this._controls, this._params);
+
+          handle.hovered = true;
+          handle.active = true;
+          handle.tracking = true;
+          this.add(handle);
+          this._handles.push(handle);
+
+          this.createLine();
+        } else {
+          this.updateDOMContent(true);
+
+          if (!this._isHandleActive || this._handles[this._handles.length - 2].active || this._handles[this._handles.length - 1].active) {
+            this._handles.forEach(function (handle) {
+              handle.worldPosition.add(shift);
+            });
+            this._isHandleActive = false;
+            this._handles[this._handles.length - 2].active = false;
+            this._handles[this._handles.length - 1].active = false;
+            this._controls.enabled = false;
+          }
+        }
+        this._dragged = true;
+      } else {
+        this.onHover(null);
+      }
+
+      this._handles.forEach(function (elem) {
+        elem.onMove(evt);
+      });
+      if (this.active && this._handles.length > 2) {
+        this.pushPopHandle();
+      }
+      this.update();
+    };
+
+    _class.prototype.onEnd = function onEnd() {
+      var _this2 = this;
+
+      if (this._handles.length < 3) {
+        return;
+      }
+
+      var active = false;
+
+      this._handles.slice(0, -1).forEach(function (elem) {
+        elem.onEnd();
+        active = active || elem.active;
+      });
+
+      // Last Handle
+      if (this._dragged || !this._handles[this._handles.length - 1].tracking) {
+        this._handles[this._handles.length - 1].tracking = false;
+        this._handles[this._handles.length - 1].onEnd();
+      } else {
+        this._handles[this._handles.length - 1].tracking = false;
+      }
+
+      if (this._dragged || !this._initialized) {
+        this.finalize();
+        this.updateDOMContent();
+      }
+
+      if (!this._dragged && this._active) {
+        this._selected = !this._selected; // change state if there was no dragging
+        this._handles.forEach(function (elem) {
+          return elem.selected = _this2._selected;
+        });
+      }
+      this._active = active || this._handles[this._handles.length - 1].active;
+      this._isHandleActive = active;
+      this._dragged = false;
+      this._initialized = true;
+
+      this.update();
+    };
+
+    _class.prototype.isCorrectRegion = function isCorrectRegion(shift) {
+      var _this3 = this;
+
+      var isCorrect = true;
+
+      this._handles.forEach(function (handle, index) {
+        if (handle.active || !_this3._isHandleActive) {
+          isCorrect = isCorrect && _this3.checkHandle(index, shift);
+        }
+      });
+
+      return isCorrect;
+    };
+
+    _class.prototype.checkHandle = function checkHandle(index, shift) {
+      var region = this.getRegionByXY(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[index].worldPosition.clone().add(shift)));
+
+      return region !== null && region === this._initialRegion && this._regions[region].unitsY === 'cm/sec';
+    };
+
+    _class.prototype.create = function create() {
+      this.createMaterial();
+      this.createDOM();
+    };
+
+    _class.prototype.createMaterial = function createMaterial() {
+      this._material = new three.LineBasicMaterial();
+    };
+
+    _class.prototype.createDOM = function createDOM() {
+      this._label = document.createElement('div');
+      this._label.className = 'widgets-label';
+
+      var measurementsContainer = document.createElement('div');
+
+      ['vmax', 'vmean', 'gmax', 'gmean', 'envti', 'vti', 'info'].forEach(function (name) {
+        var div = document.createElement('div');
+
+        div.className = name;
+        measurementsContainer.appendChild(div);
+      });
+      this._label.appendChild(measurementsContainer);
+
+      this._container.appendChild(this._label);
+
+      this.updateDOMColor();
+    };
+
+    _class.prototype.createLine = function createLine() {
+      var line = document.createElement('div');
+
+      line.className = 'widgets-line';
+      line.addEventListener('mouseenter', this.onHover);
+      line.addEventListener('mouseleave', this.onHover);
+      this._lines.push(line);
+      this._container.appendChild(line);
+    };
+
+    _class.prototype.pushPopHandle = function pushPopHandle() {
+      var handle0 = this._handles[this._handles.length - 3];
+      var handle1 = this._handles[this._handles.length - 2];
+      var newhandle = this._handles[this._handles.length - 1];
+      var isOnLine = this.isPointOnLine(handle0.worldPosition, handle1.worldPosition, newhandle.worldPosition);
+
+      if (isOnLine || handle0.screenPosition.distanceTo(newhandle.screenPosition) < 25) {
+        this.remove(handle1);
+        handle1.free();
+
+        this._handles[this._handles.length - 2] = newhandle;
+        this._handles.pop();
+
+        this._container.removeChild(this._lines.pop());
+      }
+
+      return isOnLine;
+    };
+
+    _class.prototype.isPointOnLine = function isPointOnLine(pointA, pointB, pointToCheck) {
+      return !new three.Vector3().crossVectors(pointA.clone().sub(pointToCheck), pointB.clone().sub(pointToCheck)).length();
+    };
+
+    _class.prototype.finalize = function finalize() {
+      var _this4 = this;
+
+      if (this._initialized) {
+        // remove old axis handles
+        this._handles.splice(-2).forEach(function (elem) {
+          _this4.remove(elem);
+          elem.free();
+        });
+      }
+
+      var pointF = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[0]._worldPosition);
+      var pointL = _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[this._handles.length - 1]._worldPosition);
+      var region = this._regions[this.getRegionByXY(this._regions, pointF)];
+      var axisY = region.y0 + (region.axisY || 0); // data coordinate equal to US region's zero Y coordinate
+
+      var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
+      var params = { hideHandleMesh: this._params.hideHandleMesh || false };
+
+      pointF.y = axisY;
+      pointL.y = axisY;
+      this._usPoints = [this.getPointInRegion(region, pointL), this.getPointInRegion(region, pointF)];
+
+      params.worldPosition = pointL.applyMatrix4(this._params.ijk2LPS); // projection of last point on Y axis
+      this._handles.push(new WidgetsHandle(this._targetMesh, this._controls, params));
+      this.add(this._handles[this._handles.length - 1]);
+
+      params.worldPosition = pointF.applyMatrix4(this._params.ijk2LPS); // projection of first point on Y axis
+      this._handles.push(new WidgetsHandle(this._targetMesh, this._controls, params));
+      this.add(this._handles[this._handles.length - 1]);
+
+      while (this._lines.length < this._handles.length) {
+        this.createLine();
+      }
+    };
+
+    _class.prototype.update = function update() {
+      this.updateColor();
+
+      // update handles
+      this._handles.forEach(function (elem) {
+        return elem.update();
+      });
+
+      // mesh stuff
+      this.updateMesh();
+
+      // DOM stuff
+      this.updateDOMColor();
+      this.updateDOMPosition();
+    };
+
+    _class.prototype.updateValues = function updateValues() {
+      var _this5 = this;
+
+      var region = this._regions[this.getRegionByXY(this._regions, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(this._params.lps2IJK, this._handles[0]._worldPosition))];
+      var boundaries = {
+        xMin: Number.POSITIVE_INFINITY,
+        xMax: Number.NEGATIVE_INFINITY,
+        yMin: Number.POSITIVE_INFINITY,
+        yMax: Number.NEGATIVE_INFINITY
+      };
+      var pVelocity = void 0;
+      var pGradient = void 0;
+      var pTime = void 0;
+      var totalTime = 0;
+
+      this._vMax = 0;
+      this._vMean = 0;
+      this._gMean = 0;
+      this._usPoints.splice(2);
+      this._handles.slice(0, -2).forEach(function (elem) {
+        var usPosition = _this5.getPointInRegion(region, _core_core_utils__WEBPACK_IMPORTED_MODULE_2__["default"].worldToData(_this5._params.lps2IJK, elem._worldPosition));
+        var velocity = Math.abs(usPosition.y / 100);
+        var gradient = 4 * Math.pow(velocity, 2);
+
+        if (_this5._vMax === null || velocity > _this5._vMax) {
+          _this5._vMax = velocity;
+        }
+        boundaries.xMin = Math.min(usPosition.x, boundaries.xMin);
+        boundaries.xMax = Math.max(usPosition.x, boundaries.xMax);
+        boundaries.yMin = Math.min(usPosition.y, boundaries.yMin);
+        boundaries.yMax = Math.max(usPosition.y, boundaries.yMax);
+
+        if (pTime) {
+          var length = Math.abs(usPosition.x - pTime);
+
+          totalTime += length;
+          _this5._vMean += length * (pVelocity + velocity) / 2;
+          _this5._gMean += length * (pGradient + gradient) / 2;
+        }
+
+        pVelocity = velocity;
+        pGradient = gradient;
+        pTime = usPosition.x;
+        _this5._usPoints.push(usPosition);
+      });
+
+      this._gMax = 4 * Math.pow(this._vMax, 2);
+      this._vMean /= totalTime;
+      this._gMean /= totalTime;
+      this._envTi = totalTime * 1000;
+      this._vti = this.getArea(this._usPoints);
+
+      this._shapeWarn = boundaries.xMax - boundaries.xMin !== totalTime || boundaries.yMin < 0 !== boundaries.yMax < 0;
+    };
+
+    _class.prototype.updateMesh = function updateMesh() {
+      var _this6 = this;
+
+      if (this._mesh) {
+        this.remove(this._mesh);
+      }
+
+      this._geometry = new three.Geometry();
+      this._handles.forEach(function (elem) {
+        return _this6._geometry.vertices.push(elem.worldPosition);
+      });
+      this._geometry.vertices.push(this._handles[0].worldPosition);
+      this._geometry.verticesNeedUpdate = true;
+
+      this.updateMeshColor();
+
+      this._mesh = new three.Line(this._geometry, this._material);
+      this._mesh.visible = true;
+      this.add(this._mesh);
+    };
+
+    _class.prototype.updateMeshColor = function updateMeshColor() {
+      if (this._material) {
+        this._material.color.set(this._color);
+      }
+    };
+
+    _class.prototype.updateDOMColor = function updateDOMColor() {
+      var _this7 = this;
+
+      if (this._handles.length >= 2) {
+        this._lines.forEach(function (elem) {
+          return elem.style.backgroundColor = _this7._color;
+        });
+      }
+      this._label.style.borderColor = this._color;
+    };
+
+    _class.prototype.updateDOMContent = function updateDOMContent(clear) {
+      var vMaxContainer = this._label.querySelector('.vmax');
+      var vMeanContainer = this._label.querySelector('.vmean');
+      var gMaxContainer = this._label.querySelector('.gmax');
+      var gMeanContainer = this._label.querySelector('.gmean');
+      var envTiContainer = this._label.querySelector('.envti');
+      var vtiContainer = this._label.querySelector('.vti');
+      var infoContainer = this._label.querySelector('.info');
+
+      if (clear) {
+        vMaxContainer.innerHTML = '';
+        vMeanContainer.innerHTML = '';
+        gMaxContainer.innerHTML = '';
+        gMeanContainer.innerHTML = '';
+        envTiContainer.innerHTML = '';
+        vtiContainer.innerHTML = '';
+        infoContainer.innerHTML = '';
+
+        return;
+      }
+
+      this.updateValues();
+
+      if (this._shapeWarn && !this._label.hasAttribute('title')) {
+        this._label.setAttribute('title', 'Values may be incorrect due to invalid curve.');
+        this._label.style.color = this._colors.error;
+      } else if (!this._shapeWarn && this._label.hasAttribute('title')) {
+        this._label.removeAttribute('title');
+        this._label.style.color = this._colors.text;
+      }
+
+      vMaxContainer.innerHTML = 'Vmax: ' + this._vMax.toFixed(2) + ' m/s';
+      vMeanContainer.innerHTML = 'Vmean: ' + this._vMean.toFixed(2) + ' m/s';
+      gMaxContainer.innerHTML = 'Gmax: ' + this._gMax.toFixed(2) + ' mmhg';
+      gMeanContainer.innerHTML = 'Gmean: ' + this._gMean.toFixed(2) + ' mmhg';
+      envTiContainer.innerHTML = 'Env.Ti: ' + this._envTi.toFixed(1) + ' ms';
+      vtiContainer.innerHTML = 'VTI: ' + this._vti.toFixed(2) + ' cm';
+      infoContainer.innerHTML = this._extraInfo;
+    };
+
+    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+      var _this8 = this;
+
+      if (this._handles.length < 2) {
+        return;
+      }
+      // update lines and get coordinates of lowest handle
+      var labelPosition = null;
+
+      this._lines.forEach(function (elem, ind) {
+        var lineData = _this8.getLineData(_this8._handles[ind].screenPosition, _this8._handles[ind + 1 === _this8._handles.length ? 0 : ind + 1].screenPosition);
+
+        elem.style.transform = 'translate3D(' + lineData.transformX + 'px, ' + lineData.transformY + 'px, 0)\n                    rotate(' + lineData.transformAngle + 'rad)';
+        elem.style.width = lineData.length + 'px';
+
+        if (labelPosition === null || labelPosition.y < _this8._handles[ind].screenPosition.y) {
+          labelPosition = _this8._handles[ind].screenPosition.clone();
+        }
+      });
+
+      if (!this._initialized) {
+        return;
+      }
+
+      // update label
+      labelPosition.y += 15 + this._label.offsetHeight / 2;
+      labelPosition = this.adjustLabelTransform(this._label, labelPosition);
+
+      this._label.style.transform = 'translate3D(' + labelPosition.x + 'px, ' + labelPosition.y + 'px, 0)';
+    };
+
+    _class.prototype.hideDOM = function hideDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.hideDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = 'none';
+      });
+      this._label.style.display = 'none';
+    };
+
+    _class.prototype.showDOM = function showDOM() {
+      this._handles.forEach(function (elem) {
+        return elem.showDOM();
+      });
+
+      this._lines.forEach(function (elem) {
+        return elem.style.display = '';
+      });
+      this._label.style.display = '';
+    };
+
+    _class.prototype.free = function free() {
+      var _this9 = this;
+
+      this.removeEventListeners();
+
+      this._handles.forEach(function (elem) {
+        _this9.remove(elem);
+        elem.free();
+      });
+      this._handles = [];
+      this._usPoints = [];
+
+      this.remove(this._moveHandle);
+      this._moveHandle.free();
+      this._moveHandle = null;
+
+      this._lines.forEach(function (elem) {
+        elem.removeEventListener('mouseenter', _this9.onHover);
+        elem.removeEventListener('mouseleave', _this9.onHover);
+        _this9._container.removeChild(elem);
+      });
+      this._lines = [];
+      this._container.removeChild(this._label);
+
+      // mesh, geometry, material
+      if (this._mesh) {
+        this.remove(this._mesh);
+        this._mesh.geometry.dispose();
+        this._mesh.geometry = null;
+        this._mesh.material.dispose();
+        this._mesh.material = null;
+        this._mesh = null;
+      }
+      if (this._geometry) {
+        this._geometry.dispose();
+        this._geometry = null;
+      }
+      this._material.vertexShader = null;
+      this._material.fragmentShader = null;
+      this._material.uniforms = null;
+      this._material.dispose();
+      this._material = null;
+
+      _Constructor.prototype.free.call(this);
+    };
+
+    _class.prototype.getMeasurements = function getMeasurements() {
+      return {
+        vMax: this._vMax,
+        vMean: this._vMean,
+        gMax: this._gMax,
+        gMean: this._gMean,
+        envTi: this._envTi,
+        vti: this._vti
+      };
+    };
+
+    _createClass(_class, [{
+      key: 'targetMesh',
+      get: function get() {
+        return this._targetMesh;
+      },
+      set: function set(targetMesh) {
+        this._targetMesh = targetMesh;
+        this._handles.forEach(function (elem) {
+          return elem.targetMesh = targetMesh;
+        });
+        this._moveHandle.targetMesh = targetMesh;
+        this.update();
+      }
+    }, {
+      key: 'worldPosition',
+      get: function get() {
+        return this._worldPosition;
+      },
+      set: function set(worldPosition) {
+        this._handles.forEach(function (elem) {
+          return elem._worldPosition.copy(worldPosition);
+        });
+        this._worldPosition.copy(worldPosition);
+        this.update();
+      }
+    }, {
+      key: 'extraInfo',
+      get: function get() {
+        return this._extraInfo;
+      },
+      set: function set(info) {
+        this._extraInfo = info;
+        this._label.querySelector('.info').innerHTML = info;
+      }
+    }]);
+
+    return _class;
+  }(Constructor);
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (widgetsVelocityTimeIntegral());
 
 /***/ }),
 
@@ -49011,31 +50206,34 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
   return function (_Constructor) {
     _inherits(_class, _Constructor);
 
-    function _class(targetMesh, controls, stack) {
+    function _class(targetMesh, controls) {
+      var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
       _classCallCheck(this, _class);
 
-      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls));
-
-      _this._stack = stack;
+      var _this = _possibleConstructorReturn(this, _Constructor.call(this, targetMesh, controls, params));
 
       _this._widgetType = 'VoxelProbe';
+
+      // incoming parameters (optional: worldPosition)
+      _this._stack = params.stack; // required
+
+      _this._container.style.cursor = 'pointer';
       _this._controls.enabled = false; // controls should be disabled for widgets with a single handle
       _this._initialized = false; // set to true onEnd
-      _this._moving = false;
+      _this._active = true;
+      _this._moving = true;
+      _this._domHovered = false;
 
       // dom stuff
       _this._label = null;
-      _this._domDisplayed = true;
-      _this._domHovered = false;
 
       // handle (represent voxel)
       var WidgetsHandle = Object(_widgets_handle__WEBPACK_IMPORTED_MODULE_1__["widgetsHandle"])(three);
-      _this._handle = new WidgetsHandle(targetMesh, controls);
-      _this._handle.worldPosition.copy(_this._worldPosition);
+      _this._handle = new WidgetsHandle(targetMesh, controls, params);
       _this.add(_this._handle);
 
-      _this._moveHandle = new WidgetsHandle(targetMesh, controls);
-      _this._moveHandle.worldPosition.copy(_this._worldPosition);
+      _this._moveHandle = new WidgetsHandle(targetMesh, controls, params);
       _this.add(_this._moveHandle);
       _this._moveHandle.hide();
 
@@ -49136,21 +50334,21 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
 
     _class.prototype.createDOM = function createDOM() {
       this._label = document.createElement('div');
-      this._label.setAttribute('class', 'widgets-label');
+      this._label.className = 'widgets-label';
 
-      // measurenents
+      // measurements
       var measurementsContainer = document.createElement('div');
       // LPS
       var lpsContainer = document.createElement('div');
-      lpsContainer.setAttribute('id', 'lpsPosition');
+      lpsContainer.className = 'lpsPosition';
       measurementsContainer.appendChild(lpsContainer);
       // IJK
       var ijkContainer = document.createElement('div');
-      ijkContainer.setAttribute('id', 'ijkPosition');
+      ijkContainer.className = 'ijkPosition';
       measurementsContainer.appendChild(ijkContainer);
       // Value
       var valueContainer = document.createElement('div');
-      valueContainer.setAttribute('id', 'value');
+      valueContainer.className = 'value';
       measurementsContainer.appendChild(valueContainer);
 
       this._label.appendChild(measurementsContainer);
@@ -49168,10 +50366,7 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
 
       this.updateVoxel(); // set data coordinates && value
 
-      // update dom
-      this.updateDOMContent();
-      this.updateDOMColor();
-      this.updateDOMPosition();
+      this.updateDOM();
     };
 
     _class.prototype.updateVoxel = function updateVoxel() {
@@ -49185,19 +50380,17 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
       : _core_core_utils__WEBPACK_IMPORTED_MODULE_3__["default"].rescaleSlopeIntercept(value, this._stack.rescaleSlope, this._stack.rescaleIntercept).toFixed();
     };
 
-    _class.prototype.updateDOMContent = function updateDOMContent() {
-      var rasContainer = this._label.querySelector('#lpsPosition');
-
-      var ijkContainer = this._label.querySelector('#ijkPosition');
-
-      var valueContainer = this._label.querySelector('#value');
+    _class.prototype.updateDOM = function updateDOM() {
+      var rasContainer = this._label.querySelector('.lpsPosition');
+      var ijkContainer = this._label.querySelector('.ijkPosition');
+      var valueContainer = this._label.querySelector('.value');
 
       rasContainer.innerHTML = 'LPS: \n      ' + this._voxel.worldCoordinates.x.toFixed(2) + ' :\n      ' + this._voxel.worldCoordinates.y.toFixed(2) + ' :\n      ' + this._voxel.worldCoordinates.z.toFixed(2);
       ijkContainer.innerHTML = 'IJK: \n      ' + this._voxel.dataCoordinates.x + ' :\n      ' + this._voxel.dataCoordinates.y + ' :\n      ' + this._voxel.dataCoordinates.z;
       valueContainer.innerHTML = 'Value: ' + this._voxel.value;
-    };
 
-    _class.prototype.updateDOMPosition = function updateDOMPosition() {
+      this.updateDOMColor();
+
       var transform = this.adjustLabelTransform(this._label, this._handle.screenPosition, true);
 
       this._label.style.transform = 'translate3D(' + transform.x + 'px, ' + transform.y + 'px, 0)';
@@ -49219,6 +50412,7 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
 
       this._container.removeChild(this._label);
 
+      this._stack = null;
       this._voxel = null;
 
       _Constructor.prototype.free.call(this);
@@ -49252,6 +50446,7 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
       },
       set: function set(worldPosition) {
         this._handle.worldPosition.copy(worldPosition);
+        this._moveHandle.worldPosition.copy(worldPosition);
         this._worldPosition.copy(worldPosition);
         this.update();
       }
@@ -49266,33 +50461,6 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
 
         this.update();
       }
-    }, {
-      key: 'showVoxel',
-      set: function set(showVoxel) {
-        this._showVoxel = showVoxel;
-        this.update();
-      },
-      get: function get() {
-        return this._showVoxel;
-      }
-    }, {
-      key: 'showDomSVG',
-      set: function set(showDomSVG) {
-        this._showDomSVG = showDomSVG;
-        this.update();
-      },
-      get: function get() {
-        return this._showDomSVG;
-      }
-    }, {
-      key: 'showDomMeasurements',
-      set: function set(showDomMeasurements) {
-        this._showDomMeasurements = showDomMeasurements;
-        this.update();
-      },
-      get: function get() {
-        return this._showDomMeasurements;
-      }
     }]);
 
     return _class;
@@ -49306,12 +50474,12 @@ var widgetsVoxelprobe = function widgetsVoxelprobe() {
 
 /***/ 0:
 /*!**************************!*\
-  !*** multi ./src/ami.js ***!
+  !*** multi ./src/ami.ts ***!
   \**************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./src/ami.js */"./src/ami.js");
+module.exports = __webpack_require__(/*! ./src/ami.ts */"./src/ami.ts");
 
 
 /***/ })
