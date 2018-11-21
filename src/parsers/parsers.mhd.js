@@ -1,6 +1,7 @@
 /** * Imports ***/
 import ParsersVolume from './parsers.volume';
-import {Vector3} from 'three';
+
+import {Vector3} from 'three/src/math/Vector3';
 
 /**
  * @module parsers/mhd
@@ -77,7 +78,12 @@ export default class ParsersMHD extends ParsersVolume {
   pixelType(frameIndex = 0) {
     // 0 - int
     // 1 - float
-    return 0;
+    let type = 0;
+    if (this._header.ElementType === 'MET_UFLOAT' ||
+        this._header.ElementType === 'MET_FLOAT') {
+      type = 1;
+    }
+    return type;
   }
 
   bitsAllocated(frameIndex = 0) {
@@ -91,6 +97,8 @@ export default class ParsersMHD extends ParsersVolume {
         this._header.ElementType === 'MET_SHORT') {
       bitsAllocated = 16;
     } else if (
+        this._header.ElementType === 'MET_UINT' ||
+        this._header.ElementType === 'MET_INT' ||
         this._header.ElementType === 'MET_UFLOAT' ||
         this._header.ElementType === 'MET_FLOAT') {
       bitsAllocated = 32;
@@ -104,7 +112,7 @@ export default class ParsersMHD extends ParsersVolume {
    * ElementSpacing[0] spacing between elements along X axis (i.e. column spacing)
    * ElementSpacing[1] spacing between elements along Y axis (i.e. row spacing)
    *
-   * @param {*} frameIndex 
+   * @param {*} frameIndex
    */
   pixelSpacing(frameIndex = 0) {
     let x = parseFloat(this._header.ElementSpacing[1], 10);
@@ -158,10 +166,8 @@ export default class ParsersMHD extends ParsersVolume {
     let frameOffset = frameIndex * numPixels;
 
     if (this._header.ElementType === 'MET_CHAR') {
-      frameOffset = frameOffset;
       return new Int8Array(buffer, frameOffset, numPixels);
     } else if (this._header.ElementType === 'MET_UCHAR') {
-      frameOffset = frameOffset;
       return new Uint8Array(buffer, frameOffset, numPixels);
     } else if (this._header.ElementType === 'MET_SHORT') {
       frameOffset = frameOffset * 2;
@@ -169,6 +175,12 @@ export default class ParsersMHD extends ParsersVolume {
     } else if (this._header.ElementType === 'MET_USHORT') {
       frameOffset = frameOffset * 2;
       return new Uint16Array(buffer, frameOffset, numPixels);
+    } else if (this._header.ElementType === 'MET_INT') {
+      frameOffset = frameOffset * 4;
+      return new Int32Array(buffer, frameOffset, numPixels);
+    } else if (this._header.ElementType === 'MET_UINT') {
+      frameOffset = frameOffset * 4;
+      return new Uint32Array(buffer, frameOffset, numPixels);
     } else if (this._header.ElementType === 'MET_FLOAT') {
       frameOffset = frameOffset * 4;
       return new Float32Array(buffer, frameOffset, numPixels);

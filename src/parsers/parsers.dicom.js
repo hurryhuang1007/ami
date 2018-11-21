@@ -1,15 +1,24 @@
 /** * Imports ***/
 import ParsersVolume from './parsers.volume';
+import * as OpenJPEG from 'OpenJPEG.js/dist/openJPEG-DynamicMemory-browser.js';
+
+import {RLEDecoder} from '../decoders/decoders.rle';
 
 let DicomParser = require('dicom-parser');
 let Jpeg = require('jpeg-lossless-decoder-js');
 let JpegBaseline = require('../../external/scripts/jpeg');
 let Jpx = require('../../external/scripts/jpx');
+let openJPEG; // for one time initialization
 
 /**
  * Dicom parser is a combination of utilities to get a VJS image from dicom files.
  *scripts
  * Relies on dcmjs, jquery, HTML5 fetch API, HTML5 promise API.
+ *
+ * image-JPEG2000 (jpx) is still in use, because Cornerstone does it and may have identified some edge corners.
+ * Ref:
+ *   https://github.com/cornerstonejs/cornerstoneWADOImageLoader/blob/master/docs/Codecs.md
+ *   https://github.com/cornerstonejs/cornerstoneWADOImageLoader/blob/a9b408f5562bde5543fc6986bd23fbac9d676562/src/shared/decoders/decodeJPEG2000.js#L127-L134
  *
  * @module parsers/dicom
  *
@@ -34,7 +43,8 @@ export default class ParsersDicom extends ParsersVolume {
       this._dataSet = DicomParser.parseDicom(byteArray);
     } catch (e) {
       window.console.log(e);
-      throw 'parsers.dicom could not parse the file';
+      const error = new Error('parsers.dicom could not parse the file');
+      throw error;
     }
   }
 
@@ -426,14 +436,68 @@ export default class ParsersDicom extends ParsersVolume {
     // expect frame index to start at 0!
     let pixelSpacing = this._findStringEverywhere('x00289110', 'x00280030', frameIndex);
 
-    // format image orientation ('1\0\0\0\1\0') to array containing 6 numbers
-    // should we default to undefined??
+    if (pixelSpacing === null) {
+      pixelSpacing = this._dataSet.string('x00181164');
+    }
+
     if (pixelSpacing) {
       // make sure we return array of numbers! (not strings!)
       pixelSpacing = pixelSpacing.split('\\').map(Number);
     }
 
+    if (typeof pixelSpacing === 'undefined') {
+        pixelSpacing = null;
+    }
+
     return pixelSpacing;
+  }
+
+  ultrasoundRegions(frameIndex = 0) {
+    const sequence = this._dataSet.elements['x00186011'];
+
+    if (!sequence || !sequence.items) {
+      return [];
+    }
+
+    const ultrasoundRegions = [];
+
+    sequence.items.forEach((item) => {
+        ultrasoundRegions.push({
+          x0: item.dataSet.uint32('x00186018'),
+          y0: item.dataSet.uint32('x0018601a'),
+          x1: item.dataSet.uint32('x0018601c'),
+          y1: item.dataSet.uint32('x0018601e'),
+          axisX: item.dataSet.int32('x00186020') || null, // optional
+          axisY: item.dataSet.int32('x00186022') || null, // optional
+          unitsX: this._getUnitsName(item.dataSet.uint16('x00186024')),
+          unitsY: this._getUnitsName(item.dataSet.uint16('x00186026')),
+          deltaX: item.dataSet.double('x0018602c'),
+          deltaY: item.dataSet.double('x0018602e')
+        });
+    });
+
+    return ultrasoundRegions;
+  }
+
+  frameTime(frameIndex = 0) {
+    let frameIncrementPointer = this._dataSet.uint16('x00280009', 1);
+    let frameRate = this._dataSet.intString('x00082144');
+    let frameTime;
+
+    if (typeof frameIncrementPointer === 'number') {
+      frameIncrementPointer = frameIncrementPointer.toString(16);
+      frameTime = this._dataSet.floatString('x0018' + frameIncrementPointer);
+    }
+
+    if (typeof frameTime === 'undefined' && typeof frameRate === 'number') {
+      frameTime = 1000 / frameRate;
+    }
+
+    if (typeof frameTime === 'undefined') {
+      frameTime = null;
+    }
+
+    return frameTime;
   }
 
   rows(frameIndex = 0) {
@@ -467,6 +531,16 @@ export default class ParsersDicom extends ParsersVolume {
   pixelRepresentation(frameIndex = 0) {
     let pixelRepresentation = this._dataSet.uint16('x00280103');
     return pixelRepresentation;
+  }
+
+  pixelPaddingValue(frameIndex = 0) {
+    let padding = this._dataSet.int16('x00280120');
+
+    if (typeof padding === 'undefined') {
+      padding = null;
+    }
+
+    return padding;
   }
 
   bitsAllocated(frameIndex = 0) {
@@ -507,7 +581,7 @@ export default class ParsersDicom extends ParsersVolume {
   }
 
   spacingBetweenSlices(frameIndex = 0) {
-    let spacing = this._dataSet.intString('x00180088');
+    let spacing = this._dataSet.floatString('x00180088');
 
     if (typeof spacing === 'undefined') {
       spacing = null;
@@ -562,8 +636,6 @@ export default class ParsersDicom extends ParsersVolume {
     } else {
       inStackPositionNumber = null;
     }
-
-    console.log(`instack position ${inStackPositionNumber}`);
 
     return inStackPositionNumber;
   }
@@ -636,6 +708,11 @@ export default class ParsersDicom extends ParsersVolume {
 
   _findStringEverywhere(subsequence, tag, index) {
     let targetString = this._findStringInFrameGroupSequence(subsequence, tag, index);
+    // PET MODULE
+    if (targetString === null) {
+      const petModule = 'x00540022';
+      targetString = this._findStringInSequence(petModule, tag);
+    }
 
     if (targetString === null) {
       targetString = this._dataSet.string(tag);
@@ -648,6 +725,21 @@ export default class ParsersDicom extends ParsersVolume {
     return targetString;
   }
 
+  _findStringInSequence(sequenceTag, tag, index) {
+   const sequence = this._dataSet.elements[sequenceTag];
+
+   let targetString;
+   if (sequence) {
+     targetString = sequence.items[0].dataSet.string(tag);
+   }
+
+   if (typeof targetString === 'undefined') {
+     targetString = null;
+   }
+
+   return targetString;
+ }
+
   _findFloatStringInGroupSequence(sequence, subsequence, tag, index) {
     let dataInGroupSequence = this._dataSet.floatString(tag);
 
@@ -658,8 +750,6 @@ export default class ParsersDicom extends ParsersVolume {
 
       if (dataInGroupSequence !== null) {
         return dataInGroupSequence.floatString(tag);
-      } else {
-        return null;
       }
     }
 
@@ -683,6 +773,11 @@ export default class ParsersDicom extends ParsersVolume {
       // JPEG 2000 Lossy
       return this._decodeJ2K(frameIndex);
     } else if (
+        transferSyntaxUID === '1.2.840.10008.1.2.5'
+        // decodeRLE
+      ) {
+        return this._decodeRLE(frameIndex);
+      } else if (
       transferSyntaxUID === '1.2.840.10008.1.2.4.57' ||
       // JPEG Lossless, Nonhierarchical (Processes 14)
       transferSyntaxUID === '1.2.840.10008.1.2.4.70') {
@@ -713,56 +808,191 @@ export default class ParsersDicom extends ParsersVolume {
     }
   }
 
-  framesAreFragmented(dataSet) {
-    const numberOfFrames = dataSet.intString('x00280008');
-    const pixelDataElement = dataSet.elements.x7fe00010;
+  // github.com/chafey/cornerstoneWADOImageLoader/blob/master/src/imageLoader/wadouri/getEncapsulatedImageFrame.js
+  framesAreFragmented() {
+    const numberOfFrames = this._dataSet.intString('x00280008');
+    const pixelDataElement = this._dataSet.elements.x7fe00010;
 
     return (numberOfFrames !== pixelDataElement.fragments.length);
   }
 
-  _decodeJ2K(frameIndex = 0) {
-    // https://github.com/chafey/cornerstoneWADOImageLoader/blob/master/src/imageLoader/wadouri/getEncapsulatedImageFrame.js
-    let encodedPixelData = null;
-
-    if (this._dataSet.elements.x7fe00010.basicOffsetTable.length) {
+  getEncapsulatedImageFrame(frameIndex) {
+    if (this._dataSet.elements.x7fe00010 && this._dataSet.elements.x7fe00010.basicOffsetTable.length) {
       // Basic Offset Table is not empty
-      encodedPixelData = DicomParser.readEncapsulatedImageFrame(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex);
-    } else if (this.framesAreFragmented(this._dataSet)) {
-      const basicOffsetTable = DicomParser.createJPEGBasicOffsetTable(this._dataSet, this._dataSet.elements.x7fe00010);
-      encodedPixelData = DicomParser.readEncapsulatedImageFrame(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex, basicOffsetTable);
-    } else {
-      encodedPixelData = DicomParser.readEncapsulatedPixelDataFromFragments(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex);
+      return DicomParser.readEncapsulatedImageFrame(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex);
     }
 
-    let jpxImage = new Jpx();
+    if (this.framesAreFragmented()) { // Basic Offset Table is empty
+      return DicomParser.readEncapsulatedImageFrame(
+        this._dataSet,
+        this._dataSet.elements.x7fe00010,
+        frameIndex,
+        DicomParser.createJPEGBasicOffsetTable(this._dataSet, this._dataSet.elements.x7fe00010)
+      );
+    }
+
+    return DicomParser.readEncapsulatedPixelDataFromFragments(
+      this._dataSet,
+      this._dataSet.elements.x7fe00010,
+      frameIndex
+    );
+  }
+
+  // used if OpenJPEG library isn't loaded (OHIF/image-JPEG2000 isn't supported and can't parse some images)
+  _decodeJpx(frameIndex = 0) {
+    const jpxImage = new Jpx();
     // https://github.com/OHIF/image-JPEG2000/issues/6
     // It currently returns either Int16 or Uint16 based on whether the codestream is signed or not.
-    jpxImage.parse(encodedPixelData);
+    jpxImage.parse(this.getEncapsulatedImageFrame(frameIndex));
 
-    let componentsCount = jpxImage.componentsCount;
-    if (componentsCount !== 1) {
-      throw 'JPEG2000 decoder returned a componentCount of ${componentsCount}, when 1 is expected';
-    }
-    let tileCount = jpxImage.tiles.length;
-
-    if (tileCount !== 1) {
-      throw 'JPEG2000 decoder returned a tileCount of ${tileCount}, when 1 is expected';
+    if (jpxImage.componentsCount !== 1) {
+      throw new Error('JPEG2000 decoder returned a componentCount of ${componentsCount}, when 1 is expected');
     }
 
-    let tileComponents = jpxImage.tiles[0];
-    let pixelData = tileComponents.items;
+    if (jpxImage.tiles.length !== 1) {
+      throw new Error('JPEG2000 decoder returned a tileCount of ${tileCount}, when 1 is expected');
+    }
+
+    return jpxImage.tiles[0].items;
+  }
+
+  _decodeOpenJPEG(frameIndex = 0) {
+    const encodedPixelData = this.getEncapsulatedImageFrame(frameIndex);
+    const bytesPerPixel = this.bitsAllocated(frameIndex) <= 8 ? 1 : 2;
+    const signed = this.pixelRepresentation(frameIndex) === 1;
+    const dataPtr = openJPEG._malloc(encodedPixelData.length);
+
+    openJPEG.writeArrayToMemory(encodedPixelData, dataPtr);
+
+    // create param outpout
+    const imagePtrPtr = openJPEG._malloc(4);
+    const imageSizePtr = openJPEG._malloc(4);
+    const imageSizeXPtr = openJPEG._malloc(4);
+    const imageSizeYPtr = openJPEG._malloc(4);
+    const imageSizeCompPtr = openJPEG._malloc(4);
+    const ret = openJPEG.ccall(
+      'jp2_decode',
+      'number',
+      ['number', 'number', 'number', 'number', 'number', 'number', 'number'],
+      [dataPtr, encodedPixelData.length, imagePtrPtr, imageSizePtr, imageSizeXPtr, imageSizeYPtr, imageSizeCompPtr]
+    );
+    const imagePtr = openJPEG.getValue(imagePtrPtr, '*');
+
+    if (ret !== 0) {
+      console.log('[opj_decode] decoding failed!');
+      openJPEG._free(dataPtr);
+      openJPEG._free(imagePtr);
+      openJPEG._free(imageSizeXPtr);
+      openJPEG._free(imageSizeYPtr);
+      openJPEG._free(imageSizePtr);
+      openJPEG._free(imageSizeCompPtr);
+
+      return;
+    }
+
+    // Copy the data from the EMSCRIPTEN heap into the correct type array
+    const length = openJPEG.getValue(imageSizeXPtr, 'i32') *
+        openJPEG.getValue(imageSizeYPtr, 'i32') * openJPEG.getValue(imageSizeCompPtr, 'i32');
+    const src32 = new Int32Array(openJPEG.HEAP32.buffer, imagePtr, length);
+    let pixelData;
+
+    if (bytesPerPixel === 1) {
+      if (Uint8Array.from) {
+        pixelData = Uint8Array.from(src32);
+      } else {
+        pixelData = new Uint8Array(length);
+        for (let i = 0; i < length; i++) {
+          pixelData[i] = src32[i];
+        }
+      }
+    } else if (signed) {
+      if (Int16Array.from) {
+        pixelData = Int16Array.from(src32);
+      } else {
+        pixelData = new Int16Array(length);
+        for (let i = 0; i < length; i++) {
+          pixelData[i] = src32[i];
+        }
+      }
+    } else if (Uint16Array.from) {
+      pixelData = Uint16Array.from(src32);
+    } else {
+      pixelData = new Uint16Array(length);
+      for (let i = 0; i < length; i++) {
+        pixelData[i] = src32[i];
+      }
+    }
+
+    openJPEG._free(dataPtr);
+    openJPEG._free(imagePtrPtr);
+    openJPEG._free(imagePtr);
+    openJPEG._free(imageSizePtr);
+    openJPEG._free(imageSizeXPtr);
+    openJPEG._free(imageSizeYPtr);
+    openJPEG._free(imageSizeCompPtr);
 
     return pixelData;
   }
 
   // from cornerstone
+  _decodeJ2K(frameIndex = 0) {
+    if (typeof OpenJPEG === 'undefined') {
+      // OpenJPEG decoder not loaded
+      return this._decodeJpx(frameIndex);
+    }
+
+    if (!openJPEG) {
+      openJPEG = OpenJPEG();
+      if (!openJPEG || !openJPEG._jp2_decode) {
+        // OpenJPEG failed to initialize
+        return this._decodeJpx(frameIndex);
+      }
+    }
+
+    return this._decodeOpenJPEG(frameIndex);
+  }
+
+  _decodeRLE(frameIndex = 0) {
+    const bitsAllocated = this.bitsAllocated(frameIndex);
+    const planarConfiguration = this.planarConfiguration();
+    const columns = this.columns();
+    const rows = this.rows();
+    const samplesPerPixel = this.samplesPerPixel(frameIndex);
+    const pixelRepresentation = this.pixelRepresentation(frameIndex);
+    
+    // format data for the RLE decoder
+    const imageFrame = {
+      pixelRepresentation,
+      bitsAllocated,
+      planarConfiguration,
+      columns,
+      rows,
+      samplesPerPixel,
+    };
+
+    const pixelData =  DicomParser.readEncapsulatedPixelDataFromFragments(
+      this._dataSet,
+      this._dataSet.elements.x7fe00010,
+      frameIndex
+    );
+
+    const decoded = RLEDecoder(imageFrame, pixelData);
+    return decoded.pixelData;
+  }
+
+  // from cornerstone
   _decodeJPEGLossless(frameIndex = 0) {
-    let encodedPixelData = DicomParser.readEncapsulatedPixelData(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex);
+    let encodedPixelData = this.getEncapsulatedImageFrame(frameIndex);
     let pixelRepresentation = this.pixelRepresentation(frameIndex);
     let bitsAllocated = this.bitsAllocated(frameIndex);
     let byteOutput = bitsAllocated <= 8 ? 1 : 2;
     let decoder = new Jpeg.lossless.Decoder();
-    let decompressedData = decoder.decode(encodedPixelData.buffer, encodedPixelData.byteOffset, encodedPixelData.length, byteOutput);
+    let decompressedData = decoder.decode(
+        encodedPixelData.buffer,
+        encodedPixelData.byteOffset,
+        encodedPixelData.length,
+        byteOutput
+    );
 
     if (pixelRepresentation === 0) {
       if (byteOutput === 2) {
@@ -777,7 +1007,7 @@ export default class ParsersDicom extends ParsersVolume {
   }
 
   _decodeJPEGBaseline(frameIndex = 0) {
-    let encodedPixelData = DicomParser.readEncapsulatedPixelData(this._dataSet, this._dataSet.elements.x7fe00010, frameIndex);
+    let encodedPixelData = this.getEncapsulatedImageFrame(frameIndex);
     let rows = this.rows(frameIndex);
     let columns = this.columns(frameIndex);
     let bitsAllocated = this.bitsAllocated(frameIndex);
@@ -877,17 +1107,29 @@ export default class ParsersDicom extends ParsersVolume {
     }
   }
 
+  _interpretAsRGB(photometricInterpretation) {
+    const rgbLikeTypes = [
+      'RGB',
+      'YBR_RCT',
+      'YBR_ICT',
+      'YBR_FULL_422',
+    ];
+
+    return rgbLikeTypes.indexOf(photometricInterpretation) !== -1;
+  }
+
   _convertColorSpace(uncompressedData) {
     let rgbData = null;
     let photometricInterpretation = this.photometricInterpretation();
     let planarConfiguration = this.planarConfiguration();
 
-    if (photometricInterpretation === 'RGB' &&
+    const interpretAsRGB = this._interpretAsRGB(photometricInterpretation);
+    if (interpretAsRGB &&
         planarConfiguration === 0) {
       // ALL GOOD, ALREADY ORDERED
       // planar or non planar planarConfiguration
       rgbData = uncompressedData;
-    } else if (photometricInterpretation === 'RGB' &&
+    } else if (interpretAsRGB &&
         planarConfiguration === 1) {
       if (uncompressedData instanceof Int8Array) {
         rgbData = new Int8Array(uncompressedData.length);
@@ -898,7 +1140,8 @@ export default class ParsersDicom extends ParsersVolume {
       } else if (uncompressedData instanceof Uint16Array) {
         rgbData = new Uint16Array(uncompressedData.length);
       } else {
-        throw 'unsuported typed array: ${uncompressedData}';
+        const error = new Error(`unsuported typed array: ${uncompressedData}`);
+        throw error;
       }
 
       let numPixels = uncompressedData.length / 3;
@@ -921,7 +1164,8 @@ export default class ParsersDicom extends ParsersVolume {
       } else if (uncompressedData instanceof Uint16Array) {
         rgbData = new Uint16Array(uncompressedData.length);
       } else {
-        throw 'unsuported typed array: ${uncompressedData}';
+        const error = new Error(`unsuported typed array: ${uncompressedData}`);
+        throw error;
       }
 
       // https://github.com/chafey/cornerstoneWADOImageLoader/blob/master/src/decodeYBRFull.js
@@ -938,7 +1182,8 @@ export default class ParsersDicom extends ParsersVolume {
         // rgbData[rgbaIndex++] = 255; //alpha
       }
     } else {
-      throw 'photometric interpolation not supported: ${photometricInterpretation}';
+      const error = new Error(`photometric interpolation not supported: ${photometricInterpretation}`);
+      throw error;
     }
 
     return rgbData;
@@ -962,5 +1207,25 @@ export default class ParsersDicom extends ParsersVolume {
     }
 
     return frame;
+  }
+
+  _getUnitsName(value) {
+    const units = {
+      0: 'none',
+      1: 'percent',
+      2: 'dB',
+      3: 'cm',
+      4: 'seconds',
+      5: 'hertz',
+      6: 'dB/seconds',
+      7: 'cm/sec',
+      8: 'cm2',
+      9: 'cm2/sec',
+      10: 'cm3',
+      11: 'cm3/sec',
+      12: 'degrees'
+    };
+
+    return units.hasOwnProperty(value) ? units[value] : 'none';
   }
 }

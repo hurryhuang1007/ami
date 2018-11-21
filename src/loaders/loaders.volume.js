@@ -10,6 +10,7 @@ import ParsersDicom from '../parsers/parsers.dicom';
 import ParsersMhd from '../parsers/parsers.mhd';
 import ParsersNifti from '../parsers/parsers.nifti';
 import ParsersNrrd from '../parsers/parsers.nrrd';
+import ParsersMgh from '../parsers/parsers.mgh';
 
 /**
  *
@@ -32,7 +33,7 @@ import ParsersNrrd from '../parsers/parsers.nrrd';
  *   // Function when resource is loaded
  *   function(object) {
  *     //scene.add( object );
- *     window.console.log(object);
+ *     console.log(object);
  *   }
  * );
  */
@@ -53,16 +54,17 @@ export default class LoadersVolumes extends LoadersBase {
       file: response.url,
       time: new Date(),
     });
+
     // give a chance to the UI to update because
     // after the rendering will be blocked with intensive JS
     // will be removed after eventer set up
     if (this._progressBar) {
-      this._progressBar.update(0, 100, 'parse');
+      this._progressBar.update(0, 100, 'parse', response.url);
     }
 
     return new Promise(
       (resolve, reject) => {
-        window.setTimeout(
+        setTimeout(
           () => {
             resolve(new Promise((resolve, reject) => {
               let data = response;
@@ -109,7 +111,7 @@ export default class LoadersVolumes extends LoadersBase {
               try {
                 volumeParser = new Parser(data, 0);
               } catch (e) {
-                window.console.log(e);
+                console.warn(e);
                 // emit 'parse-error' event
                 this.emit('parse-error', {
                   file: response.url,
@@ -173,13 +175,18 @@ export default class LoadersVolumes extends LoadersBase {
               // better than for loop to be able
               // to update dom with "progress" callback
               setTimeout(
-                this.parseFrame(
-                  series, stack, response.url, 0,
-                  volumeParser, resolve, reject), 0);
+                this.parseFrameClosure(series, stack, response.url, 0, volumeParser, resolve, reject)
+                , 0);
             }));
           }, 10);
       }
     );
+  }
+
+  parseFrameClosure(series, stack, url, i, dataParser, resolve, reject) {
+    return () => {
+      this.parseFrame(series, stack, url, i, dataParser, resolve, reject);
+    };
   }
 
   /**
@@ -193,53 +200,70 @@ export default class LoadersVolumes extends LoadersBase {
    * @param {promise.reject} reject - promise reject args
    */
   parseFrame(series, stack, url, i, dataParser, resolve, reject) {
-    let frame = new ModelsFrame();
-    frame.sopInstanceUID = dataParser.sopInstanceUID(i);
-    frame.url = url;
-    frame.index = i;
-    frame.rows = dataParser.rows(i);
-    frame.columns = dataParser.columns(i);
-    frame.numberOfChannels = stack.numberOfChannels;
-    frame.pixelRepresentation = stack.pixelRepresentation;
-    frame.pixelType = stack.pixelType;
-    frame.pixelData = dataParser.extractPixelData(i);
-    frame.pixelSpacing = dataParser.pixelSpacing(i);
-    frame.spacingBetweenSlices = dataParser.spacingBetweenSlices(i);
-    frame.sliceThickness = dataParser.sliceThickness(i);
-    frame.imageOrientation = dataParser.imageOrientation(i);
-    frame.rightHanded = dataParser.rightHanded();
-    stack.rightHanded = frame.rightHanded;
-    if (frame.imageOrientation === null) {
-      frame.imageOrientation = [1, 0, 0, 0, 1, 0];
-    }
-    frame.imagePosition = dataParser.imagePosition(i);
-    if (frame.imagePosition === null) {
-      frame.imagePosition = [0, 0, i];
-    }
-    frame.dimensionIndexValues = dataParser.dimensionIndexValues(i);
-    frame.bitsAllocated = dataParser.bitsAllocated(i);
-    frame.instanceNumber = dataParser.instanceNumber(i);
-    frame.windowCenter = dataParser.windowCenter(i);
-    frame.windowWidth = dataParser.windowWidth(i);
-    frame.rescaleSlope = dataParser.rescaleSlope(i);
-    frame.rescaleIntercept = dataParser.rescaleIntercept(i);
-    // should pass frame index for consistency...
-    frame.minMax = dataParser.minMaxPixelData(frame.pixelData);
+    try {
+      let frame = new ModelsFrame();
+      frame.sopInstanceUID = dataParser.sopInstanceUID(i);
+      frame.url = url;
+      frame.index = i;
+      frame.invert = stack.invert;
+      frame.frameTime = dataParser.frameTime(i);
+      frame.ultrasoundRegions = dataParser.ultrasoundRegions(i);
+      frame.rows = dataParser.rows(i);
+      frame.columns = dataParser.columns(i);
+      frame.numberOfChannels = stack.numberOfChannels;
+      frame.pixelPaddingValue = dataParser.pixelPaddingValue(i);
+      frame.pixelRepresentation = stack.pixelRepresentation;
+      frame.pixelType = stack.pixelType;
+      frame.pixelData = dataParser.extractPixelData(i);
+      frame.pixelSpacing = dataParser.pixelSpacing(i);
+      frame.spacingBetweenSlices = dataParser.spacingBetweenSlices(i);
+      frame.sliceThickness = dataParser.sliceThickness(i);
+      frame.imageOrientation = dataParser.imageOrientation(i);
+      frame.rightHanded = dataParser.rightHanded();
+      stack.rightHanded = frame.rightHanded;
+      if (frame.imageOrientation === null) {
+        frame.imageOrientation = [1, 0, 0, 0, 1, 0];
+      }
+      frame.imagePosition = dataParser.imagePosition(i);
+      /*
+      null ImagePosition should not be handle here
+      if (frame.imagePosition === null) {
+        frame.imagePosition = [0, 0, i];
+      }*/
+      frame.dimensionIndexValues = dataParser.dimensionIndexValues(i);
+      frame.bitsAllocated = dataParser.bitsAllocated(i);
+      frame.instanceNumber = dataParser.instanceNumber(i);
+      frame.windowCenter = dataParser.windowCenter(i);
+      frame.windowWidth = dataParser.windowWidth(i);
+      frame.rescaleSlope = dataParser.rescaleSlope(i);
+      frame.rescaleIntercept = dataParser.rescaleIntercept(i);
+      // should pass frame index for consistency...
+      frame.minMax = dataParser.minMaxPixelData(frame.pixelData);
 
-    // if series.mo
-    if (series.modality === 'SEG') {
-      frame.referencedSegmentNumber = dataParser.referencedSegmentNumber(i);
+      // if series.mo
+      if (series.modality === 'SEG') {
+        frame.referencedSegmentNumber = dataParser.referencedSegmentNumber(i);
+      }
+
+      stack.frame.push(frame);
+
+      // update status
+      this._parsed = i + 1;
+      this._totalParsed = series.numberOfFrames;
+    } catch (e) {
+      this._errored++
+      console.warn('errored:' + this._errored, e);
+      this.emit('parse-error', {
+        file: url,
+        time: new Date(),
+        error: e,
+      });
+      reject(e);
     }
-
-    stack.frame.push(frame);
-
-    // update status
-    this._parsed = i + 1;
-    this._totalParsed = series.numberOfFrames;
 
     // will be removed after eventer set up
     if (this._progressBar) {
-      this._progressBar.update(this._parsed, this._totalParsed, 'parse');
+      this._progressBar.update(this._parsed, this._totalParsed, 'parse', url);
     }
 
     // emit 'parsing' event
@@ -247,6 +271,7 @@ export default class LoadersVolumes extends LoadersBase {
       file: url,
       total: this._totalParsed,
       parsed: this._parsed,
+      errored: this._errored,
       time: new Date(),
     });
 
@@ -256,14 +281,15 @@ export default class LoadersVolumes extends LoadersBase {
         file: url,
         total: this._totalParsed,
         parsed: this._parsed,
+        errored: this._errored,
         time: new Date(),
       });
 
       resolve(series);
     } else {
       setTimeout(
-        this.parseFrame(
-          series, stack, url, this._parsed, dataParser, resolve, reject), 0
+        this.parseFrameClosure(series, stack, url, this._parsed, dataParser, resolve, reject)
+        , 0
       );
     }
   }
@@ -282,6 +308,7 @@ export default class LoadersVolumes extends LoadersBase {
         Parser = ParsersNifti;
         break;
       case 'DCM':
+      case 'DIC':
       case 'DICOM':
       case 'IMA':
       case '':
@@ -293,8 +320,12 @@ export default class LoadersVolumes extends LoadersBase {
       case 'NRRD':
         Parser = ParsersNrrd;
         break;
+      case 'MGH':
+      case 'MGZ':
+        Parser = ParsersMgh;
+        break;
       default:
-        window.console.log('unsupported extension: ' + extension);
+        console.warn('unsupported extension: ' + extension);
         return false;
     }
     return Parser;
@@ -318,10 +349,19 @@ export default class LoadersVolumes extends LoadersBase {
       data.gzcompressed = true;
       data.extension =
         data.filename.split('.gz').shift().split('.').pop();
-      let decompressedData = PAKO.inflate(data.buffer);
-      data.buffer = decompressedData.buffer;
+    } else if (data.extension === 'mgz') {
+      data.gzcompressed = true;
+      data.extension = 'mgh';
+    } else if (data.extension === 'zraw') {
+      data.gzcompressed = true;
+      data.extension = 'raw';
     } else {
       data.gzcompressed = false;
+    }
+
+    if (data.gzcompressed) {
+      let decompressedData = PAKO.inflate(data.buffer);
+      data.buffer = decompressedData.buffer;
     }
   }
 
