@@ -233,6 +233,15 @@ export default class ParsersDicom extends ParsersVolume {
   }
 
   /**
+   * Series time
+   * 
+   * @return {*}
+   */
+  seriesTime(){
+    return this._dataSet.string('x00080031');
+  }
+
+  /**
    * Series description
    *
    * @return {*}
@@ -284,6 +293,15 @@ export default class ParsersDicom extends ParsersVolume {
    */
   patientAge() {
     return this._dataSet.string('x00101010');
+  }
+
+  /**
+   * Patient weight
+   * 
+   * @return {*}
+   */
+  patientWeight() {
+    return this._dataSet.string('x00101030');
   }
 
   /**
@@ -617,12 +635,28 @@ export default class ParsersDicom extends ParsersVolume {
     return dimensionIndexValues;
   }
 
+  radionuclideHalfLife(frameIndex = 0) {
+    return this._findStringEverywhere('x2005140f', 'x00181075', frameIndex);
+  }
+
+  radionuclideTotalDose(frameIndex = 0) {
+    return this._findStringEverywhere('x2005140f', 'x00181074', frameIndex);
+  }
+
+  radiopharmaceuticalStartTime(frameIndex = 0) {
+    return this._findStringEverywhere('x2005140f', 'x00181072', frameIndex);
+  }
+
   echoNumber(frameIndex = 0) {
     return this._findStringEverywhere('x2005140f', 'x00180086', frameIndex);
   }
 
   acquisitionNumber(frameIndex = 0) {
     return this._findStringEverywhere('x2005140f', 'x00200012', frameIndex);
+  }
+
+  acquisitionTime(frameIndex = 0) {
+    return this._findStringEverywhere('x2005140f', 'x00080032', frameIndex);
   }
 
   sliceLocation(frameIndex = 0) {
@@ -722,8 +756,7 @@ export default class ParsersDicom extends ParsersVolume {
     let targetString = this._findStringInFrameGroupSequence(subsequence, tag, index);
     // PET MODULE
     if (targetString === null) {
-      const petModule = 'x00540022';
-      targetString = this._findStringInSequence(petModule, tag);
+      targetString = this._findStringInSequence('x00540022', tag) || this._findStringInSequence('x00540016', tag);
     }
 
     if (targetString === null) {

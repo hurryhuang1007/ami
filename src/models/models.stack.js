@@ -87,6 +87,11 @@ export default class ModelsStack extends ModelsBase {
 
     // photometricInterpretation Monochrome1 VS Monochrome2
     this._invert = false;
+
+    this._suv = 1;
+    this._radionuclideHalfLife = '';
+    this._radionuclideTotalDose = '';
+    this._radiopharmaceuticalStartTime = '';
   }
 
   /**
@@ -924,19 +929,19 @@ export default class ModelsStack extends ModelsBase {
   }
 
   get windowWidth() {
-    return this._windowWidth;
+    return this._windowWidth / this.suv;
   }
 
   set windowWidth(windowWidth) {
-    this._windowWidth = windowWidth;
+    this._windowWidth = windowWidth * this.suv;
   }
 
   get windowCenter() {
-    return this._windowCenter;
+    return this._windowCenter / this.suv;
   }
 
   set windowCenter(windowCenter) {
-    this._windowCenter = windowCenter;
+    this._windowCenter = windowCenter * this.suv;
   }
 
   get rescaleSlope() {
@@ -980,11 +985,11 @@ export default class ModelsStack extends ModelsBase {
   }
 
   get minMax() {
-    return this._minMax;
+    return [this._minMax[0] / this.suv, this._minMax[1] / this.suv];
   }
 
   set minMax(minMax) {
-    this._minMax = minMax;
+    this._minMax = [minMax[0] * this.suv, minMax[1] * this.suv];
   }
 
   get stackID() {
@@ -1073,6 +1078,38 @@ export default class ModelsStack extends ModelsBase {
 
   get segmentationLUTO() {
     return this._segmentationLUTO;
+  }
+
+  get suv() {
+    return this._suv;
+  }
+
+  set suv(suv) {
+    this._suv = suv;
+  }
+
+  get radionuclideHalfLife() {
+    return this._radionuclideHalfLife;
+  }
+
+  set radionuclideHalfLife(radionuclideHalfLife) {
+    this._radionuclideHalfLife = radionuclideHalfLife;
+  }
+
+  get radionuclideTotalDose() {
+    return this._radionuclideTotalDose;
+  }
+
+  set radionuclideTotalDose(radionuclideTotalDose) {
+    this._radionuclideTotalDose = radionuclideTotalDose;
+  }
+
+  get radiopharmaceuticalStartTime() {
+    return this._radiopharmaceuticalStartTime;
+  }
+
+  set radiopharmaceuticalStartTime(radiopharmaceuticalStartTime) {
+    this._radiopharmaceuticalStartTime = radiopharmaceuticalStartTime;
   }
 
   // DEPRECATED FUNCTION

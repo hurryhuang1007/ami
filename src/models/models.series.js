@@ -20,6 +20,7 @@ export default class ModelsSeries extends ModelsBase {
     this._seriesNumber = -1;
     this._seriesDescription = '';
     this._seriesDate = '';
+    this._seriesTime = '';
     this._studyDescription = '';
     this._studyDate = '';
     this._accessionNumber = -1;
@@ -36,6 +37,7 @@ export default class ModelsSeries extends ModelsBase {
     this._patientAge = '';
     this._patientBirthdate = '';
     this._patientSex = '';
+    this._patientWeight = '';
 
     // SEGMENTATION STUFF
     this._segmentationType = null;
@@ -313,6 +315,24 @@ export default class ModelsSeries extends ModelsBase {
   }
 
   /**
+   * Series time setter
+   *
+   * @param {*} seriesTime
+   */
+  set seriesTime(seriesTime) {
+    this._seriesTime = seriesTime;
+  }
+
+  /**
+   * Series time getter
+   *
+   * @return {*}
+   */
+  get seriesTime() {
+    return this._seriesTime;
+  }
+
+  /**
    * Series descripition setter
    *
    * @param {*} seriesDescription
@@ -418,6 +438,24 @@ export default class ModelsSeries extends ModelsBase {
    */
   get patientSex() {
     return this._patientSex;
+  }
+
+  /**
+   * Patient weight setter
+   * 
+   * @param {*} patientWeight
+   */
+  set patientWeight(patientWeight) {
+    this._patientWeight = patientWeight;
+  }
+
+  /**
+   * Patient weight getter
+   * 
+   * @return {*}
+   */
+  get patientWeight() {
+    return this._patientWeight;
   }
 
   /**

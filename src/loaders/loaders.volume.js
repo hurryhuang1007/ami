@@ -122,6 +122,7 @@ export default class LoadersVolumes extends LoadersBase {
             series.seriesInstanceUID = volumeParser.seriesInstanceUID();
             series.transferSyntaxUID = volumeParser.transferSyntaxUID();
             series.seriesDate = volumeParser.seriesDate();
+            series.seriesTime = volumeParser.seriesTime();
             series.seriesDescription = volumeParser.seriesDescription();
             series.studyDate = volumeParser.studyDate();
             series.studyDescription = volumeParser.studyDescription();
@@ -145,6 +146,7 @@ export default class LoadersVolumes extends LoadersBase {
             series.patientAge = volumeParser.patientAge();
             series.patientBirthdate = volumeParser.patientBirthdate();
             series.patientSex = volumeParser.patientSex();
+            series.patientWeight = volumeParser.patientWeight();
 
             // just create 1 dummy stack for now
             let stack = new ModelsStack();
@@ -154,6 +156,11 @@ export default class LoadersVolumes extends LoadersBase {
             stack.invert = volumeParser.invert();
             stack.spacingBetweenSlices = volumeParser.spacingBetweenSlices();
             stack.modality = series.modality;
+
+            stack.radionuclideHalfLife = volumeParser.radionuclideHalfLife();
+            stack.radionuclideTotalDose = volumeParser.radionuclideTotalDose();
+            stack.radiopharmaceuticalStartTime = volumeParser.radiopharmaceuticalStartTime();
+
             // if it is a segmentation, attach extra information
             if (stack.modality === 'SEG') {
               // colors
@@ -161,6 +168,8 @@ export default class LoadersVolumes extends LoadersBase {
               // etc.
               stack.segmentationType = series.segmentationType;
               stack.segmentationSegments = series.segmentationSegments;
+            } else if (stack.modality === 'PT' && stack.radionuclideHalfLife && stack.radionuclideTotalDose && stack.radiopharmaceuticalStartTime) {
+              stack.suv = stack.radionuclideTotalDose * 0.001 * Math.pow(2, -((CoreUtils.time2Seconds(volumeParser.acquisitionTime()) - CoreUtils.time2Seconds(stack.radiopharmaceuticalStartTime)) / stack.radionuclideHalfLife)) / series.patientWeight;
             }
             series.stack.push(stack);
             // recursive call for each frame
@@ -229,6 +238,7 @@ export default class LoadersVolumes extends LoadersBase {
       frame.instanceNumber = dataParser.instanceNumber(i);
       frame.echoNumber = dataParser.echoNumber(i);
       frame.acquisitionNumber = dataParser.acquisitionNumber(i);
+      frame.acquisitionTime = dataParser.acquisitionTime(i);
       frame.inStackPositionNumber = dataParser.inStackPositionNumber(i);
       frame.sliceLocation = dataParser.sliceLocation(i);
 

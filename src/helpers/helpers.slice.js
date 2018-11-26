@@ -120,21 +120,22 @@ const helpersSlice = (three = window.THREE) => {
       this._thicknessMethod = thicknessMethod;
       this._uniforms.uThicknessMethod.value = this._thicknessMethod;
     }
+
     get windowWidth() {
-      return this._windowWidth;
+      return this._windowWidth / this._stack.suv;
     }
 
     set windowWidth(windowWidth) {
-      this._windowWidth = windowWidth;
+      this._windowWidth = windowWidth * this._stack.suv;
       this.updateIntensitySettingsUniforms();
     }
 
     get windowCenter() {
-      return this._windowCenter;
+      return this._windowCenter / this._stack.suv;
     }
 
     set windowCenter(windowCenter) {
-      this._windowCenter = windowCenter;
+      this._windowCenter = windowCenter * this._stack.suv;
       this.updateIntensitySettingsUniforms();
     }
 
@@ -149,22 +150,23 @@ const helpersSlice = (three = window.THREE) => {
 
     // adding thresholding method
     get upperThreshold() {
-      return this._upperThreshold;
+      return this._upperThreshold / this._stack.suv;
     }
 
     set upperThreshold(upperThreshold) {
-      this._upperThreshold = upperThreshold;
+      this._upperThreshold = upperThreshold * this._stack.suv;
       this.updateIntensitySettingsUniforms();
     }
 
     get lowerThreshold() {
-      return this._lowerThreshold;
+      return this._lowerThreshold / this._stack.suv;
     }
 
     set lowerThreshold(lowerThreshold) {
-      this._lowerThreshold = lowerThreshold;
+      this._lowerThreshold = lowerThreshold * this._stack.suv;
       this.updateIntensitySettingsUniforms();
     }
+
     get rescaleSlope() {
       return this._rescaleSlope;
     }

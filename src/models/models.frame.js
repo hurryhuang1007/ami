@@ -54,6 +54,7 @@ export default class ModelsFrame extends ModelsBase {
 
     this._echoNumber = -1;
     this._acquisitionNumber = -1;
+    this._acquisitionTime = '';
     this._inStackPositionNumber = -1;
     this._sliceLocation = -1;
   }
@@ -583,6 +584,14 @@ export default class ModelsFrame extends ModelsBase {
 
   set acquisitionNumber(acquisitionNumber) {
     this._acquisitionNumber = acquisitionNumber;
+  }
+
+  get acquisitionTime() {
+    return this._acquisitionTime;
+  }
+
+  set acquisitionTime(acquisitionTime) {
+    this._acquisitionTime = acquisitionTime;
   }
 
   get inStackPositionNumber() {

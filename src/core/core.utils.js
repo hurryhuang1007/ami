@@ -12,6 +12,11 @@ import { Vector3 } from 'three/src/math/Vector3';
  * @module core/utils
  */
 export default class CoreUtils {
+  static time2Seconds(time) {
+    time = Math.round(time) + '';
+    return time.slice(0, 2) * 3600 + time.slice(2, 4) * 60 + +time.slice(4, 6);
+  }
+
   /**
    * Generate a bouding box object.
    * @param {Vector3} center - Center of the box.
@@ -269,7 +274,7 @@ export default class CoreUtils {
    */
   static getPixelData(stack, coordinate) {
     if (coordinate.z >= 0 && coordinate.z < stack._frame.length) {
-      return stack._frame[coordinate.z].getPixelData(coordinate.x, coordinate.y);
+      return stack._frame[coordinate.z].getPixelData(coordinate.x, coordinate.y) / stack.suv;
     } else {
       return null;
     }
