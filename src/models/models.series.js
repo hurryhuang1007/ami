@@ -147,24 +147,28 @@ export default class ModelsSeries extends ModelsBase {
     let firstAcquisitionNumber = stackArray[0]._frame[0]._acquisitionNumber;
     let firstSliceLocation = stackArray[0]._frame[0]._sliceLocation;
     let firstInStackPositionNumber = stackArray[0]._frame[0]._inStackPositionNumber;
+    let firstSeriesTime = stackArray[0]._frame[0]._seriesTime;
 
     let echoNumberIsDiff = false;
     let acquisitionNumberIsDiff = false;
+    let seriesTimeIsDiff = false;
     let hasStack = false;
     let maxInStackPositionNumber = 0;
     // let maxInstanceNumber = 0;
     for (let i in stackArray[0]._frame) {
       if (stackArray[0]._frame[i]._echoNumber !== firstEchoNumber) echoNumberIsDiff = true;
+      if (stackArray[0]._frame[i]._seriesTime !== firstSeriesTime) seriesTimeIsDiff = true;
       if (stackArray[0]._frame[i]._acquisitionNumber !== firstAcquisitionNumber
         && stackArray[0]._frame[i]._sliceLocation === firstSliceLocation) acquisitionNumberIsDiff = true;
       if (stackArray[0]._frame[i]._inStackPositionNumber !== firstInStackPositionNumber) hasStack = true;
       maxInStackPositionNumber = Math.max(maxInStackPositionNumber, stackArray[0]._frame[i]._inStackPositionNumber);
       // maxInstanceNumber = Math.max(maxInstanceNumber, stackArray[0]._frame[i]._instanceNumber)
-      if (echoNumberIsDiff || acquisitionNumberIsDiff) break;
+      if (echoNumberIsDiff || acquisitionNumberIsDiff || seriesTimeIsDiff) break;
     }
 
-    if (echoNumberIsDiff && !acquisitionNumberIsDiff) this._stackSortBy = '_echoNumber';
-    else if (!echoNumberIsDiff && acquisitionNumberIsDiff) this._stackSortBy = '_acquisitionNumber';
+    if (echoNumberIsDiff) this._stackSortBy = '_echoNumber';
+    else if (acquisitionNumberIsDiff) this._stackSortBy = '_acquisitionNumber';
+    else if(seriesTimeIsDiff) this._stackSortBy = '_seriesTime';
 
     if (this._stackSortBy || hasStack) {
       stackArray[0]._frame.forEach(k => {
