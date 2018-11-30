@@ -255,7 +255,10 @@ export default class CoreUtils {
     let dataCoordinate = new Vector3().copy(worldCoordinates).applyMatrix4(lps2IJK);
 
     // same rounding in the shaders
-    dataCoordinate.addScalar(0.5).floor();
+    // dataCoordinate.addScalar(0.5).floor();
+    dataCoordinate.x = Math.floor(dataCoordinate.x * 10) / 10;
+    dataCoordinate.y = Math.floor(dataCoordinate.y * 10) / 10;
+    dataCoordinate.z = Math.floor(dataCoordinate.z * 10) / 10;
 
     return dataCoordinate;
   }
@@ -274,7 +277,7 @@ export default class CoreUtils {
    */
   static getPixelData(stack, coordinate) {
     if (coordinate.z >= 0 && coordinate.z < stack._frame.length) {
-      return stack._frame[coordinate.z].getPixelData(coordinate.x, coordinate.y) / stack.suv;
+      return stack._frame[Math.floor(coordinate.z)].getPixelData(Math.floor(coordinate.x), Math.floor(coordinate.y)) / stack.suv;
     } else {
       return null;
     }

@@ -527,12 +527,14 @@ const helpersSlice = (three = window.THREE) => {
       this._uniforms = null;
 
       // material, geometry and mesh
-      this.remove(this._mesh);
-      this._mesh.geometry.dispose();
-      this._mesh.geometry = null;
-      this._mesh.material.dispose();
-      this._mesh.material = null;
-      this._mesh = null;
+      if (this._mesh) {
+        this.remove(this._mesh);
+        this._mesh.geometry.dispose();
+        this._mesh.geometry = null;
+        this._mesh.material.dispose();
+        this._mesh.material = null;
+        this._mesh = null;
+      }
 
       this._geometry.dispose();
       this._geometry = null;
