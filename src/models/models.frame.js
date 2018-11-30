@@ -57,6 +57,7 @@ export default class ModelsFrame extends ModelsBase {
     this._acquisitionTime = '';
     this._inStackPositionNumber = -1;
     this._sliceLocation = -1;
+    this._seriesTime = '';
   }
 
   /**
@@ -608,5 +609,13 @@ export default class ModelsFrame extends ModelsBase {
 
   set sliceLocation(sliceLocation) {
     this._sliceLocation = sliceLocation;
+  }
+
+  get seriesTime() {
+    return this._seriesTime;
+  }
+
+  set seriesTime(seriesTime) {
+    this._seriesTime = seriesTime;
   }
 }
