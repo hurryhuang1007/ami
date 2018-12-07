@@ -255,10 +255,10 @@ export default class CoreUtils {
     let dataCoordinate = new Vector3().copy(worldCoordinates).applyMatrix4(lps2IJK);
 
     // same rounding in the shaders
-    // dataCoordinate.addScalar(0.5).floor();
-    dataCoordinate.x = Math.floor(dataCoordinate.x * 10) / 10;
-    dataCoordinate.y = Math.floor(dataCoordinate.y * 10) / 10;
-    dataCoordinate.z = Math.floor(dataCoordinate.z * 10) / 10;
+    dataCoordinate.addScalar(0.5).floor();
+    // dataCoordinate.x = Math.floor(dataCoordinate.x * 10) / 10;
+    // dataCoordinate.y = Math.floor(dataCoordinate.y * 10) / 10;
+    // dataCoordinate.z = Math.floor(dataCoordinate.z * 10) / 10;
 
     return dataCoordinate;
   }
