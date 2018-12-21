@@ -155,11 +155,18 @@ export default class ModelsSeries extends ModelsBase {
     let hasStack = false;
     let maxInStackPositionNumber = 0;
     // let maxInstanceNumber = 0;
-    for (let i in stackArray[0]._frame) {
+
+    let length = stackArray[0]._frame.length;
+    for (let i = 0; i < length; i++) {
       if (stackArray[0]._frame[i]._echoNumber !== firstEchoNumber) echoNumberIsDiff = true;
-      if (stackArray[0]._frame[i]._seriesTime !== firstSeriesTime) seriesTimeIsDiff = true;
-      if (stackArray[0]._frame[i]._acquisitionNumber !== firstAcquisitionNumber
-        && stackArray[0]._frame[i]._sliceLocation === firstSliceLocation) acquisitionNumberIsDiff = true;
+      if (
+        stackArray[0]._frame[i]._seriesTime !== firstSeriesTime &&
+        stackArray[0]._frame[i]._sliceLocation === firstSliceLocation
+      ) seriesTimeIsDiff = true;
+      if (
+        stackArray[0]._frame[i]._acquisitionNumber !== firstAcquisitionNumber &&
+        stackArray[0]._frame[i]._sliceLocation === firstSliceLocation
+      ) acquisitionNumberIsDiff = true;
       if (stackArray[0]._frame[i]._inStackPositionNumber !== firstInStackPositionNumber) hasStack = true;
       maxInStackPositionNumber = Math.max(maxInStackPositionNumber, stackArray[0]._frame[i]._inStackPositionNumber);
       // maxInstanceNumber = Math.max(maxInstanceNumber, stackArray[0]._frame[i]._instanceNumber)
@@ -168,7 +175,7 @@ export default class ModelsSeries extends ModelsBase {
 
     if (echoNumberIsDiff) this._stackSortBy = '_echoNumber';
     else if (acquisitionNumberIsDiff) this._stackSortBy = '_acquisitionNumber';
-    else if(seriesTimeIsDiff) this._stackSortBy = '_seriesTime';
+    else if (seriesTimeIsDiff) this._stackSortBy = '_seriesTime';
 
     if (this._stackSortBy || hasStack) {
       stackArray[0]._frame.forEach(k => {
@@ -193,7 +200,7 @@ export default class ModelsSeries extends ModelsBase {
         stack._frame.push(k);
       })
       stackArray.shift();
-      stackArray.sort((a,b) => a._stackID > b._stackID);
+      stackArray.sort((a, b) => a._stackID > b._stackID);
     }
     this._stackSorted = true;
   }
