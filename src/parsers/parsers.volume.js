@@ -54,6 +54,10 @@ export default class ParsersVolume {
     return -1;
   }
 
+  acquisitionTime(frameIndex = 0) {
+    return null;
+  }
+
   inStackPositionNumber(frameIndex = 0) {
     return -1;
   }
@@ -63,6 +67,18 @@ export default class ParsersVolume {
   }
 
   dimensionIndexValues(frameIndex = 0) {
+    return null;
+  }
+
+  radionuclideHalfLife(frameIndex = 0) {
+    return null;
+  }
+
+  radionuclideTotalDose(frameIndex = 0) {
+    return null;
+  }
+
+  radiopharmaceuticalStartTime(frameIndex = 0) {
     return null;
   }
 
@@ -144,6 +160,14 @@ export default class ParsersVolume {
   }
 
   /**
+   * Get the series time.
+   * @return {*}
+   */
+  seriesTime() {
+    return 'no value provided';
+  }
+
+  /**
    * Get the series desciption.
    * @return {*}
    */
@@ -188,6 +212,14 @@ export default class ParsersVolume {
    * @return {*}
    */
   patientSex() {
+    return 'no value provided';
+  }
+
+  /**
+   * Get the patient weight.
+   * @return {*}
+   */
+  patientWeight() {
     return 'no value provided';
   }
 
