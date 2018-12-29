@@ -1,6 +1,12 @@
 /** * Imports ***/
 import ModelsBase from '../models/models.base';
 import ModelsStack from '../models/models.stack';
+const stackSortByCase = {
+  _echoNumber: 'echo number',
+  _acquisitionNumber: 'acquisition number',
+  _seriesTime: 'series time',
+  _instanceNumber: 'instance number'
+}
 
 /**
  * Series object.
@@ -46,6 +52,7 @@ export default class ModelsSeries extends ModelsBase {
     // STACK
     this._stack = [];
 
+    this._isMultiFrame = false;
     this._stackSorted = false;
     this._stackSortBy = '';
   }
@@ -152,23 +159,30 @@ export default class ModelsSeries extends ModelsBase {
     let echoNumberIsDiff = false;
     let acquisitionNumberIsDiff = false;
     let seriesTimeIsDiff = false;
-    let hasStack = false;
+    let isSortByInstanceAndInStackPositionNumber = false;
     let maxInStackPositionNumber = 0;
     // let maxInstanceNumber = 0;
 
     let length = stackArray[0]._frame.length;
     for (let i = 0; i < length; i++) {
       if (stackArray[0]._frame[i]._echoNumber !== firstEchoNumber) echoNumberIsDiff = true;
-      if (
+
+      else if (
         stackArray[0]._frame[i]._seriesTime !== firstSeriesTime &&
         stackArray[0]._frame[i]._sliceLocation === firstSliceLocation
       ) seriesTimeIsDiff = true;
-      if (
+
+      else if (
         stackArray[0]._frame[i]._acquisitionNumber !== firstAcquisitionNumber &&
         stackArray[0]._frame[i]._sliceLocation === firstSliceLocation
       ) acquisitionNumberIsDiff = true;
-      if (stackArray[0]._frame[i]._inStackPositionNumber !== firstInStackPositionNumber) hasStack = true;
+
+      else if (stackArray[0]._frame[i]._inStackPositionNumber !== firstInStackPositionNumber) isSortByInstanceAndInStackPositionNumber = true;
+
+      else if (firstSliceLocation !== -1 && stackArray[0]._frame[i]._sliceLocation === firstSliceLocation) this._isMultiFrame = true;
+
       maxInStackPositionNumber = Math.max(maxInStackPositionNumber, stackArray[0]._frame[i]._inStackPositionNumber);
+
       // maxInstanceNumber = Math.max(maxInstanceNumber, stackArray[0]._frame[i]._instanceNumber)
       if (echoNumberIsDiff || acquisitionNumberIsDiff || seriesTimeIsDiff) break;
     }
@@ -176,10 +190,12 @@ export default class ModelsSeries extends ModelsBase {
     if (echoNumberIsDiff) this._stackSortBy = '_echoNumber';
     else if (acquisitionNumberIsDiff) this._stackSortBy = '_acquisitionNumber';
     else if (seriesTimeIsDiff) this._stackSortBy = '_seriesTime';
+    else if (isSortByInstanceAndInStackPositionNumber) this._stackSortBy = '_instanceNumber';
 
-    if (this._stackSortBy || hasStack) {
+    if (this._stackSortBy) {
+      this._isMultiFrame = true;
       stackArray[0]._frame.forEach(k => {
-        let stackID = this._stackSortBy ? k[this._stackSortBy] : parseInt((k._instanceNumber - 1) / maxInStackPositionNumber) + 1;
+        let stackID = this._stackSortBy === '_instanceNumber' ? ~~((k._instanceNumber - 1) / maxInStackPositionNumber) + 1 : k[this._stackSortBy];
         let stack;
         for (let i in stackArray) if (stackArray[i]._stackID === stackID) stack = stackArray[i];
         if (!stack) {
@@ -577,19 +593,27 @@ export default class ModelsSeries extends ModelsBase {
     return this._segmentationSegments;
   }
 
+  set stackSorted(stackSorted) {
+    console.warn('this value cannot be assigned');
+  }
+
   get stackSorted() {
     return this._stackSorted;
   }
 
-  set stackSorted(stackSorted) {
-    this._stackSorted = stackSorted;
+  set stackSortBy(stackSortBy) {
+    console.warn('this value cannot be assigned');
   }
 
   get stackSortBy() {
-    return this._stackSortBy;
+    return stackSortByCase[this._stackSortBy];
   }
 
-  set stackSortBy(stackSortBy) {
-    this._stackSortBy = stackSortBy;
+  set isMultiFrame(isMultiFrame) {
+    console.warn('this value cannot be assigned');
+  }
+
+  get isMultiFrame() {
+    return this._isMultiFrame;
   }
 }
