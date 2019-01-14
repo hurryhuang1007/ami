@@ -121,8 +121,11 @@ void main(void) {
   
     // normalize
     float windowMin = uWindowCenterWidth[0] - uWindowCenterWidth[1] * 0.5;
-    float normalizedIntensity =
-      ( realIntensity - windowMin ) / uWindowCenterWidth[1];
+    float normalizedIntensity = ( realIntensity - windowMin ) / uWindowCenterWidth[1];
+    if(uInvert == 1){
+      normalizedIntensity = 1. - normalizedIntensity;
+    }
+
     dataValue.r = dataValue.g = dataValue.b = normalizedIntensity;
     dataValue.a = 1.;
 
@@ -158,9 +161,9 @@ void main(void) {
     }
   }
 
-  if(uInvert == 1){
-    dataValue.xyz = vec3(1.) - dataValue.xyz;
-  }
+  // if(uInvert == 1){
+  //   dataValue.xyz = vec3(1.) - dataValue.xyz;
+  // }
 
   dataValue.a = dataValue.a*uOpacity;
 
